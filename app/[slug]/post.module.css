@@ -1,0 +1,111 @@
+.post-entry {
+	background-color: var(--grey-darker);
+	color: var(--background-canvas);
+	min-height: 80vh;
+}
+
+.entry-intro {
+	max-width: 1000px;
+	margin: 0 auto;
+	padding-top: 9rem;
+	padding-bottom: 10rem;
+}
+
+@media only screen and (max-width: 1200px) {
+  .entry-intro {
+    padding-right: 10%;
+		padding-left: 10%;
+  }
+}
+
+.entry {
+	display: flex;
+	margin: 50px 0 0;
+}
+
+.entry > div {
+	padding: 0 7% 0 0;
+}
+
+@media only screen and (max-width: 680px) {
+  .entry {
+    flex-direction: column;
+  }
+
+	.entry > div {
+		padding-top: 2rem;
+	}
+}
+
+.entry > div:last-of-type {
+	padding-right: 0;
+}
+
+.heading h1 {
+	margin-bottom: 0.5rem;
+}
+
+.heading h3 {
+	color: var(--accent);
+}
+
+.entry-info {
+	line-height: 1.7;
+}
+
+.entry-extra h4 {
+	margin: 0 0 10px;
+}
+
+.live {
+	margin: 10px 0 0;
+}
+
+.post [data-nav="active"] div:first-of-type,
+.post [data-nav="idle"] div:first-of-type {
+  background-color: transparent;
+}
+
+.post [data-nav="idle"] div:first-of-type label span {
+	background-color: var(--grey-dark);
+}
+
+.body {
+	background-color: var(--alternate-background);
+}
+
+.showcase {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 7rem 0 0;
+}
+
+@media only screen and (max-width: 1200px) {
+  .showcase {
+    padding-right: 10%;
+		padding-left: 10%;
+  }
+}
+
+.block {
+	margin-bottom: 6rem;
+}
+
+.sight img {
+	width: 100%;
+	height: auto;
+	border-radius: 4px;
+}
+
+.excerpt {
+	padding: 2rem 20% 0;
+	text-align: center;
+	font-size: 0.9rem;
+}
+
+.hero {
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center 30%;
+	border-top: 0px solid var(--alternate-background);
+}

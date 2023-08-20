@@ -1,0 +1,1 @@
+export { default as PostPhotocomma } from './PostPhotocomma';

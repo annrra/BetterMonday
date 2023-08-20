@@ -1,0 +1,22 @@
+.reactive {
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.core {
+  padding-left: 55px;
+  padding-right: 55px;
+  border-radius: var(--block-radius);
+  overflow: hidden;
+}
+
+.case {
+  padding: 0;
+  background-color: var(--grey-light);
+}
+
+.keepcalm {
+  text-align: center;
+  padding: 7rem 20%;
+}

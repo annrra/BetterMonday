@@ -1,0 +1,99 @@
+.case-banner {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center 60%;
+}
+
+.item .info {
+  padding: 70px 10%;
+  flex: 0 0 50%;
+  position: relative;
+}
+
+.item .info:last-of-type {
+  padding: 70px 5%;
+}
+
+.caseFooter {
+  margin: 40px 0 0;
+}
+
+.link {
+  padding: 15px 20px;
+  text-transform: uppercase;
+  font-size: 90%;
+  border-radius: 4px;
+  background-color: var(--background-canvas);
+  background-image: linear-gradient(var(--accent),var(--accent));
+  background-size: 0 100%;
+  background-repeat: no-repeat;
+  transition: .3s;
+}
+
+.link:hover {
+  background-size: 100% 100%;
+  color: var(--background-canvas);
+}
+
+.front {
+  width: 100%;
+  height: auto;
+}
+
+.flex {
+  display: flex;
+  flex-direction: row-reverse;
+  padding: 70px 10%;
+}
+
+@media only screen and (max-width: 1200px) {
+  .flex {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+}
+
+@media only screen and (max-width: 968px) {
+  .flex {
+    flex-direction: column;
+    padding: 0 5%;
+  }
+}
+
+.info h3 {
+  font-size: 1.6rem;
+  margin: 0 0 5px;
+}
+
+.subtitle {
+  margin: 0 0 25px;
+}
+
+.extlink {
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  border-radius: 50%;
+  background-color: var(--accent);
+  border: 5px solid var(--grey-light);
+  position: absolute;
+  top: 50px;
+  right: 20%;
+  transform: rotate(180deg);
+  transition: all 0.3s;
+}
+
+.extlink:hover {
+  background-color: var(--background-canvas);
+  transform: rotate(360deg);
+}
+
+.extlink:hover svg path {
+  fill: var(--accent);
+  stroke: var(--accent);
+}
+
+.extlink svg {
+  width: 10px;
+}

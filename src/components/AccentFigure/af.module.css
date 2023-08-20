@@ -1,0 +1,46 @@
+.accent-figure {
+  flex: 0 0 50%;
+}
+
+.accent-figure { 
+  /*width: 100%;
+  margin: 0 auto;*/
+  position: relative;
+  /*max-width: 1200px;*/
+  padding: 0 3%;
+}
+.accent-figure video { 
+	width: 100%;
+	height: 100%;
+	object-fit: cover; 
+}
+
+.figure {
+	width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+	transition: 0.2s;
+}
+
+/*.figure:hover {
+	transform: rotate(45deg);
+}*/
+
+.figure path {
+	transition: 0.9s;
+}
+
+/*.figure:hover path {
+  d: path("M814.991 217.651L520.314 511.98L814.991 806.308L806.329 814.97L512 520.293L217.671 814.97L209.009 806.308L503.686 511.98L209.009 217.651L217.671 208.989L512 503.666L806.329 208.989L814.991 217.651Z");
+}*/
+
+.figure defs rect {
+  fill: #fff;
+}
+.figure > rect {
+    -webkit-mask: url(#maskfigure);
+    mask: url(#maskfigure);
+    fill: var(--accent);
+}

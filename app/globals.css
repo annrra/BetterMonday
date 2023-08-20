@@ -1,0 +1,73 @@
+:root {
+  --max-width: 1200px;
+  --border-radius: 12px;
+  --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
+    'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
+    'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
+
+  --foreground-origin: #1c1b20;
+  --background-canvas: #F8F9FB;
+  --black: #1C1B20;
+  --white: #F8F9FB;
+  --alternate-background: #F1EBE2;
+  --grey-light: #E4E4E4;
+  --grey-dark: #aaa5a5;
+  --grey-darker: #1A1A1A;
+  --accent: #E45151;
+
+  --block-radius: 4px;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  color: var(--foreground-origin);
+  background: var(--background-canvas);
+  font-family: var(--font-visuelt);
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+a {
+  text-decoration: none;
+  color: var(--accent);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-raleway);
+}
+
+h1 {
+  margin-bottom: 1.2rem;
+  line-height: 1.3;
+}
+
+h2 {
+  text-transform: uppercase;
+  margin-bottom: 1.3rem;
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+.divider {
+  width: 20%;
+  height: 1px;
+  background-color: var(--background-canvas);
+  margin: 0 auto;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}

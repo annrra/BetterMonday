@@ -1,0 +1,33 @@
+.header {
+  width: 100%;
+  height: 55px;
+  line-height: 55px;
+  /*position: fixed;
+  top: 0;
+  z-index: 20;
+  background-color: var(--background-canvas);*/
+}
+
+.outdent-h {
+  padding-left: 55px;
+  padding-right: 55px;
+}
+
+.logo {
+  text-transform: uppercase;
+  font-weight: 600;
+  font-family: var(--font-raleway);
+}
+
+.bettermonday {
+  position: relative;
+  top: 16px;
+}
+
+.header-aside {
+  margin-left: auto;
+}
+
+.flex {
+  display: flex;
+}
