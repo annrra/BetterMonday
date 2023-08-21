@@ -30,6 +30,10 @@ const raleway = Raleway({
 export const metadata = {
   title: 'BetterMonday',
   description: 'Web Design & Development',
+  icons: {
+    rel: 'icon',
+    icon: 'favicon.ico',
+  },
 }
 
 export default function RootLayout({ children }) {

@@ -103,12 +103,6 @@
   margin: 50px 0 10vh;
 }
 
-@media only screen and (max-width: 1000px) {
-  .nav-header {
-    margin-bottom: 5vh;
-  }
-}
-
 .nav,
 .nav-footer {
   display: flex;
@@ -194,4 +188,36 @@
   -ms-transform: scaleX(1);
   -o-transform: scaleX(1);
   transform: scaleX(1);
+}
+
+@media only screen and (max-width: 1000px) {
+  .nav-header {
+    margin-bottom: 4vh;
+  }
+
+  .nav-col {
+    padding-right: 5%;
+  }
+
+  .nav-footer {
+    margin-bottom: 50px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .menu {
+    width: 75%;
+  }
+
+  .nav-header {
+    margin-bottom: 4vh;
+  }
+
+  .nav-col {
+    padding-right: 5%;
+  }
+
+  .nav-footer {
+    margin-bottom: 50px;
+  }
 }
