@@ -1,6 +1,6 @@
 //'use client';
 import React from 'react';
-import styles from './ps.module.css';
+import styles from './pp.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
 import { getPostSkandan } from '../../../lib/api';
@@ -20,7 +20,7 @@ const PostSkandan = async () => {
   }*/
 
   return (
-    <div className={styles.item}>
+    <div className={`${styles.item} ${styles['item-rev']}`}>
       {/*<div id='pc-banner' className={`${styles['case-banner']}`} style={styleBanner}></div>*/}
       <div className={styles.flex}>
         <div className={styles.info}>

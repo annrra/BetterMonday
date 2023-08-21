@@ -42,8 +42,11 @@
 
 .flex {
   display: flex;
-  flex-direction: row-reverse;
   padding: 70px 10%;
+}
+
+.item-rev .flex {
+  flex-direction: row-reverse;
 }
 
 @media only screen and (max-width: 1200px) {

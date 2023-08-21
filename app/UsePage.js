@@ -14,26 +14,24 @@ const UsePage = ({ children }) => {
 
     const tlCases = gsap.timeline({
       scrollTrigger: {
-        scroller: "#reactive",
+        scroller: '#reactive',
         trigger: '#cases',
-        start: "top bottom",
-        end: "top top",
-        scrub: 0.01,
+        start: 'top bottom',
+        end: 'top top',
+        scrub: 0.1,
       }
     });
-
-    tlCases.from("#cases-heading", 1, {duration: 0.1, opacity: 0});
+    tlCases.from('#cases-heading', 1, {duration: 0.1, opacity: 0});
 
     const tlBanner = gsap.timeline({
       scrollTrigger: {
-        scroller: "#reactive",
+        scroller: '#reactive',
         trigger: '#pc-banner',
-        start: "top bottom",
+        start: 'top bottom',
         scrub: 0.5,
       }
     });
-
-    tlBanner.to("#pc-banner", 30, {backgroundPosition: "center 30%"});
+    tlBanner.to('#pc-banner', 30, {backgroundPosition: 'center 30%'});
   }, []);
 
   return (

@@ -26,7 +26,7 @@ const HeaderAside = () => {
         </Link>
       </span>
       <span>
-        <Link href="https://photocomma.com/" target="_blank">
+        <Link href="https://photocomma.com/" target="_blank" title='photocomma'>
           <Image
             src="/photocomma.png"
             alt="photocomma"

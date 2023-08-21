@@ -2,9 +2,9 @@ import styles from './page.module.css';
 import { Header } from '../src/components/Header';
 import { SideNavBar } from '../src/components/SideNavBar';
 import { AccentBlock } from '../src/components/AccentBlock';
-import { PostPhotocomma } from '../src/components/PostPhotocomma';
-import { PostSkandan } from '../src/components/PostSkandan';
 import { CasesHeader } from '../src/components/CasesHeader';
+import { PostPhotocomma } from '../src/components/Cases';
+import { PostSkandan } from '../src/components/Cases';
 import { Footer } from '../src/components/Footer';
 
 const ServePage = async () => {

@@ -1,9 +1,7 @@
 :root {
   --max-width: 1200px;
   --border-radius: 12px;
-  --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
-    'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
-    'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
+  --block-radius: 4px;
 
   --foreground-origin: #1c1b20;
   --background-canvas: #F8F9FB;
@@ -14,8 +12,6 @@
   --grey-dark: #aaa5a5;
   --grey-darker: #1A1A1A;
   --accent: #E45151;
-
-  --block-radius: 4px;
 }
 
 * {

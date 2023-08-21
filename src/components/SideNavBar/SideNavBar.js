@@ -51,9 +51,9 @@ const SideNavBar = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/" onClick={idleNav}>
+                  <Link href="/" onClick={idleNav} className={styles.disable} title='Under development'>
                     <h3>About</h3>
-                    <div className={`${styles['nav-subtitle']}`}>Always out there to experience a breath of fresh air. Read a little bit more ...</div>
+                    <div className={`${styles['nav-subtitle']}`}>Always out there to experience a breath of fresh air. Read a little bit more ... Under development</div>
                   </Link>
                 </li>
                 <li>

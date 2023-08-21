@@ -155,6 +155,10 @@
   color: var(--grey-dark);
 }
 
+.disable {
+  cursor: not-allowed;
+}
+
 .nav ul a {
   position: relative;
   display: inline-block;
