@@ -70,6 +70,7 @@
 	background-color: var(--grey-dark);
 }
 
+.post,
 .body {
 	background-color: var(--alternate-background);
 }
