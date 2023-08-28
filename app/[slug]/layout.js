@@ -1,8 +1,4 @@
-//'use client';
 import '../globals.css';
-/*import { useCallback, useEffect, useLayoutEffect } from 'react';
-import { gsap } from 'gsap/dist/gsap';
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';*/
 
 export const metadata = {
   title: 'BetterMonday',
@@ -10,10 +6,6 @@ export const metadata = {
 }
 
 export default function PostLayout({ children }) {
-
-  /*useLayoutEffect( () => {
-    
-  }, []);*/
 
   return (
     <>
