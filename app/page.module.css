@@ -1,9 +1,3 @@
-.reactive {
-  height: 100vh;
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-
 .core {
   padding-left: 55px;
   padding-right: 55px;

@@ -16,7 +16,6 @@ const AccentFigure = () => {
 
     const timeline = gsap.timeline({
         scrollTrigger: {
-          scroller: "#reactive",
           trigger: "#reactive",
           scrub: true,
           start: "top",

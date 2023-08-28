@@ -1,4 +1,4 @@
-This is a [Next.js](https://nextjs.org/) personal portfolio project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+A [Next.js](https://nextjs.org/) Headless WordPress personal portfolio project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
 

@@ -14,7 +14,6 @@ const UsePage = ({ children }) => {
 
     const tlCases = gsap.timeline({
       scrollTrigger: {
-        scroller: '#reactive',
         trigger: '#cases',
         start: 'top bottom',
         end: 'top top',
@@ -25,7 +24,6 @@ const UsePage = ({ children }) => {
 
     const tlBanner = gsap.timeline({
       scrollTrigger: {
-        scroller: '#reactive',
         trigger: '#pc-banner',
         start: 'top bottom',
         scrub: 0.5,
