@@ -3,9 +3,19 @@ import styles from './post.module.css';
 import Link from 'next/link';
 import { getPostBySlug } from '../../lib/api';
 import { Header } from '../../src/components/Header';
+import { notFound } from 'next/navigation';
 
 const Entry = async ({ slug }) => {
+  if (!slug || typeof slug !== 'string') {
+    notFound();
+  }
+
   const post = await getPostBySlug(slug);
+
+  if (!post || !post.post) {
+    notFound();
+  }
+
 	const postContent = post.post;
 
   return (
