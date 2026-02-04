@@ -1,0 +1,39 @@
+.hero {
+  width: 100%;
+  position: relative;
+}
+
+.twin {
+  display: flex;
+  align-items: center;
+  height: 100vh;
+}
+
+.twin-pane {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: 100%;
+}
+
+.twin-pane--primary {
+  background-color: var(--bm-accent);
+}
+
+.twin-pane--secondary {
+  background-color: var(--bm-background);
+  position: relative;
+}
+
+.fpathlight {
+  fill: var(--bm-light-base);
+}
+
+.fpathaccent {
+  fill: var(--bm-accent);
+}
+
+.coffee {
+  max-height: 80%;
+}

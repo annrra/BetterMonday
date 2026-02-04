@@ -1,4 +1,5 @@
 import styles from './page.module.css';
+import { Hero } from '@/src/components/Hero';
 
 export default function PrimaryLayout({
   children,
@@ -7,6 +8,7 @@ export default function PrimaryLayout({
 }>) {
   return (
     <div className={styles.reactive}>
+      <Hero />
       <div className={styles.core}>
         {children}
       </div>

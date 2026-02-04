@@ -6,6 +6,7 @@
 
 .core {
   flex-grow: 1;
+  background-color: var(--bm-dark-base);
 }
 
 .container {

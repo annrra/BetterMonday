@@ -1,0 +1,48 @@
+.header {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  padding: 36px 0;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+}
+
+.logo-wrapper {
+  display: flex;
+  width: 50%;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.logo-link {
+  display: inline-block;
+}
+
+.logo-link svg {
+  max-width: 130px;
+}
+
+.connect {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 50%;
+}
+
+.fpath {
+  fill: var(--bm-light-base);
+}
+
+.fdark {
+  fill: var(--bm-dark-base);
+}
