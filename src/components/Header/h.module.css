@@ -29,8 +29,16 @@
   outline: 0;
 }
 
+.logo-link:hover #ico .fpath {
+  fill: var(--bm-acent-secondary);
+}
+
+#ellipse {
+  fill: var(--bm-acent-secondary);
+}
+
 .logo-link svg {
-  max-width: 130px;
+  width: 130px;
 }
 
 .connect {
@@ -102,7 +110,7 @@
 }
 
 .connect a:hover .fdark {
-  fill: var(--bb-acent-secondary);
+  fill: var(--bm-acent-secondary);
 }
 
 .fpath {
@@ -111,4 +119,8 @@
 
 .fdark {
   fill: var(--bm-dark-base);
+}
+
+.sdark {
+  stroke: var(--bm-dark-base);
 }
