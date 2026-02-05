@@ -15,6 +15,13 @@
   max-width: 480px;
 }
 
+.tagline h1 {
+	font-size: inherit;
+	font-weight: inherit;
+	letter-spacing: inherit;
+	line-height: inherit;
+}
+
 .subtitle {
   font-family: var(--font-geist-sans);
   font-size: 20px;

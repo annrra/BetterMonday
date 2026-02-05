@@ -4,6 +4,7 @@
   --bm-dark-base: #2f2d2b;
   --bm-light-base: #e9e9e9;
   --bm-accent: #49304b;
+  --bb-acent-secondary: #a32d3c;
 
   --max-width: 1600px;
   --block-border-radius: 20px;
@@ -18,6 +19,23 @@
   --paint-green: #069147;
   --paint-pale: #f0e3c4;
   --paint-white: #ffffff;
+
+  --bm-radius-xs: 2px;
+	--bm-radius-sm: 4px;
+	--bm-radius-md: 6px;
+	--bm-radius-base: 8px;
+	--bm-radius-lg: 12px;
+	--bm-radius-full: 99px;
+
+	--bm-space-0: 0;
+	--bm-space-50: 4px;
+	--bm-space-100: 8px;
+	--bm-space-200: 16px;
+	--bm-space-300: 24px;
+	--bm-space-400: 32px;
+	--bm-space-500: 40px;
+	--bm-space-600: 48px;
+	--bm-space-700: 56px;
 }
 
 * {

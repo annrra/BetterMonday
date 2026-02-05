@@ -9,7 +9,6 @@
   background-color: var(--bm-dark-base);
 }
 
-.container {
-  max-width: var(--max-width);
+.module {
   margin: 0 auto;
 }
