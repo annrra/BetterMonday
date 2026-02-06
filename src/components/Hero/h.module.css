@@ -38,3 +38,23 @@
 .coffee {
   max-height: 80%;
 }
+
+@media only screen and (max-width: 1200px) {
+  .twin {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .twin-pane {
+    display: flex;
+    width: 100%;
+    padding: 150px 0;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .coffee {
+    max-width: 80%;
+    height: auto;
+  }
+}

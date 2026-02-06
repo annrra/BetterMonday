@@ -8,7 +8,7 @@
 }
 
 .container {
-  max-width: var(--max-width);
+  max-width: 86%;
   margin: 0 auto;
 }
 
@@ -124,4 +124,23 @@
 
 .sdark {
   stroke: var(--bm-dark-base);
+}
+
+@media only screen and (max-width: 1200px) {
+  .connect a {
+    color: var(--bm-light-base);
+  }
+
+  .connect a .btn::before,
+  .connect a .btn::after {
+    background-color: var(--bm-light-base);
+  }
+
+  .connect .fpath {
+    fill: var(--bm-dark-base);
+  }
+
+  .connect .fdark {
+    fill: var(--bm-light-base);
+  }
 }
