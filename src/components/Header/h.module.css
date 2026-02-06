@@ -39,6 +39,7 @@
 
 .logo-link svg {
   width: 130px;
+  vertical-align: middle;
 }
 
 .connect {
