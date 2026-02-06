@@ -111,7 +111,7 @@
 	outline: 0;
 	background-color: var(--bm-background);
 	position: absolute;
-	bottom: -100px;
+	bottom: 112px;
 	left: 0;
 	transform: translateX(-50%);
 	cursor: pointer;
