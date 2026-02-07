@@ -39,7 +39,7 @@
   max-height: 80%;
 }
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1000px) {
   .twin {
     flex-direction: column;
     height: auto;
@@ -49,6 +49,10 @@
     display: flex;
     width: 100%;
     padding: 150px 0;
+  }
+
+  .twin-pane.twin-pane--secondary {
+    padding: 0;
   }
 }
 

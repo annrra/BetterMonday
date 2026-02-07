@@ -8,7 +8,7 @@ const HeroCopy: React.FC = async () => {
     <div className={styles.overview}>
       <div className={styles.copy}>
         <div className={styles.tag}>
-          <h1>This might be Better Monday</h1>
+          <h1><span className={styles.intro}>This might be</span><span className={styles.story}>Better Monday</span></h1>
           <MediaRoll />
         </div>
         <div className={styles.subtitle}>Independent web designer and developer creating strategic UI/UX and websites for brands that want to grow.</div>

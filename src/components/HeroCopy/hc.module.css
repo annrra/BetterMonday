@@ -1,20 +1,27 @@
 .copy {
   display: flex;
   flex-direction: column;
-  gap: 48px;
+  gap: var(--bm-space-400);
   width: 80%;
-  padding: 0;
+  padding: 80px 0 0;
 }
 
 .tag {
   font-family: var(--font-montserrat);
-  font-size: 64px;
+  font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 800;
   letter-spacing: -3px;
   line-height: 1.1;
   max-width: 480px;
+  width: fit-content;
   position: relative;
   z-index: 1;
+  display: inline-flex;
+}
+
+.tag span {
+  display: block;
+  white-space: nowrap;
 }
 
 .tag h1 {
@@ -22,11 +29,12 @@
 	font-weight: inherit;
 	letter-spacing: inherit;
 	line-height: inherit;
+  flex: 1;
 }
 
 .subtitle {
   font-family: var(--font-geist-sans);
-  font-size: 20px;
+  font-size: 1.25rem;
   line-height: 1.5;
   font-weight: 200;
   max-width: 400px;
@@ -65,4 +73,42 @@
 
 .fpath {
 	fill: var(--bm-accent);
+}
+
+@media only screen and (max-width: 1000px) {
+  .overview {
+    padding: 150px 0;
+  }
+
+  .tag {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: var(--bm-space-400);
+  }
+
+  .copy {
+    align-items: center;
+    gap: var(--bm-space-200);
+    padding-top: 0;
+  }
+
+  .subtitle {
+    text-align: center;
+  }
+
+  .toggle {
+    display: block;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 0;
+    outline: 0;
+    background-color: var(--bm-background);
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    cursor: pointer;
+  }
 }

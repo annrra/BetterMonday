@@ -71,7 +71,7 @@
 
 .copy {
   color: var(--bm-light-base);
-  font-size: 14px;
+  font-size: 0.875rem;
   flex: 1;
   line-height: 1.5;
 }
