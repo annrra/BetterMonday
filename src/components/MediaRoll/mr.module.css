@@ -38,7 +38,7 @@
 }
 
 .video-2 {
-	transform: none;
+	transform: scale(1.4);
 }
 
 .video-5 {
@@ -62,6 +62,7 @@
 	cursor: pointer;
 	border: 0;
 	font-size: 0;
+	-webkit-tap-highlight-color: transparent;
 }
 
 .redo::before {
