@@ -1,7 +1,7 @@
 .footer {
   width: 100%;
   padding: 116px 0;
-  background-color: var(--bm-accent);
+  background-color: var(--bm-tint-secondary);
 }
 
 .bar {

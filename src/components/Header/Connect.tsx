@@ -2,18 +2,12 @@ import React from 'react';
 import Link from 'next/link';
 import styles from './h.module.css';
 import classNames from 'classnames';
-import MondayLogoSvg from './MondayLogoSvg';
 
-const Header: React.FC = async () => {
+const Connect: React.FC = async () => {
 
   return (
     <header className={styles.header}>
       <div className={classNames(styles.container, styles.flex)}>
-        <div className={styles['logo-wrapper']}>
-          <Link href="/" id="logo" className={styles['logo-link']}>
-            <MondayLogoSvg />
-          </Link>
-        </div>
         <div className={styles.connect}>
           <Link href="/">
             <div className={styles.btn}><span>connect...</span></div>
@@ -29,4 +23,4 @@ const Header: React.FC = async () => {
 
 };
 
-export default Header;
+export default Connect;

@@ -1,25 +1,71 @@
-import React from 'react';
+'use client';
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { metadata } from '@/app/layout';
 import styles from './h.module.css';
-import { Header } from '@/src/components/Header';
 import classNames from 'classnames';
-import ElephantSvg from './ElephantSvg';
-import { HeroCopy } from '@/src/components/HeroCopy';
 
-const Hero: React.FC = async () => {
-  const altText = metadata.title || 'Better Monday';
+type HeroProps = {
+  left: React.ReactNode;
+  right: React.ReactNode;
+}
+
+const Hero: React.FC<HeroProps> = ({ left, right }) => {
+  //const altText = metadata.title || 'Better Monday';
+  const [load, setLoad] = useState(false);
+  const [expandTwin, setExpandTwin] = useState(false);
+
+  const handleLoaderComplete = () => {
+    setLoad(true);
+    setExpandTwin(true);
+  };
 
   return (
     <section className={styles.hero}>
-      <div className={styles.twin}>
-        <Header />
-        <div className={classNames(styles['twin-pane'], styles['twin-pane--primary'])}>
-          <ElephantSvg />
-        </div>
-        <div className={classNames(styles['twin-pane'], styles['twin-pane--secondary'])}>
-          <HeroCopy />
-        </div>
-      </div>
+      {!load && (
+        <motion.div
+          className={styles.load}
+          initial={{ height: 0 }}
+          animate={{ height: '80vh' }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
+          onAnimationComplete={handleLoaderComplete}
+        />
+      )}
+
+      {load && (
+        <>
+          <div className={classNames(styles.twin, { [styles.twinExpanded]: expandTwin })}>
+            <div className={styles['panel-wrapper']}>
+              <motion.div
+                className={classNames(
+                  styles.mask,
+                  styles['mask--left']
+                )}
+                initial={{ scaleX: 1 }}
+                animate={{ scaleX: 0 }}
+                transition={{ duration: 0.3, ease: 'easeIn' }}
+              />
+              <div className={classNames(styles.panel, styles['panel--primary'])}>
+                {left}
+              </div>
+            </div>
+            <div className={styles['panel-wrapper']}>
+              <motion.div
+                className={classNames(
+                  styles.mask,
+                  styles['mask--right']
+                )}
+                initial={{ scaleX: 1 }}
+                animate={{ scaleX: 0 }}
+                transition={{ duration: 0.3, ease: 'easeIn' }}
+              />
+              <div className={classNames(styles.panel, styles['panel--secondary'])}>
+                {right}
+              </div>
+            </div>
+          </div>
+        </>
+      )}
     </section>
   );
 

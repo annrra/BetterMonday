@@ -1,5 +1,5 @@
 import styles from './page.module.css';
-import { Hero } from '@/src/components/Hero';
+import { Hero, PrimaryPanel, SecondaryPanel } from '@/src/components/Hero';
 import { Footer } from '@/src/components/Footer';
 
 export default function PrimaryLayout({
@@ -9,7 +9,10 @@ export default function PrimaryLayout({
 }>) {
   return (
     <div className={styles.reactive}>
-      <Hero />
+      <Hero
+        left={<PrimaryPanel />}
+        right={<SecondaryPanel />}
+      />
       <div className={styles.core}>
         {children}
       </div>

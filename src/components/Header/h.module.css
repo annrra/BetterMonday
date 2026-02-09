@@ -1,4 +1,4 @@
-.header {
+.hdr {
   width: 100%;
   position: absolute;
   top: 0;
@@ -119,7 +119,7 @@
 }
 
 .fdark {
-  fill: var(--bm-dark-base);
+  fill: var(--bm-tint-secondary);
 }
 
 .sdark {

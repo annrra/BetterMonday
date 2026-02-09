@@ -1,64 +1,100 @@
 .hero {
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  min-height: 650px;
   width: 100%;
+  background-color: var(--bm-tint-init);
   position: relative;
+  overflow: hidden;
+}
+
+.load {
+  width: 1px;
+  height: 0;
+  margin: auto;
+  background-color: var(--bm-tint-silver);
+  animation: loadDown 0.5s forwards;
+  opacity: 0.3;
+}
+
+@keyframes loadDown {
+  to {
+    height: 80vh;
+  }
 }
 
 .twin {
   display: flex;
   align-items: center;
-  height: 100vh;
+  height: 100%;
+  width: 100%;
+}
+
+.panel-wrapper {
+  position: relative;
+  overflow: hidden;
+  width: 50%;
+  height: 100%;
   min-height: 650px;
 }
 
-.twin-pane {
+.mask {
+  position: absolute;
+  inset: 0;
+  background: var(--bm-tint-init);
+  z-index: 2;
+  transform: scaleX(1);
+}
+
+/* collapse toward left */
+.mask--left {
+  transform-origin: center left;
+}
+
+/* collapse toward right */
+.mask--right {
+  transform-origin: center right;
+}
+
+.panel {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 50%;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.panel--primary {
+  background-color: var(--bm-tint-primary);
+}
+
+.panel--secondary {
+  background-color: var(--bm-tint-secondary);
+}
+
+.plate {
+  width: 100%;
   height: 100%;
 }
 
-.twin-pane--primary {
-  background-color: var(--bm-accent);
-}
-
-.twin-pane--secondary {
-  background-color: var(--bm-background);
-  position: relative;
-}
-
-.fpathlight {
-  fill: var(--bm-light-base);
-}
-
-.fpathaccent {
-  fill: var(--bm-accent);
-}
-
-.coffee {
-  max-height: 80%;
+.pp {
+  padding: var(--bm-space-600) var(--bm-space-1000);
 }
 
 @media only screen and (max-width: 1000px) {
   .twin {
     flex-direction: column;
-    height: auto;
   }
 
-  .twin-pane {
+  .panel-wrapper {
     display: flex;
     width: 100%;
-    padding: 150px 0;
-  }
-
-  .twin-pane.twin-pane--secondary {
-    padding: 0;
+    min-height: auto;
   }
 }
 
 @media only screen and (max-width: 500px) {
-  .coffee {
-    max-width: 80%;
-    height: auto;
-  }
 }
