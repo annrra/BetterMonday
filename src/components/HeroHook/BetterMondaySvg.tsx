@@ -75,7 +75,7 @@ const BetterMondaySvg = () => {
   const [text, setText] = useState("calm dawn");
   const wordIndex = useRef(0);
   const { scrollY } = useScroll();
-  const scaleMonday = useTransform(scrollY, [0, 75], [1, 1.95]); // top fixed
+  const scaleMonday = useTransform(scrollY, [0, 500], [1, 1.95]); // top fixed
 
   // small translation to pin top
   const yOffset = useTransform(scaleMonday, s => (s - 1) * 65);
