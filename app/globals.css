@@ -26,9 +26,9 @@
   --paint-white: #ffffff;
 
   --bm-radius-xs: 2px;
-	--bm-radius-sm: 4px;
-	--bm-radius-md: 6px;
-	--bm-radius-base: 8px;
+	--bm-radius-sm: 3px;
+	--bm-radius-md: 5px;
+	--bm-radius-base: 10px;
 	--bm-radius-lg: 12px;
 	--bm-radius-full: 99px;
 

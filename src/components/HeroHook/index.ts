@@ -1,0 +1,1 @@
+export { default as HeroHook } from './HeroHook';

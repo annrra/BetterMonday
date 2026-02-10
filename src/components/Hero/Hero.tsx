@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { metadata } from '@/app/layout';
 import styles from './h.module.css';
 import classNames from 'classnames';
+import HeroExpandSvg from './HeroExpandSvg';
 
 type HeroProps = {
   left: React.ReactNode;
@@ -63,6 +64,8 @@ const Hero: React.FC<HeroProps> = ({ left, right }) => {
                 {right}
               </div>
             </div>
+
+            <HeroExpandSvg />
           </div>
         </>
       )}

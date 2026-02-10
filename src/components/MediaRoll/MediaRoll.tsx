@@ -100,6 +100,12 @@ const MediaRoll: React.FC = () => {
       <button onClick={handleReload} className={styles.redo} aria-label="Refresh media">
         Refresh
       </button>
+      <div className={styles.rim}>
+        <span className={styles.north}>north</span>
+        <span className={styles.west}>west</span>
+        <span className={styles.east}>east</span>
+        <span className={styles.south}>south</span>
+      </div>
     </div>
   )
 }

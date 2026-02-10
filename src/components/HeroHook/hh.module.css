@@ -1,0 +1,9 @@
+.hh {
+  width: 100%;
+  margin: var(--bm-space-1000) 0 120px;
+}
+
+.pitch {
+  width: 100%;
+  height: auto;
+}
