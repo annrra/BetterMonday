@@ -12,7 +12,7 @@
 .brand {
   display: flex;
   align-items: center;
-  border-bottom: 1px solid var(--bm-light-base);
+  border-bottom: 1px solid var(--bm-tint-silver);
   padding: 0 0 var(--bm-space-600);
 }
 
@@ -44,11 +44,11 @@
 }
 
 .fpath {
-  fill: var(--bm-light-base);
+  fill: var(--bm-tint-silver);
 }
 
 .fdark {
-  fill: var(--bm-dark-base);
+  fill: var(--bm-tint-init);
 }
 
 .meta {
@@ -70,7 +70,7 @@
 }
 
 .copy {
-  color: var(--bm-light-base);
+  color: var(--bm-tint-silver);
   font-size: 0.875rem;
   flex: 1;
   line-height: 1.5;

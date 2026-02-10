@@ -22,19 +22,11 @@
   outline: 0;
 }
 
-.logo-link:hover #ico .fpath {
-  fill: var(--bm-acent-secondary);
-}
-
 .context {
   font-size: 1.0rem;
   font-weight: 200;
   color: var(--bm-tint-silver);
   line-height: 165%;
-}
-
-#ellipse {
-  fill: var(--bm-acent-secondary);
 }
 
 .logo-link svg {
@@ -147,7 +139,7 @@
 }
 
 .fpath {
-  fill: var(--bm-light-base);
+  fill: var(--bm-tint-silver);
 }
 
 .fdark {
@@ -155,7 +147,7 @@
 }
 
 .sdark {
-  stroke: var(--bm-dark-base);
+  stroke: var(--bm-tint-init);
 }
 
 .accept-btn {
@@ -176,10 +168,18 @@
   .in {
     width: 65%;
   }
+
+  .cta {
+    opacity: 0;
+  }
 }
 
 @media only screen and (max-width: 800px) {
   .in {
     width: 85%;
+  }
+
+  .connect-wrapper {
+    padding: 0;
   }
 }
