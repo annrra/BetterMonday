@@ -1,4 +1,3 @@
-'use client';
 import styles from './hh.module.css';
 import BetterMondaySvg from './BetterMondaySvg';
 

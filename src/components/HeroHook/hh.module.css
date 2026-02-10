@@ -7,3 +7,18 @@
   width: 100%;
   height: auto;
 }
+
+.glyph,
+.txt {
+  fill: var(--bm-tint-silver);
+}
+
+.pad {
+  fill: var(--bm-tint-secondary);
+}
+
+@media only screen and (max-width: 1000px) {
+  .hh {
+    margin: var(--bm-space-700) 0;
+  }
+}

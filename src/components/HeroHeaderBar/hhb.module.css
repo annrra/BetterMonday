@@ -167,4 +167,19 @@
 }
 
 @media only screen and (max-width: 1200px) {
+  .in {
+    width: 60%;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .in {
+    width: 65%;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .in {
+    width: 85%;
+  }
 }
