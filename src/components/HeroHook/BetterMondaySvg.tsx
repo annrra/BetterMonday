@@ -1,7 +1,7 @@
 'use client';
 import React, { useState, useRef } from 'react';
 import styles from './hh.module.css';
-import { motion, Variants } from 'framer-motion';
+import { motion, Variants, useScroll, useTransform, useSpring } from 'framer-motion';
 
 const flipVariants: Variants = {
   rest: { 
@@ -74,6 +74,14 @@ const scrambleText = (
 const BetterMondaySvg = () => {
   const [text, setText] = useState("calm dawn");
   const wordIndex = useRef(0);
+  const { scrollY } = useScroll();
+  const scaleMonday = useTransform(scrollY, [0, 75], [1, 1.95]); // top fixed
+
+  // small translation to pin top
+  const yOffset = useTransform(scaleMonday, s => (s - 1) * 65);
+
+  const smoothScale = useSpring(scaleMonday, { stiffness: 140, damping: 25 });
+  const smoothYOffset = useSpring(yOffset, { stiffness: 140, damping: 25 });
 
   const handleHoverStart = () => {
     const nextIndex = (wordIndex.current + 1) % words.length;
@@ -99,7 +107,13 @@ const BetterMondaySvg = () => {
       onHoverEnd={handleHoverEnd}
     >
       <g id="bettermonday">
-        <motion.g id="better">
+        <motion.g
+          id="better"
+          style={{
+            transformOrigin: "center bottom",
+            transformBox: "fill-box",
+          }}
+        >
           {lettersBetter.map((letter, index) => (
             <motion.path
               key={letter.id}
@@ -112,7 +126,15 @@ const BetterMondaySvg = () => {
             />
           ))}
         </motion.g>
-        <motion.g id="monday">
+        <motion.g
+          id="monday"
+          style={{
+            scaleY: smoothScale,
+            y: smoothYOffset,
+            transformOrigin: "center top",
+            transformBox: "fill-box",
+          }}
+        >
           {lettersMonday.map((letter, index) => (
             <motion.path
               key={letter.id}
