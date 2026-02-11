@@ -47,27 +47,35 @@ const MediaRoll: React.FC = () => {
     };
   }, []);
 
+  const featuredMedia = [0, 1, 6];
+
   useEffect(() => {
-    let isMounted = true
+    let isMounted = true;
 
     const fetchData = async () => {
       try {
         const mediaData = await getMediaRollContent();
         const itemsObject: MediaRollRaw = mediaData?.page?.mediaroll ?? {};
-        console.log(JSON.stringify(itemsObject, null, 2));
-        
 
         const items: MediaNode[] = Object.values(itemsObject)
-          .filter((item): item is { node: MediaNode | null } => item != null) // prevent null
+          .filter((item): item is { node: MediaNode | null } => item != null)
           .map(item => item.node)
           .filter((node): node is MediaNode => node != null);
 
         if (!isMounted) return;
 
-        const firstMedia = items[0] ?? null;
-
         setMedia(items);
+
         if (items.length > 0) {
+          // Filter featured items
+          const featuredItems = items.filter((_, index) => featuredMedia.includes(index));
+
+          // Pick random featured video
+          const firstMedia =
+            featuredItems.length > 0
+              ? featuredItems[Math.floor(Math.random() * featuredItems.length)]
+              : items[0]; // fallback if no featured video
+
           setCurrent(firstMedia);
         }
       } catch (error) {
@@ -75,13 +83,13 @@ const MediaRoll: React.FC = () => {
       } finally {
         setReload(false);
       }
-    }
+    };
 
     fetchData();
 
     return () => {
-      isMounted = false
-    }
+      isMounted = false;
+    };
   }, []);
 
   const handleReload = async () => {
