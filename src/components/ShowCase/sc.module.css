@@ -9,19 +9,15 @@
 	flex: 1;
 	display: flex;
 	flex-direction: column;
-	padding: 0 var(--bm-space-1000);
+	padding: var(--bm-space-300) var(--bm-space-1000);
 }
 
 .panel.data {
 	justify-content: space-between;
-	padding-top: var(--bm-space-300);
-	padding-bottom: var(--bm-space-300);
 }
 
 .panel.deck {
 	position: relative;
-	padding-top: var(--bm-space-300);
-	padding-bottom: var(--bm-space-300);
 }
 
 .panel.deck::after {
@@ -95,6 +91,16 @@
 	border-radius: 50%;
 }
 
+@media only screen and (max-width: 1300px) {
+	.panel {
+		padding: var(--bm-space-300) var(--bm-space-600);
+	}
+
+	.cards {
+		gap: var(--bm-space-300);
+	}
+}
+
 @media only screen and (max-width: 1000px) {
 	.showroom {
 		padding: var(--bm-space-1000) 0;
@@ -104,5 +110,11 @@
 
 	.panel.deck::after {
 		display: none;
+	}
+}
+
+@media only screen and (max-width: 768px) {
+	.panel {
+		padding: 0 var(--bm-space-300);
 	}
 }

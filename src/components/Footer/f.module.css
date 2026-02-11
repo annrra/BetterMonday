@@ -29,7 +29,7 @@
 }
 
 .logo-link svg {
-  max-width: 100px;
+  max-width: 120px;
 }
 
 .beta {
@@ -48,7 +48,7 @@
 }
 
 .fdark {
-  fill: var(--bm-tint-init);
+  fill: var(--bm-tint-secondary);
 }
 
 .meta {
@@ -114,6 +114,12 @@
 .copy a:hover::after {
   transform: scaleX(1);
   transition-delay: 0.2s;
+}
+
+@media only screen and (max-width: 768px) {
+  .footer {
+    padding: var(--bm-space-1000) 0;
+  }
 }
 
 @media only screen and (max-width: 600px) {
