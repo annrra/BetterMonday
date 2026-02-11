@@ -107,12 +107,16 @@
   padding: var(--bm-space-600);
 }
 
-.expand {
+.shell {
   position: absolute;
   z-index: 5;
   bottom: 100px;
   left: 50%;
   transform: translateX(-50%);
+}
+
+.expand {
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 1200px) {
@@ -137,7 +141,7 @@
     min-height: auto;
   }
 
-  .expand {
+  .shell {
     bottom: 50%;
     transform: translate(-50%, 50%);
   }

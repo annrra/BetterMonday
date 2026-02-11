@@ -1,0 +1,26 @@
+.layer {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip {
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-60%) scale(0.85);
+  background: var(--bm-tint-init);
+  color: var(--bm-tint-silver);
+  padding: 6px var(--bm-space-200);
+  border-radius: var(--bm-radius-md);
+  font-size: 0.875rem;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 999;
+}
+
+.tooltip.show {
+  opacity: 0.95;
+  transform: translateX(-60%) scale(1);
+}

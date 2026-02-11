@@ -48,14 +48,14 @@
 .connect a {
   display: inline-flex;
   align-items: center;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 600;
   color: var(--bm-tint-silver);
 }
 
 .connect a span {
   display: inline-flex;
-  padding: 0 var(--bm-space-300) 0 0;
+  padding: 0 var(--bm-space-300) 0 var(--bm-space-50);
   line-height: 32px;
   font-weight: 300;
 }
