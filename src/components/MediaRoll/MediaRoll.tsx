@@ -18,6 +18,34 @@ const MediaRoll: React.FC = () => {
   const [media, setMedia] = useState<MediaNode[]>([]);
   const [current, setCurrent] = useState<MediaNode | null>(null);
   const [reload, setReload] = useState(true);
+  const [cursor, setCursor] = useState({
+    north: 0,
+    south: 0,
+    west: 0,
+    east: 0,
+  });
+
+  const format = (value: number) => value.toString().padStart(4, "0");
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      const { innerWidth, innerHeight } = window;
+      const { clientX, clientY } = e;
+
+      setCursor({
+        north: clientY,
+        south: innerHeight - clientY,
+        west: clientX,
+        east: innerWidth - clientX,
+      });
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, []);
 
   useEffect(() => {
     let isMounted = true
@@ -101,10 +129,10 @@ const MediaRoll: React.FC = () => {
         Refresh
       </button>
       <div className={styles.rim}>
-        <span className={styles.north}>north</span>
-        <span className={styles.west}>west</span>
-        <span className={styles.east}>east</span>
-        <span className={styles.south}>south</span>
+        <span className={styles.north}>{format(cursor.north)}</span>
+        <span className={styles.west}>{format(cursor.west)}</span>
+        <span className={styles.east}>{format(cursor.east)}</span>
+        <span className={styles.south}>{format(cursor.south)}</span>
       </div>
     </div>
   )

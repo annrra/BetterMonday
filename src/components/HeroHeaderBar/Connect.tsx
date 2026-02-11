@@ -12,7 +12,7 @@ const Connect: React.FC = () => {
     `Tell me about your project.\nLet's make it happen.`,
     `Work, fun, or chaos?\nI'm listening.`,
     `42 deserves a proper introduction.`,
-    `I'm already curious.\nSay hi anyway.`
+    `Now I'm curious.\nSay hi anyway.`
   ];
 
   const handleHoverStart = () => {
