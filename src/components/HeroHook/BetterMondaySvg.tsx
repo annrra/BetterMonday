@@ -37,19 +37,25 @@ const lettersMonday = [
   { id: "my", d: "M798.59 158.59L763.52 255.19V289H704.3V254.98L670.28 158.59H728.66L733.91 201.43H736.43L741.68 158.59H798.59Z" },
 ];
 
-const words = ["quiet", "rainy", "calm dawn", "messy", "coffee", "call", "next", "skip", "honest", "damn"];
+const words = ["quiet", "rainy", "calm dawn", "messy", "coffee", "call", "next", "skip", "honest", "damn", "flip", "scramble"];
 
 const BetterMondaySvg = () => {
   const [text, setText] = useState("calm dawn");
   const wordIndex = useRef(0);
   const { scrollY } = useScroll();
-  const scaleMonday = useTransform(scrollY, [0, 500], [1, 1.95]); // top fixed
 
-  // small translation to pin top
-  const yOffset = useTransform(scaleMonday, s => (s - 1) * 65);
+  // Scaling for MONDAY
+  const scaleMonday = useTransform(scrollY, [0, 500], [1, 1.95]);
+  const yOffsetMonday = useTransform(scaleMonday, s => (s - 1) * 65); // small translation to pin top
+  const smoothScaleMonday = useSpring(scaleMonday, { stiffness: 140, damping: 25 });
+  const smoothYOffsetMonday = useSpring(yOffsetMonday, { stiffness: 140, damping: 25 });
 
-  const smoothScale = useSpring(scaleMonday, { stiffness: 140, damping: 25 });
-  const smoothYOffset = useSpring(yOffset, { stiffness: 140, damping: 25 });
+  // Scaling for BETTER
+  const scaleBetter = useTransform(scrollY, [0, 500], [1, 0.5]);
+  const yOffsetBetter = useTransform(scaleBetter, s => (1 - s) * 75);
+  const smoothScaleBetter = useSpring(scaleBetter, { stiffness: 140, damping: 25 });
+  const smoothYOffsetBetter = useSpring(yOffsetBetter, { stiffness: 140, damping: 25 });
+
 
   const handleHoverStart = () => {
     const nextIndex = (wordIndex.current + 1) % words.length;
@@ -78,6 +84,8 @@ const BetterMondaySvg = () => {
         <motion.g
           id="better"
           style={{
+            scaleY: smoothScaleBetter,
+            y: smoothYOffsetBetter,
             transformOrigin: "center bottom",
             transformBox: "fill-box",
           }}
@@ -97,8 +105,8 @@ const BetterMondaySvg = () => {
         <motion.g
           id="monday"
           style={{
-            scaleY: smoothScale,
-            y: smoothYOffset,
+            scaleY: smoothScaleMonday,
+            y: smoothYOffsetMonday,
             transformOrigin: "center top",
             transformBox: "fill-box",
           }}
