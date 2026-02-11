@@ -154,7 +154,7 @@
 
 @media only screen and (max-width: 768px) {
   .pp {
-    padding: var(--bm-space-500) var(--bm-space-600);
+    padding: var(--bm-space-500) var(--bm-space-300);
   }
 
   .sp {

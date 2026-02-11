@@ -2,6 +2,7 @@
 import React, { useState, useRef } from 'react';
 import styles from './hh.module.css';
 import { motion, Variants, useScroll, useTransform, useSpring } from 'framer-motion';
+import { scrambleText } from '@/src/components/_utils/Scramble';
 
 const flipVariants: Variants = {
   rest: { 
@@ -36,40 +37,7 @@ const lettersMonday = [
   { id: "my", d: "M798.59 158.59L763.52 255.19V289H704.3V254.98L670.28 158.59H728.66L733.91 201.43H736.43L741.68 158.59H798.59Z" },
 ];
 
-const words = ["quiet", "rainy", "calm dawn", "messy", "coffee", "call", "next", "skip"];
-const scrambleChars = "!<>-_\\/[]{}—=+*^?#________";
-
-const scrambleText = (
-  from: string,
-  to: string,
-  onUpdate: (value: string) => void,
-  duration = 600
-) => {
-  const start = performance.now();
-  const maxLength = Math.max(from.length, to.length);
-
-  function tick(now: number) {
-    const progress = Math.min((now - start) / duration, 1);
-
-    let output = "";
-
-    for (let i = 0; i < maxLength; i++) {
-      if (progress > i / maxLength) {
-        output += to[i] || "";
-      } else {
-        output += scrambleChars[Math.floor(Math.random() * scrambleChars.length)];
-      }
-    }
-
-    onUpdate(output);
-
-    if (progress < 1) {
-      requestAnimationFrame(tick);
-    }
-  }
-
-  requestAnimationFrame(tick);
-}
+const words = ["quiet", "rainy", "calm dawn", "messy", "coffee", "call", "next", "skip", "honest", "damn"];
 
 const BetterMondaySvg = () => {
   const [text, setText] = useState("calm dawn");
@@ -87,12 +55,12 @@ const BetterMondaySvg = () => {
     const nextIndex = (wordIndex.current + 1) % words.length;
     const nextWord = words[nextIndex];
 
-    scrambleText(text, nextWord, setText);
+    scrambleText(text, nextWord, setText, 600, 0.4);
     wordIndex.current = nextIndex;
   };
 
   const handleHoverEnd = () => {
-    scrambleText(text, "calm dawn", setText);
+    scrambleText(text, "calm dawn", setText, 600, 0.4);
   };
 
   return (

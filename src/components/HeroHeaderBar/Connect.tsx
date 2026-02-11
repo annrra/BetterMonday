@@ -1,9 +1,31 @@
-import React from 'react';
+"use client";
+import React, { useState, useRef } from 'react';
 import Link from 'next/link';
 import styles from './hhb.module.css';
+import { scrambleText } from '@/src/components/_utils/Scramble';
 
-const Connect: React.FC = async () => {
-  const cta = `Tell me about your project.<br />Let's make it happen.`;
+const Connect: React.FC = () => {
+  const [text, setText] = useState("Tell me about your project.\nLet's make it happen.");
+  const wordIndex = useRef(0);
+
+  const words = [
+    `Tell me about your project.\nLet's make it happen.`,
+    `Work, fun, or chaos?\nI'm listening.`,
+    `42 deserves a proper introduction.`,
+    `I'm already curious.\nSay hi anyway.`
+  ];
+
+  const handleHoverStart = () => {
+    const nextIndex = (wordIndex.current + 1) % words.length;
+    const nextWord = words[nextIndex];
+
+    scrambleText(text, nextWord, setText);
+    wordIndex.current = nextIndex;
+  };
+
+  const handleHoverEnd = () => {
+    scrambleText(text, "Tell me about your project.\nLet's make it happen.", setText, 600, 0.2);
+  };
 
   return (
     <div className={styles['connect-wrapper']}>
@@ -27,7 +49,15 @@ const Connect: React.FC = async () => {
             </g>
           </svg>
         </Link>
-        <div className={styles.cta} dangerouslySetInnerHTML={{ __html: cta }} />
+        <div
+          className={styles.cta}
+          onMouseEnter={() => handleHoverStart()}
+          onMouseLeave={() => handleHoverEnd()}
+        >
+          <span className={styles.flip}>
+            {text}
+          </span>
+        </div>
       </div>
     </div>
   );

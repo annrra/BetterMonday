@@ -107,6 +107,7 @@
   top: 110px;
   right: 64px;
   width: 220px;
+  min-height: 68px;
   background-color: var(--bm-tint-primary);
   border-radius: var(--bm-radius-base);
   font-size: 0.875rem;
@@ -114,6 +115,10 @@
   font-weight: 300;
   color: var(--bm-tint-silver);
   padding: var(--bm-space-200) var(--bm-space-300);
+}
+
+.flip {
+  white-space: pre-line;
 }
 
 .cta::before,
