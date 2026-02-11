@@ -1,78 +1,108 @@
 .showroom {
   display: flex;
-  flex-direction: column;
-  gap: 72px;
   color: var(--bm-tint-silver);
-  padding: 220px 0;
+  padding: 124px 0;
   width: 100%;
 }
 
-.module-heading {
-	margin: 0 84px;
+.panel {
+	flex: 1;
 	display: flex;
 	flex-direction: column;
-	gap: 16px;
+	padding: 0 var(--bm-space-1000);
 }
 
-.module-heading h2 {
-	font-family: var(--font-montserrat);
+.panel.data {
+	justify-content: space-between;
+	padding-top: var(--bm-space-300);
+	padding-bottom: var(--bm-space-300);
+}
+
+.panel.deck {
+	position: relative;
+	padding-top: var(--bm-space-300);
+	padding-bottom: var(--bm-space-300);
+}
+
+.panel.deck::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 1px;
+  background: var(--bm-tint-silver);
+  opacity: 0.5;
+}
+
+.hd {
+	display: flex;
+	flex-direction: column;
+	gap: var(--bm-space-200);
+}
+
+.hd h2 {
 	font-size: 3rem;
 	line-height: 1;
 	letter-spacing: -3px;
 	font-weight: 800;
 }
 
-.module-subheading {
-	font-size: 1.25rem;
-	line-height: 1.5;
+.subheading {
+	font-size: 1rem;
+	line-height: 1;
 	font-weight: 200;
 }
 
-.showcase-module {
-	padding: 0;
+.body {
+	width: 70%;
 }
 
-.swiper {
-	overflow-x: auto;
+.context {
+	font-weight: 200;
+	line-height: 170%;
+}
+
+.cards {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 350px));
+	grid-template-rows: repeat(2, auto);
+	gap: var(--bm-space-500);
 	width: 100%;
-  	scrollbar-width: none;
-  	-ms-overflow-style: none;
+	justify-items: center;
+	justify-content: center;
+	align-items: start;
 }
 
-.swiper::-webkit-scrollbar {
-  display: none;
-}
-
-.showcase {
-	display: flex;
-	align-items: center;
-	width: max-content;
-	gap: 32px;
-	padding-left: 84px;
-}
-
-.item {
-	width: 760px;
-}
-
-.visual {
+.card {
 	width: 100%;
-	height: 760px;
-	background-color: var(--bm-tint-silver);
-	border-radius: 10px;
+	max-width: 350px;
+	aspect-ratio: 350 / 500;
+	background: var(--bm-tint-primary);
+	border-radius: var(--bm-radius-base);
 	overflow: hidden;
+	position: relative;
 }
 
-@media only screen and (max-width: 800px) {
+.current {
+	position: absolute;
+	top: var(--bm-space-200);
+	right: var(--bm-space-200);
+	display: inline-flex;
+	width: var(--bm-space-400);
+	height: var(--bm-space-400);
+	background-color: var(--bm-tint-init);
+	border-radius: 50%;
+}
+
+@media only screen and (max-width: 1000px) {
 	.showroom {
-		padding: 120px 0;
+		padding: var(--bm-space-1000) 0;
+		flex-direction: column;
+		gap: var(--bm-space-500);
 	}
 
-  	.module-heading {
-		margin: 0 34px;
-	}
-
-	.showcase {
-		padding-left: 34px;
+	.panel.deck::after {
+		display: none;
 	}
 }
