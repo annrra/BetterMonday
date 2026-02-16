@@ -37,7 +37,7 @@ const lettersMonday = [
   { id: "my", d: "M797.51 158.852L762.487 270.438V309.493H703.348V270.195L669.374 158.852H727.675L732.917 208.338H735.434L740.677 158.852H797.51Z" },
 ];
 
-const words = ["quiet", "rainy", "calm dawn", "messy", "coffee", "call", "next", "skip", "honest", "damn", "flip", "scramble"];
+const words = ["quiet", "rainy", "calm dawn", "messy", "coffee", "call", "next", "skip", "honest", "damn", "flip", "scramble", "than"];
 
 const BetterMondaySvg = () => {
   const [text, setText] = useState("calm dawn");
@@ -45,7 +45,7 @@ const BetterMondaySvg = () => {
   const { scrollY } = useScroll();
 
   // Scaling for MONDAY
-  const scaleMonday = useTransform(scrollY, [0, 500], [1, 1.95]);
+  const scaleMonday = useTransform(scrollY, [0, 500], [1, 1.45]);
   const yOffsetMonday = useTransform(scaleMonday, s => (s - 1) * 75); // small translation to pin top
   const smoothScaleMonday = useSpring(scaleMonday, { stiffness: 140, damping: 25 });
   const smoothYOffsetMonday = useSpring(yOffsetMonday, { stiffness: 140, damping: 25 });
