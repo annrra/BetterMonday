@@ -49,7 +49,7 @@ const HueSlider: React.FC = () => {
           transform: "translate(-50%, 50%)",
         }}
       >
-        <HueSliderKnob />
+        <HueSliderKnob hovered={hovered} />
       </div>
     </div>
   )

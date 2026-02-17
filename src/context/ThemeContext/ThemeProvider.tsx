@@ -1,6 +1,5 @@
 "use client";
 import {
-  createContext,
   useContext,
   useEffect,
   useState,
@@ -8,8 +7,8 @@ import {
 } from "react";
 import { ThemeContext, ThemeContextType } from "./ThemeContext";
 
-const basePrimaryHue = 32;
-const baseSecondaryHue = 76;
+const basePrimaryHue = 22;
+const baseSecondaryHue = 66;
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [hue, setHue] = useState(basePrimaryHue);
