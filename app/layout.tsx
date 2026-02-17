@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Montserrat } from "next/font/google";
 import "./globals.css";
+import { Providers } from "./Providers";
 
 export const metadata: Metadata = {
   title: {
@@ -28,8 +29,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${montserrat.variable}`}>
-        {children}
+      <body className={`${geistSans.variable} ${montserrat.variable} ${montserrat.variable}`}>
+        <Providers>
+          {children}
+        </Providers>
       </body>
     </html>
   );

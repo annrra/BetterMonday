@@ -68,11 +68,11 @@
 }
 
 .panel--primary {
-  background-color: var(--bm-tint-primary);
+  background-color: var(--tone-primary);
 }
 
 .panel--secondary {
-  background-color: var(--bm-tint-secondary);
+  background-color: var(--tone-secondary);
 }
 
 .plate {
@@ -105,18 +105,6 @@
   justify-content: center;
   margin-top: 110px;
   padding: var(--bm-space-600);
-}
-
-.shell {
-  position: absolute;
-  z-index: 5;
-  bottom: 100px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.expand {
-  cursor: pointer;
 }
 
 @media only screen and (max-width: 1200px) {
