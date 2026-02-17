@@ -2,14 +2,14 @@
 import styles from './hs.module.css';
 import { motion, SVGMotionProps } from 'framer-motion';
 import { useState, useRef } from 'react';
-import { ComingSoonTooltip } from "@/src/components/_utils/ComingSoonTooltip";
 
 const HueSliderKnob = (props: SVGMotionProps<SVGSVGElement>) => {
   const [index, setIndex] = useState(0);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
   return (
-    <ComingSoonTooltip>
+    <div className={styles.thumb}>
+      <div className={styles.tooltip}>Slide up or down to adjust color</div>
       <svg
         width={100}
         height={100}
@@ -38,7 +38,7 @@ const HueSliderKnob = (props: SVGMotionProps<SVGSVGElement>) => {
           </g>
         </g>
       </svg>
-    </ComingSoonTooltip>
+    </div>
   );
 };
 export default HueSliderKnob;

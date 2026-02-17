@@ -8,7 +8,7 @@
 	z-index: 3;
 }
 
-.hue {
+.slide {
   position: absolute;
   top: 0;
   writing-mode: vertical-lr;
@@ -21,16 +21,83 @@
   cursor: pointer;
 }
 
-.shell {
+.knob {
   position: absolute;
   z-index: 5;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
+  cursor: pointer;
 }
 
-.expand {
+.knob svg {
+  transform: rotate(0deg) scale(1);
+  transition: transform 0.4s cubic-bezier(.17,.67,.3,1.33);
   cursor: pointer;
+}
+
+.knob.hover svg {
+  transform: rotate(315deg) scale(1.1);
+}
+
+.thumb {
+  position: relative;
+}
+
+.knob.hover .tooltip {
+	opacity: 1;
+	visibility: visible;
+}
+
+.knob.hover .tooltip::before,
+.knob.hover .tooltip::after {
+	opacity: 1;
+	visibility: visible;
+}
+
+.knob.drag .tooltip {
+  display: none;
+}
+
+.tooltip {
+	opacity: 0;
+	visibility: hidden;
+	position: absolute;
+	top: -40%;
+	left: 85%;
+	z-index: 5;
+	background-color: var(--bm-tint-primary);
+	color: var(--bm-tint-silver);
+	border-radius: var(--bm-radius-md);
+	padding: var(--bm-space-100) var(--bm-space-200);
+	white-space: nowrap;
+	font-size: 90%;
+	transition: all 0.5s ease;
+	transition-delay: 10ms;
+}
+
+.tooltip::before,
+.tooltip::after {
+	opacity: 0;
+	visibility: hidden;
+	content: '';
+	background-color: var(--bm-tint-primary);
+	width: 14px;
+	height: 14px;
+	border-radius: 50%;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	transform: translate(-120%, 100%);
+	transition: all 0.5s ease;
+	transition-delay: 150ms;
+}
+
+.tooltip::after {
+	width: 10px;
+	height: 10px;
+	transform: translate(-250%, 290%);
+	transition-delay: 300ms;
 }
 
 .tone-neutral {
