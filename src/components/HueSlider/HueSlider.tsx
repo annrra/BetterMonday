@@ -27,20 +27,26 @@ const HueSlider: React.FC = () => {
 
   const percentage = hue / 360;
 
-  const handleMouseMove = (e: React.MouseEvent) => {
+  const handlePointerMove = (clientX: number, clientY: number) => {
     if (!wrapperRef.current) return;
 
     const rect = wrapperRef.current.getBoundingClientRect();
 
     if (isHorizontal) {
       const knobX = rect.width * percentage;
-      const pointerX = e.clientX - rect.left;
-      setHovered(Math.abs(pointerX - knobX) < 50);
+      setHovered(Math.abs(clientX - rect.left - knobX) < 50);
     } else {
       const knobY = rect.height * (1 - percentage);
-      const pointerY = e.clientY - rect.top;
-      setHovered(Math.abs(pointerY - knobY) < 50);
+      setHovered(Math.abs(clientY - rect.top - knobY) < 50);
     }
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => handlePointerMove(e.clientX, e.clientY);
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (e.touches.length === 0) return;
+    const touch = e.touches[0];
+    handlePointerMove(touch.clientX, touch.clientY);
   };
 
   return (
@@ -49,6 +55,9 @@ const HueSlider: React.FC = () => {
       className={styles.sw}
       onMouseMove={handleMouseMove}
       onMouseLeave={() => setHovered(false)}
+      onTouchMove={handleTouchMove}
+      onTouchStart={handleTouchMove}
+      onTouchEnd={() => setHovered(false)}
       onPointerDown={() => setDragging(true)}
       onPointerUp={() => setDragging(false)}
       onPointerLeave={() => setDragging(false)}

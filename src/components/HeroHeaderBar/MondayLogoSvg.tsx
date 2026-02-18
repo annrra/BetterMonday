@@ -143,6 +143,9 @@ const MondayLogoSvg = (props: SVGMotionProps<SVGSVGElement>) => {
       {...props}
       onHoverStart={startScramble}
       onHoverEnd={stopScramble}
+      onTapStart={startScramble}
+      onTapCancel={stopScramble}
+      style={{ cursor: "pointer", touchAction: "manipulation" }}
     >
       <g id="logofigure">
         <g id="ico">

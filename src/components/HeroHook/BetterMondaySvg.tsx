@@ -79,6 +79,9 @@ const BetterMondaySvg = () => {
       whileHover="hover"
       onHoverStart={handleHoverStart}
       onHoverEnd={handleHoverEnd}
+      onTapStart={handleHoverStart}
+      onTapCancel={handleHoverEnd}
+      onTap={handleHoverEnd}
     >
       <g id="bettermonday">
         <motion.g
