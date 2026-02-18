@@ -1,11 +1,10 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { metadata } from '@/app/layout';
 import styles from './h.module.css';
 import classNames from 'classnames';
 import { HueSlider } from '@/src/components/HueSlider';
-import { useTheme } from '@/src/context';
 
 type HeroProps = {
   left: React.ReactNode;
@@ -16,7 +15,6 @@ const Hero: React.FC<HeroProps> = ({ left, right }) => {
   //const altText = metadata.title || 'Better Monday';
   const [load, setLoad] = useState(false);
   const [expandTwin, setExpandTwin] = useState(false);
-  const { hue, setHue } = useTheme();
 
   const handleLoaderComplete = () => {
     setLoad(true);

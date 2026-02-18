@@ -105,3 +105,50 @@
 .tone-secondary {
   fill: var(--tone-secondary);
 }
+
+@media only screen and (max-width: 1000px) {
+  .sw {
+		width: 80vw;
+		height: 75px;
+	}
+
+	.slide {
+    writing-mode: horizontal-tb;
+    direction: ltr;
+    appearance: auto;
+	}
+
+  .knob {
+    height: 75px;
+  }
+
+  .knob svg {
+    width: 75px;
+    height: 75px;
+  }
+
+  .tooltip {
+    top: -75%;
+    left: 80%;
+    background-color: var(--bm-tint-secondary);
+    white-space: normal;
+    width: 130px;
+  }
+
+  .tooltip::before,
+  .tooltip::after {
+    background-color: var(--bm-tint-secondary);
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .sw {
+		width: 60vw;
+	}
+
+  .tooltip {
+    top: -95%;
+    left: 80%;
+    width: 100px;
+  }
+}

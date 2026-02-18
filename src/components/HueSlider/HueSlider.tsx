@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styles from './hs.module.css';
 import HueSliderKnob from './HueSliderKnob';
 import { useTheme } from '@/src/context';
@@ -10,6 +10,20 @@ const HueSlider: React.FC = () => {
   const [hovered, setHovered] = useState(false);
   const [dragging, setDragging] = useState(false);
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const [isHorizontal, setIsHorizontal] = useState(
+    window.innerWidth < 1000
+  );
+
+  useEffect(() => {
+    const media = window.matchMedia("(max-width: 1000px)");
+
+    const listener = () => setIsHorizontal(media.matches);
+
+    listener();
+    media.addEventListener("change", listener);
+
+    return () => media.removeEventListener("change", listener);
+  }, []);
 
   const percentage = hue / 360;
 
@@ -17,11 +31,16 @@ const HueSlider: React.FC = () => {
     if (!wrapperRef.current) return;
 
     const rect = wrapperRef.current.getBoundingClientRect();
-    const knobY = rect.height * (1 - percentage); // vertical-lr, bottom = 0
-    const pointerY = e.clientY - rect.top;
 
-    // hover within ±50px
-    setHovered(Math.abs(pointerY - knobY) < 50);
+    if (isHorizontal) {
+      const knobX = rect.width * percentage;
+      const pointerX = e.clientX - rect.left;
+      setHovered(Math.abs(pointerX - knobX) < 50);
+    } else {
+      const knobY = rect.height * (1 - percentage);
+      const pointerY = e.clientY - rect.top;
+      setHovered(Math.abs(pointerY - knobY) < 50);
+    }
   };
 
   return (
@@ -44,10 +63,17 @@ const HueSlider: React.FC = () => {
       />
       <div
         className={classNames(styles.knob, { [styles.hover]: hovered }, { [styles.drag]: dragging })}
-        style={{
-          bottom: `${percentage * 100}%`,
-          transform: "translate(-50%, 50%)",
-        }}
+        style={
+          isHorizontal
+            ? {
+                left: `${percentage * 100}%`,
+                transform: "translate(-50%, 0)",
+              }
+            : {
+                bottom: `${percentage * 100}%`,
+                transform: "translate(-50%, 50%)",
+              }
+        }
       >
         <HueSliderKnob hovered={hovered} />
       </div>
