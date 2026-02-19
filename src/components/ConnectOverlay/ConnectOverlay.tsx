@@ -9,14 +9,39 @@ type ContactFormProps = {
   onClose: () => void;
 }
 
+const containerVariants = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.20,
+      delayChildren: 0.20, // wait for panel
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: {
+    opacity: 0,
+    y: 24,
+  },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: [0.22, 1, 0.36, 1] as const,
+    },
+  },
+};
+
 const ConnectOverlay: React.FC<ContactFormProps> = ({ onClose }) => {
 
   return (
     <motion.div
       className={styles.overlay}
-      initial={{ y: "-100%" }}
-      animate={{ y: 0 }}
-      exit={{ y: "-100%" }}
+      initial={{ y: "-100%", opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      exit={{ y: "-100%", opacity: 0 }}
       transition={{
         duration: 0.4,
         ease: [0.77, 0, 0.175, 1],
@@ -29,13 +54,28 @@ const ConnectOverlay: React.FC<ContactFormProps> = ({ onClose }) => {
       >
         Close
       </Link>
-      <div className={styles.contact}>
-        <div className={styles.heading}>
-          <h2>every conversation starts somewhere</h2>
-        </div>
-        <ContactForm />
-        <div className={styles.noform}>Not a fan of forms? Say hello by <Link href="/" className={styles.email}>email</Link> instead.</div>
-      </div>
+      <motion.div 
+        className={styles.contact}
+        variants={containerVariants}
+        initial="hidden"
+        animate="show"
+      >
+        <motion.div 
+          className={styles.heading}
+          variants={itemVariants}
+        >
+          <h2>every conversation<br />starts somewhere</h2>
+        </motion.div>
+        <motion.div variants={itemVariants}>
+          <ContactForm />
+        </motion.div>
+        <motion.div 
+          className={styles.noform}
+          variants={itemVariants}
+        >
+          Not a fan of forms? Say hello by <Link href="/" className={styles.email}>email</Link> instead.
+        </motion.div>
+      </motion.div>
     </motion.div>
   )
 }

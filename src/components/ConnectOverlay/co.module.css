@@ -28,6 +28,7 @@
   display: flex;
   flex-direction: column;
   max-width: 80%;
+  width: 100%;
   padding: var(--bm-space-1000) 0;
   position: relative;
 }
@@ -41,7 +42,7 @@
 
 .heading h2 {
   font-size: 6.0rem;
-  font-size: clamp(2rem, 8vw, 6rem);
+  font-size: clamp(3rem, 8vw, 6rem);
   line-height: 80%;
 }
 
@@ -122,8 +123,4 @@
     top: var(--bm-space-300);
     right: var(--bm-space-400);
   }
-}
-
-@media only screen and (max-width: 450px) {
-	
 }

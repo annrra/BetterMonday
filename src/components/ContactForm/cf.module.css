@@ -77,7 +77,6 @@
   border-radius: 50%;
   width: 60px;
   height: 60px;
-  
 }
 
 .btnarrow {
@@ -165,5 +164,10 @@
   .contact-form {
     width: 90%;
     max-width: none;
+  }
+
+  .contact-form button .ico {
+    width: 50px;
+    height: 50px;
   }
 }
