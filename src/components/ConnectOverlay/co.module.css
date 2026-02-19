@@ -52,15 +52,16 @@
   text-align: center;
 }
 
-.noform a {
+.noform .email {
   display: inline-flex;
   align-items: center;
   padding: 3px 0;
   position: relative;
+  cursor: pointer;
 }
 
-.noform a::before,
-.noform a::after,
+.noform .email::before,
+.noform .email::after,
 .x::before,
 .x::after {
   content: "";
@@ -73,27 +74,27 @@
   background-color: var(--bm-tint-silver);
 }
 
-.noform a::before,
+.noform .email::before,
 .x::before {
   transform: scaleX(1);
   transform-origin: right;
   transition-delay: 0.3s;
 }
 
-.noform a:hover::before,
+.noform .email:hover::before,
 .x:hover::before {
   transform: scaleX(0);
   transition-delay: 0s;
 }
 
-.noform a::after,
+.noform .email::after,
 .x::after {
   transform: scaleX(0);
   transform-origin: left;
   transition-delay: 0s;
 }
 
-.noform a:hover::after,
+.noform .email:hover::after,
 .x:hover::after {
   transform: scaleX(1);
   transition-delay: 0.2s;

@@ -9,12 +9,46 @@ type ContactFormProps = {
   onClose: () => void;
 }
 
+type EmailLinkProps = {
+  className?: string
+}
+
+const EmailLink: React.FC<EmailLinkProps> = ({ className }) => {
+  const handleClick = () => {
+    const a = "ann"
+    const b = "rra"
+    const c = "gma"
+    const d = "il"
+    const e = "co"
+    const f = "m"
+    window.location.href = `mailto:${a + b}@${c + d}.${e + f}`
+  }
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLSpanElement>) => {
+    if (e.key === "Enter") {
+      handleClick()
+    }
+  }
+
+  return (
+    <span
+      role="button"
+      tabIndex={0}
+      onClick={handleClick}
+      onKeyDown={handleKeyDown}
+      className={className}
+    >
+      email
+    </span>
+  )
+}
+
 const containerVariants = {
   hidden: {},
   show: {
     transition: {
-      staggerChildren: 0.20,
-      delayChildren: 0.20, // wait for panel
+      staggerChildren: 0.18,
+      delayChildren: 0.15, // wait for panel
     },
   },
 };
@@ -73,7 +107,7 @@ const ConnectOverlay: React.FC<ContactFormProps> = ({ onClose }) => {
           className={styles.noform}
           variants={itemVariants}
         >
-          Not a fan of forms? Say hello by <Link href="/" className={styles.email}>email</Link> instead.
+          Not a fan of forms? Say hello by <EmailLink className={styles.email} /> instead.
         </motion.div>
       </motion.div>
     </motion.div>
