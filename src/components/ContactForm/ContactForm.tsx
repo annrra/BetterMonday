@@ -1,5 +1,6 @@
 "use client";
-import React, { useState, ChangeEvent, SubmitEvent } from 'react';
+import React, { useState, useRef, ChangeEvent, SubmitEvent } from 'react';
+import { scrambleText } from '@/src/components/_utils/Scramble';
 import styles from './cf.module.css';
 import classNames from 'classnames';
 
@@ -26,6 +27,32 @@ const ContactForm: React.FC = () => {
   const [submitting, setSubmitting] = useState(false);
   const [message, setMessage] = useState('');
   const [isError, setIsError] = useState(false);
+  const [buttonText, setButtonText] = useState("Commit");
+  const wordIndex = useRef(0);
+
+  const words = [
+    `Commit`,
+    `Submit`,
+    `Send it`,
+    `Init contact`,
+    `Ship it`,
+    `Start`,
+    `Launch`,
+    `Apply`,
+    `Merge`
+  ];
+
+  const handleHoverStart = () => {
+    const nextIndex = (wordIndex.current + 1) % words.length;
+    const nextWord = words[nextIndex];
+
+    scrambleText(buttonText, nextWord, setButtonText);
+    wordIndex.current = nextIndex;
+  };
+
+  const handleHoverEnd = () => {
+    scrambleText(buttonText, "Commit", setButtonText, 600, 0.2);
+  };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -96,8 +123,12 @@ const ContactForm: React.FC = () => {
           <input type="text" id="botField" name="botField" value={formData.botField} onChange={handleChange} />
         </div>
         <div className={classNames(styles.row, styles['row-submit'])}>
-          <button type="submit">
-            <span>Commit</span>
+          <button 
+            type="submit"
+            onMouseEnter={() => handleHoverStart()}
+            onMouseLeave={() => handleHoverEnd()}
+          >
+            <span>{buttonText}</span>
             <div className={styles.ico}>
               <svg
                 width={33}

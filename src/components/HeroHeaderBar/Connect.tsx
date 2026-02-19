@@ -3,7 +3,6 @@ import React, { useState, useRef } from 'react';
 import Link from 'next/link';
 import styles from './hhb.module.css';
 import { scrambleText } from '@/src/components/_utils/Scramble';
-import { ComingSoonTooltip } from "@/src/components/_utils/ComingSoonTooltip";
 
 type ConnectProps = {
   onOpenOverlay: () => void;
