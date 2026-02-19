@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Montserrat } from "next/font/google";
+import { Geist, Passion_One } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./Providers";
 
@@ -17,9 +17,10 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
-const montserrat = Montserrat({
-  variable: "--font-montserrat",
+const montserrat = Passion_One({
+  variable: "--font-passion-one",
   subsets: ["latin"],
+  weight: "400",
 });
 
 export default function RootLayout({

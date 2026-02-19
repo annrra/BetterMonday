@@ -112,35 +112,37 @@ const MediaRoll: React.FC = () => {
 
 
   return (
-    <div className={classNames(styles.gig, { [styles.loading]: reload })}>
-      <div className={styles.loop}>
-        {current && (
-          <video
-            key={current.mediaItemId}
-            src={current.mediaItemUrl}
-            autoPlay
-            muted
-            loop
-            playsInline
-            onCanPlay={handleVideoReady}
-            className={classNames(
-              styles.video,
-              media.findIndex((item) => item.mediaItemId === current.mediaItemId) >= 0
-                ? styles[`video-${currentIndex}`]
-                : ''
-            )}
-          />
-        )}
-      </div>
+    <div className={styles['media-roll']}>
+      <div className={classNames(styles.gig, { [styles.loading]: reload })}>
+        <div className={styles.loop}>
+          {current && (
+            <video
+              key={current.mediaItemId}
+              src={current.mediaItemUrl}
+              autoPlay
+              muted
+              loop
+              playsInline
+              onCanPlay={handleVideoReady}
+              className={classNames(
+                styles.video,
+                media.findIndex((item) => item.mediaItemId === current.mediaItemId) >= 0
+                  ? styles[`video-${currentIndex}`]
+                  : ''
+              )}
+            />
+          )}
+        </div>
 
-      <button onClick={handleReload} className={styles.redo} aria-label="Refresh media">
-        Refresh
-      </button>
-      <div className={styles.rim}>
-        <span className={styles.north}>{format(cursor.north)}</span>
-        <span className={styles.west}>{format(cursor.west)}</span>
-        <span className={styles.east}>{format(cursor.east)}</span>
-        <span className={styles.south}>{format(cursor.south)}</span>
+        <button onClick={handleReload} className={styles.redo} aria-label="Refresh media">
+          Refresh
+        </button>
+        <div className={styles.rim}>
+          <span className={styles.north}>{format(cursor.north)}</span>
+          <span className={styles.west}>{format(cursor.west)}</span>
+          <span className={styles.east}>{format(cursor.east)}</span>
+          <span className={styles.south}>{format(cursor.south)}</span>
+        </div>
       </div>
     </div>
   )

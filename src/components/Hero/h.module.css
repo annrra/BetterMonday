@@ -94,19 +94,6 @@
   gap: var(--bm-space-800);
 }
 
-.topbar {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.media-roll {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 110px;
-  padding: var(--bm-space-600);
-}
-
 @media only screen and (max-width: 1200px) {
   .pp {
     padding: var(--bm-space-500) var(--bm-space-600);
@@ -129,11 +116,6 @@
     min-height: auto;
   }
 
-  .media-roll {
-    margin-top: 0;
-    padding: 0 0 100px;
-  }
-
   .hero {
     height: auto;
   }
@@ -147,9 +129,5 @@
   .sp {
     padding: var(--bm-space-600) var(--bm-space-600);
     gap: var(--bm-space-800);
-  }
-
-  .media-roll {
-    padding: var(--bm-space-500) 0 var(--bm-space-1000);
   }
 }

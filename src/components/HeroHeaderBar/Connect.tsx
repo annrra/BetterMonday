@@ -5,7 +5,11 @@ import styles from './hhb.module.css';
 import { scrambleText } from '@/src/components/_utils/Scramble';
 import { ComingSoonTooltip } from "@/src/components/_utils/ComingSoonTooltip";
 
-const Connect: React.FC = () => {
+type ConnectProps = {
+  onOpenOverlay: () => void;
+}
+
+const Connect: React.FC<ConnectProps> = ({ onOpenOverlay }) => {
   const [text, setText] = useState("Tell me about your project.\nLet's make it happen.");
   const wordIndex = useRef(0);
 
@@ -29,10 +33,13 @@ const Connect: React.FC = () => {
   };
 
   return (
-    <div className={styles['connect-wrapper']}>
-      <div className={styles.connect}>
-        <ComingSoonTooltip>
-          <Link href="/">
+    <div className={styles.topbar}>
+      <div className={styles['connect-wrapper']}>
+        <div className={styles.connect}>
+          <Link 
+            href="/"
+            onClick={onOpenOverlay}
+          >
             <div className={styles.btn}><span>connect...</span></div>
             <svg
               width={33}
@@ -51,15 +58,15 @@ const Connect: React.FC = () => {
               </g>
             </svg>
           </Link>
-        </ComingSoonTooltip>
-        <div
-          className={styles.cta}
-          onMouseEnter={() => handleHoverStart()}
-          onMouseLeave={() => handleHoverEnd()}
-        >
-          <span className={styles.flip}>
-            {text}
-          </span>
+          <div
+            className={styles.cta}
+            onMouseEnter={() => handleHoverStart()}
+            onMouseLeave={() => handleHoverEnd()}
+          >
+            <span className={styles.flip}>
+              {text}
+            </span>
+          </div>
         </div>
       </div>
     </div>
