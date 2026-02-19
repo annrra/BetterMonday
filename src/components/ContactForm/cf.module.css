@@ -125,7 +125,7 @@
 
 .message.success {
   background-color: var(--paint-green);
-  color: var(--foreground-invert-color);
+  color: var(--bm-tint-silver);
 }
 
 .message.error {
