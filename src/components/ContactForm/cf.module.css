@@ -6,7 +6,7 @@
 }
 
 .row {
-  margin: 0 0 var(--bm-space-600);
+  margin: 0 0 var(--bm-space-400);
 }
 
 .row-submit {
@@ -19,7 +19,6 @@
 
 .row label {
   display: block;
-  margin: 0 0 6px;
 }
 
 .row input,
@@ -27,7 +26,7 @@
   width: 100%;
   font-size: 1rem;
   font-family: var(--font-geist-sans);
-  padding: var(--bm-space-100) var(--bm-space-200);
+  padding: var(--bm-space-200) var(--bm-space-200);
   border-radius: 0;
   border: 0;
   border-bottom: 1px solid  var(--bm-tint-primary);
@@ -50,6 +49,8 @@
 
 .row textarea {
   min-height: 140px;
+  max-height: 160px;
+  resize: vertical;
 }
 
 .contact-form button {
@@ -82,8 +83,26 @@
   fill: var(--bm-tint-secondary);
 }
 
-.ico svg {
+.contact-form button svg {
   transform: rotate(-45deg);
+  transition: transform .3s ease;
+}
+
+.contact-form button .ico {
+  transition: transform .3s ease;
+}
+
+.contact-form button:hover .ico {
+  transform: scale(1.1);
+  background-color: var(--bm-tint-secondary);
+}
+
+.contact-form button:hover .btnarrow {
+  fill: var(--bm-tint-silver);
+}
+
+.contact-form button:hover svg {
+  transform: rotate(325deg);
 }
 
 .message {
@@ -115,4 +134,35 @@
 
 .nevidim {
   display: none;
+}
+
+@media only screen and (max-width: 1000px) {
+  .contact-form {
+    padding: 0 0 var(--bm-space-200);
+  }
+
+  .row {
+    margin: 0 0 var(--bm-space-300);
+  }
+
+	.row input,
+  .row textarea {
+    padding: var(--bm-space-100) var(--bm-space-200);
+  }
+
+  .row textarea {
+    min-height: 100px;
+    resize: none;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+	.row {
+    margin: 0 0 var(--bm-space-200);
+  }
+
+  .contact-form {
+    width: 80%;
+    max-width: none;
+  }
 }

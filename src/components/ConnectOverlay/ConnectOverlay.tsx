@@ -1,9 +1,9 @@
 "use client";
 import React from 'react';
 import Link from 'next/link';
+import { motion } from "framer-motion";
 import { ContactForm } from '../ContactForm';
 import styles from './co.module.css';
-import classNames from 'classnames';
 
 type ContactFormProps = {
   onClose: () => void;
@@ -12,7 +12,16 @@ type ContactFormProps = {
 const ConnectOverlay: React.FC<ContactFormProps> = ({ onClose }) => {
 
   return (
-    <div className={styles.overlay}>
+    <motion.div
+      className={styles.overlay}
+      initial={{ y: "-100%" }}
+      animate={{ y: 0 }}
+      exit={{ y: "-100%" }}
+      transition={{
+        duration: 0.4,
+        ease: [0.77, 0, 0.175, 1],
+      }}
+    >
       <Link 
         href="/"
         className={styles.x}
@@ -27,7 +36,7 @@ const ConnectOverlay: React.FC<ContactFormProps> = ({ onClose }) => {
         <ContactForm />
         <div className={styles.noform}>Not a fan of forms? Say hello by <Link href="/" className={styles.email}>email</Link> instead.</div>
       </div>
-    </div>
+    </motion.div>
   )
 }
 
