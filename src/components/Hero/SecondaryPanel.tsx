@@ -3,7 +3,7 @@ import styles from './h.module.css';
 import classNames from 'classnames';
 import { NavBar } from '../HeroHeaderBar';
 import { MediaRoll } from '../MediaRoll';
-import { ConnectOverlayClient } from '../ConnectOverlay';
+import { ConnectPanel } from '../ConnectOverlay';
 
 const SecondaryPanel: React.FC = () => {
 
@@ -11,7 +11,7 @@ const SecondaryPanel: React.FC = () => {
     <div className={classNames(styles.plate, styles.sp)}>
       <NavBar />
       <MediaRoll />
-      <ConnectOverlayClient />
+      <ConnectPanel />
     </div>
   );
 

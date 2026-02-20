@@ -1,2 +1,2 @@
 export { default as ConnectOverlay } from './ConnectOverlay';
-export { default as ConnectOverlayClient } from './ConnectOverlayClient';
+export { default as ConnectPanel } from './ConnectPanel';
