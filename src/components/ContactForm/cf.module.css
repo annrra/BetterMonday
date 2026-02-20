@@ -157,10 +157,6 @@
 }
 
 @media only screen and (max-width: 768px) {
-	.row {
-    margin: 0 0 var(--bm-space-200);
-  }
-
   .contact-form {
     width: 90%;
     max-width: none;

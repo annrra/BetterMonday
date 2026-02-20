@@ -122,6 +122,10 @@
 }
 
 @media only screen and (max-width: 768px) {
+  .panel-wrapper {
+    min-height: 100vh;
+  }
+
   .pp {
     padding: var(--bm-space-500) var(--bm-space-300);
   }

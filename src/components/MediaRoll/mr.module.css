@@ -142,6 +142,7 @@
 
 	.media-roll {
 		padding: var(--bm-space-500) 0 var(--bm-space-1000);
+		flex: 1;
 	}
 
 	.loop {
