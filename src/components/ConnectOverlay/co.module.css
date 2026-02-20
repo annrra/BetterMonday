@@ -116,12 +116,14 @@
 }
 
 @media only screen and (max-width: 768px) {
-	.heading {
-    margin: 0 0 var(--bm-space-300);
-  }
-
   .x {
     top: var(--bm-space-300);
     right: var(--bm-space-400);
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .heading h2 {
+    font-size: 3.5rem;
   }
 }
