@@ -5,10 +5,6 @@ import { motion } from "framer-motion";
 import { ContactForm } from '../ContactForm';
 import styles from './co.module.css';
 
-type ContactFormProps = {
-  onClose: () => void;
-}
-
 type EmailLinkProps = {
   className?: string
 }
@@ -68,7 +64,7 @@ const itemVariants = {
   },
 };
 
-const ConnectOverlay: React.FC<ContactFormProps> = ({ onClose }) => {
+const ConnectOverlay: React.FC = () => {
 
   return (
     <motion.div
@@ -81,11 +77,7 @@ const ConnectOverlay: React.FC<ContactFormProps> = ({ onClose }) => {
         ease: [0.77, 0, 0.175, 1],
       }}
     >
-      <Link 
-        href="/"
-        className={styles.x}
-        onClick={onClose}
-      >
+      <Link href="/" className={styles.x}>
         Close
       </Link>
       <motion.div 

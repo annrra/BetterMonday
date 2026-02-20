@@ -1,5 +1,6 @@
 "use client";
-import React, { useState } from 'react';
+import React from 'react';
+import { usePathname } from "next/navigation";
 import styles from './h.module.css';
 import classNames from 'classnames';
 import { Connect } from '../HeroHeaderBar';
@@ -8,15 +9,18 @@ import { ConnectOverlay } from '../ConnectOverlay';
 import { AnimatePresence } from "framer-motion";
 
 const SecondaryPanel: React.FC = () => {
-  const [showConnectOverlay, setShowConnectOverlay] = useState(false);
+  const pathname = usePathname();
+
+  // Show connect overlay and form if URL is /connect
+  const showConnectOverlay = pathname === "/connect";
 
   return (
     <div className={classNames(styles.plate, styles.sp)}>
-      <Connect onOpenOverlay={() => setShowConnectOverlay(true)} />
+      <Connect />
       <MediaRoll />
       <AnimatePresence mode="wait">
         {showConnectOverlay && (
-          <ConnectOverlay onClose={() => setShowConnectOverlay(false)} />
+          <ConnectOverlay />
         )}
       </AnimatePresence>
     </div>

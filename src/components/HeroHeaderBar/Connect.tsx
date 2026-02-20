@@ -4,11 +4,7 @@ import Link from 'next/link';
 import styles from './hhb.module.css';
 import { scrambleText } from '@/src/components/_utils/Scramble';
 
-type ConnectProps = {
-  onOpenOverlay: () => void;
-}
-
-const Connect: React.FC<ConnectProps> = ({ onOpenOverlay }) => {
+const Connect: React.FC = () => {
   const [text, setText] = useState("Tell me about your project.\nLet's make it happen.");
   const wordIndex = useRef(0);
 
@@ -35,10 +31,7 @@ const Connect: React.FC<ConnectProps> = ({ onOpenOverlay }) => {
     <div className={styles.topbar}>
       <div className={styles['connect-wrapper']}>
         <div className={styles.connect}>
-          <Link 
-            href="/"
-            onClick={onOpenOverlay}
-          >
+          <Link href="/connect">
             <div className={styles.btn}><span>connect...</span></div>
             <svg
               width={33}
