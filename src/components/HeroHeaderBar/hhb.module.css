@@ -170,6 +170,28 @@
   fill: var(--bm-tint-silver);
 }
 
+.nav {
+  line-height: var(--bm-space-400);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bm-space-300);
+}
+
+.nav a {
+  color: var(--bm-tint-silver);
+  font-weight: 300;
+}
+
+.nh {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bm-space-300);
+}
+
+.nh svg circle {
+  fill: var(--bm-tint-primary);
+}
+
 @media only screen and (max-width: 1200px) {
   .in {
     width: 60%;
@@ -192,6 +214,12 @@
   }
 
   .connect-wrapper {
-    padding: 0;
+    padding-right: 0;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .nh svg {
+    display: none;
   }
 }

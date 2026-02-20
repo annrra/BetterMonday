@@ -9,9 +9,10 @@ import { HueSlider } from '@/src/components/HueSlider';
 type HeroProps = {
   left: React.ReactNode;
   right: React.ReactNode;
+  overview: React.ReactNode;
 }
 
-const Hero: React.FC<HeroProps> = ({ left, right }) => {
+const Hero: React.FC<HeroProps> = ({ left, right, overview }) => {
   //const altText = metadata.title || 'Better Monday';
   const [load, setLoad] = useState(false);
   const [expandTwin, setExpandTwin] = useState(false);
@@ -66,6 +67,7 @@ const Hero: React.FC<HeroProps> = ({ left, right }) => {
             </div>
 
             <HueSlider />
+            {overview}
           </div>
         </>
       )}
