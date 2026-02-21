@@ -150,15 +150,15 @@ const OverViewPanel: React.FC<OverViewPanelProps> = ({ children }) => {
           >
             <div className={styles.join}>
               <EmailLink className={styles.link} />
-              <Link href="https://www.linkedin.com/in/annrra/" className={styles.link}>LinkedIn</Link>
-              <Link href="https://github.com/annrra" className={styles.link}>GitHub</Link>
+              <Link href="https://www.linkedin.com/in/annrra/" target='_blank' rel="noopener noreferrer" className={styles.link}>LinkedIn</Link>
+              <Link href="https://github.com/annrra" target='_blank' rel="noopener noreferrer" className={styles.link}>GitHub</Link>
             </div>
             <div 
               className={styles.copy}
               onMouseEnter={() => handleHoverStart()}
               onMouseLeave={() => handleHoverEnd()}
             >
-              {createdText} BetterMonday - 2026
+              {createdText} BetterMonday
             </div>
           </motion.div>
         </motion.div>

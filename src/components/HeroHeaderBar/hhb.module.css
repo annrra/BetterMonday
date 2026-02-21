@@ -191,6 +191,22 @@
 .nav a {
   color: var(--bm-tint-silver);
   font-weight: 300;
+  position: relative;
+}
+
+.nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--bm-tint-silver);
+  transition: width 0.3s ease;
+}
+
+.nav a:hover::after {
+  width: 100%;               /* Expand to full width on hover */
 }
 
 .nh {

@@ -9,6 +9,10 @@
   overflow: visible;
 }
 
+.glyph {
+  opacity: 0.5;
+}
+
 .glyph,
 .txt {
   fill: var(--bm-tint-silver);

@@ -188,7 +188,7 @@
 
 @media only screen and (max-width: 480px) {
   .overlay {
-    top: var(--bm-space-500);
+    top: var(--bm-space-200);
     height: calc(100vh - (2 * var(--bm-space-500)));
   }
 
