@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Menu from './Menu';
 import Connect from './Connect';
 import styles from './hhb.module.css';
 
@@ -8,14 +9,7 @@ const NavBar: React.FC = () => {
   return (
     <div className={styles.topbar}>
       <div className={styles.nh}>
-        <nav className={styles.nav}>
-          <Link href="/overview">
-            <span>overview</span>
-          </Link>
-          <Link href="/">
-            <span>highlights</span>
-          </Link>
-        </nav>
+        <Menu />
         <svg
           width={50}
           height={10}

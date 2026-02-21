@@ -1,7 +1,7 @@
 "use client";
-import React from 'react';
+import React, { useEffect } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { AnimatePresence, motion } from 'framer-motion';
 import styles from './ov.module.css';
 
@@ -36,7 +36,23 @@ const itemVariants = {
 
 const OverViewPanel: React.FC<OverViewPanelProps> = ({ children }) => {
   const pathname = usePathname();
+  const router = useRouter();
   const showOverViewOverlay = pathname === "/overview";
+
+  // Scroll to top when returning from overview
+  useEffect(() => {
+    if (pathname === "/" && !showOverViewOverlay) {
+      // Use a small delay to ensure Next.js has finished scroll restoration
+      const timer = setTimeout(() => {
+        window.scrollTo(0, 0);
+      }, 0);
+      return () => clearTimeout(timer);
+    }
+  }, [pathname, showOverViewOverlay]);
+
+  const handleClose = () => {
+    router.push('/');
+  };
 
   return (
     <AnimatePresence mode="wait">
@@ -58,9 +74,10 @@ const OverViewPanel: React.FC<OverViewPanelProps> = ({ children }) => {
           initial="hidden"
           animate="show"
         >
-          <Link 
-            href="/" 
-            className={styles.x} 
+          <button 
+            onClick={handleClose}
+            className={styles.x}
+            aria-label="Close overview"
           />
           <motion.div 
             className={styles.body}

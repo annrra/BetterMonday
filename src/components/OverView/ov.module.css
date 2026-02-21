@@ -26,18 +26,17 @@
   z-index: 10;
   top: var(--bm-space-400);
   right: var(--bm-space-400);
-  font-size: 0.875rem;
   color: var(--bm-tint-silver);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: var(--bm-space-1000);
   height: var(--bm-space-1000);
+  border: 0;
+  outline: 0;
   border-radius: 50%;
   background-color: var(--bm-tint-secondary);
-  text-transform: uppercase;
-  font-weight: 200;
-  padding: 3px;
+  cursor: pointer;
   transition: transform 0.3s ease;
 }
 

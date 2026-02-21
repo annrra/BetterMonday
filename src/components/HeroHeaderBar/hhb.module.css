@@ -1,13 +1,20 @@
 .hdr {
-  width: 100%;
-}
-
-.in {
   display: flex;
   flex-direction: column;
   gap: var(--bm-space-300);
-  width: 45%;
+  width: 100%;
   padding: 0 var(--bm-space-300);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.in {
+  width: 45%;
+  
 }
 
 .logo-wrapper {
@@ -170,6 +177,10 @@
   fill: var(--bm-tint-silver);
 }
 
+.header .nav {
+  display: none;
+}
+
 .nav {
   line-height: var(--bm-space-400);
   display: inline-flex;
@@ -199,6 +210,18 @@
 }
 
 @media only screen and (max-width: 1000px) {
+  .hdr {
+    gap: var(--bm-space-400);
+  }
+
+  .header .nav {
+    display: inline-flex;
+  }
+
+  .topbar .nh {
+    display: none;
+  }
+
   .in {
     width: 65%;
   }
