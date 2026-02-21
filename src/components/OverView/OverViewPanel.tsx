@@ -1,7 +1,9 @@
 "use client";
-import React, { useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { MondayLogoSvg } from '@/src/components/HeroHeaderBar';
+import { EmailLink } from '@/src/components/_utils/EmailLink';
+import { scrambleText } from '@/src/components/_utils/Scramble';
 import { usePathname, useRouter } from 'next/navigation';
 import { AnimatePresence, motion } from 'framer-motion';
 import styles from './ov.module.css';
@@ -36,9 +38,34 @@ const itemVariants = {
 };
 
 const OverViewPanel: React.FC<OverViewPanelProps> = ({ children }) => {
+  const [createdText, setCreatedText] = useState("Created ✨");
+  const wordIndex = useRef(0);
   const pathname = usePathname();
   const router = useRouter();
   const showOverViewOverlay = pathname === "/overview";
+
+  const words = [
+    `Created ✨`,
+    `Crafted 🔥`,
+    `Built ⚡`,
+    `Imagined 💡`,
+    `Made with ☕`,
+    `Engineered ⚡`,
+    `Designed 🎨`,
+    `Made with 💜 by`
+  ];
+
+  const handleHoverStart = () => {
+    const nextIndex = (wordIndex.current + 1) % words.length;
+    const nextWord = words[nextIndex];
+
+    scrambleText(createdText, nextWord, setCreatedText);
+    wordIndex.current = nextIndex;
+  };
+
+  const handleHoverEnd = () => {
+    scrambleText(createdText, "Created ✨", setCreatedText, 600, 0.2);
+  };
 
   // Scroll to top when returning from overview
   useEffect(() => {
@@ -122,11 +149,17 @@ const OverViewPanel: React.FC<OverViewPanelProps> = ({ children }) => {
             variants={itemVariants}
           >
             <div className={styles.join}>
-              <Link href="mailto:xxx@xxx.xxx" className={styles.link}>Email</Link>
+              <EmailLink className={styles.link} />
               <Link href="https://www.linkedin.com/in/annrra/" className={styles.link}>LinkedIn</Link>
               <Link href="https://github.com/annrra" className={styles.link}>GitHub</Link>
             </div>
-            <div className={styles.copy}>Created by BetterMonday - 2026</div>
+            <div 
+              className={styles.copy}
+              onMouseEnter={() => handleHoverStart()}
+              onMouseLeave={() => handleHoverEnd()}
+            >
+              {createdText} BetterMonday - 2026
+            </div>
           </motion.div>
         </motion.div>
       </motion.div>

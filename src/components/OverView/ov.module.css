@@ -133,6 +133,7 @@
   line-height: 165%;
   color: var(--bm-tint-silver);
   transition: all 0.4s ease;
+  cursor: pointer;
 }
 
 .footer .link:hover {
