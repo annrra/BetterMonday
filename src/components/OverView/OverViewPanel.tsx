@@ -50,6 +50,24 @@ const OverViewPanel: React.FC<OverViewPanelProps> = ({ children }) => {
     }
   }, [pathname, showOverViewOverlay]);
 
+  // Disable scrolling on body when overview is open
+  useEffect(() => {
+    if (showOverViewOverlay) {
+      document.body.style.position = 'fixed';
+      document.body.style.width = '100%';
+      document.body.style.overflowY = 'scroll';
+    } else {
+      document.body.style.position = 'static';
+      document.body.style.width = 'auto';
+      document.body.style.overflowY = 'auto';
+    }
+    return () => {
+      document.body.style.position = 'static';
+      document.body.style.width = 'auto';
+      document.body.style.overflowY = 'auto';
+    };
+  }, [showOverViewOverlay]);
+
   const handleClose = () => {
     router.push('/');
   };

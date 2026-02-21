@@ -116,6 +116,13 @@
 }
 
 @media only screen and (max-width: 1000px) {
+  .overlay {
+    top: var(--bm-space-200);
+	  left: var(--bm-space-200);
+    width: calc(100% - (2 * var(--bm-space-200)));
+    height: calc(100vh - (2 * var(--bm-space-200)));
+  }
+
   .body {
     grid-template-columns: 1fr 1fr 1fr;
   }
@@ -130,13 +137,6 @@
 }
 
 @media only screen and (max-width: 768px) {
-  .overlay {
-    top: var(--bm-space-200);
-	  left: var(--bm-space-200);
-    width: calc(100% - (2 * var(--bm-space-200)));
-    height: calc(100vh - (2 * var(--bm-space-200)));
-  }
-
   .body {
     grid-template-columns: 1fr;
   }
