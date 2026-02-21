@@ -93,6 +93,14 @@ const OverViewPanel: React.FC<OverViewPanelProps> = ({ children }) => {
           initial="hidden"
           animate="show"
         >
+          <Link 
+            href="/"
+            className={styles.x}
+            onClick={handleClose}
+            aria-label="Close overview"
+          >
+            Close
+          </Link>
           <motion.div
             className={styles.header}
             variants={itemVariants}
@@ -100,14 +108,6 @@ const OverViewPanel: React.FC<OverViewPanelProps> = ({ children }) => {
             <div className={styles.logo}>
               <MondayLogoSvg />
             </div>
-            <Link 
-              href="/"
-              className={styles.x}
-              onClick={handleClose}
-              aria-label="Close overview"
-            >
-              Close
-            </Link>
           </motion.div>
           <motion.div 
             className={styles.body}

@@ -136,3 +136,37 @@ export async function getMediaRollContent() {
   const json = await res.json();
   return json.data ?? { posts: { nodes: [] } };
 }
+
+export async function getOverviewContent() {
+	if (!API_URL) {
+    console.error('API_URL is not defined.');
+    return { posts: { nodes: [] } };
+  }
+
+  const res = await fetchWithTimeout(API_URL, {
+    method: "POST",
+    headers: {'Content-Type': 'application/json'},
+    cache: 'no-store',
+    body: JSON.stringify({
+      query:`{
+        page(id: "about", idType: URI) {
+          id
+          title
+          uri
+          nextoverviewmeta {
+            nextMeta1
+            nextmeta02
+            nextmeta03
+          }
+        }
+      }`
+    }),
+  });
+   
+  if (!res || !res.ok) {
+    return { posts: { nodes: [] } };
+  }
+
+  const json = await res.json();
+  return json.data ?? { posts: { nodes: [] } };
+}

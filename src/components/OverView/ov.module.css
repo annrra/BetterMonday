@@ -34,8 +34,10 @@
 }
 
 .x {
-  position: relative;
+  position: absolute;
   z-index: 10;
+  top: var(--bm-space-500);
+  right: var(--bm-space-500);
   font-size: 0.875rem;
   color: var(--bm-tint-silver);
   display: inline-block;
@@ -101,10 +103,19 @@
 
 .feed {
   align-items: flex-start;
-  font-weight: 200;
-  line-height: 165%;
+  font-weight: 300;
+  line-height: 180%;
   font-size: 0.875rem;
   padding: 0; 
+}
+
+.feed a {
+  color: var(--bm-tint-primary);
+  transition: all 0.4s ease;
+}
+
+.feed a:hover {
+  color: var(--bm-tint-secondary);
 }
 
 .footer {
@@ -140,6 +151,12 @@
   fill: var(--bm-tint-secondary)
 }
 
+@media only screen and (max-width: 1200px) {
+  .story {
+    max-width: 80%;
+  }
+}
+
 @media only screen and (max-width: 1000px) {
   .overlay {
     top: var(--bm-space-200);
@@ -148,17 +165,16 @@
     height: calc(100vh - (2 * var(--bm-space-200)));
   }
 
+  .story {
+    max-width: 90%;
+  }
+
   .logo {
     grid-column: 1 / -1;
   }
 }
 
 @media only screen and (max-width: 768px) {
-  .x {
-    width: var(--bm-space-600);
-    height: var(--bm-space-600);
-  }
-
   .pane {
     padding: var(--bm-space-600);
   }
@@ -166,11 +182,15 @@
   .story {
     grid-template-columns: 1fr;
     grid-template-rows: repeat(3, 1fr);
-    max-width: 90%;
   }
 }
 
 @media only screen and (max-width: 480px) {
+  .overlay {
+    top: var(--bm-space-500);
+    height: calc(100vh - (2 * var(--bm-space-500)));
+  }
+
   .story {
     max-width: 100%;
     gap: var(--bm-space-200);
