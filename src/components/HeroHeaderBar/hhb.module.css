@@ -166,7 +166,7 @@
 }
 
 .sdark {
-  stroke: var(--bm-tint-init);
+  stroke: var(--bm-tint-secondary);
 }
 
 .accept-btn {

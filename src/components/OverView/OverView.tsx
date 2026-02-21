@@ -1,6 +1,5 @@
 import React from 'react';
 import OverViewPanel from './OverViewPanel';
-import OverviewLogoSvg from './OverviewLogoSvg';
 import styles from './ov.module.css';
 import classNames from 'classnames';
 
@@ -9,17 +8,14 @@ const OverView = async () => {
 
   return (
     <OverViewPanel>
-        <div className={styles.logo}>
-          <OverviewLogoSvg />
-        </div>
         <div className={classNames(styles.feed, styles.feed01)}>
-          I am a UX designer / developer and occasional photographer from Bulgaria currently living in Sofia. Here at bettermonday can be found some of the stuff over which I've been working lately. My recent work consists mostly of design, Front-end development and its implementation into different content management systems.
+          I am Andrey Raychev a UX designer / developer and occasional photographer. Here at bettermonday can be found some of the stuff over which I've been working lately. With 15+ years of experience and a strong background in design. I love shaping creating intuitive, visually compelling interfaces and bridging the gap between design and development. Skilled in translating complex requirements into practical solutions, with a focus on user experience and creative problem-solving.
         </div>
         <div className={classNames(styles.feed, styles.feed02)}>
-          I like to keep things simple mixing up thoughtful research and attention for the detail in the process. I'm currently available for web design and development projects.
+          I approach projects from multiple angles - visually, structurally, and functionally. My background in design allows me to think beyond implementation and focus on the full experience. Once direction is clear, I dig deep, refine, iterate, and turn ideas into robust, maintainable frontend solutions.
         </div>
         <div className={classNames(styles.feed, styles.feed03)}>
-          ...
+          Beyond code, I bring curiosity, ownership, and a strong visual sensibility. I care about the details - not just how things work, but how they feel.
         </div>
     </OverViewPanel>
   );

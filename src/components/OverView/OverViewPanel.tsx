@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect } from 'react';
 import Link from 'next/link';
+import { MondayLogoSvg } from '@/src/components/HeroHeaderBar';
 import { usePathname, useRouter } from 'next/navigation';
 import { AnimatePresence, motion } from 'framer-motion';
 import styles from './ov.module.css';
@@ -14,7 +15,7 @@ const containerVariants = {
   show: {
     transition: {
       staggerChildren: 0.18,
-      delayChildren: 0.25, // wait for panel
+      delayChildren: 0.15, // wait for panel
     },
   },
 };
@@ -22,7 +23,7 @@ const containerVariants = {
 const itemVariants = {
   hidden: {
     opacity: 0,
-    y: 34,
+    y: 24,
   },
   show: {
     opacity: 1,
@@ -92,16 +93,29 @@ const OverViewPanel: React.FC<OverViewPanelProps> = ({ children }) => {
           initial="hidden"
           animate="show"
         >
-          <button 
-            onClick={handleClose}
-            className={styles.x}
-            aria-label="Close overview"
-          />
+          <motion.div
+            className={styles.header}
+            variants={itemVariants}
+          >
+            <div className={styles.logo}>
+              <MondayLogoSvg />
+            </div>
+            <Link 
+              href="/"
+              className={styles.x}
+              onClick={handleClose}
+              aria-label="Close overview"
+            >
+              Close
+            </Link>
+          </motion.div>
           <motion.div 
             className={styles.body}
             variants={itemVariants}
           >
-            {children}
+            <div className={styles.story}>
+              {children}
+            </div>
           </motion.div>
           <motion.div 
             className={styles.footer}

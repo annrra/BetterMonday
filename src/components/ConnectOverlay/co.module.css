@@ -115,13 +115,6 @@
   }
 }
 
-@media only screen and (max-width: 768px) {
-  .x {
-    top: var(--bm-space-300);
-    right: var(--bm-space-400);
-  }
-}
-
 @media only screen and (max-width: 480px) {
   .heading h2 {
     font-size: 3.5rem;
