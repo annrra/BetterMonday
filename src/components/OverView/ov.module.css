@@ -169,12 +169,15 @@
   align-items: center;
   justify-content: center;
   background-color: var(--bm-tint-secondary);
+  background-image: url('data:image/svg+xml,<svg width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="accept"><rect id="rect" width="33" height="33" rx="5"></rect><path id="arrow" d="M22.7071 16.7071C23.0976 16.3166 23.0976 15.6834 22.7071 15.2929L16.3431 8.92893C15.9526 8.53841 15.3195 8.53841 14.9289 8.92893C14.5384 9.31946 14.5384 9.95262 14.9289 10.3431L20.5858 16L14.9289 21.6569C14.5384 22.0474 14.5384 22.6805 14.9289 23.0711C15.3195 23.4616 15.9526 23.4616 16.3431 23.0711L22.7071 16.7071ZM9 16V17H22V16V15H9V16Z" fill="%23e9e9e9"></path></g></svg>');
+  background-position: center;
+  background-repeat: no-repeat;
   border-radius: 50%;
   width: 126px;
   height: 126px;
   position: absolute;
   top: 50%;
-  right: -65px;
+  right: -75px;
   transform: translateY(-50%);
   z-index: 10;
 }
@@ -217,7 +220,7 @@
 .info span {
   font-family: var(--font-passion-one);
   font-weight: bold;
-  font-size: var(--bm-space-800);
+  font-size: 36px;
   line-height: 1;
   margin-right: 0;
   color: var(--bm-tint-silver);
@@ -255,6 +258,10 @@
 }
 
 @media only screen and (max-width: 768px) {
+  .body {
+    max-width: 100%;
+  }
+
   .pane {
     padding: var(--bm-space-600);
   }
@@ -275,5 +282,14 @@
     gap: var(--bm-space-300);
     text-align: center;
     align-items: center;
+  }
+
+  .story {
+    grid-auto-columns: minmax(320px, 1fr);
+  }
+
+  .feed {
+    min-width: 300px;
+    max-width: 320px;
   }
 }
