@@ -150,13 +150,21 @@ export async function getOverviewContent() {
     body: JSON.stringify({
       query:`{
         page(id: "about", idType: URI) {
-          id
-          title
-          uri
-          nextoverviewmeta {
-            nextMeta1
-            nextmeta02
-            nextmeta03
+          nextoverview01 {
+            nextoverviewheading01
+            nextoverviewmeta01
+          }
+          nextoverview02 {
+            nextoverviewheading02
+            nextoverviewmeta02
+          }
+          nextoverview03 {
+            nextoverviewheading03
+            nextoverviewmeta03
+          }
+          nextoverview04 {
+            nextoverviewheading04
+            nextoverviewmeta04
           }
         }
       }`

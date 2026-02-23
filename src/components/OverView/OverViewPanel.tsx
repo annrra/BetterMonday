@@ -5,7 +5,7 @@ import { MondayLogoSvg } from '@/src/components/HeroHeaderBar';
 import { EmailLink } from '@/src/components/_utils/EmailLink';
 import { scrambleText } from '@/src/components/_utils/Scramble';
 import { usePathname, useRouter } from 'next/navigation';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion, useMotionValue } from 'framer-motion';
 import styles from './ov.module.css';
 
 type OverViewPanelProps = {
@@ -37,23 +37,28 @@ const itemVariants = {
   },
 };
 
+const words = [
+  `Created ✨`,
+  `Crafted 🔥`,
+  `Built ⚡`,
+  `Imagined 💡`,
+  `Made with ☕`,
+  `Engineered ⚡`,
+  `Designed 🎨`,
+  `Made with 💜 by`
+];
+
 const OverViewPanel: React.FC<OverViewPanelProps> = ({ children }) => {
   const [createdText, setCreatedText] = useState("Created ✨");
   const wordIndex = useRef(0);
   const pathname = usePathname();
   const router = useRouter();
   const showOverViewOverlay = pathname === "/overview";
-
-  const words = [
-    `Created ✨`,
-    `Crafted 🔥`,
-    `Built ⚡`,
-    `Imagined 💡`,
-    `Made with ☕`,
-    `Engineered ⚡`,
-    `Designed 🎨`,
-    `Made with 💜 by`
-  ];
+  const bodyRef = useRef<HTMLDivElement>(null);
+  const viewportRef = useRef<HTMLDivElement>(null);
+  const storyRef = useRef<HTMLDivElement>(null);
+  const [dragConstraints, setDragConstraints] = useState<{ left: number; right: number }>({ left: 0, right: 0 });
+  const dragX = useMotionValue(0);
 
   const handleHoverStart = () => {
     const nextIndex = (wordIndex.current + 1) % words.length;
@@ -86,15 +91,56 @@ const OverViewPanel: React.FC<OverViewPanelProps> = ({ children }) => {
       document.body.style.overflowY = 'scroll';
     } else {
       document.body.style.position = 'static';
-      document.body.style.width = 'auto';
-      document.body.style.overflowY = 'auto';
     }
     return () => {
       document.body.style.position = 'static';
-      document.body.style.width = 'auto';
-      document.body.style.overflowY = 'auto';
     };
   }, [showOverViewOverlay]);
+
+  // Fake scroll via drag
+  useEffect(() => {
+    const vp = viewportRef.current;
+    if (!vp) return;
+
+    const handleVpWheel = (e: WheelEvent) => {
+      const vp = viewportRef.current;
+      const st = storyRef.current;
+      if (!vp || !st) return;
+
+      const viewportWidth = vp.clientWidth;
+      const storyWidth = st.scrollWidth;
+      if (storyWidth <= viewportWidth) return;
+
+      e.preventDefault();
+
+      const currentX = dragX.get();
+      const maxDrag = viewportWidth - storyWidth; // negative
+
+      const newX = Math.max(maxDrag, Math.min(0, currentX - e.deltaY));
+      dragX.set(newX);
+    };
+
+    vp.addEventListener('wheel', handleVpWheel, { passive: false });
+    return () => vp.removeEventListener('wheel', handleVpWheel);
+  }, [viewportRef, storyRef, dragX]);
+
+  // Calculate drag constraints based on content width
+  useEffect(() => {
+    const calc = () => {
+      const vp = viewportRef.current;
+      const st = storyRef.current;
+      if (!vp || !st) return;
+
+      const viewportWidth = vp.offsetWidth;
+      const storyWidth = st.scrollWidth;
+      const left = Math.min(0, viewportWidth - storyWidth); // Max drag left
+      setDragConstraints({ left, right: 0 });
+    };
+
+    calc();
+    window.addEventListener('resize', calc);
+    return () => window.removeEventListener('resize', calc);
+  }, [viewportRef, storyRef, children]);
 
   const handleClose = () => {
     router.push('/');
@@ -139,9 +185,20 @@ const OverViewPanel: React.FC<OverViewPanelProps> = ({ children }) => {
           <motion.div 
             className={styles.body}
             variants={itemVariants}
+            ref={bodyRef}
           >
-            <div className={styles.story}>
-              {children}
+            <div className={styles.viewport} ref={viewportRef}>
+              <motion.div
+                className={styles.story}
+                ref={storyRef}
+                drag="x"
+                dragConstraints={dragConstraints}
+                dragElastic={0.1}
+                dragMomentum={true}
+                style={{ x: dragX }}
+              >
+                {children}
+              </motion.div>
             </div>
           </motion.div>
           <motion.div 
