@@ -178,3 +178,81 @@ export async function getOverviewContent() {
   const json = await res.json();
   return json.data ?? { posts: { nodes: [] } };
 }
+
+export async function getPhotocommaPreview() {
+	if (!API_URL) {
+    console.error('API_URL is not defined.');
+    return { posts: { nodes: [] } };
+  }
+
+  const res = await fetchWithTimeout(API_URL, {
+    method: "POST",
+    headers: {'Content-Type': 'application/json'},
+    cache: 'no-store',
+    body: JSON.stringify({
+      query:`{
+        page(id: "photocommapreview", idType: URI) {
+          nextphotocommapreview {
+            nextphotocommapreview01 {
+              node {
+                file
+                filePath
+                fileSize
+                guid
+                mediaItemId
+                mediaItemUrl
+              }
+            }
+            nextphotocommapreview02 {
+              node {
+                file
+                filePath
+                fileSize
+                guid
+                mediaItemId
+                mediaItemUrl
+              }
+            }
+            nextphotocommapreview03 {
+              node {
+                file
+                filePath
+                fileSize
+                guid
+                mediaItemId
+                mediaItemUrl
+              }
+            }
+            nextphotocommapreview04 {
+              node {
+                file
+                filePath
+                fileSize
+                guid
+                mediaItemId
+                mediaItemUrl
+              }
+            }
+            nextphotocommapreview05 {
+              node {
+                file
+                filePath
+                fileSize
+                guid
+                mediaItemId
+                mediaItemUrl
+              }
+            }
+          }
+        }
+      }`
+    }),
+  });
+   
+  if (!res || !res.ok) {
+    return { posts: { nodes: [] } };
+  }
+
+  const json = await res.json();
+  return json.data ?? { posts: { nodes: [] } };
+}

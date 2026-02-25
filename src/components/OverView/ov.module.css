@@ -88,7 +88,6 @@
   align-items: center;
   justify-content: flex-start;
   min-height: 0;
-  cursor: grab;
   max-width: 70%;
   margin: 0 auto;
 }
@@ -138,16 +137,21 @@
   color: var(--bm-tint-secondary);
 }
 
+.banner {
+  margin: var(--bm-space-500) 0 0;
+  width: 100%;
+  position: relative;
+}
+
 .title {
   font-family: var(--font-passion-one);
   font-size: 96px;
   line-height: 1;
   color: var(--bm-tint-primary);
   opacity: 0.5;
-  margin: var(--bm-space-500) 0 0;
 }
 
-.feed01 .title {
+.cta {
   font-family: var(--font-geist-sans);
   font-size: 0.750rem;
   line-height: 96px;
@@ -158,28 +162,28 @@
   white-space: nowrap;
 }
 
-.feed01 .title span {
-  position: relative;
-  z-index: 15;
-}
-
-.feed01 .title::after {
-  content: "";
+.cts {
+  position: absolute;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   background-color: var(--bm-tint-secondary);
-  background-image: url('data:image/svg+xml,<svg width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="accept"><rect id="rect" width="33" height="33" rx="5"></rect><path id="arrow" d="M22.7071 16.7071C23.0976 16.3166 23.0976 15.6834 22.7071 15.2929L16.3431 8.92893C15.9526 8.53841 15.3195 8.53841 14.9289 8.92893C14.5384 9.31946 14.5384 9.95262 14.9289 10.3431L20.5858 16L14.9289 21.6569C14.5384 22.0474 14.5384 22.6805 14.9289 23.0711C15.3195 23.4616 15.9526 23.4616 16.3431 23.0711L22.7071 16.7071ZM9 16V17H22V16V15H9V16Z" fill="%23e9e9e9"></path></g></svg>');
-  background-position: center;
-  background-repeat: no-repeat;
   border-radius: 50%;
   width: 126px;
   height: 126px;
-  position: absolute;
   top: 50%;
-  right: -75px;
+  right: -5px;
   transform: translateY(-50%);
   z-index: 10;
+  transition: transform .3s ease;
+}
+
+.cts:hover {
+  background-color: var(--bm-tint-primary);
+}
+
+.ico {
+  fill: var(--bm-tint-silver);
 }
 
 .footer {
@@ -236,6 +240,101 @@
   position: relative;
   left: -15px;
   top: -5px;
+}
+
+.preview-link {
+  position: relative;
+}
+
+.preview-link .tooltip {
+  opacity: 0;
+	visibility: hidden;
+  position: absolute;
+  z-index: 20;
+	top: -150%;
+	left: 190%;
+	background-color: var(--bm-tint-primary);
+	color: var(--bm-tint-silver);
+	border-radius: var(--bm-radius-base);
+	padding: var(--bm-space-100);
+	white-space: nowrap;
+	font-size: 90%;
+	transition: all 0.5s ease;
+	transition-delay: 10ms;
+  box-shadow:
+    0 0 2px rgba(0, 0, 0, 0.06),
+    0 0 8px rgba(0, 0, 0, 0.04);
+}
+
+.preview-link .tooltip::before,
+.preview-link .tooltip::after {
+	opacity: 0;
+	visibility: hidden;
+	content: '';
+	background-color: var(--bm-tint-primary);
+	width: 28px;
+	height: 28px;
+	border-radius: 50%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	transform: translate(-130%, -100%);
+	transition: all 0.5s ease;
+	transition-delay: 150ms;
+}
+
+.preview-link .tooltip::after {
+	width: 21px;
+	height: 21px;
+	transform: translate(-320%, -10%);
+	transition-delay: 300ms;
+}
+
+.preview-link:hover .tooltip {
+	opacity: 1;
+	visibility: visible;
+}
+
+.preview-link:hover .tooltip::before,
+.preview-link:hover .tooltip::after {
+	opacity: 1;
+	visibility: visible;
+}
+
+.preview-link .tooltip .figure {
+  width: 300px;
+  height: auto;
+  border-radius: var(--bm-radius-base);
+  display: block;
+}
+
+.caption {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: var(--bm-space-100) 18px var(--bm-space-200);
+  gap: 10px;
+  font-size: 0.875rem;
+  color: var(--bm-tint-silver);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.caption > div {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background-color: var(--bm-tint-primary);
+  border-radius: 50%;
+}
+
+.caption svg {
+  max-width: 20px;
+  transform: rotate(-45deg);
 }
 
 @media only screen and (max-width: 1200px) {

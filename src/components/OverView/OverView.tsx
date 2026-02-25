@@ -1,5 +1,6 @@
 import React from 'react';
 import OverViewPanel from './OverViewPanel';
+import OverviewEntry from './OverviewEntry';
 import { getOverviewContent } from '@/lib/api';
 import styles from './ov.module.css';
 import classNames from 'classnames';
@@ -11,8 +12,6 @@ type OverviewItem = {
 const OverView = async () => {
   const overviewData = await getOverviewContent();
   const overview: Record<string, OverviewItem> = overviewData?.page ?? {};
-  
-  
 
   return (
     <OverViewPanel>
@@ -34,17 +33,25 @@ const OverView = async () => {
               styles[`feed0${index + 1}`]
             )}
           >
-            {meta && (
-              <div
-                className={styles.info}
-                dangerouslySetInnerHTML={{ __html: meta }}
-              />
-            )}
-            {heading && (
-              <div
-                className={styles.title}
-                dangerouslySetInnerHTML={{ __html: heading }}
-              />
+            {index === 0 ? (
+              <OverviewEntry />
+            ) : (
+              <>
+                {meta && (
+                  <div
+                    className={styles.info}
+                    dangerouslySetInnerHTML={{ __html: meta }}
+                  />
+                )}
+                {heading && (
+                  <div className={styles.banner}>
+                    <div
+                      className={styles.title}
+                      dangerouslySetInnerHTML={{ __html: heading }}
+                    />
+                  </div>
+                )}
+              </>  
             )}
           </div>
         );
