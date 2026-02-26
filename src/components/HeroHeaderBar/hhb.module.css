@@ -193,6 +193,7 @@
   font-weight: 300;
   position: relative;
   display: inline-flex;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .nav a::after {

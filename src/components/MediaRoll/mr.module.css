@@ -101,6 +101,7 @@
 	position: absolute;
 	font-size: 0.875rem;
 	color: var(--bm-tint-silver);
+	cursor: pointer;
 }
 
 .rim span.north {

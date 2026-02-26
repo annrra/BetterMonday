@@ -76,7 +76,7 @@ const PhotocommaLink = () => {
             />
             <div className={styles.caption}>
               photocomma.com
-              <div>
+              <div className={styles.cap}>
                 <svg
                   width={33}
                   height={33}

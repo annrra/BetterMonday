@@ -14,6 +14,8 @@ type MediaNode = {
 
 type MediaRollRaw = Record<string, { node: MediaNode | null }>
 
+const featuredMedia = [0, 1, 6];
+
 const MediaRoll: React.FC = () => {
   const [media, setMedia] = useState<MediaNode[]>([]);
   const [current, setCurrent] = useState<MediaNode | null>(null);
@@ -46,8 +48,6 @@ const MediaRoll: React.FC = () => {
       window.removeEventListener("mousemove", handleMouseMove);
     };
   }, []);
-
-  const featuredMedia = [0, 1, 6];
 
   useEffect(() => {
     let isMounted = true;
@@ -138,10 +138,10 @@ const MediaRoll: React.FC = () => {
           Refresh
         </button>
         <div className={styles.rim}>
-          <span className={styles.north}>{format(cursor.north)}</span>
-          <span className={styles.west}>{format(cursor.west)}</span>
-          <span className={styles.east}>{format(cursor.east)}</span>
-          <span className={styles.south}>{format(cursor.south)}</span>
+          <span className={styles.north} onClick={handleReload}>{format(cursor.north)}</span>
+          <span className={styles.west} onClick={handleReload}>{format(cursor.west)}</span>
+          <span className={styles.east} onClick={handleReload}>{format(cursor.east)}</span>
+          <span className={styles.south} onClick={handleReload}>{format(cursor.south)}</span>
         </div>
       </div>
     </div>

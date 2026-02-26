@@ -12,22 +12,33 @@ const OverviewEntry = () => {
       </div>
       <div className={styles.banner}>
         <div className={styles.checker}>
-          <div className={styles.cta}>Check out how it works and the journey ahead</div>
+          <div className={styles.cta}>Scroll / Drag left and right</div>
           <span className={styles.cts}>
             <svg
-              width={33}
-              height={33}
-              viewBox="0 0 33 33"
+              viewBox="0 0 142 142"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <g id="accept">
-                <rect id="rect" width={33} height={33} rx={5} className={styles['accept-btn']} />
+              <g id="expand">
                 <path
-                  id="arrow"
-                  d="M22.7071 16.7071C23.0976 16.3166 23.0976 15.6834 22.7071 15.2929L16.3431 8.92893C15.9526 8.53841 15.3195 8.53841 14.9289 8.92893C14.5384 9.31946 14.5384 9.95262 14.9289 10.3431L20.5858 16L14.9289 21.6569C14.5384 22.0474 14.5384 22.6805 14.9289 23.0711C15.3195 23.4616 15.9526 23.4616 16.3431 23.0711L22.7071 16.7071ZM9 16V17H22V16V15H9V16Z"
-                  className={styles.ico}
+                  id="ellipse"
+                  d="M106.066 106.066C86.5398 125.592 54.8816 125.592 35.3553 106.066C15.8291 86.5398 15.8291 54.8815 35.3553 35.3553C54.8816 15.8291 86.5398 15.8291 106.066 35.3553C125.592 54.8815 125.592 86.5398 106.066 106.066Z"
+                  className={styles.ell}
                 />
+                <g id="arrows" opacity={0.5} clipPath="url(#clip0_600_2)">
+                  <path
+                    id="l"
+                    d="M73.2217 56.9741C73.2217 56.9741 78.5303 66.8405 87.526 71.2784C78.6702 74.5369 73.7325 85.0719 73.7325 85.0719"
+                    fill="white"
+                    className={styles.arr}
+                  />
+                  <path
+                    id="r"
+                    d="M67.6889 85.0719C67.6889 85.0719 62.3803 75.2054 53.3846 70.7676C62.2404 67.5091 67.1781 56.9741 67.1781 56.9741"
+                    fill="white"
+                    className={styles.arr}
+                  />
+                </g>
               </g>
             </svg>
           </span>

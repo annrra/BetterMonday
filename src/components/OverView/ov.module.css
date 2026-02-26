@@ -28,6 +28,10 @@
   justify-content: space-between;
 }
 
+.header .logo {
+  -webkit-tap-highlight-color: transparent;
+}
+
 .header .logo svg {
   width: 60px;
   height: 60px;
@@ -44,6 +48,7 @@
   text-transform: uppercase;
   font-weight: 200;
   padding: 3px;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .x::before,
@@ -167,19 +172,26 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--bm-tint-secondary);
-  border-radius: 50%;
-  width: 126px;
-  height: 126px;
-  top: 50%;
-  right: -5px;
-  transform: translateY(-50%);
-  z-index: 10;
-  transition: transform .3s ease;
+  width: 100px;
+  height: 100px;
+  bottom: 0;
+  right: 100px;
+  z-index: 15;
+  transition: transform .4s ease;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .cts:hover {
-  background-color: var(--bm-tint-primary);
+  transform: rotate(360deg) scale(1.1);
+}
+
+.cts .ell {
+  fill: var(--bm-tint-secondary);
+}
+
+.cts .arr {
+  fill: var(--bm-tint-silver);
 }
 
 .ico {
@@ -223,8 +235,7 @@
 .info .dropcap,
 .info span {
   font-family: var(--font-passion-one);
-  font-weight: bold;
-  font-size: 36px;
+  font-size: 24px;
   line-height: 1;
   margin-right: 0;
   color: var(--bm-tint-silver);
@@ -234,16 +245,18 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 75px;
-  height: 75px;
+  width: 50px;
+  height: 50px;
   float: left;
   position: relative;
-  left: -15px;
+  left: -10px;
   top: -5px;
 }
 
 .preview-link {
   position: relative;
+  display: inline-block;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .preview-link .tooltip {
@@ -251,7 +264,7 @@
 	visibility: hidden;
   position: absolute;
   z-index: 20;
-	top: -150%;
+	top: -80%;
 	left: 190%;
 	background-color: var(--bm-tint-primary);
 	color: var(--bm-tint-silver);
@@ -264,6 +277,7 @@
   box-shadow:
     0 0 2px rgba(0, 0, 0, 0.06),
     0 0 8px rgba(0, 0, 0, 0.04);
+  pointer-events: none;
 }
 
 .preview-link .tooltip::before,
@@ -388,7 +402,11 @@
   }
 
   .feed {
-    min-width: 300px;
-    max-width: 320px;
+    min-width: 290px;
+    max-width: 310px;
+  }
+
+  .cts {
+    right: 80px;
   }
 }
