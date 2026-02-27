@@ -1,7 +1,8 @@
 .footer {
-  width: 100%;
+  margin: 0 var(--bm-space-200) var(--bm-space-200);
   padding: 116px 0;
   background-color: var(--bm-tint-secondary);
+  border-radius: var(--bm-radius-xl);
 }
 
 .bar {

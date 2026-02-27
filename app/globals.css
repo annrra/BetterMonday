@@ -1,9 +1,9 @@
 :root {
-  --tone-primary-h: 22;
-  --tone-primary-s: 8%;
-  --tone-primary-l: 56%;
+  --tone-primary-h: 19; /* Check ThemeProvider hue variable */
+  --tone-primary-s: 17%;
+  --tone-primary-l: 37%;
 
-  --tone-secondary-h: 66;
+  --tone-secondary-h: 44; /* Check ThemeProvider hue variable */
   --tone-secondary-s: 19%;
   --tone-secondary-l: 44%;
 
@@ -32,21 +32,22 @@
   --paint-white: #ffffff;
 
   --bm-radius-xs: 2px;
-	--bm-radius-sm: 3px;
-	--bm-radius-md: 5px;
-	--bm-radius-base: 10px;
-	--bm-radius-lg: 12px;
-	--bm-radius-full: 99px;
+  --bm-radius-sm: 3px;
+  --bm-radius-md: 5px;
+  --bm-radius-base: 10px;
+  --bm-radius-lg: 12px;
+  --bm-radius-xl: 20px;
+  --bm-radius-full: 99px;
 
-	--bm-space-0: 0;
-	--bm-space-50: 4px;
-	--bm-space-100: 8px;
-	--bm-space-200: 16px;
-	--bm-space-300: 24px;
-	--bm-space-400: 32px;
-	--bm-space-500: 40px;
-	--bm-space-600: 48px;
-	--bm-space-700: 56px;
+  --bm-space-0: 0;
+  --bm-space-50: 4px;
+  --bm-space-100: 8px;
+  --bm-space-200: 16px;
+  --bm-space-300: 24px;
+  --bm-space-400: 32px;
+  --bm-space-500: 40px;
+  --bm-space-600: 48px;
+  --bm-space-700: 56px;
   --bm-space-800: 64px;
   --bm-space-900: 72px;
   --bm-space-1000: 80px;

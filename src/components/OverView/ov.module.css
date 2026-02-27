@@ -1,15 +1,15 @@
 .overlay {
   position: absolute;
-	top: var(--bm-space-400);
-	left: var(--bm-space-400);
+  top: var(--bm-space-400);
+  left: var(--bm-space-400);
   width: calc(100% - (2 * var(--bm-space-400)));
-	height: calc(100vh - (2 * var(--bm-space-400)));
-	background: var(--bm-tint-init);
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	z-index: 50;
-  border-radius: var(--bm-radius-base);
+  height: calc(100vh - (2 * var(--bm-space-400)));
+  background: var(--bm-tint-init);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  border-radius: var(--bm-radius-xl);
 }
 
 .pane {
@@ -282,19 +282,22 @@
 
 .preview-link .tooltip::before,
 .preview-link .tooltip::after {
-	opacity: 0;
-	visibility: hidden;
-	content: '';
-	background-color: var(--bm-tint-primary);
-	width: 28px;
-	height: 28px;
-	border-radius: 50%;
-	position: absolute;
-	top: 0;
-	left: 0;
-	transform: translate(-130%, -100%);
-	transition: all 0.5s ease;
-	transition-delay: 150ms;
+  opacity: 0;
+  visibility: hidden;
+  content: '';
+  background-color: var(--bm-tint-primary);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(-130%, -100%);
+  transition: all 0.5s ease;
+  transition-delay: 150ms;
+  box-shadow:
+    0 0 2px rgba(0, 0, 0, 0.06),
+    0 0 8px rgba(0, 0, 0, 0.04);
 }
 
 .preview-link .tooltip::after {
@@ -358,13 +361,6 @@
 }
 
 @media only screen and (max-width: 1000px) {
-  .overlay {
-    top: var(--bm-space-200);
-	  left: var(--bm-space-200);
-    width: calc(100% - (2 * var(--bm-space-200)));
-    height: calc(100vh - (2 * var(--bm-space-200)));
-  }
-
   .body {
     max-width: 90%;
   }
@@ -382,8 +378,11 @@
 
 @media only screen and (max-width: 480px) {
   .overlay {
-    top: var(--bm-space-200);
-    height: calc(100vh - (2 * var(--bm-space-600)));
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    padding-bottom: var(--bm-space-800);
   }
 
   .pane {

@@ -29,6 +29,8 @@
   align-items: center;
   height: 100%;
   width: 100%;
+  padding: var(--bm-space-200);
+  gap: var(--bm-space-200);
 }
 
 .panel-wrapper {
@@ -65,6 +67,7 @@
   height: 100%;
   position: relative;
   z-index: 1;
+  border-radius: var(--bm-radius-xl);
 }
 
 .panel--primary {
