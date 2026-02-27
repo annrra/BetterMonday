@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import Link from 'next/link';
 import { MondayLogoSvg } from '@/src/components/HeroHeaderBar';
 import { EmailLink } from '@/src/components/_utils/EmailLink';
@@ -99,6 +99,8 @@ const OverViewPanel: React.FC<OverViewPanelProps> = ({ children }) => {
 
   // Fake scroll via drag
   useEffect(() => {
+    if (!showOverViewOverlay) return;
+
     const vp = viewportRef.current;
     if (!vp) return;
 
@@ -122,10 +124,12 @@ const OverViewPanel: React.FC<OverViewPanelProps> = ({ children }) => {
 
     vp.addEventListener('wheel', handleVpWheel, { passive: false });
     return () => vp.removeEventListener('wheel', handleVpWheel);
-  }, [viewportRef, storyRef, dragX]);
+  }, [showOverViewOverlay, dragX]);
 
   // Calculate drag constraints based on content width
-  useEffect(() => {
+  useLayoutEffect(() => {
+    if (!showOverViewOverlay) return;
+
     const calc = () => {
       const vp = viewportRef.current;
       const st = storyRef.current;
@@ -140,7 +144,7 @@ const OverViewPanel: React.FC<OverViewPanelProps> = ({ children }) => {
     calc();
     window.addEventListener('resize', calc);
     return () => window.removeEventListener('resize', calc);
-  }, [viewportRef, storyRef, children]);
+  }, [showOverViewOverlay, children]);
 
   const handleClose = () => {
     router.push('/');
