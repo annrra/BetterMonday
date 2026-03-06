@@ -37,7 +37,7 @@ export async function getMediaRollContent() {
   const res = await fetchWithTimeout(API_URL, {
     method: "POST",
     headers: {'Content-Type': 'application/json'},
-    cache: 'no-store',
+    //cache: 'no-store',
     body: JSON.stringify({
       query:`{
         page(id: "mediaclips", idType: URI) {
@@ -146,7 +146,7 @@ export async function getOverviewContent() {
   const res = await fetchWithTimeout(API_URL, {
     method: "POST",
     headers: {'Content-Type': 'application/json'},
-    cache: 'no-store',
+    //cache: 'no-store',
     body: JSON.stringify({
       query:`{
         page(id: "about", idType: URI) {
@@ -188,7 +188,7 @@ export async function getPhotocommaPreview() {
   const res = await fetchWithTimeout(API_URL, {
     method: "POST",
     headers: {'Content-Type': 'application/json'},
-    cache: 'no-store',
+    //cache: 'no-store',
     body: JSON.stringify({
       query:`{
         page(id: "photocommapreview", idType: URI) {
@@ -266,7 +266,7 @@ export async function getShowCaseList() {
   const res = await fetchWithTimeout(API_URL, {
     method: "POST",
     headers: {'Content-Type': 'application/json'},
-    cache: 'no-store',
+    //cache: 'no-store',
     body: JSON.stringify({
       query:`{
         posts(

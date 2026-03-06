@@ -12,8 +12,18 @@ export type ShowCaseListProps = {
 }
 
 const ShowCaseClient = ({items}: ShowCaseListProps) => {
-  const [selectedIndex, setSelectedIndex] = useState(0); // default first item
+  const hasItems = Array.isArray(items) && items.length > 0;
+  const [selectedIndex, setSelectedIndex] = useState(0);
   const selected = items[selectedIndex];
+
+  if (!hasItems) {
+    // Safe fallback for prerender / empty API
+    return (
+      <div className={styles.board}>
+        <div className={styles.empty}>No highlights available yet.</div>
+      </div>
+    );
+  }
 
   return (
     <div className={styles.board}>

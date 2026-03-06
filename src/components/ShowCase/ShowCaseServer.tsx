@@ -64,6 +64,10 @@ const ShowCaseServer: React.FC = async () => {
     };
   });
 
+  if (items.length === 0) {
+    return null;
+  }
+
   return (
     <div className={styles.showroom}>
         <ShowCaseClient items={items} />
