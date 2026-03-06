@@ -256,3 +256,58 @@ export async function getPhotocommaPreview() {
   const json = await res.json();
   return json.data ?? { posts: { nodes: [] } };
 }
+
+export async function getShowCaseList() {
+	if (!API_URL) {
+    console.error('API_URL is not defined.');
+    return { posts: { nodes: [] } };
+  }
+
+  const res = await fetchWithTimeout(API_URL, {
+    method: "POST",
+    headers: {'Content-Type': 'application/json'},
+    cache: 'no-store',
+    body: JSON.stringify({
+      query:`{
+        posts(
+          where: {status: PUBLISH, categoryName: "work", orderby: {field: DATE, order: DESC}}
+        ) {
+          nodes {
+            nextshowcaselist {
+              nextshowcasetitle
+              nextshowcaseheading
+              nextshowcasemeta
+              nextshowcasedescription
+              nextshowcasetag01
+              nextshowcasetag02
+              nextshowcasetag03
+              nextshowcasetag04
+              nextshowcasetag05
+              nextshowcasepreview {
+                node {
+                  file
+                  filePath
+                  fileSize
+                  guid
+                  mediaItemUrl
+                  mediaItemId
+                }
+              }
+            }
+            uri
+            postId
+            link
+            guid
+          }
+        }
+      }`
+    }),
+  });
+   
+  if (!res || !res.ok) {
+    return { posts: { nodes: [] } };
+  }
+
+  const json = await res.json();
+  return json.data ?? { posts: { nodes: [] } };
+}

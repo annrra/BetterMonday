@@ -11,8 +11,8 @@ const Menu: React.FC = () => {
       <Link href="/overview">
         <span>overview</span>
       </Link>
-      <ComingSoonTooltip>
-        <Link href="/">
+      <ComingSoonTooltip message='Under development..'>
+        <Link href="/highlights">
           <span>highlights</span>
         </Link>
       </ComingSoonTooltip>

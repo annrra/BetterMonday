@@ -1,0 +1,10 @@
+.reactive {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.core {
+  flex-grow: 1;
+  background-color: var(--bm-tint-init);
+}

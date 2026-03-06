@@ -14,9 +14,7 @@ export default function PrimaryLayout({
         right={<SecondaryPanel />}
         overview={<OverView />}
       />
-      <div className={styles.core}>
-        {children}
-      </div>
+      {children}
     </div>
   );
 }

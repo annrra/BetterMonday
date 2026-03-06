@@ -15,12 +15,15 @@ export const metadata: Metadata = {
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  weight: ["200", "300", "400", "800"],
+  display: "swap",
 });
 
-const montserrat = Passion_One({
+const passionOne = Passion_One({
   variable: "--font-passion-one",
   subsets: ["latin"],
   weight: "400",
+  display: "swap",
 });
 
 export default function RootLayout({
@@ -30,7 +33,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${montserrat.variable} ${montserrat.variable}`}>
+      <body className={`${geistSans.variable} ${passionOne.variable}`}>
         <Providers>
           {children}
         </Providers>

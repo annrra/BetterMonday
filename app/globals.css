@@ -14,6 +14,7 @@
   --bm-tint-primary: hsl(var(--tone-primary-h), var(--tone-primary-s), var(--tone-primary-l));
   --bm-tint-secondary: hsl(var(--tone-secondary-h), var(--tone-secondary-s), var(--tone-secondary-l));
   --bm-tint-silver: #e9e9e9;
+  --bm-tint-dim: #3B3733;
 
   --bm-background: #e9e9e9;
 
