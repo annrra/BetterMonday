@@ -42,8 +42,13 @@
 }
 
 .topbar {
-  display: flex;
+  display: inline-flex;
+  align-items: center;
   justify-content: flex-end;
+  position: absolute;
+  top: var(--bm-space-400);
+  right: var(--bm-space-200);
+  padding: var(--bm-space-200) var(--bm-space-100) var(--bm-space-200) var(--bm-space-400);
 }
 
 .connect-wrapper {
@@ -76,6 +81,7 @@
 
 .connect a svg {
   margin-left: var(--bm-space-100);
+  border-radius: 50%;
 }
 
 .connect .btn {
@@ -118,7 +124,7 @@
 
 .cta {
   position: absolute;
-  top: 110px;
+  top: 120px;
   right: 64px;
   width: 220px;
   min-height: 68px;
@@ -175,6 +181,7 @@
 
 .btnarrow {
   fill: var(--bm-tint-silver);
+  opacity: 0.5;
 }
 
 .header .nav {
@@ -234,6 +241,10 @@
 
   .header .nav {
     display: inline-flex;
+  }
+
+  .topbar {
+    position: static;
   }
 
   .topbar .nh {

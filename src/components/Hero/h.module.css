@@ -93,6 +93,7 @@
 .sp {
   padding: var(--bm-space-600) var(--bm-space-1000);
   display: flex;
+  justify-content: center;
   flex-direction: column;
   gap: var(--bm-space-800);
 }
