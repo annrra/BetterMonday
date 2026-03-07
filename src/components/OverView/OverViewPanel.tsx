@@ -2,8 +2,8 @@
 import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import Link from 'next/link';
 import { MondayLogoSvg } from '@/src/components/HeroHeaderBar';
+import ScrambleCreatedText from './ScrambleCreatedText';
 import { EmailLink } from '@/src/components/_utils/EmailLink';
-import { scrambleText } from '@/src/components/_utils/Scramble';
 import { Close } from '@/src/components/ui/Close';
 import { usePathname, useRouter } from 'next/navigation';
 import { AnimatePresence, motion, useMotionValue } from 'framer-motion';
@@ -38,20 +38,7 @@ const itemVariants = {
   },
 };
 
-const words = [
-  `Created ✨`,
-  `Crafted 🔥`,
-  `Built ⚡`,
-  `Imagined 💡`,
-  `Made with ☕`,
-  `Engineered ⚡`,
-  `Designed 🎨`,
-  `Made with 💜 by`
-];
-
 const OverViewPanel: React.FC<OverViewPanelProps> = ({ children }) => {
-  const [createdText, setCreatedText] = useState("Created ✨");
-  const wordIndex = useRef(0);
   const pathname = usePathname();
   const router = useRouter();
   const showOverViewOverlay = pathname === "/overview";
@@ -60,18 +47,6 @@ const OverViewPanel: React.FC<OverViewPanelProps> = ({ children }) => {
   const storyRef = useRef<HTMLDivElement>(null);
   const [dragConstraints, setDragConstraints] = useState<{ left: number; right: number }>({ left: 0, right: 0 });
   const dragX = useMotionValue(0);
-
-  const handleHoverStart = () => {
-    const nextIndex = (wordIndex.current + 1) % words.length;
-    const nextWord = words[nextIndex];
-
-    scrambleText(createdText, nextWord, setCreatedText);
-    wordIndex.current = nextIndex;
-  };
-
-  const handleHoverEnd = () => {
-    scrambleText(createdText, "Created ✨", setCreatedText, 600, 0.2);
-  };
 
   // Scroll to top when returning from overview
   useEffect(() => {
@@ -209,13 +184,7 @@ const OverViewPanel: React.FC<OverViewPanelProps> = ({ children }) => {
               <Link href="https://www.linkedin.com/in/annrra/" target='_blank' rel="noopener noreferrer" className={styles.link}>LinkedIn</Link>
               <Link href="https://github.com/annrra" target='_blank' rel="noopener noreferrer" className={styles.link}>GitHub</Link>
             </div>
-            <div 
-              className={styles.copy}
-              onMouseEnter={() => handleHoverStart()}
-              onMouseLeave={() => handleHoverEnd()}
-            >
-              {createdText} BetterMonday
-            </div>
+            <ScrambleCreatedText />
           </motion.div>
         </motion.div>
       </motion.div>
