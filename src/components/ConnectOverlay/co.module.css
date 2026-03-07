@@ -11,17 +11,12 @@
 	z-index: 50;
 }
 
-.x {
+.close,
+.overlay .close {
   position: absolute;
   z-index: 10;
   top: var(--bm-space-500);
   right: var(--bm-space-600);
-  font-size: 0.875rem;
-  color: var(--bm-tint-silver);
-  display: inline-block;
-  text-transform: uppercase;
-  font-weight: 200;
-  padding: 3px;
 }
 
 .contact {
@@ -61,9 +56,7 @@
 }
 
 .noform .email::before,
-.noform .email::after,
-.x::before,
-.x::after {
+.noform .email::after {
   content: "";
   position: absolute;
   left: 0;
@@ -74,28 +67,24 @@
   background-color: var(--bm-tint-silver);
 }
 
-.noform .email::before,
-.x::before {
+.noform .email::before {
   transform: scaleX(1);
   transform-origin: right;
   transition-delay: 0.3s;
 }
 
-.noform .email:hover::before,
-.x:hover::before {
+.noform .email:hover::before {
   transform: scaleX(0);
   transition-delay: 0s;
 }
 
-.noform .email::after,
-.x::after {
+.noform .email::after {
   transform: scaleX(0);
   transform-origin: left;
   transition-delay: 0s;
 }
 
-.noform .email:hover::after,
-.x:hover::after {
+.noform .email:hover::after {
   transform: scaleX(1);
   transition-delay: 0.2s;
 }
@@ -110,7 +99,7 @@
     padding: var(--bm-space-400) 0 0;
   }
 
-	.heading {
+  .heading {
     margin: 0 0 var(--bm-space-400);
   }
 }

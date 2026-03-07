@@ -4,6 +4,7 @@ import Link from 'next/link';
 import styles from './sc.module.css';
 import classNames from 'classnames';
 import { MondayLogoSvg } from '@/src/components/HeroHeaderBar';
+import { Close } from '@/src/components/ui/Close';
 import { ShowCasePreview } from '@/src/components/ShowCasePreview';
 import { ShowCaseEntry } from './ShowCaseServer';
 
@@ -63,9 +64,7 @@ const ShowCaseClient = ({items}: ShowCaseListProps) => {
           />
         </svg>
         <div className={styles.close}>
-          <Link href="/" className={styles.x}>
-            Close
-          </Link>
+          <Close />
         </div>
       </div>
   

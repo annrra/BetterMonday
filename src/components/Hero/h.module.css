@@ -30,7 +30,7 @@
   height: 100%;
   width: 100%;
   padding: var(--bm-space-200);
-  gap: var(--bm-space-200);
+  gap: var(--bm-space-100);
 }
 
 .panel-wrapper {
@@ -111,6 +111,7 @@
   .twin {
     display: grid;
     grid-auto-rows: 1fr;
+    padding: var(--bm-space-100);
   }
 
   .panel-wrapper {
@@ -136,5 +137,11 @@
   .sp {
     padding: var(--bm-space-600) var(--bm-space-600);
     gap: var(--bm-space-800);
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .twin {
+    gap: var(--bm-space-25);
   }
 }

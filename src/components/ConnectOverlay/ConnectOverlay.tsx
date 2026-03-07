@@ -1,9 +1,9 @@
 "use client";
 import React from 'react';
-import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ContactForm } from '../ContactForm';
 import { EmailLink } from '@/src/components/_utils/EmailLink';
+import { Close } from '@/src/components/ui/Close';
 import styles from './co.module.css';
 
 const containerVariants = {
@@ -44,9 +44,7 @@ const ConnectOverlay: React.FC = () => {
         ease: [0.77, 0, 0.175, 1],
       }}
     >
-      <Link href="/" className={styles.x}>
-        Close
-      </Link>
+      <Close customClassName={styles.close} />
       <motion.div 
         className={styles.contact}
         variants={containerVariants}

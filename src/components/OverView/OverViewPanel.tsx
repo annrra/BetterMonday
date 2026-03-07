@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { MondayLogoSvg } from '@/src/components/HeroHeaderBar';
 import { EmailLink } from '@/src/components/_utils/EmailLink';
 import { scrambleText } from '@/src/components/_utils/Scramble';
+import { Close } from '@/src/components/ui/Close';
 import { usePathname, useRouter } from 'next/navigation';
 import { AnimatePresence, motion, useMotionValue } from 'framer-motion';
 import styles from './ov.module.css';
@@ -170,14 +171,8 @@ const OverViewPanel: React.FC<OverViewPanelProps> = ({ children }) => {
           initial="hidden"
           animate="show"
         >
-          <Link 
-            href="/"
-            className={styles.x}
-            onClick={handleClose}
-            aria-label="Close overview"
-          >
-            Close
-          </Link>
+          <Close onClick={handleClose} customClassName={styles.close} />
+
           <motion.div
             className={styles.header}
             variants={itemVariants}
