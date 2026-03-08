@@ -125,7 +125,20 @@ const PageTransitionEffect = ({ children }: { children: React.ReactNode }) => {
               }}
               className={styles.curtain}
             />
-            <MondayLogoSvg autoScramble />
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: curtainPhase === 'enter' ? 1 : 0 }}
+              transition={{
+                duration: 0.2,
+                ease: 'easeInOut',
+                // Delay logo fade-in relative to curtain start;
+                // no delay when fading out.
+                delay: curtainPhase === 'enter' ? 0.15 : 0,
+              }}
+              className={styles.logoWrapper}
+            >
+              <MondayLogoSvg autoScramble />
+            </motion.div>
           </div>
         )}
       </AnimatePresence>

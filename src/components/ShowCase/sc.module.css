@@ -11,7 +11,7 @@
 	background-color: var(--bm-tint-dim);
 	border-radius: var(--bm-radius-xl);
 	position: relative;
-	width: 100%;
+	/* width: 100%; */
 	display: flex;
 }
 
@@ -246,10 +246,48 @@
     flex-direction: column;
     gap: var(--bm-space-500);
   }
+
+  .board {
+    flex-direction: column;
+    padding-top: var(--bm-space-1000);
+  }
+
+  .body {
+    width: 100%;
+  }
+
+  .card {
+    max-width: 100%;
+  }
 }
 
 @media only screen and (max-width: 768px) {
 	.panel {
-		padding: 0 var(--bm-space-300);
+		padding: var(--bm-space-300);
 	}
+
+  .header {
+    top: var(--bm-space-500);
+    left: var(--bm-space-500);
+  }
+
+  .board {
+    padding: 120px var(--bm-space-200) var(--bm-space-500);
+  }
+
+  .cards {
+    gap: var(--bm-space-100);
+  }
+
+  .card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--bm-space-100);
+    height: auto;
+    padding: var(--bm-space-300) var(--bm-space-300);
+  }
+
+  .meta {
+    text-align: left;
+  }
 }
