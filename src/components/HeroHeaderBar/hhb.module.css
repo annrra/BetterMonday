@@ -163,18 +163,6 @@
   height: 21px;
 }
 
-.fpath {
-  fill: var(--bm-tint-silver);
-}
-
-.fdark {
-  fill: var(--bm-tint-secondary);
-}
-
-.sdark {
-  stroke: var(--bm-tint-secondary);
-}
-
 .accept-btn {
   fill: var(--bm-tint-primary);
 }

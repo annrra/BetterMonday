@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Passion_One } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./Providers";
+import { PageTransitionEffect } from '@/src/components/transitions';
 
 export const metadata: Metadata = {
   title: {
@@ -35,7 +36,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${geistSans.variable} ${passionOne.variable}`}>
         <Providers>
-          {children}
+          <PageTransitionEffect>
+            {children}
+          </PageTransitionEffect>
         </Providers>
       </body>
     </html>

@@ -1,0 +1,11 @@
+.fpath {
+  fill: var(--bm-tint-silver);
+}
+
+.fdark {
+  fill: var(--bm-tint-secondary);
+}
+
+.sdark {
+  stroke: var(--bm-tint-secondary);
+}

@@ -1,6 +1,7 @@
 "use client";
 import React from 'react';
 import Link from 'next/link';
+import { TransitionLink } from '@/src/components/transitions';
 import { ComingSoonTooltip } from '@/src/components/_utils/ComingSoonTooltip';
 import styles from './hhb.module.css';
 
@@ -12,9 +13,9 @@ const Menu: React.FC = () => {
         <span>overview</span>
       </Link>
       <ComingSoonTooltip message='Under development..'>
-        <Link href="/highlights">
+        <TransitionLink href="/highlights">
           <span>highlights</span>
-        </Link>
+        </TransitionLink>
       </ComingSoonTooltip>
     </nav>
   );

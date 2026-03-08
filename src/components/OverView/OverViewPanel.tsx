@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import Link from 'next/link';
-import { MondayLogoSvg } from '@/src/components/HeroHeaderBar';
+import { MondayLogoSvg } from '@/src/components/ui/MondayLogoSvg';
 import ScrambleCreatedText from './ScrambleCreatedText';
 import { EmailLink } from '@/src/components/_utils/EmailLink';
 import { Close } from '@/src/components/ui/Close';

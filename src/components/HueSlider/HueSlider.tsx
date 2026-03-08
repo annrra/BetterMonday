@@ -11,7 +11,7 @@ const HueSlider: React.FC = () => {
   const [dragging, setDragging] = useState(false);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const [isHorizontal, setIsHorizontal] = useState(
-    window.innerWidth < 1000
+    () => (typeof window !== "undefined" ? window.innerWidth < 1000 : false)
   );
 
   useEffect(() => {

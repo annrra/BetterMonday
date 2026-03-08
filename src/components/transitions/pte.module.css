@@ -1,0 +1,33 @@
+.curtain {
+  position: fixed;
+  inset: 0;
+  background-color: var(--bm-tint-init);
+  color: var(--bm-tint-silver);
+  z-index: 9999;
+  pointer-events: 'none';
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.holder {
+  position: fixed;
+  inset: 0;
+  background-color: transparent;
+  color: var(--bm-tint-silver);
+  z-index: 9999;
+}
+
+.holder svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  z-index: 10000;
+  transition: all 0.4s ease;
+}
+
+.holder.enter svg {
+  opacity: 0.5;
+}

@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import styles from './sc.module.css';
 import classNames from 'classnames';
-import { MondayLogoSvg } from '@/src/components/HeroHeaderBar';
+import { MondayLogoSvg } from '@/src/components/ui/MondayLogoSvg';
 import { Close } from '@/src/components/ui/Close';
 import { ShowCasePreview } from '@/src/components/ShowCasePreview';
 import { ShowCaseEntry } from './ShowCaseServer';
@@ -64,7 +64,7 @@ const ShowCaseClient = ({items}: ShowCaseListProps) => {
           />
         </svg>
         <div className={styles.close}>
-          <Close />
+          <Close transition />
         </div>
       </div>
   

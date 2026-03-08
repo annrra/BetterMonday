@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import styles from './hhb.module.css';
-import MondayLogoSvg from './MondayLogoSvg';
+import { MondayLogoSvg } from '@/src/components/ui/MondayLogoSvg';
 import Menu from './Menu';
 
 const Intro: React.FC = async () => {

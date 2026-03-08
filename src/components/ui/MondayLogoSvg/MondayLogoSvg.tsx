@@ -1,7 +1,7 @@
 'use client';
-import styles from './hhb.module.css';
+import styles from './mls.module.css';
 import { motion, SVGMotionProps } from 'framer-motion';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 const ICONS = [
   <path
@@ -99,23 +99,26 @@ const ICONS = [
   />,
 ];
 
-const MondayLogoSvg = (props: SVGMotionProps<SVGSVGElement>) => {
+type MondayLogoSvgProps = SVGMotionProps<SVGSVGElement> & {
+  autoScramble?: boolean;
+};
+
+const MondayLogoSvg = ({ autoScramble = false, ...props }: MondayLogoSvgProps) => {
   const [index, setIndex] = useState(0);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
-  const startScramble = () => {
+  const runScramble = (infinite = false) => {
     let i = 0;
-    // Only clear if not null
-    if (intervalRef.current !== null) {
-      clearInterval(intervalRef.current);
-    }
+
+    if (intervalRef.current) clearInterval(intervalRef.current);
 
     const totalSteps = ICONS.length * 1;
 
     intervalRef.current = setInterval(() => {
       setIndex(Math.floor(Math.random() * ICONS.length));
       i++;
-      if (i >= totalSteps) {
+
+      if (!infinite && i >= totalSteps) {
         if (intervalRef.current) {
           clearInterval(intervalRef.current);
           intervalRef.current = null;
@@ -130,8 +133,21 @@ const MondayLogoSvg = (props: SVGMotionProps<SVGSVGElement>) => {
       clearInterval(intervalRef.current);
       intervalRef.current = null;
     }
-    setIndex(0); // reset to the default symbol
+    setIndex(0);
   };
+
+  const startScramble = () => runScramble(false);
+
+  // Auto mode
+  useEffect(() => {
+    if (autoScramble) {
+      runScramble(true);
+    }
+
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
+  }, [autoScramble]);
 
   return (
     <motion.svg
@@ -141,10 +157,10 @@ const MondayLogoSvg = (props: SVGMotionProps<SVGSVGElement>) => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       {...props}
-      onHoverStart={startScramble}
-      onHoverEnd={stopScramble}
-      onTapStart={startScramble}
-      onTapCancel={stopScramble}
+      onHoverStart={!autoScramble ? startScramble : undefined}
+      onHoverEnd={!autoScramble ? stopScramble : undefined}
+      onTapStart={!autoScramble ? startScramble : undefined}
+      onTapCancel={!autoScramble ? stopScramble : undefined}
       style={{ cursor: "pointer", touchAction: "manipulation" }}
     >
       <g id="logofigure">
