@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useRef, ChangeEvent, SubmitEvent } from 'react';
+import { useState, useRef, ChangeEvent, SubmitEvent } from 'react';
 import { scrambleText } from '@/src/components/_utils/Scramble';
 import styles from './cf.module.css';
 import classNames from 'classnames';
@@ -22,7 +22,7 @@ const initialFormData: FormData = {
   botField: 'no',
 };
 
-const ContactForm: React.FC = () => {
+const ContactForm = () => {
   const [formData, setFormData] = useState<FormData>(initialFormData);
   const [submitting, setSubmitting] = useState(false);
   const [message, setMessage] = useState('');

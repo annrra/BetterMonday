@@ -1,11 +1,10 @@
 "use client";
-import React from 'react';
 import Link from 'next/link';
 import { TransitionLink } from '@/src/components/transitions';
 import { ComingSoonTooltip } from '@/src/components/_utils/ComingSoonTooltip';
 import styles from './hhb.module.css';
 
-const Menu: React.FC = () => {
+const Menu = () => {
 
   return (
     <nav className={styles.nav}>

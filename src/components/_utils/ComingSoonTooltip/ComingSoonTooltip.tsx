@@ -3,17 +3,17 @@ import React, { ReactNode, useState } from "react";
 import styles from "./cst.module.css";
 import classNames from "classnames";
 
-interface Props {
+type ComingSoonTooltipProps = {
   children: ReactNode;
   message?: string;
   disabled?: boolean;
 }
 
-const ComingSoonTooltip: React.FC<Props> = ({
+const ComingSoonTooltip = ({
   children,
   message = "Coming soon...",
   disabled = true,
-}) => {
+}: ComingSoonTooltipProps) => {
   const [show, setShow] = useState(false);
 
   if (!disabled) return <>{children}</>;

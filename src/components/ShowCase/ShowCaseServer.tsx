@@ -1,4 +1,3 @@
-import React from 'react';
 import { getShowCaseList } from '@/lib/api';
 import styles from './sc.module.css';
 import ShowCaseClient from './ShowCaseClient';
@@ -38,7 +37,7 @@ export type ShowCaseItem = {
   uri: string;
 };
 
-const ShowCaseServer: React.FC = async () => {
+const ShowCaseServer = async () => {
   const showCaseList = await getShowCaseList();
   const rawItems = showCaseList?.posts?.nodes ?? [];
 

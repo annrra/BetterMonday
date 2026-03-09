@@ -5,7 +5,7 @@ import HueSliderKnob from './HueSliderKnob';
 import { useTheme } from '@/src/context';
 import classNames from 'classnames';
 
-const HueSlider: React.FC = () => {
+const HueSlider = () => {
   const { hue, setHue } = useTheme();
   const [hovered, setHovered] = useState(false);
   const [dragging, setDragging] = useState(false);

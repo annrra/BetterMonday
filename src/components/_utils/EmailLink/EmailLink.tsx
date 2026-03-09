@@ -1,11 +1,10 @@
-// components/ComingSoonTooltip.tsx
 import React from "react";
 
 type EmailLinkProps = {
   className?: string
 }
 
-const EmailLink: React.FC<EmailLinkProps> = ({ className }) => {
+const EmailLink = ({ className }: EmailLinkProps) => {
   const handleClick = () => {
     const a = "ann"
     const b = "rra"

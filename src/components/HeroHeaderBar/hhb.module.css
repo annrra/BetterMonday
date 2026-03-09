@@ -46,7 +46,7 @@
   align-items: center;
   justify-content: flex-end;
   position: absolute;
-  top: var(--bm-space-400);
+  top: var(--bm-space-300);
   right: var(--bm-space-200);
   padding: var(--bm-space-200) var(--bm-space-100) var(--bm-space-200) var(--bm-space-400);
 }

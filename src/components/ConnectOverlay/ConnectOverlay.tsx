@@ -1,5 +1,4 @@
 "use client";
-import React from 'react';
 import { motion } from 'framer-motion';
 import { ContactForm } from '../ContactForm';
 import { EmailLink } from '@/src/components/_utils/EmailLink';
@@ -31,7 +30,7 @@ const itemVariants = {
   },
 };
 
-const ConnectOverlay: React.FC = () => {
+const ConnectOverlay = () => {
 
   return (
     <motion.div

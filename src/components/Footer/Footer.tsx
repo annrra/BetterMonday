@@ -1,4 +1,3 @@
-import React from 'react';
 import Link from 'next/link';
 import styles from './f.module.css';
 
@@ -6,7 +5,11 @@ const user = 'annrra';
 const domain = 'gmail.com';
 const email = `${user}@${domain}`;
 
-const MailtoLink: React.FC<{ email: string }> = ({ email }) => {
+type MailtoLinkProps = {
+  email: string;
+}
+
+const MailtoLink = ({ email }: MailtoLinkProps) => {
   return (
     <a href={`mailto:${email}`} className={styles.mailme}>
       {email}
@@ -14,7 +17,7 @@ const MailtoLink: React.FC<{ email: string }> = ({ email }) => {
   );
 };
 
-const Footer: React.FC = async () => {
+const Footer = async () => {
 
   return (
     <footer className={styles.footer}>

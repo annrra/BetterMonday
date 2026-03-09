@@ -16,7 +16,7 @@ type MediaRollRaw = Record<string, { node: MediaNode | null }>
 
 const featuredMedia = [0, 1, 6];
 
-const MediaRoll: React.FC = () => {
+const MediaRoll = () => {
   const [media, setMedia] = useState<MediaNode[]>([]);
   const [current, setCurrent] = useState<MediaNode | null>(null);
   const [reload, setReload] = useState(true);

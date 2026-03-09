@@ -13,7 +13,7 @@ const lPathHover   = "M38 33C38 33 52.8522 37.4609 66 33C60.5218 44.8565 66 60 6
 const rPathInitial = "M62 64C62 64 47.1478 59.5391 34 64C39.4782 52.1435 34 37 34 37";
 const rPathHover   = "M60 66C60 66 45.1478 61.5391 32 66C37.4782 54.1435 32 39 32 39";
 
-const HueSliderKnob: React.FC<HueSliderKnobProps> = ({ hovered = false, ...props }) => {
+const HueSliderKnob = ({ hovered = false, ...props }: HueSliderKnobProps) => {
   const controlsL = useAnimation();
   const controlsR = useAnimation();
 

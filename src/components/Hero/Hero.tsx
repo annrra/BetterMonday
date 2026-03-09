@@ -10,7 +10,7 @@ type HeroProps = {
   overview: React.ReactNode;
 }
 
-const Hero: React.FC<HeroProps> = ({ left, right, overview }) => {
+const Hero = ({ left, right, overview }: HeroProps) => {
   //const altText = metadata.title || 'Better Monday';
 
   return (

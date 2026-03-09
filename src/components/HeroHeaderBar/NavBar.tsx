@@ -1,9 +1,8 @@
-import React from 'react';
 import Menu from './Menu';
 import Connect from './Connect';
 import styles from './hhb.module.css';
 
-const NavBar: React.FC = () => {
+const NavBar = () => {
 
   return (
     <div className={styles.topbar}>

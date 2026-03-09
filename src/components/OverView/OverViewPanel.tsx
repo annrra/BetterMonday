@@ -38,7 +38,7 @@ const itemVariants = {
   },
 };
 
-const OverViewPanel: React.FC<OverViewPanelProps> = ({ children }) => {
+const OverViewPanel = ({ children }: OverViewPanelProps) => {
   const pathname = usePathname();
   const router = useRouter();
   const showOverViewOverlay = pathname === "/overview";
