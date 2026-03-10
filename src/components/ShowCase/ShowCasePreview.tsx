@@ -19,7 +19,7 @@ const ShowCasePreview = ({ media, cursor, visible }: ShowCasePreviewProps) => {
       className={styles.preview}
       animate={{
         x: cursor.x - PREVIEW_WIDTH - 70,
-        y: cursor.y - PREVIEW_HEIGHT - 35,
+        y: cursor.y - PREVIEW_HEIGHT - 30,
         opacity: visible ? 1 : 0,
       }}
       transition={{

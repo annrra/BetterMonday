@@ -4,6 +4,7 @@ import styles from './sc.module.css';
 import classNames from 'classnames';
 import ShowCaseHeader from './ShowCaseHeader';
 import LayoutSwitcher from './LayoutSwitcher';
+import HeartShapedBox from './HeartShapedBox';
 import ShowCasePreview from './ShowCasePreview';
 import { ShowCaseEntry } from './ShowCaseServer';
 import { scrambleText } from '@/src/components/_utils/Scramble';
@@ -83,6 +84,7 @@ const ShowCaseClient = ({items}: ShowCaseListProps) => {
     <div className={styles.board}>
       <ShowCaseHeader />
       <LayoutSwitcher />
+      <HeartShapedBox />
 
       {!hasItems ? (
         <div className={styles.empty}>No highlights available yet.</div>
