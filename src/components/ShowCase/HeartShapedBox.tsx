@@ -1,9 +1,11 @@
-import { useState } from 'react';
+"use client";
+import { useState, useId } from 'react';
 import styles from './sc.module.css';
 import { motion } from 'framer-motion';
 
 const HeartShapedBox = () => {
   const [liked, setLiked] = useState(false);
+  const clipId = useId();
 
   return (
     <div className={styles.box}>
@@ -17,28 +19,18 @@ const HeartShapedBox = () => {
         onClick={() => setLiked((prev) => !prev)}
       >
         <defs>
-          <mask id="heart-fill-mask">
-            {/* black = hidden */}
-            <rect width="24" height="24" fill="black" />
+          <clipPath id={clipId}>
             <motion.rect
               x="0"
-              y="24"
+              y="0"
               width="24"
-              height="0"
+              height="24"
               fill="white"
-              initial={false}
-              whileTap={{ y: 0, height: 24 }}
-              animate={
-                liked
-                  ? { y: 0, height: 24 }
-                  : { y: 24, height: 0 }
-              }
-              transition={{
-                duration: 0.45,
-                ease: [0.34, 1.56, 0.64, 1]
-              }}
+              initial={{ scaleY: 0, originY: 1 }}
+              animate={{ scaleY: liked ? 1 : 0 }}
+              transition={{ duration: 0.45, ease: [0.34, 1.56, 0.64, 1] }}
             />
-          </mask>
+          </clipPath>
         </defs>
         <g id="HeartBox">
           <path
@@ -47,7 +39,7 @@ const HeartShapedBox = () => {
             className={styles['heart-full']}
             strokeLinecap="round"
             strokeLinejoin="round"
-            mask="url(#heart-fill-mask)"
+            clipPath={`url(#${clipId})`}
           />
           <path
             id="Heart"
