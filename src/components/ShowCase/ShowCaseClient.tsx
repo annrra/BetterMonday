@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useLayoutEffect, useRef } from 'react';
 import styles from './sc.module.css';
 import classNames from 'classnames';
 import ShowCaseHeader from './ShowCaseHeader';
@@ -15,10 +15,12 @@ const ShowCaseClient = ({items}: ShowCaseListProps) => {
   const hasItems = Array.isArray(items) && items.length > 0;
 
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const [cursor, setCursor] = useState({ x: 0, y: 0 });
+  const [cursor, setCursor] = useState({ x: 20, y: 20 }); // small offset to prevent flash at (0,0)
   const [hovering, setHovering] = useState(false);
 
   const selected = items[selectedIndex];
+
+  const cursorSetOnce = useRef(false);
 
   // Track mouse movement inside cards
   const handleMouseMove = (e: React.MouseEvent) => {
@@ -32,7 +34,7 @@ const ShowCaseClient = ({items}: ShowCaseListProps) => {
     setSelectedIndex(index);
     setHovering(true);
 
-    // If this is the first hover, position preview at top-left of card
+    // Only set cursor once on first hover to position preview at top-left of first card
     if (!cursorSetOnce.current) {
       const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
       setCursor({ x: rect.left, y: rect.top });
@@ -44,10 +46,8 @@ const ShowCaseClient = ({items}: ShowCaseListProps) => {
     setHovering(false);
   };
 
-  // Track if initial cursor positioning has been done
-  const cursorSetOnce = useRef(false);
-
-  useEffect(() => {
+  // Initial preview positioning at top-left of first card
+  useLayoutEffect(() => {
     const firstCard = document.querySelector(`.${styles.card}`);
     if (firstCard) {
       const rect = firstCard.getBoundingClientRect();
@@ -79,8 +79,11 @@ const ShowCaseClient = ({items}: ShowCaseListProps) => {
             </div>
           </div>
 
-          <div className={classNames(styles.panel, styles.deck)}>
-            <div className={styles.cards} onMouseLeave={handleMouseLeaveCards}>
+          <div
+            className={classNames(styles.panel, styles.deck)}
+            onMouseLeave={handleMouseLeaveCards}
+          >
+            <div className={styles.cards}>
               {items.map((item, index) =>
                 item.title ? (
                   <div
