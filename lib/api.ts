@@ -127,6 +127,7 @@ export async function getMediaRollContent() {
         }
       }`
     }),
+    next: { revalidate: 60 },
   });
    
   if (!res || !res.ok) {
@@ -169,6 +170,7 @@ export async function getOverviewContent() {
         }
       }`
     }),
+    next: { revalidate: 60 },
   });
    
   if (!res || !res.ok) {
@@ -247,6 +249,7 @@ export async function getPhotocommaPreview() {
         }
       }`
     }),
+    next: { revalidate: 60 },
   });
    
   if (!res || !res.ok) {
@@ -302,6 +305,7 @@ export async function getShowCaseList() {
         }
       }`
     }),
+    next: { revalidate: 60 },
   });
    
   if (!res || !res.ok) {

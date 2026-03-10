@@ -2,7 +2,7 @@
 	display: flex;
 	color: var(--bm-tint-silver);
 	width: 100%;
-	height: 100vh;
+	min-height: 100vh;
 }
 
 .board {
@@ -185,24 +185,21 @@
 }
 
 .preview {
-  display: none;
-  position: absolute;
-  z-index: 20;
+  position: fixed;
   top: 0;
   left: 0;
-  background-color: var(--bm-tint-secondary);
-  color: var(--bm-tint-silver);
+  z-index: 99;
+  background-color: var(--bm-tint-primary);
   border-radius: var(--bm-radius-base);
   padding: var(--bm-space-100);
-  white-space: nowrap;
-  font-size: 90%;
-  transition: all 0.5s ease;
-  transition-delay: 10ms;
-  box-shadow:
-    0 0 2px rgba(0, 0, 0, 0.06),
-    0 0 8px rgba(0, 0, 0, 0.04);
   pointer-events: none;
-  transform: translate(-112%, -106%);
+  /* box-shadow:
+    0 0 2px rgba(0, 0, 0, 0.06),
+    0 0 8px rgba(0, 0, 0, 0.04); */
+  transition:
+    opacity 0.2s ease,
+    transform 0.05s linear;
+  opacity: 0;
 }
 
 .current .preview {
@@ -210,7 +207,7 @@
 }
 
 .preview .blob {
-  background-color: var(--bm-tint-secondary);
+  background-color: var(--bm-tint-primary);
   border-radius: 50%;
   position: absolute;
   bottom: 0;
@@ -222,18 +219,19 @@
 }
 
 .preview .blob.lg {
-  width: 28px;
-  height: 28px;
-  transform: translate(150%, 40%);
+  width: 24px;
+  height: 24px;
+  transform: translate(150%, 80%);
   transition-delay: 150ms;
+  opacity: 0.5;
 }
 
 .preview .blob.sm {
-  width: 21px;
-  height: 21px;
-  transform: translate(330%, 170%);
+  width: 16px;
+  height: 16px;
+  transform: translate(370%, 195%);
   transition-delay: 300ms;
-  outline: 5px solid var(--bm-tint-dim);
+  opacity: 0.5;
 }
 
 .case {
@@ -243,7 +241,7 @@
 
 .figure {
 	display: block;
-	border-radius: var(--bm-radius-base);
+	border-radius: var(--bm-radius-md);
 	object-fit: cover;
   object-position: top left;
 	width: 100%;
@@ -274,7 +272,7 @@
   }
 
   .board {
-    flex-direction: column;
+    flex-direction: column-reverse;
     padding-top: var(--bm-space-1000);
     min-height: 95%;
   }

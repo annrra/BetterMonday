@@ -13,8 +13,27 @@ export type ShowCaseListProps = {
 
 const ShowCaseClient = ({items}: ShowCaseListProps) => {
   const hasItems = Array.isArray(items) && items.length > 0;
+
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [cursor, setCursor] = useState({ x: 0, y: 0 });
+  const [hovering, setHovering] = useState(false);
+
   const selected = items[selectedIndex];
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (hovering) {
+      setCursor({ x: e.clientX, y: e.clientY });
+    }
+  };
+
+  const handleMouseEnterCard = (index: number) => {
+    setSelectedIndex(index);
+    setHovering(true);
+  };
+
+  const handleMouseLeaveCards = () => {
+    setHovering(false);
+  };
 
   return (
     <div className={styles.board}>
@@ -39,7 +58,10 @@ const ShowCaseClient = ({items}: ShowCaseListProps) => {
             </div>
 
             <div className={classNames(styles.panel, styles.deck)}>
-              <div className={styles.cards}>
+              <div
+                className={styles.cards}
+                onMouseLeave={handleMouseLeaveCards}
+              >
                 {items.map((item, index) => {
                   console.log(JSON.stringify(item, null, 2));
 
@@ -52,9 +74,9 @@ const ShowCaseClient = ({items}: ShowCaseListProps) => {
                           index === selectedIndex ? styles.current : ""
                         )}
                         onClick={() => setSelectedIndex(index)}
-                        onMouseEnter={() => setSelectedIndex(index)}
+                        onMouseMove={handleMouseMove}
+                        onMouseEnter={() => handleMouseEnterCard(index)}
                       >
-                        <ShowCasePreview media={item.imageUrl} />
                         <div className={styles.title}>{item.title}</div>
                         <div className={styles.meta}>{item.meta}</div>
                       </div>
@@ -66,6 +88,12 @@ const ShowCaseClient = ({items}: ShowCaseListProps) => {
           </>
         )
       }
+
+      <ShowCasePreview
+        media={selected.imageUrl}
+        cursor={cursor}
+        visible={hovering} // follow cursor if hovering
+      />
 
     </div>
   );
