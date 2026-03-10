@@ -146,11 +146,20 @@
 	fill: var(--bm-tint-silver);
 }
 
-.view svg {
-	opacity: 0.2;
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
 
-.view .active {
+.toggle svg {
+	opacity: 0.2;
+  transition: all 0.3s ease-in-out;
+}
+
+.toggle.active svg,
+.toggle:hover svg {
 	opacity: 1;
 }
 
@@ -207,11 +216,15 @@
 }
 
 .preview .blob {
-  background-color: var(--bm-tint-primary);
-  border-radius: 50%;
   position: absolute;
   bottom: 0;
   right: 0;
+}
+
+.preview .blob span {
+  display: inline-block;
+  background-color: var(--bm-tint-primary);
+  border-radius: 50%;
   transition: all 0.5s ease;
   box-shadow:
     0 0 2px rgba(0, 0, 0, 0.06),
@@ -222,16 +235,26 @@
   width: 24px;
   height: 24px;
   transform: translate(150%, 80%);
-  transition-delay: 150ms;
-  opacity: 0.5;
+  opacity: 1;
 }
 
 .preview .blob.sm {
   width: 16px;
   height: 16px;
   transform: translate(370%, 195%);
-  transition-delay: 300ms;
-  opacity: 0.5;
+  opacity: 1;
+}
+
+.preview .blob.lg span {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+}
+
+.preview .blob.sm span {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
 }
 
 .case {

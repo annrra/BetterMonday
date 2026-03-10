@@ -29,9 +29,29 @@ const ShowCasePreview = ({ media, cursor, visible }: ShowCasePreviewProps) => {
         mass: 0.2,
       }}
     >
-      <span className={classNames(styles.blob, styles.sm)}></span>
-      <span className={classNames(styles.blob, styles.lg)}></span>
-      <div className={styles.case}>
+      <div className={classNames(styles.blob, styles.sm)}>
+        <motion.span
+          key={`sm-${media}`}
+          initial={{ scale: 1 }}
+          animate={{ scale: [1, 0.1, 1] }}
+          transition={{ duration: 0.3, ease: "easeInOut", delay: 0 }}
+        ></motion.span>
+      </div>
+      <div className={classNames(styles.blob, styles.lg)}>
+        <motion.span
+          key={`lg-${media}`}
+          initial={{ scale: 1 }}
+          animate={{ scale: [1, 0.1, 1] }}
+          transition={{ duration: 0.3, ease: "easeInOut", delay: 0.08 }}
+        ></motion.span>
+      </div>
+      <motion.div
+        key={`case-${media}`}
+        className={styles.case}
+        initial={{ scale: 0.99, opacity: 0.85 }}
+        animate={{ scale: [0.99, 1.01, 1], opacity: [0.85, 1, 1] }}
+        transition={{ duration: 0.3, ease: "easeOut", delay: 0.16 }}
+      >
         {media ? (
           <Image
             src={media}
@@ -43,7 +63,7 @@ const ShowCasePreview = ({ media, cursor, visible }: ShowCasePreviewProps) => {
         ) : (
           <div className={styles.placeholder}></div>
         )}
-      </div>
+      </motion.div>
     </motion.div>
   );
 

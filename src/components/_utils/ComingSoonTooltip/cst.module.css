@@ -1,6 +1,6 @@
 .layer {
   position: relative;
-  display: inline-block;
+  display: inline-flex;
 }
 
 .tooltip {
@@ -18,9 +18,14 @@
   opacity: 0;
   transition: opacity 0.2s ease, transform 0.2s ease;
   z-index: 999;
+  line-height: var(--bm-space-400);
 }
 
 .tooltip.show {
   opacity: 0.95;
   transform: translateX(-60%) scale(1);
+}
+
+.tooltip.bottom {
+  bottom: -225%;
 }

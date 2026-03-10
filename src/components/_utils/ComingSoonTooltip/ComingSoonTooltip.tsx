@@ -7,12 +7,14 @@ type ComingSoonTooltipProps = {
   children: ReactNode;
   message?: string;
   disabled?: boolean;
+  position?: 'top' | 'bottom';
 }
 
 const ComingSoonTooltip = ({
   children,
   message = "Coming soon...",
   disabled = true,
+  position = 'top',
 }: ComingSoonTooltipProps) => {
   const [show, setShow] = useState(false);
 
@@ -25,7 +27,7 @@ const ComingSoonTooltip = ({
       onMouseLeave={() => setShow(false)}
     >
       {children}
-      <div className={classNames(styles.tooltip, { [styles.show]: show })}>{message}</div>
+      <div className={classNames(styles.tooltip, { [styles.show]: show }, position === 'top' ? styles.top : styles.bottom)}>{message}</div>
     </div>
   );
 };
