@@ -110,6 +110,7 @@
   position: absolute;
   top: 0;
   right: 0;
+  z-index: 10;
   border-top-right-radius: var(--bm-radius-xl);
   border-bottom-left-radius: var(--bm-radius-xl);
   background-color: var(--bm-tint-init);
@@ -286,6 +287,7 @@
   position: absolute;
   bottom: 0;
   left: 0;
+  z-index: 10;
   border-top-right-radius: var(--bm-radius-lg);
   border-bottom-left-radius: var(--bm-radius-lg);
   background-color: var(--bm-tint-init);
@@ -324,6 +326,10 @@
 
 .heart-stroke {
   stroke: var(--bm-tint-silver);
+}
+
+.heart-full {
+  fill: var(--bm-tint-silver);
 }
 
 @media only screen and (max-width: 1300px) {
