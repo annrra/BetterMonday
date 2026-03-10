@@ -6,6 +6,8 @@ import ShowCaseHeader from './ShowCaseHeader';
 import LayoutSwitcher from './LayoutSwitcher';
 import ShowCasePreview from './ShowCasePreview';
 import { ShowCaseEntry } from './ShowCaseServer';
+import { scrambleText } from '@/src/components/_utils/Scramble';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export type ShowCaseListProps = {
   items: ShowCaseEntry[];
@@ -20,6 +22,8 @@ const ShowCaseClient = ({items}: ShowCaseListProps) => {
 
   const selected = items[selectedIndex];
 
+  const [scrambledTags, setScrambledTags] = useState(selected.tags);
+
   const cursorSetOnce = useRef(false);
 
   // Track mouse movement inside cards
@@ -31,8 +35,25 @@ const ShowCaseClient = ({items}: ShowCaseListProps) => {
 
   // When entering a card, select it and start hover tracking
   const handleMouseEnterCard = (index: number, e: React.MouseEvent) => {
+    const item = items[index];
+  
     setSelectedIndex(index);
     setHovering(true);
+
+    // scramble tags
+    const maxLength = Math.max(scrambledTags.length, item.tags.length);
+    const newTags: string[] = [];
+
+    for (let i = 0; i < maxLength; i++) {
+      const from = scrambledTags[i] || "";
+      const to = item.tags[i] || "";
+
+      // For each tag, scramble individually
+      scrambleText(from, to, (value) => {
+        newTags[i] = value;
+        setScrambledTags([...newTags]);
+      }, 500, 0.25);
+    }
 
     // Only set cursor once on first hover to position preview at top-left of first card
     if (!cursorSetOnce.current) {
@@ -69,10 +90,31 @@ const ShowCaseClient = ({items}: ShowCaseListProps) => {
         <>
           <div className={classNames(styles.panel, styles.data)}>
             <div className={styles.body}>
-              <h2>{selected.heading}</h2>
-              <div className={styles.context}>{selected.description}</div>
+              <AnimatePresence mode="wait">
+                <motion.h2
+                  key={selected.heading} // important: change triggers re-render
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  {selected.heading}
+                </motion.h2>
+              </AnimatePresence>
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={selected.description}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                  className={styles.context}
+                >
+                  {selected.description}
+                </motion.div>
+              </AnimatePresence>
               <div className={styles.tags}>
-                {selected.tags.map((tag, i) => (
+                {scrambledTags.map((tag, i) => (
                   <span key={i}>{tag}</span>
                 ))}
               </div>

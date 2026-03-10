@@ -11,7 +11,7 @@ const words = [
   `Made with ☕`,
   `Engineered ⚡`,
   `Designed 🎨`,
-  `Made with 💜 by`
+  `Made with 🤍 by`
 ];
 
 const ScrambleCreatedText = () => {
