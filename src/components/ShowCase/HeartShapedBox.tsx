@@ -2,6 +2,7 @@
 import { useState, useId } from 'react';
 import styles from './sc.module.css';
 import { motion } from 'framer-motion';
+import classNames from 'classnames';
 
 const HeartShapedBox = () => {
   const [liked, setLiked] = useState(false);
@@ -15,8 +16,8 @@ const HeartShapedBox = () => {
         viewBox="0 0 24 24"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className={styles.heart}
         onClick={() => setLiked((prev) => !prev)}
+        className={classNames(styles.heart, {[styles.liked]: liked})}
       >
         <defs>
           <clipPath id={clipId}>
