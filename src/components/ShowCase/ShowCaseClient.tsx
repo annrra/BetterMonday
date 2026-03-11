@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useLayoutEffect, useRef } from 'react';
+import React, { useState, useLayoutEffect, useRef, useEffect } from 'react';
 import styles from './sc.module.css';
 import classNames from 'classnames';
 import ShowCaseHeader from './ShowCaseHeader';
@@ -20,17 +20,42 @@ const ShowCaseClient = ({items}: ShowCaseListProps) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [cursor, setCursor] = useState({ x: 20, y: 20 }); // small offset to prevent flash at (0,0)
   const [hovering, setHovering] = useState(false);
+  const [isCursorMoving, setIsCursorMoving] = useState(false);
 
   const selected = items[selectedIndex];
 
   const [scrambledTags, setScrambledTags] = useState(selected.tags);
 
   const cursorSetOnce = useRef(false);
+  const cursorMoveTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const MOVEMENT_THRESHOLD_PX = 8; // minimum movement to consider as "moving"
 
   // Track mouse movement inside cards
   const handleMouseMove = (e: React.MouseEvent) => {
     if (hovering) {
-      setCursor({ x: e.clientX, y: e.clientY });
+      const next = { x: e.clientX, y: e.clientY };
+      const dx = next.x - cursor.x;
+      const dy = next.y - cursor.y;
+      const distanceSq = dx * dx + dy * dy;
+
+      // Always update the cursor for smooth preview movement
+      setCursor(next);
+
+      // Only treat as "moving" if movement exceeds threshold
+      if (distanceSq < MOVEMENT_THRESHOLD_PX * MOVEMENT_THRESHOLD_PX) {
+        return;
+      }
+
+      setIsCursorMoving(true);
+
+      if (cursorMoveTimeoutRef.current) {
+        clearTimeout(cursorMoveTimeoutRef.current);
+      }
+
+      cursorMoveTimeoutRef.current = setTimeout(() => {
+        setIsCursorMoving(false);
+      }, 260);
     }
   };
 
@@ -66,7 +91,21 @@ const ShowCaseClient = ({items}: ShowCaseListProps) => {
 
   const handleMouseLeaveCards = () => {
     setHovering(false);
+    setIsCursorMoving(false);
+
+    if (cursorMoveTimeoutRef.current) {
+      clearTimeout(cursorMoveTimeoutRef.current);
+      cursorMoveTimeoutRef.current = null;
+    }
   };
+
+  useEffect(() => {
+    return () => {
+      if (cursorMoveTimeoutRef.current) {
+        clearTimeout(cursorMoveTimeoutRef.current);
+      }
+    };
+  }, []);
 
   // Initial preview positioning at top-left of first card
   useLayoutEffect(() => {
@@ -154,6 +193,7 @@ const ShowCaseClient = ({items}: ShowCaseListProps) => {
         media={selected.imageUrl}
         cursor={cursor}
         visible={true}
+        hideBlobs={isCursorMoving}
       />
     </div>
   );
