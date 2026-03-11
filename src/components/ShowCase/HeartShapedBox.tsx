@@ -1,23 +1,49 @@
 "use client";
-import { useState, useId } from 'react';
+import { useState, useId, useEffect } from 'react';
 import styles from './sc.module.css';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import classNames from 'classnames';
 
 const HeartShapedBox = () => {
   const [liked, setLiked] = useState(false);
+  const [toast, setToast] = useState<string | null>(null);
   const clipId = useId();
 
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const saved = localStorage.getItem("heart-liked");
+    if (saved === "true") {
+      // Defer state update to avoid synchronous setState in effect body
+      setTimeout(() => setLiked(true), 0);
+    }
+  }, []);
+
+  const handleClick = () => {
+    const newLiked = !liked;
+    setLiked(newLiked);
+    localStorage.setItem("heart-liked", newLiked.toString());
+
+    // Set toast message depending on like/unlike
+    setToast(newLiked ? "Love it" : "…or leave it");
+
+    // Remove toast after few seconds
+    setTimeout(() => setToast(null), 1500);
+  };
+
   return (
-    <div className={styles.box}>
-      <svg
+    <div 
+      className={classNames(styles.box, {[styles.liked]: liked})}
+      onClick={handleClick}
+    >
+      <motion.svg
         width={24}
         height={24}
         viewBox="0 0 24 24"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        onClick={() => setLiked((prev) => !prev)}
-        className={classNames(styles.heart, {[styles.liked]: liked})}
+        className={classNames(styles.heart)}
+        whileHover={{ scale: 1.10 }}
+        transition={{ type: "spring", stiffness: 300, damping: 20 }}
       >
         <defs>
           <clipPath id={clipId}>
@@ -29,7 +55,7 @@ const HeartShapedBox = () => {
               fill="white"
               initial={{ scaleY: 0, originY: 1 }}
               animate={{ scaleY: liked ? 1 : 0 }}
-              transition={{ duration: 0.45, ease: [0.34, 1.56, 0.64, 1] }}
+              transition={{ duration: 0.65, ease: [0.34, 1.56, 0.64, 1] }}
             />
           </clipPath>
         </defs>
@@ -50,7 +76,20 @@ const HeartShapedBox = () => {
             className={styles['heart-stroke']}
           />
         </g>
-      </svg>
+      </motion.svg>
+      <AnimatePresence>
+        {toast && (
+          <motion.div
+            className={styles["heart-cta"]}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            {toast}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   )
 }
