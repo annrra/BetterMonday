@@ -3,6 +3,7 @@ import { metadata } from '@/app/layout';
 import styles from './h.module.css';
 import classNames from 'classnames';
 import { HueSlider } from '@/src/components/HueSlider';
+import { HeartShapedBox } from '@/src/components/ui/HeartShapedBox';
 
 type HeroProps = {
   left: React.ReactNode;
@@ -20,6 +21,7 @@ const Hero = ({ left, right, overview }: HeroProps) => {
           <div className={styles['panel-wrapper']}>
             <div className={classNames(styles.panel, styles['panel--primary'])}>
               {left}
+              <HeartShapedBox />
             </div>
           </div>
           <div className={styles['panel-wrapper']}>

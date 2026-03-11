@@ -1,6 +1,6 @@
 "use client";
 import { useState, useId, useEffect } from 'react';
-import styles from './sc.module.css';
+import styles from './hsb.module.css';
 import { motion, AnimatePresence } from 'framer-motion';
 import classNames from 'classnames';
 
@@ -24,7 +24,7 @@ const HeartShapedBox = () => {
     localStorage.setItem("heart-liked", newLiked.toString());
 
     // Set toast message depending on like/unlike
-    setToast(newLiked ? "Love it" : "…or leave it");
+    setToast(newLiked ? "Love it..." : "...or leave it");
 
     // Remove toast after few seconds
     setTimeout(() => setToast(null), 1500);
