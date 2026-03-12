@@ -122,12 +122,15 @@
   transition-delay: 0.2s;
 }
 
-.cta {
+.cta-tooltip {
   position: absolute;
   top: 120px;
   right: 64px;
   width: 220px;
-  min-height: 68px;
+}
+
+.cta {
+  position: relative;
   background-color: var(--bm-tint-primary);
   border-radius: var(--bm-radius-base);
   font-size: 0.875rem;
@@ -135,28 +138,30 @@
   font-weight: 300;
   color: var(--bm-tint-silver);
   padding: var(--bm-space-200) var(--bm-space-300);
+  overflow: hidden;
 }
 
 .flip {
   white-space: pre-line;
 }
 
-.cta::before,
-.cta::after {
+.blob {
   content: "";
   position: absolute;
   border-radius: 50%;
   background-color: var(--bm-tint-primary);
+  pointer-events: none;
+  transform-origin: center;
 }
 
-.cta::before {
+.blob-lg {
   top: -32px;
   right: -32px;
   width: 28px;
   height: 28px;
 }
 
-.cta::after {
+.blob-sm {
   top: -60px;
   right: -53px;
   width: 21px;

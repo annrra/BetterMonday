@@ -21,6 +21,7 @@ const ShowCaseClient = ({items}: ShowCaseListProps) => {
   const [cursor, setCursor] = useState({ x: 20, y: 20 }); // small offset to prevent flash at (0,0)
   const [hovering, setHovering] = useState(false);
   const [isCursorMoving, setIsCursorMoving] = useState(false);
+  const [previewReady, setPreviewReady] = useState(false);
 
   const selected = items[selectedIndex];
 
@@ -86,6 +87,7 @@ const ShowCaseClient = ({items}: ShowCaseListProps) => {
       const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
       setCursor({ x: rect.left, y: rect.top });
       cursorSetOnce.current = true;
+      setPreviewReady(true);
     }
   };
 
@@ -115,7 +117,10 @@ const ShowCaseClient = ({items}: ShowCaseListProps) => {
       requestAnimationFrame(() => {
         setCursor({ x: rect.left, y: rect.top });
         cursorSetOnce.current = true;
+        setPreviewReady(true);
       });
+    } else {
+      setPreviewReady(true);
     }
   }, []);
 
@@ -189,12 +194,14 @@ const ShowCaseClient = ({items}: ShowCaseListProps) => {
         </>
       )}
 
-      <ShowCasePreview
-        media={selected.imageUrl}
-        cursor={cursor}
-        visible={true}
-        hideBlobs={isCursorMoving}
-      />
+      {previewReady && (
+        <ShowCasePreview
+          media={selected.imageUrl}
+          cursor={cursor}
+          visible={true}
+          hideBlobs={isCursorMoving}
+        />
+      )}
     </div>
   );
 

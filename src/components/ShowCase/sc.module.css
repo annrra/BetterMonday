@@ -13,6 +13,7 @@
   position: relative;
   display: flex;
   flex: 1;
+  background: linear-gradient(to bottom right, var(--bm-tint-secondary), var(--bm-tint-init));
 }
 
 .empty {
@@ -111,8 +112,8 @@
   top: 0;
   right: 0;
   z-index: 10;
-  border-top-right-radius: var(--bm-radius-xl);
-  border-bottom-left-radius: var(--bm-radius-xl);
+  border-top-right-radius: var(--bm-radius-lg);
+  border-bottom-left-radius: var(--bm-radius-lg);
   background-color: var(--bm-tint-init);
   color: var(--bm-tint-silver);
   padding: var(--bm-space-200) var(--bm-space-400);
@@ -133,14 +134,14 @@
   left: 0;
   background-color: var(--bm-tint-init);
   transform: rotate(90deg) translateY(100%);
-  clip-path: path("M 0 0 L 16 0 Q 0 0 0 16 L 0 0 Z");
+  clip-path: path("M 0 0 L 12 0 Q 0 0 0 12 L 0 0 Z");
 }
 
 .view::after {
   bottom: 0;
   right: 0;
   transform: rotate(90deg) translateX(100%);
-  clip-path: path("M 0 0 L 16 0 Q 0 0 0 16 L 0 0 Z");
+  clip-path: path("M 0 0 L 12 0 Q 0 0 0 12 L 0 0 Z");
 }
 
 .filter {
@@ -217,9 +218,7 @@
   background-color: transparent;
   border-radius: var(--bm-radius-base);
   pointer-events: none;
-  transition:
-    opacity 0.2s ease,
-    transform 0.05s linear;
+  transition: opacity 0.2s ease;
   opacity: 0;
 }
 

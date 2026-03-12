@@ -53,6 +53,7 @@ const HeartShapedBox = () => {
               width="24"
               height="24"
               fill="white"
+              rx="12"
               initial={{ scaleY: 0, originY: 1 }}
               animate={{ scaleY: liked ? 1 : 0 }}
               transition={{ duration: 0.65, ease: [0.34, 1.56, 0.64, 1] }}

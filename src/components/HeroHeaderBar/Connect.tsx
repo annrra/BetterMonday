@@ -1,12 +1,16 @@
 "use client";
 import { useState, useRef } from 'react';
 import Link from 'next/link';
+import { motion, useAnimationControls } from 'framer-motion';
 import styles from './hhb.module.css';
 import { scrambleText } from '@/src/components/_utils/Scramble';
+import classNames from 'classnames';
 
 const Connect = () => {
   const [text, setText] = useState("Tell me about your project.\nLet's make it happen.");
   const wordIndex = useRef(0);
+  const blobSmControls = useAnimationControls();
+  const blobLgControls = useAnimationControls();
 
   const words = [
     `Tell me about your project.\nLet's make it happen.`,
@@ -21,10 +25,29 @@ const Connect = () => {
 
     scrambleText(text, nextWord, setText);
     wordIndex.current = nextIndex;
+
+    blobSmControls.start({
+      opacity: [1, 0, 1],
+      scale: [1, 0.8, 1],
+      transition: { duration: 0.35, times: [0, 0.3, 1], ease: 'easeInOut' },
+    });
+
+    blobLgControls.start({
+      opacity: [1, 0, 1],
+      scale: [1, 0.8, 1],
+      transition: {
+        duration: 0.35,
+        times: [0, 0.3, 1],
+        ease: 'easeInOut',
+        delay: 0.1,
+      },
+    });
   };
 
   const handleHoverEnd = () => {
     scrambleText(text, "Tell me about your project.\nLet's make it happen.", setText, 600, 0.2);
+    blobSmControls.start({ opacity: 1, scale: 1, transition: { duration: 0.15 } });
+    blobLgControls.start({ opacity: 1, scale: 1, transition: { duration: 0.15 } });
   };
 
   return (
@@ -39,23 +62,44 @@ const Connect = () => {
           xmlns="http://www.w3.org/2000/svg"
         >
           <g id="accept">
-            <rect id="rect" width={33} height={33} rx={5} className={styles['accept-btn']} />
-            <path
-              id="arrow"
-              d="M22.7071 16.7071C23.0976 16.3166 23.0976 15.6834 22.7071 15.2929L16.3431 8.92893C15.9526 8.53841 15.3195 8.53841 14.9289 8.92893C14.5384 9.31946 14.5384 9.95262 14.9289 10.3431L20.5858 16L14.9289 21.6569C14.5384 22.0474 14.5384 22.6805 14.9289 23.0711C15.3195 23.4616 15.9526 23.4616 16.3431 23.0711L22.7071 16.7071ZM9 16V17H22V16V15H9V16Z"
-              className={styles.btnarrow}
-            />
+            <rect id="circle" width={33} height={33} rx={16.5} className={styles['accept-btn']} />
+            <g id="arr" clipPath="url(#clip0_336_104)">
+              <path
+                id="Vector"
+                d="M17.3572 20.5499C17.2384 20.5499 17.1195 20.5058 17.029 20.4181C16.8474 20.2421 16.8474 19.9577 17.029 19.7818L19.9507 16.9499H9.92864C9.67236 16.9499 9.46436 16.7483 9.46436 16.4999C9.46436 16.2515 9.67236 16.0499 9.92864 16.0499H19.9507L17.029 13.2181C16.8474 13.0421 16.8474 12.7577 17.029 12.5818C17.2105 12.4058 17.5039 12.4058 17.6855 12.5818L21.3997 16.1818C21.4448 16.225 21.4782 16.2754 21.501 16.3285C21.5232 16.3807 21.5358 16.4383 21.5358 16.4986V16.5013C21.5358 16.5616 21.5232 16.6192 21.501 16.6714C21.4782 16.7249 21.4448 16.7749 21.3997 16.8181L17.6855 20.4181C17.5949 20.5058 17.4761 20.5499 17.3572 20.5499Z"
+                className={styles.btnarrow}
+              />
+            </g>
           </g>
+          <defs>
+            <clipPath id="clip0_336_104">
+              <rect width={13} height={9} fill="white" transform="translate(10 12)" />
+            </clipPath>
+          </defs>
         </svg>
       </Link>
-      <div
-        className={styles.cta}
-        onMouseEnter={() => handleHoverStart()}
-        onMouseLeave={() => handleHoverEnd()}
-      >
-        <span className={styles.flip}>
-          {text}
-        </span>
+      <div className={styles['cta-tooltip']}>
+        <motion.div
+          className={styles.cta}
+          layout
+          transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+          onMouseEnter={() => handleHoverStart()}
+          onMouseLeave={() => handleHoverEnd()}
+        >
+          <span className={styles.flip}>
+            {text}
+          </span>
+        </motion.div>
+        <motion.span
+          className={classNames(styles.blob, styles['blob-sm'])}
+          initial={{ opacity: 1, scale: 1 }}
+          animate={blobSmControls}
+        />
+        <motion.span
+          className={classNames(styles.blob, styles['blob-lg'])}
+          initial={{ opacity: 1, scale: 1 }}
+          animate={blobLgControls}
+        />
       </div>
     </div>
   );
