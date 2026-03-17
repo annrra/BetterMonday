@@ -30,13 +30,6 @@
   height: 100%;
   width: 100%;
   padding: var(--bm-space-200);
-}
-
-.twinner {
-  display: flex;
-  align-items: center;
-  height: 100%;
-  width: 100%;
   gap: var(--bm-space-100);
   position: relative;
 }
@@ -117,7 +110,7 @@
 }
 
 @media only screen and (max-width: 1000px) {
-  .twinner {
+  .twin {
     display: grid;
     grid-auto-rows: 1fr;
   }
@@ -149,7 +142,7 @@
 }
 
 @media only screen and (max-width: 480px) {
-  .twinner {
+  .twin {
     gap: var(--bm-space-25);
   }
 }

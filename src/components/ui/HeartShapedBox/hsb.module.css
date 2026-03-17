@@ -2,8 +2,8 @@
   display: inline-flex;
   align-items: center;
   position: absolute;
-  bottom: 0;
-  left: 0;
+  bottom: var(--bm-space-200);
+  left: var(--bm-space-200);
   z-index: 10;
   border-top-right-radius: var(--bm-radius-lg);
   border-bottom-left-radius: var(--bm-radius-lg);
@@ -12,6 +12,7 @@
   padding: 12px var(--bm-space-200);
   gap: var(--bm-space-200);
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .box::before,
