@@ -18,20 +18,22 @@ const Hero = ({ left, right, overview }: HeroProps) => {
     <section className={styles.hero}>
       <>
         <div className={classNames(styles.twin)}>
-          <div className={styles['panel-wrapper']}>
-            <div className={classNames(styles.panel, styles['panel--primary'])}>
-              {left}
+          <div className={styles.twinner}>
+            <div className={styles['panel-wrapper']}>
+              <div className={classNames(styles.panel, styles['panel--primary'])}>
+                {left}
+              </div>
             </div>
-          </div>
-          <div className={styles['panel-wrapper']}>
-            <div className={classNames(styles.panel, styles['panel--secondary'])}>
-              {right}
+            <div className={styles['panel-wrapper']}>
+              <div className={classNames(styles.panel, styles['panel--secondary'])}>
+                {right}
+              </div>
             </div>
-          </div>
 
-          <HueSlider />
-          <HeartShapedBox />
-          {overview}
+            <HueSlider />
+            <HeartShapedBox />
+            {overview}
+          </div>
         </div>
       </>
     </section>
