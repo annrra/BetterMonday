@@ -100,7 +100,7 @@
 .rim span {
 	position: absolute;
 	font-size: 0.875rem;
-	color: var(--bm-tint-silver);
+	color: var(--bm-tint-text-inverted);
 	cursor: pointer;
 }
 

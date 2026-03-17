@@ -19,7 +19,7 @@
 }
 
 .pad {
-  fill: var(--bm-tint-secondary);
+  fill: var(--bm-tint-accent);
 }
 
 @media only screen and (max-width: 1000px) {

@@ -68,7 +68,7 @@
   align-items: center;
   font-size: 1rem;
   font-weight: 600;
-  color: var(--bm-tint-silver);
+  color: var(--bm-tint-text-inverted);
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -169,12 +169,11 @@
 }
 
 .accept-btn {
-  fill: var(--bm-tint-primary);
+  fill: var(--bm-tint-accent);
 }
 
 .btnarrow {
   fill: var(--bm-tint-silver);
-  opacity: 0.5;
 }
 
 .header .nav {
@@ -189,7 +188,7 @@
 }
 
 .nav a {
-  color: var(--bm-tint-silver);
+  color: var(--bm-tint-text-inverted);
   font-weight: 300;
   position: relative;
   display: inline-flex;
@@ -218,7 +217,8 @@
 }
 
 .nh svg circle {
-  fill: var(--bm-tint-primary);
+  fill: var(--bm-tint-dim);
+  opacity: 0.3;
 }
 
 @media only screen and (max-width: 1200px) {

@@ -32,11 +32,6 @@
   -webkit-tap-highlight-color: transparent;
 }
 
-.header .logo svg {
-  width: 60px;
-  height: 60px;
-}
-
 .close,
 .overlay .close {
   position: absolute;
@@ -305,7 +300,7 @@
   justify-content: center;
   width: 28px;
   height: 28px;
-  background-color: var(--bm-tint-secondary);
+  background-color: var(--bm-tint-accent);
   border-radius: 50%;
 }
 

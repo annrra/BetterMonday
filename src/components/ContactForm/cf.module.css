@@ -29,7 +29,7 @@
   padding: var(--bm-space-200) var(--bm-space-200);
   border-radius: 0;
   border: 0;
-  border-bottom: 1px solid  var(--bm-tint-primary);
+  border-bottom: 1px solid  var(--bm-tint-secondary);
   background-color: transparent;
   color: var(--bm-tint-silver);
   outline: none;
@@ -73,14 +73,14 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--bm-tint-silver);
+  background-color: var(--bm-tint-secondary);
   border-radius: 50%;
   width: 60px;
   height: 60px;
 }
 
 .btnarrow {
-  fill: var(--bm-tint-secondary);
+  fill: var(--bm-tint-primary);
 }
 
 .contact-form button svg {
@@ -94,7 +94,7 @@
 
 .contact-form button:hover .ico {
   transform: scale(1.1);
-  background-color: var(--bm-tint-secondary);
+  background-color: var(--bm-tint-primary);
 }
 
 .contact-form button:hover .btnarrow {

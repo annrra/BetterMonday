@@ -13,7 +13,6 @@
   position: relative;
   display: flex;
   flex: 1;
-  background: linear-gradient(to bottom right, var(--bm-tint-secondary), var(--bm-tint-init));
 }
 
 .empty {

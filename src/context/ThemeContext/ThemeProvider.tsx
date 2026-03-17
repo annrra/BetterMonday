@@ -7,8 +7,8 @@ import {
 } from "react";
 import { ThemeContext, ThemeContextType } from "./ThemeContext";
 
-const basePrimaryHue = 19;
-const baseSecondaryHue = 44;
+const basePrimaryHue = 30;
+const baseSecondaryHue = 30;
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [hue, setHue] = useState(basePrimaryHue);

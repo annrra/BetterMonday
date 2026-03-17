@@ -1,20 +1,22 @@
 :root {
-  --tone-primary-h: 19; /* Check ThemeProvider hue variable */
-  --tone-primary-s: 17%;
-  --tone-primary-l: 37%;
+  --tone-primary-h: 30; /* Check ThemeProvider hue variable */
+  --tone-primary-s: 60%;
+  --tone-primary-l: 46%;
 
-  --tone-secondary-h: 44; /* Check ThemeProvider hue variable */
-  --tone-secondary-s: 19%;
-  --tone-secondary-l: 44%;
+  --tone-secondary-h: 30; /* Check ThemeProvider hue variable */
+  --tone-secondary-s: 13%;
+  --tone-secondary-l: 70%;
 
   --tone-primary: hsl(var(--tone-primary-h), var(--tone-primary-s), var(--tone-primary-l));
   --tone-secondary: hsl(var(--tone-secondary-h), var(--tone-secondary-s), var(--tone-secondary-l));
 
+  --bm-tint-accent: #be4c2f;
   --bm-tint-init: #2f2d2b;
   --bm-tint-primary: hsl(var(--tone-primary-h), var(--tone-primary-s), var(--tone-primary-l));
   --bm-tint-secondary: hsl(var(--tone-secondary-h), var(--tone-secondary-s), var(--tone-secondary-l));
   --bm-tint-silver: #e9e9e9;
   --bm-tint-dim: #3B3733;
+  --bm-tint-text-inverted: #454545;
 
   --bm-background: var(--bm-tint-init);
 
