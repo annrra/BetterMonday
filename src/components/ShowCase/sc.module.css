@@ -189,12 +189,14 @@
 }
 
 /* when hovered/current */
-.card.current .title {
-  transform: translateX(-5px);
-}
+@media only screen and (min-width: 768px) {
+  .card.current .title {
+    transform: translateX(-5px);
+  }
 
-.card.current .meta {
-  transform: translateX(5px);
+  .card.current .meta {
+    transform: translateX(5px);
+  }
 }
 
 .title {
@@ -334,6 +336,10 @@
     gap: var(--bm-space-100);
     height: auto;
     padding: var(--bm-space-300) var(--bm-space-300);
+  }
+
+  .title {
+    width: 100%;
   }
 
   .meta {

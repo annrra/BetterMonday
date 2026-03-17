@@ -10,18 +10,16 @@ const HueSlider = () => {
   const [hovered, setHovered] = useState(false);
   const [dragging, setDragging] = useState(false);
   const wrapperRef = useRef<HTMLDivElement>(null);
-  const [isHorizontal, setIsHorizontal] = useState(
-    () => (typeof window !== "undefined" ? window.innerWidth < 1000 : false)
-  );
+  const [isHorizontal, setIsHorizontal] = useState(false);
 
   useEffect(() => {
     const media = window.matchMedia("(max-width: 1000px)");
-
+  
     const listener = () => setIsHorizontal(media.matches);
-
-    listener();
+  
+    listener(); // set correct value after mount
     media.addEventListener("change", listener);
-
+  
     return () => media.removeEventListener("change", listener);
   }, []);
 

@@ -236,6 +236,10 @@
     display: inline-flex;
   }
 
+  .nav a {
+    color: var(--bm-tint-silver);
+  }
+
   .topbar {
     position: static;
   }
@@ -248,7 +252,7 @@
     width: 65%;
   }
 
-  .cta {
+  .cta-tooltip {
     opacity: 0;
   }
 }

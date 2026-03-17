@@ -160,4 +160,20 @@
 	.loop {
 		min-width: 220px;
 	}
+
+	.rim span.north {
+		top: -42px;
+	}
+	
+	.rim span.south {
+		bottom: -42px;
+	}
+	
+	.rim span.east {
+		right: -46px;
+	}
+	
+	.rim span.west {
+		left: -46px;
+	}
 }

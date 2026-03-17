@@ -30,7 +30,15 @@
   height: 100%;
   width: 100%;
   padding: var(--bm-space-200);
+}
+
+.twinner {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 100%;
   gap: var(--bm-space-100);
+  position: relative;
 }
 
 .panel-wrapper {
@@ -109,10 +117,9 @@
 }
 
 @media only screen and (max-width: 1000px) {
-  .twin {
+  .twinner {
     display: grid;
     grid-auto-rows: 1fr;
-    padding: var(--bm-space-100);
   }
 
   .panel-wrapper {
@@ -136,13 +143,13 @@
   }
 
   .sp {
-    padding: var(--bm-space-600) var(--bm-space-600);
+    padding: var(--bm-space-500) var(--bm-space-300);
     gap: var(--bm-space-800);
   }
 }
 
 @media only screen and (max-width: 480px) {
-  .twin {
+  .twinner {
     gap: var(--bm-space-25);
   }
 }
