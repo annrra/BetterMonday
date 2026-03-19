@@ -7,7 +7,7 @@ import {
 } from "react";
 import { ThemeContext, ThemeContextType } from "./ThemeContext";
 
-const basePrimaryHue = 30;
+const basePrimaryHue = 42;
 const baseSecondaryHue = 30;
 
 export function ThemeProvider({ children }: { children: ReactNode }) {

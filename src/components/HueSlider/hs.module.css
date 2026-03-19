@@ -64,7 +64,7 @@
 	top: -40%;
 	left: 85%;
 	z-index: 5;
-	background-color: var(--bm-tint-primary);
+	background-color: var(--tone-primary-700);
 	color: var(--bm-tint-silver);
 	border-radius: var(--bm-radius-md);
 	padding: var(--bm-space-100) var(--bm-space-200);
@@ -79,7 +79,7 @@
 	opacity: 0;
 	visibility: hidden;
 	content: '';
-	background-color: var(--bm-tint-primary);
+	background-color: var(--tone-primary-700);
 	width: 14px;
 	height: 14px;
 	border-radius: 50%;
@@ -103,11 +103,11 @@
 }
 
 .tone-primary {
-  fill: var(--tone-primary);
+  fill: var(--tone-primary-700);
 }
 
 .tone-secondary {
-  fill: var(--tone-secondary);
+  fill: var(--tone-secondary-400);
 }
 
 @media only screen and (max-width: 1000px) {

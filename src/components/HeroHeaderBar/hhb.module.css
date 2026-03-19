@@ -131,7 +131,7 @@
 
 .cta {
   position: relative;
-  background-color: var(--bm-tint-primary);
+  background-color: var(--bm-tint-accent);
   border-radius: var(--bm-radius-base);
   font-size: 0.875rem;
   line-height: 130%;
@@ -146,10 +146,9 @@
 }
 
 .blob {
-  content: "";
   position: absolute;
   border-radius: 50%;
-  background-color: var(--bm-tint-primary);
+  background-color: var(--tone-secondary-400);
   pointer-events: none;
   transform-origin: center;
 }
@@ -217,8 +216,7 @@
 }
 
 .nh svg circle {
-  fill: var(--bm-tint-dim);
-  opacity: 0.3;
+  fill: var(--tone-secondary-400);
 }
 
 @media only screen and (max-width: 1200px) {

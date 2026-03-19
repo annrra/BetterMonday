@@ -1,19 +1,41 @@
 :root {
-  --tone-primary-h: 30; /* Check ThemeProvider hue variable */
-  --tone-primary-s: 60%;
-  --tone-primary-l: 46%;
+  --tone-primary-h: 42; /* Check ThemeProvider hue variable */
+  --tone-primary-s: 33%;
+  --tone-primary-l: 24%;
 
   --tone-secondary-h: 30; /* Check ThemeProvider hue variable */
   --tone-secondary-s: 13%;
   --tone-secondary-l: 70%;
 
-  --tone-primary: hsl(var(--tone-primary-h), var(--tone-primary-s), var(--tone-primary-l));
-  --tone-secondary: hsl(var(--tone-secondary-h), var(--tone-secondary-s), var(--tone-secondary-l));
+  /* Primary shades */
+  --tone-primary-100: hsl(var(--tone-primary-h), var(--tone-primary-s), 90%);
+  --tone-primary-200: hsl(var(--tone-primary-h), var(--tone-primary-s), 75%);
+  --tone-primary-300: hsl(var(--tone-primary-h), var(--tone-primary-s), 60%);
+  --tone-primary-400: hsl(var(--tone-primary-h), var(--tone-primary-s), 55%);
+  --tone-primary-500: hsl(var(--tone-primary-h), var(--tone-primary-s), 50%);
+  --tone-primary-600: hsl(var(--tone-primary-h), var(--tone-primary-s), 40%);
+  --tone-primary-700: hsl(var(--tone-primary-h), var(--tone-primary-s), 35%);
+  --tone-primary-800: hsl(var(--tone-primary-h), var(--tone-primary-s), 10%);
+  --tone-primary-900: hsl(var(--tone-primary-h), var(--tone-primary-s), 5%);
+  --tone-primary: hsl(var(--tone-primary-h), var(--tone-primary-s), var(--tone-primary-l)); /* base */
+
+  /* Secondary shades */
+  --tone-secondary-100: hsl(var(--tone-secondary-h), var(--tone-secondary-s), 95%);
+  --tone-secondary-200: hsl(var(--tone-secondary-h), var(--tone-secondary-s), 85%);
+  --tone-secondary-300: hsl(var(--tone-secondary-h), var(--tone-secondary-s), 75%);
+  --tone-secondary-400: hsl(var(--tone-secondary-h), var(--tone-secondary-s), 65%);
+  --tone-secondary-500: hsl(var(--tone-secondary-h), var(--tone-secondary-s), 60%);
+  --tone-secondary-600: hsl(var(--tone-secondary-h), var(--tone-secondary-s), 55%);
+  --tone-secondary-700: hsl(var(--tone-secondary-h), var(--tone-secondary-s), 45%);
+  --tone-secondary-800: hsl(var(--tone-secondary-h), var(--tone-secondary-s), 35%);
+  --tone-secondary-900: hsl(var(--tone-secondary-h), var(--tone-secondary-s), 25%);
+  --tone-secondary: hsl(var(--tone-secondary-h), var(--tone-secondary-s), var(--tone-secondary-l)); /* base */
 
   --bm-tint-accent: #be4c2f;
+  --bm-tint-accent-alt: #be762f;
   --bm-tint-init: #2f2d2b;
-  --bm-tint-primary: hsl(var(--tone-primary-h), var(--tone-primary-s), var(--tone-primary-l));
-  --bm-tint-secondary: hsl(var(--tone-secondary-h), var(--tone-secondary-s), var(--tone-secondary-l));
+  --bm-tint-primary: var(--tone-primary);
+  --bm-tint-secondary: var(--tone-secondary);
   --bm-tint-silver: #e9e9e9;
   --bm-tint-dim: #3B3733;
   --bm-tint-text-inverted: #454545;

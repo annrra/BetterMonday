@@ -31,7 +31,7 @@
 .heading {
   text-align: center;
   font-family: var(--font-passion-one);
-  color: var(--bm-tint-primary);
+  color: var(--tone-primary-700);
   margin: 0 0 var(--bm-space-600);
 }
 
@@ -107,5 +107,9 @@
 @media only screen and (max-width: 480px) {
   .heading h2 {
     font-size: 3.5rem;
+  }
+
+  .noform {
+    padding-bottom: var(--bm-space-300);
   }
 }

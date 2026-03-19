@@ -89,7 +89,7 @@
 }
 
 .feed a {
-  color: var(--bm-tint-primary);
+  color: var(--tone-primary-400);
   transition: all 0.4s ease;
 }
 
@@ -142,7 +142,7 @@
 }
 
 .cts .ell {
-  fill: var(--bm-tint-primary);
+  fill: var(--tone-primary-700);
 }
 
 .cts .arr {

@@ -3,9 +3,9 @@
 }
 
 .fdark {
-  fill: var(--bm-tint-secondary);
+  fill: var(--tone-secondary-600);
 }
 
 .sdark {
-  stroke: var(--bm-tint-secondary);
+  stroke: var(--tone-secondary-600);
 }

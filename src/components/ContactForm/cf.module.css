@@ -94,7 +94,7 @@
 
 .contact-form button:hover .ico {
   transform: scale(1.1);
-  background-color: var(--bm-tint-primary);
+  background-color: var(--tone-primary-700);
 }
 
 .contact-form button:hover .btnarrow {
