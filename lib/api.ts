@@ -315,3 +315,180 @@ export async function getShowCaseList() {
   const json = await res.json();
   return json.data ?? { posts: { nodes: [] } };
 }
+
+export async function getShowCaseItem(slug: string) {
+	if (!API_URL) {
+    console.error('API_URL is not defined.');
+    return { posts: { nodes: [] } };
+  }
+
+  const res = await fetchWithTimeout(API_URL, {
+    method: "POST",
+    headers: {'Content-Type': 'application/json'},
+    //cache: 'no-store',
+    body: JSON.stringify({
+      query:`{
+        post(id: "${slug}", idType: SLUG) {
+          guid
+          id
+          title
+          slug
+          status
+          uri
+          content
+          excerpt
+          categories(where: {name: "work"}) {
+            nodes {
+              name
+              slug
+            }
+          }
+          featuredImage {
+            node {
+              filePath
+              file
+              guid
+              title
+              uri
+            }
+          }
+          nextshowcaseitem {
+            nextShowcaseItemFeaturedImage {
+              node {
+                file
+                filePath
+                fileSize
+                guid
+                altText
+                title
+                uri
+              }
+            }
+            nextShowcaseItemIconFigure {
+              node {
+                file
+                filePath
+                fileSize
+                guid
+                altText
+                title
+                uri
+              }
+            }
+            nextShowcaseItemHeading
+            nextShowcaseItemSubheading
+            nextShowcaseItemDescription
+            nextShowcaseItemTag01
+            nextShowcaseItemTag02
+            nextShowcaseItemTag03
+            nextShowcaseItemTag04
+            nextShowcaseItemTag05
+            nextShowcaseItemLinktext
+            nextShowcaseItemLinkurl
+            nextShowcaseItemMedia01 {
+              node {
+                file
+                filePath
+                fileSize
+                guid
+                altText
+                title
+                uri
+              }
+            }
+            nextShowcaseItemBonusHeading
+            nextShowcaseItemBonusInfo
+            nextShowcaseItemMedia02 {
+              node {
+                file
+                filePath
+                fileSize
+                guid
+                altText
+                title
+                uri
+              }
+            }
+            nextShowcaseItemMedia03 {
+              node {
+                file
+                filePath
+                fileSize
+                guid
+                altText
+                title
+                uri
+              }
+            }
+            nextShowcaseItemMedia04 {
+              node {
+                file
+                filePath
+                fileSize
+                guid
+                altText
+                title
+                uri
+              }
+            }
+            nextShowcaseItemMedia05 {
+              node {
+                file
+                filePath
+                fileSize
+                guid
+                altText
+                title
+                uri
+              }
+            }
+            nextShowcaseItemCaption01
+            nextShowcaseItemMedia06 {
+              node {
+                file
+                filePath
+                fileSize
+                guid
+                altText
+                title
+                uri
+              }
+            }
+            nextShowcaseItemCaption02
+            nextShowcaseItemMedia07 {
+              node {
+                file
+                filePath
+                fileSize
+                guid
+                altText
+                title
+                uri
+              }
+            }
+            nextShowcaseItemCaption03
+            nextShowcaseItemMedia08 {
+              node {
+                file
+                filePath
+                fileSize
+                guid
+                altText
+                title
+                uri
+              }
+            }
+          }
+        }
+      }`
+    }),
+    next: { revalidate: 60 },
+  });
+   
+  if (!res || !res.ok) {
+    return { posts: { nodes: [] } };
+  }
+
+  const json = await res.json();
+  return json.data ?? { posts: { nodes: [] } };
+}
