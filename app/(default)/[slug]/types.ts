@@ -3,8 +3,3 @@ export type PostProps = {
     slug: string;
   };
 }
-
-export type Category = {
-  name: string;
-  slug: string;
-}

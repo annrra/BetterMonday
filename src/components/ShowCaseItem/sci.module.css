@@ -1,0 +1,19 @@
+.showroom {
+  display: flex;
+  align-items: center;
+}
+
+.section {
+  width: 900px;
+  height: auto;
+  background-color: #444;
+  color: #fff;
+}
+
+@media only screen and (max-width: 1000px) {
+  
+}
+
+@media only screen and (max-width: 768px) {
+	
+}
