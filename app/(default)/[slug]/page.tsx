@@ -77,7 +77,7 @@ export default async function Post({ params }: PostProps) {
   return (
     <div className={styles.container}>
       <ShowCaseItemClient>
-        <ShowCaseItemServer post={post} nextItem={normalizedNextItem} />
+        <ShowCaseItemServer post={post} item={normalizedNextItem} />
       </ShowCaseItemClient>
     </div>
   );

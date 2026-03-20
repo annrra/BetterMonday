@@ -105,6 +105,18 @@ body {
   font-family: var(--font-geist-sans);
 }
 
+/* Hide scrollbar */
+html.lenis,
+html.lenis body {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html.lenis::-webkit-scrollbar,
+html.lenis body::-webkit-scrollbar {
+  display: none;
+}
+
 a {
   color: inherit;
   text-decoration: none;

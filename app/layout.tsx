@@ -23,7 +23,7 @@ const geistSans = Geist({
 const passionOne = Passion_One({
   variable: "--font-passion-one",
   subsets: ["latin"],
-  weight: "400",
+  weight: ["400", "700", "900"],
   display: "swap",
 });
 
