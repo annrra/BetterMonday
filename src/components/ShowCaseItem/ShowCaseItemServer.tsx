@@ -94,8 +94,64 @@ const ShowCaseItemServer = async ({ post, item }: ShowCaseItemServerProps) => {
         </div>
 
       </div>
-      <div className={classNames(styles.section, styles['screen-section'])}>Section 2</div>
-      <div className={classNames(styles.section, styles['after-section'])}>Section 3</div>
+      <div className={classNames(styles.section, styles['screen-section'])}>
+        <div className={styles.screen}>
+          {item?.nextShowcaseItemMedia01?.guid && (
+            <Image
+              src={item?.nextShowcaseItemMedia01?.guid}
+              alt={item.nextShowcaseItemMedia01.altText ?? ''}
+              priority
+              width={0}
+              height={0}
+              sizes="100vw"
+              className={styles['screen-image']}
+            />
+          )}
+        </div>
+      </div>
+      <div className={classNames(styles.section, styles['after-section'])}>
+        <div className={styles.caption}>
+          {item?.bonusInfo && item?.bonusInfo}
+        </div>
+        <div className={styles.imagery}>
+          <div className={classNames(styles.frame, styles.frame01)}>
+            {item?.nextShowcaseItemMedia02?.guid && (
+              <Image
+                src={item?.nextShowcaseItemMedia02?.guid}
+                alt={item.nextShowcaseItemMedia02.altText ?? ''}
+                width={0}
+                height={0}
+                sizes="100vw"
+                className={styles.scene}
+              />
+            )}
+          </div>
+          <div className={classNames(styles.frame, styles.frame02)}>
+            {item?.nextShowcaseItemMedia03?.guid && (
+              <Image
+                src={item?.nextShowcaseItemMedia03?.guid}
+                alt={item.nextShowcaseItemMedia03.altText ?? ''}
+                width={0}
+                height={0}
+                sizes="100vw"
+                className={styles.scene}
+              />
+            )}
+          </div>
+          <div className={classNames(styles.frame, styles.frame03)}>
+            {item?.nextShowcaseItemMedia04?.guid && (
+              <Image
+                src={item?.nextShowcaseItemMedia04?.guid}
+                alt={item.nextShowcaseItemMedia04.altText ?? ''}
+                width={0}
+                height={0}
+                sizes="100vw"
+                className={styles.scene}
+              />
+            )}
+          </div>
+        </div>
+      </div>
     </div>
   );
 

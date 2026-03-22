@@ -5,9 +5,8 @@
 }
 
 .section {
-  min-width: 900px;
   height: auto;
-  color: #fff;
+  color: var(--bm-tint-silver);
 }
 
 .hero-section {
@@ -58,12 +57,13 @@
   font-family: var(--font-passion-one);
   font-size: 3.7rem;
   line-height: 70%;
-  font-weight: 900;
+  font-weight: 700;
 }
 
 .subheading h2 {
   font-family: var(--font-passion-one);
   font-size: 1.75rem;
+  font-weight: 400;
   color: var(--bm-tint-silver);
   opacity: 0.7;
 }
@@ -79,12 +79,12 @@
   justify-content: space-between;
   align-items: center;
   font-size: 0.875rem;
+  font-weight: 300;
 }
 
 .tags {
   display: flex;
   gap: var(--bm-space-200);
-  font-weight: 300;
 }
 
 .figure {
@@ -98,6 +98,60 @@
 .hero-image {
   object-fit: cover;
   border-radius: var(--bm-radius-xl);
+}
+
+.screen {
+  height: 100%;
+  width: 100%;
+  padding: var(--bm-space-200);
+}
+
+.screen-image {
+  width: auto;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--bm-radius-xl);
+}
+
+.after-section {
+  display: flex;
+  align-items: center;
+  padding-right: 240px;
+}
+
+.caption {
+  max-width: 60ch;
+  min-width: 60ch;
+  font-size: .875rem;
+  font-weight: 300;
+  line-height: 1.7;
+  padding: 0 var(--bm-space-1000);
+  margin: 0 var(--bm-space-300);
+}
+
+.imagery {
+  display: flex;
+  align-items: center;
+  gap: var(--bm-space-400);
+}
+
+.frame {
+  width: 400px;
+  height: 634px;
+  position: relative;
+  border-radius: var(--bm-radius-base);
+  overflow: hidden;
+}
+
+.scene {
+  object-fit: cover;
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+
+.frame02 .scene {
+  bottom: 95px;
 }
 
 @media only screen and (max-width: 1000px) {
