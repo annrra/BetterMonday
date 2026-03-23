@@ -4,12 +4,26 @@
   gap: var(--bm-space-50);
 }
 
+.link a .link-icon-left {
+  display: none;
+}
+
+.link a:hover .link-icon-left {
+  display: inline-flex;
+}
+
+.link a:hover .link-icon {
+  width: var(--bm-space-400);
+  height: var(--bm-space-400);
+}
+
 .link-text {
   color: var(--bm-tint-silver);
   font-size: 0.875rem;
   border-radius: var(--bm-radius-sm);
   line-height: var(--bm-space-400);
   padding: 0 var(--bm-space-100);
+  white-space: nowrap;
 }
 
 .link-icon {

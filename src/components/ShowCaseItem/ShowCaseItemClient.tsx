@@ -1,13 +1,29 @@
 'use client';
 import { ReactLenis, useLenis } from 'lenis/react';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 const ShowCaseItemClient = ({ children }: { children: React.ReactNode }) => {
-
   const lenis = useLenis();
+  const [orientation, setOrientation] = useState<'horizontal' | 'vertical'>('horizontal');
+
+  // Update orientation based on screen width
+  useEffect(() => {
+    const updateOrientation = () => {
+      if (window.innerWidth < 768) {
+        setOrientation('vertical');
+      } else {
+        setOrientation('horizontal');
+      }
+    };
+
+    updateOrientation();
+    window.addEventListener('resize', updateOrientation);
+
+    return () => window.removeEventListener('resize', updateOrientation);
+  }, []);
 
   useEffect(() => {
-    if (!lenis) return;
+    if (!lenis || orientation === 'vertical') return;
 
     const elements = document.querySelectorAll('[data-speed]');
 
@@ -19,17 +35,14 @@ const ShowCaseItemClient = ({ children }: { children: React.ReactNode }) => {
     };
 
     lenis.on('scroll', handleScroll);
-
-    return () => {
-      lenis.off('scroll', handleScroll);
-    };
-  }, [lenis]);
+    return () => lenis.off('scroll', handleScroll);
+  }, [lenis, orientation]);
 
   return (
     <ReactLenis 
       root 
       options={{
-        orientation: 'horizontal',
+        orientation,
         gestureOrientation: 'both',
         smoothWheel: true,
       }}
