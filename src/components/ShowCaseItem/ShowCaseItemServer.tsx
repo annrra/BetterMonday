@@ -35,9 +35,9 @@ const ShowCaseItemServer = async ({ post, item }: ShowCaseItemServerProps) => {
   
 
   return (
-    <div className={styles.showslide}>
+    <div className={classNames(styles.showslide, styles[post.slug])}>
       <div className={classNames(styles.section, styles['hero-section'])}>
-        <div className={styles.hero}>
+        <div className={styles.hero} data-speed={-0.5}>
           {item?.featuredImage?.guid && (
             <Image
               src={item?.featuredImage?.guid}

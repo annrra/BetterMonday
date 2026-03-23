@@ -20,12 +20,13 @@
 .summary-pane {
   width: 50%;
   flex: 0 0 50%;
-  border-radius: var(--bm-radius-xl);
+  border-radius: var(--bm-radius-lg);
 }
 
 .summary-pane {
   position: relative;
   z-index: 1;
+  background-color: var(--bm-tint-init);
 }
 
 .hero {
@@ -97,7 +98,7 @@
 
 .hero-image {
   object-fit: cover;
-  border-radius: var(--bm-radius-xl);
+  border-radius: var(--bm-radius-lg);
 }
 
 .screen {
@@ -110,7 +111,7 @@
   width: auto;
   height: 100%;
   object-fit: cover;
-  border-radius: var(--bm-radius-xl);
+  border-radius: var(--bm-radius-lg);
 }
 
 .after-section {
@@ -150,7 +151,7 @@
   height: auto;
 }
 
-.frame02 .scene {
+.photocomma .frame02 .scene {
   bottom: 95px;
 }
 
