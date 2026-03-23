@@ -1,6 +1,9 @@
 import styles from './sci.module.css';
 import Image from 'next/image';
-import Link from 'next/link';
+import { TransitionLink } from '@/src/components/transitions';
+import { MondayLogoSvg } from '@/src/components/ui/MondayLogoSvg';
+import { FluidLink } from '@/src/components/ui/FluidLink';
+import { Close } from '@/src/components/ui/Close';
 import type { FileNode, ShowCasePost } from './types';
 import classNames from 'classnames';
 
@@ -37,6 +40,14 @@ const ShowCaseItemServer = async ({ post, item }: ShowCaseItemServerProps) => {
   return (
     <div className={classNames(styles.showslide, styles[post.slug])}>
       <div className={classNames(styles.section, styles['hero-section'])}>
+        <div className={styles.logo}>
+          <TransitionLink href="/">
+            <MondayLogoSvg />
+          </TransitionLink>
+        </div>
+        <div className={styles.close}>
+          <Close href='/highlights' transition />
+        </div>
         <div className={styles.hero} data-speed={-0.5}>
           {item?.featuredImage?.guid && (
             <Image
@@ -82,13 +93,9 @@ const ShowCaseItemServer = async ({ post, item }: ShowCaseItemServerProps) => {
                   </span>
                 ))}
               </div>
-              <div className={styles.link}>
-                {item?.link.url && (
-                  <Link href={item.link.url} target='_blank' rel="noopener noreferrer">
-                    {item.link.text}
-                  </Link>
-                )}
-              </div>
+              {item?.link.url && (
+                <FluidLink href={item.link.url} text={item.link.text} />
+              )}
             </div>
           </div>
         </div>
