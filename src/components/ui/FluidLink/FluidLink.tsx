@@ -21,7 +21,7 @@ const FluidLink = ({
   // Animate the container to shift right on hover
   const containerVariants = {
     rest: { x: 0 },
-    hover: { x: 32, transition: { duration: 0.3, ease: easeInOut } }
+    hover: { x: 20, transition: { duration: 0.3, ease: easeInOut } }
   };
 
   // Shrink on hover

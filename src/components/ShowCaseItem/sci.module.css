@@ -221,7 +221,7 @@
   }
 
   .hero {
-    min-height: 70vh;
+    min-height: 80vh;
   }
 
   .logo,
@@ -241,6 +241,7 @@
 
   .summary {
     gap: var(--bm-space-600);
+    padding: var(--bm-space-900) var(--bm-space-700);
   }
 
   .figure {
@@ -290,6 +291,10 @@
 }
 
 @media only screen and (max-width: 480px) {
+  .summary {
+    padding: var(--bm-space-800) var(--bm-space-500);
+  }
+
   .summary-footer {
     flex-direction: column;
     gap: var(--bm-space-300);

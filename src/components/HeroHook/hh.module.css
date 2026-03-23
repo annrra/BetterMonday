@@ -27,3 +27,11 @@
     margin: var(--bm-space-700) 0;
   }
 }
+
+@media only screen and (max-width: 480px) {
+  .rect {
+    transform-box: fill-box;
+    transform-origin: center;
+    transform: scale(1.2);
+  }
+}
