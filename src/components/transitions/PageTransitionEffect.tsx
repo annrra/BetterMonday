@@ -26,9 +26,10 @@ const curtainVariants = {
 
 const normalizePath = (rawPath: string) => {
   try {
-    return new URL(rawPath, window.location.origin).pathname.replace(/\/+$/, '');
+    const path = new URL(rawPath, window.location.origin).pathname;
+    return path === '/' ? '/' : path.replace(/\/+$/, '');
   } catch {
-    return rawPath.replace(/\/+$/, '');
+    return rawPath === '/' ? '/' : rawPath.replace(/\/+$/, '');
   }
 };
 
