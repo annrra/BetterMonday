@@ -9,6 +9,7 @@ import ShowCasePreview from './ShowCasePreview';
 import { ShowCaseEntry } from './ShowCaseServer';
 import { scrambleText } from '@/src/components/_utils/Scramble';
 import { motion, AnimatePresence } from 'framer-motion';
+import Link from 'next/link';
 
 export type ShowCaseListProps = {
   items: ShowCaseEntry[];
@@ -174,19 +175,21 @@ const ShowCaseClient = ({items}: ShowCaseListProps) => {
             <div className={styles.cards}>
               {items.map((item, index) =>
                 item.title ? (
-                  <div
-                    key={item.id}
-                    className={classNames(
-                      styles.card,
-                      index === selectedIndex ? styles.current : ""
-                    )}
-                    onClick={() => setSelectedIndex(index)}
-                    onMouseMove={handleMouseMove}
-                    onMouseEnter={(e) => handleMouseEnterCard(index, e)}
-                  >
-                    <div className={styles.title}>{item.title}</div>
-                    <div className={styles.meta}>{item.meta}</div>
-                  </div>
+                  <Link href={item.slug} key={item.id} className={styles.link}>
+                    <div
+                      key={item.id}
+                      className={classNames(
+                        styles.card,
+                        index === selectedIndex ? styles.current : ""
+                      )}
+                      onClick={() => setSelectedIndex(index)}
+                      onMouseMove={handleMouseMove}
+                      onMouseEnter={(e) => handleMouseEnterCard(index, e)}
+                    >
+                      <div className={styles.title}>{item.title}</div>
+                      <div className={styles.meta}>{item.meta}</div>
+                    </div>
+                  </Link>
                 ) : null
               )}
             </div>

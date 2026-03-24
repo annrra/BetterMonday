@@ -8,7 +8,7 @@
 }
 
 .link-icon {
-  background-color: var(--bm-tint-dim);
+  background-color: var(--bm-tint-accent);
   border-radius: var(--bm-radius-sm);
   width: var(--bm-space-400);
   height: var(--bm-space-400);

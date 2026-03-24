@@ -27,12 +27,12 @@ const FluidLink = ({
   // Shrink on hover
   const rightIconVariants = {
     rest: { scale: 1, opacity: 1, rotate: 0 },
-    hover: { scale: 0, opacity: 0, rotate: 90, transition: { duration: 0.3, ease: easeInOut } }
+    hover: { scale: 0, opacity: 0, rotate: 360, transition: { duration: 0.3, ease: easeInOut } }
   };
 
   // Expand on hover
   const leftIconVariants = {
-    rest: { scale: 0, opacity: 0, rotate: -90 },
+    rest: { scale: 0, opacity: 0, rotate: -360 },
     hover: { scale: 1, opacity: 1, rotate: 0, transition: { duration: 0.3, ease: easeInOut } }
   };
 

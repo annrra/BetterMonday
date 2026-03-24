@@ -216,6 +216,15 @@
   bottom: 100px;
 }
 
+.sharenoto-party .frame02 .scene {
+  bottom: 105px;
+}
+
+.sharenoto-party .frame03 .scene {
+  bottom: 22px;
+}
+
+
 @media only screen and (max-width: 1200px) {
   .hero-section {
     width: 150vw;

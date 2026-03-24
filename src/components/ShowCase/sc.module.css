@@ -164,12 +164,18 @@
 	opacity: 1;
 }
 
+.link {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  width: 100%;
+}
+
 .card {
   width: 100%;
   max-width: 95%;
   height: var(--bm-space-900);
   border-radius: var(--bm-radius-md);
-  position: relative;
   display: flex;
   align-items: center;
   gap: var(--bm-space-200);
