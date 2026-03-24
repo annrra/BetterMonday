@@ -83,11 +83,10 @@
 }
 
 .subheading h2 {
-  font-family: var(--font-passion-one);
-  font-size: 1.75rem;
-  font-weight: 400;
+  font-size: 1.25rem;
+  font-weight: 500;
   color: var(--bm-tint-silver);
-  opacity: 0.7;
+  opacity: 0.5;
 }
 
 .summary-content {
@@ -141,11 +140,22 @@
   left: 0;
   transform: translateX(calc(-50% - var(--bm-space-100)));
   z-index: 5;
+  width: 140px;
+  height: 140px;
+}
+
+.brand-accent {
+  width: 100%;
+  height: 100%;
 }
 
 .hero-image {
   object-fit: cover;
   border-radius: var(--bm-radius-lg);
+}
+
+.screen-section {
+  display: flex;
 }
 
 .screen {
@@ -200,6 +210,10 @@
 
 .photocomma .frame02 .scene {
   bottom: 95px;
+}
+
+.buddyboss-platform .frame03 .scene {
+  bottom: 100px;
 }
 
 @media only screen and (max-width: 1200px) {
@@ -264,6 +278,16 @@
     width: 100%;
   }
 
+  .summary-footer {
+    flex-direction: column;
+    gap: var(--bm-space-300);
+  }
+
+  .screen-section {
+    flex-direction: column;
+    gap: var(--bm-space-200);
+  }
+
   .screen {
     padding: 0;
     width: calc(100% - var(--bm-space-400));
@@ -272,6 +296,7 @@
 
   .screen-image {
     max-width: 100%;
+    width: 100%;
   }
 
   .after-section {
@@ -293,11 +318,6 @@
 @media only screen and (max-width: 480px) {
   .summary {
     padding: var(--bm-space-800) var(--bm-space-500);
-  }
-
-  .summary-footer {
-    flex-direction: column;
-    gap: var(--bm-space-300);
   }
 
   .caption {

@@ -102,8 +102,8 @@ const ShowCaseItemServer = async ({ post, item }: ShowCaseItemServerProps) => {
 
       </div>
       <div className={classNames(styles.section, styles['screen-section'])}>
-        <div className={styles.screen}>
-          {item?.nextShowcaseItemMedia01?.guid && (
+        {item?.nextShowcaseItemMedia01?.guid && (
+          <div className={styles.screen}>
             <Image
               src={item?.nextShowcaseItemMedia01?.guid}
               alt={item.nextShowcaseItemMedia01.altText ?? ''}
@@ -113,8 +113,34 @@ const ShowCaseItemServer = async ({ post, item }: ShowCaseItemServerProps) => {
               sizes="100vw"
               className={styles['screen-image']}
             />
-          )}
-        </div>
+          </div>
+        )}
+        {item?.nextShowcaseItemMedia05?.guid && (
+          <div className={styles.screen}>
+            <Image
+              src={item?.nextShowcaseItemMedia05?.guid}
+              alt={item.nextShowcaseItemMedia05.altText ?? ''}
+              priority
+              width={0}
+              height={0}
+              sizes="100vw"
+              className={styles['screen-image']}
+            />
+          </div>
+        )}
+        {item?.nextShowcaseItemMedia06?.guid && (
+          <div className={styles.screen}>
+            <Image
+              src={item?.nextShowcaseItemMedia06?.guid}
+              alt={item.nextShowcaseItemMedia06.altText ?? ''}
+              priority
+              width={0}
+              height={0}
+              sizes="100vw"
+              className={styles['screen-image']}
+            />
+          </div>
+        )}
       </div>
       <div className={classNames(styles.section, styles['after-section'])}>
         <div className={styles.caption}>

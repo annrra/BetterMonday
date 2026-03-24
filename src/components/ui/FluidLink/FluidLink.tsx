@@ -38,7 +38,7 @@ const FluidLink = ({
 
   const leftSvgVariants = {
     rest: { scale: 0 },
-    hover: { scale: 1, transition: { delay: 0.15, duration: 0.3, ease: easeInOut } }
+    hover: { scale: 1, transition: { delay: 0.1, duration: 0.3, ease: easeInOut } }
   };
 
   return (
