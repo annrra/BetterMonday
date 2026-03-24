@@ -34,8 +34,6 @@ type ShowCaseItemServerProps = {
 }
 
 const ShowCaseItemServer = async ({ post, item }: ShowCaseItemServerProps) => {
-  console.log(JSON.stringify(item, null, 2));
-  
 
   return (
     <div className={classNames(styles.showslide, styles[post.slug])}>

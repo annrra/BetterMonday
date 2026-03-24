@@ -24,6 +24,16 @@ const curtainVariants = {
   reveal: { y: '100%' },
 };
 
+const normalizePath = (rawPath: string) => {
+  try {
+    return new URL(rawPath, window.location.origin).pathname.replace(/\/+$/, '');
+  } catch {
+    return rawPath.replace(/\/+$/, '');
+  }
+};
+
+const isSamePath = (a: string, b: string) => normalizePath(a) === normalizePath(b);
+
 const PageTransitionEffect = ({ children }: { children: React.ReactNode }) => {
   const pathname = usePathname();
   const router = useRouter();
@@ -40,9 +50,9 @@ const PageTransitionEffect = ({ children }: { children: React.ReactNode }) => {
       const href = customEvent.detail;
 
       // Ignore if we're already animating or target is current route
-      if (!href || isAnimatingRef.current || href === pathname) return;
+      if (!href || isAnimatingRef.current || isSamePath(href, pathname)) return;
 
-      targetPathRef.current = href;
+      targetPathRef.current = normalizePath(href);
       isAnimatingRef.current = true;
       setHasNavigated(false);
       setCurtainPhase('enter');
@@ -61,7 +71,7 @@ const PageTransitionEffect = ({ children }: { children: React.ReactNode }) => {
       isAnimatingRef.current &&
       curtainPhase === 'enter' &&
       targetPathRef.current &&
-      pathname === targetPathRef.current &&
+      isSamePath(pathname, targetPathRef.current) &&
       hasNavigated
     ) {
       // Defer phase change to avoid synchronous setState inside the effect.
@@ -70,7 +80,8 @@ const PageTransitionEffect = ({ children }: { children: React.ReactNode }) => {
         setCurtainPhase((current) =>
           isAnimatingRef.current &&
           current === 'enter' &&
-          targetPathRef.current === pathname &&
+          targetPathRef.current &&
+          isSamePath(targetPathRef.current, pathname) &&
           hasNavigated
             ? 'exit'
             : current,
@@ -78,6 +89,20 @@ const PageTransitionEffect = ({ children }: { children: React.ReactNode }) => {
       });
     }
   }, [pathname, curtainPhase, hasNavigated]);
+
+  // Safety fallback in case match/normalize path cannot be resolved exactly.
+  useEffect(() => {
+    if (curtainPhase === 'enter' && hasNavigated) {
+      const fallback = setTimeout(() => {
+        if (isAnimatingRef.current && curtainPhase === 'enter') {
+          setCurtainPhase('exit');
+        }
+      }, 1400);
+
+      return () => clearTimeout(fallback);
+    }
+    return;
+  }, [curtainPhase, hasNavigated]);
 
   return (
     <>
@@ -111,7 +136,7 @@ const PageTransitionEffect = ({ children }: { children: React.ReactNode }) => {
                   // First half finished: curtain fully covers the page.
                   // Navigate to the target route while the page is fully covered.
                   const href = targetPathRef.current;
-                  if (href && href !== pathname && !hasNavigated) {
+                  if (href && !isSamePath(href, pathname) && !hasNavigated) {
                     router.push(href);
                     setHasNavigated(true);
                   }

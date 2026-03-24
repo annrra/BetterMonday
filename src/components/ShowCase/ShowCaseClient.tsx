@@ -9,7 +9,7 @@ import ShowCasePreview from './ShowCasePreview';
 import { ShowCaseEntry } from './ShowCaseServer';
 import { scrambleText } from '@/src/components/_utils/Scramble';
 import { motion, AnimatePresence } from 'framer-motion';
-import Link from 'next/link';
+import { TransitionLink } from '@/src/components/transitions';
 
 export type ShowCaseListProps = {
   items: ShowCaseEntry[];
@@ -175,7 +175,7 @@ const ShowCaseClient = ({items}: ShowCaseListProps) => {
             <div className={styles.cards}>
               {items.map((item, index) =>
                 item.title ? (
-                  <Link href={item.slug} key={item.id} className={styles.link}>
+                  <TransitionLink href={item.slug} key={item.id} className={styles.link}>
                     <div
                       key={item.id}
                       className={classNames(
@@ -189,7 +189,7 @@ const ShowCaseClient = ({items}: ShowCaseListProps) => {
                       <div className={styles.title}>{item.title}</div>
                       <div className={styles.meta}>{item.meta}</div>
                     </div>
-                  </Link>
+                  </TransitionLink>
                 ) : null
               )}
             </div>
