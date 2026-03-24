@@ -199,7 +199,8 @@ const ShowCaseClient = ({items}: ShowCaseListProps) => {
 
       {previewReady && (
         <ShowCasePreview
-          media={selected.imageUrl}
+          media={selected.mediaUrl}
+          mimeType={selected.mimeType}
           cursor={cursor}
           visible={true}
           hideBlobs={isCursorMoving}

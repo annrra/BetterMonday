@@ -294,6 +294,8 @@ export async function getShowCaseList() {
                   guid
                   mediaItemUrl
                   mediaItemId
+                  mediaType
+                  mimeType
                 }
               }
             }

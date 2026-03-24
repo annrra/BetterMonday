@@ -20,15 +20,34 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--bm-space-25);
   font-weight: 300;
+  font-size: 0.875rem;
+  line-height: 170%;
 }
 
 .notice h2 {
   font-weight: 300;
-  font-size: 1rem;
+  font-size: 0.875rem;
+  line-height: 130%;
 }
 
 .notice a {
   color: var(--bm-tint-accent);
+  position: relative;
+  display: inline-flex;
+}
+
+.notice a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--bm-tint-silver);
+  transition: width 0.3s ease;
+}
+
+.notice a:hover::after {
+  width: 100%;
 }

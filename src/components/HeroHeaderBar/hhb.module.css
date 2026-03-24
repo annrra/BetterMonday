@@ -209,7 +209,7 @@
 }
 
 .nav a:hover::after {
-  width: 100%;               /* Expand to full width on hover */
+  width: 100%;
 }
 
 .nh {

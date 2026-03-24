@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 
 type ShowCasePreviewProps = {
   media?: string;
+  mimeType?: string;
   cursor: { x: number; y: number };
   visible: boolean;
   hideBlobs: boolean;
@@ -16,10 +17,12 @@ const PREVIEW_HEIGHT = 250;
 
 const ShowCasePreview = ({
   media,
+  mimeType,
   cursor,
   visible,
   hideBlobs,
 }: ShowCasePreviewProps) => {
+  const isVideo = mimeType?.startsWith('video/');
 
   return (
     <motion.div
@@ -76,13 +79,25 @@ const ShowCasePreview = ({
         transition={{ duration: 0.3, ease: "easeOut", delay: 0.2 }}
       >
         {media ? (
-          <Image
-            src={media}
-            className={styles.figure}
-            alt=""
-            width={300}
-            height={200}
-          />
+          isVideo ? (
+            <video
+              src={media}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              className={styles.video}
+            />
+          ) : (
+            <Image
+              src={media}
+              className={styles.figure}
+              alt=""
+              width={300}
+              height={200}
+            />  
+          )
         ) : (
           <div className={styles.placeholder}></div>
         )}

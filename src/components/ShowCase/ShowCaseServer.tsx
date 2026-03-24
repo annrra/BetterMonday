@@ -9,9 +9,10 @@ export type ShowCaseEntry = {
   meta: string;
   description: string;
   tags: string[];
-  imageUrl: string;
+  mediaUrl: string;
   link: string;
   slug: string;
+  mimeType?: string;
 };
 
 export type ShowCaseItem = {
@@ -28,6 +29,8 @@ export type ShowCaseItem = {
     nextshowcasepreview?: {
       node: {
         mediaItemUrl: string;
+        mediaType: string;
+        mimeType: string;
       };
     };
   };
@@ -57,9 +60,10 @@ const ShowCaseServer = async () => {
         sc.nextshowcasetag04,
         sc.nextshowcasetag05,
       ].filter(Boolean), // removes empty tags
-      imageUrl: sc.nextshowcasepreview?.node?.mediaItemUrl ?? "",
+      mediaUrl: sc.nextshowcasepreview?.node?.mediaItemUrl ?? "",
       link: item.link,
       slug: item.uri,
+      mimeType: sc.nextshowcasepreview?.node?.mimeType ?? "",
     };
   });
 
