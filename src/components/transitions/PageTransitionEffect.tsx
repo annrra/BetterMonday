@@ -114,6 +114,7 @@ const PageTransitionEffect = ({ children }: { children: React.ReactNode }) => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
+          className={styles.pte}
         >
           <FrozenRouter>{children}</FrozenRouter>
         </motion.div>
