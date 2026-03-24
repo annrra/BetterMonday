@@ -43,6 +43,7 @@ const PageTransitionEffect = ({ children }: { children: React.ReactNode }) => {
   const [hasNavigated, setHasNavigated] = useState(false);
   const targetPathRef = useRef<string | null>(null);
   const isAnimatingRef = useRef(false);
+  const startTimeRef = useRef<number>(0);
 
   // Listen for navigation requests from TransitionLink
   useEffect(() => {
@@ -56,6 +57,7 @@ const PageTransitionEffect = ({ children }: { children: React.ReactNode }) => {
       targetPathRef.current = normalizePath(href);
       isAnimatingRef.current = true;
       setHasNavigated(false);
+      startTimeRef.current = Date.now();
       setCurtainPhase('enter');
     };
 
@@ -75,9 +77,25 @@ const PageTransitionEffect = ({ children }: { children: React.ReactNode }) => {
       isSamePath(pathname, targetPathRef.current) &&
       hasNavigated
     ) {
-      // Defer phase change to avoid synchronous setState inside the effect.
-      // This still reacts immediately after the route matches the target.
-      queueMicrotask(() => {
+      const elapsed = Date.now() - startTimeRef.current;
+      const MIN_DURATION = 800; // minimum 800ms for curtain to stay
+
+      if (elapsed < MIN_DURATION) {
+        // Wait for remaining time before exiting
+        const timeoutId = setTimeout(() => {
+          setCurtainPhase((current) =>
+            isAnimatingRef.current &&
+            current === 'enter' &&
+            targetPathRef.current &&
+            isSamePath(targetPathRef.current, pathname) &&
+            hasNavigated
+              ? 'exit'
+              : current,
+          );
+        }, MIN_DURATION - elapsed);
+        return () => clearTimeout(timeoutId);
+      } else {
+        // Enough time has passed, exit immediately
         setCurtainPhase((current) =>
           isAnimatingRef.current &&
           current === 'enter' &&
@@ -87,7 +105,7 @@ const PageTransitionEffect = ({ children }: { children: React.ReactNode }) => {
             ? 'exit'
             : current,
         );
-      });
+      }
     }
   }, [pathname, curtainPhase, hasNavigated]);
 
