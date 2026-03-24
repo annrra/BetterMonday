@@ -1,14 +1,15 @@
 import styles from './post.module.css';
 import { getShowCaseItem } from '@/lib/api';
-/* import { generatePageMetadata } from '@/src/components/_utils/MetaDataUtil/MetaDataUtil'; */
+import { generatePageMetadata } from '@/src/components/_utils/MetaDataUtil/MetaDataUtil';
 import { ShowCaseItemClient, ShowCaseItemServer } from '@/src/components/ShowCaseItem';
 import { notFound } from 'next/navigation';
 import type { PostProps } from './types';
 import type { Category, ShowCaseItemResponse, ShowCasePost } from '@/src/components/ShowCaseItem/types';
 
-/* export async function generateMetadata({ params: { slug } }: PostProps) {
+export async function generateMetadata({ params }: PostProps) {
+  const { slug } = await params;
   return await generatePageMetadata(slug);
-} */
+}
 
 export default async function Post({ params }: PostProps) {
   const { slug } = await params;
@@ -19,7 +20,6 @@ export default async function Post({ params }: PostProps) {
 
   const rawShowCaseItem: ShowCaseItemResponse = await getShowCaseItem(slug);
   const post: ShowCasePost | null = rawShowCaseItem?.post ?? null;
-  //console.log(JSON.stringify(post, null, 2));
 
   if (!post) {
     notFound();
