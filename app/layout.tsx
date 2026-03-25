@@ -11,6 +11,31 @@ export const metadata: Metadata = {
   },
   description: 'Independent web designer & developer delivering custom websites, UI/UX design, and digital solutions to help brands stand out.',
   metadataBase: new URL('https://bettermonday.org/'),
+
+  openGraph: {
+    title: 'BetterMonday',
+    description:
+      'Independent web designer & developer delivering custom websites, UI/UX design, and digital solutions to help brands stand out.',
+    url: 'https://bettermonday.org/',
+    siteName: 'BetterMonday',
+    type: 'website',
+    images: [
+      {
+        url: '/og-default.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'BetterMonday - Web Design & Development',
+      },
+    ],
+  },
+
+  twitter: {
+    card: 'summary_large_image',
+    title: 'BetterMonday',
+    description:
+      'Independent web designer & developer delivering custom websites, UI/UX design, and digital solutions.',
+    images: ['/og-default.jpg'],
+  },
 };
 
 const geistSans = Geist({

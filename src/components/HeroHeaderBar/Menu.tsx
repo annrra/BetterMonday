@@ -8,12 +8,12 @@ const Menu = () => {
 
   return (
     <nav className={styles.nav}>
-      <Link href="/overview">
-        <span>overview</span>
+      <Link href="/about">
+        <span>about</span>
       </Link>
       <ComingSoonTooltip message='Under development..'>
-        <TransitionLink href="/highlights">
-          <span>highlights</span>
+        <TransitionLink href="/work">
+          <span>work</span>
         </TransitionLink>
       </ComingSoonTooltip>
     </nav>

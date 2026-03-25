@@ -132,7 +132,7 @@ const ShowCaseClient = ({items}: ShowCaseListProps) => {
       <HeartShapedBox />
 
       {!hasItems ? (
-        <div className={styles.empty}>No highlights available yet.</div>
+        <div className={styles.empty}>No projects available yet.</div>
       ) : (
         <>
           <div className={classNames(styles.panel, styles.data)}>

@@ -1,5 +1,4 @@
 import React from 'react';
-import { metadata } from '@/app/layout';
 import styles from './h.module.css';
 import classNames from 'classnames';
 import { HueSlider } from '@/src/components/HueSlider';
@@ -12,7 +11,6 @@ type HeroProps = {
 }
 
 const Hero = ({ left, right, overview }: HeroProps) => {
-  //const altText = metadata.title || 'Better Monday';
 
   return (
     <section className={styles.hero}>

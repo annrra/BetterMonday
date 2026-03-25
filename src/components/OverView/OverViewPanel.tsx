@@ -41,14 +41,14 @@ const itemVariants = {
 const OverViewPanel = ({ children }: OverViewPanelProps) => {
   const pathname = usePathname();
   const router = useRouter();
-  const showOverViewOverlay = pathname === "/overview";
+  const showOverViewOverlay = pathname === "/about";
   const bodyRef = useRef<HTMLDivElement>(null);
   const viewportRef = useRef<HTMLDivElement>(null);
   const storyRef = useRef<HTMLDivElement>(null);
   const [dragConstraints, setDragConstraints] = useState<{ left: number; right: number }>({ left: 0, right: 0 });
   const dragX = useMotionValue(0);
 
-  // Scroll to top when returning from overview
+  // Scroll to top when returning from about
   useEffect(() => {
     if (pathname === "/" && !showOverViewOverlay) {
       // Use a small delay to ensure Next.js has finished scroll restoration
@@ -59,7 +59,7 @@ const OverViewPanel = ({ children }: OverViewPanelProps) => {
     }
   }, [pathname, showOverViewOverlay]);
 
-  // Disable scrolling on body when overview is open
+  // Disable scrolling on body when about is open
   useEffect(() => {
     if (showOverViewOverlay) {
       document.body.style.position = 'fixed';

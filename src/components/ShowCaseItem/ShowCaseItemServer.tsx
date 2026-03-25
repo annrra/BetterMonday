@@ -44,7 +44,7 @@ const ShowCaseItemServer = async ({ post, item }: ShowCaseItemServerProps) => {
           </TransitionLink>
         </div>
         <div className={styles.close}>
-          <Close href='/highlights' transition />
+          <Close href='/work' transition />
         </div>
         <div className={styles.hero} data-speed={-0.5}>
           {item?.featuredImage?.guid && (

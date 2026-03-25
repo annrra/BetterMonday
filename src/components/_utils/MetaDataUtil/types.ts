@@ -34,8 +34,16 @@ type OpenGraphMetadata = {
   images?: OpenGraphImage[];
 }
 
+type TwitterMetadata = {
+  card: 'summary' | 'summary_large_image';
+  title: string;
+  description: string;
+  images?: string[];
+};
+
 export type PageMetadata = {
   title: string;
   description: string;
   openGraph: OpenGraphMetadata;
+  twitter: TwitterMetadata;
 }
