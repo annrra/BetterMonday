@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/og-default.jpg", // same as root layout
+        url: "/og-default.jpg",
         width: 1200,
         height: 630,
         alt: "BetterMonday - UI/UX Design and Digital Solutions",

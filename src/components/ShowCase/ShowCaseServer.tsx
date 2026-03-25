@@ -73,6 +73,7 @@ const ShowCaseServer = async () => {
 
   return (
     <div className={styles.showroom}>
+        <h1 className={styles.sronly}>Selected projects by BetterMonday</h1>
         <ShowCaseClient items={items} />
     </div>
   );

@@ -5,6 +5,18 @@
   min-height: 100vh;
 }
 
+.sronly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .board {
   margin: var(--bm-space-200);
   padding: var(--bm-space-600) var(--bm-space-800) var(--bm-space-900);

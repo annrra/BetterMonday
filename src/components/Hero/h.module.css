@@ -150,6 +150,6 @@
 
 @media only screen and (max-width: 480px) {
   .twinner {
-    gap: var(--bm-space-25);
+    gap: var(--bm-space-50);
   }
 }

@@ -35,7 +35,7 @@ export default function NotFound() {
 	return (
 		<div className={styles.notfound}>
 			<Link href="/" className={styles.logo}>
-				<MondayLogoSvg />
+				<MondayLogoSvg autoScramble />
 			</Link>
 			<div className={styles.notice}>
 				<h1>Page not found</h1>

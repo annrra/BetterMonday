@@ -30,7 +30,7 @@
   -webkit-tap-highlight-color: transparent;
 }
 
-.context {
+.context h1 {
   font-size: 1.0rem;
   font-weight: 200;
   color: var(--bm-tint-silver);

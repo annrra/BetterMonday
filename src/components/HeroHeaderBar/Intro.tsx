@@ -16,7 +16,7 @@ const Intro = async () => {
         <Menu />
       </div>
       <div className={styles.in}>
-        <div className={styles.context}>Independent web designer and developer creating strategic UI/UX and websites for brands that want to grow.</div>
+        <div className={styles.context}><h1>Independent web designer and developer creating strategic UI/UX and websites for brands that want to grow.</h1></div>
       </div>
     </div>
   );
