@@ -1,10 +1,19 @@
+.link {
+  display: inline-flex;
+}
+
 .link-text {
   color: var(--bm-tint-silver);
   font-size: 0.875rem;
+  font-weight: 300;
   border-radius: var(--bm-radius-sm);
   line-height: var(--bm-space-400);
   padding: 0 var(--bm-space-100);
   white-space: nowrap;
+}
+
+.bg .link-text {
+  background-color: var(--bm-tint-accent);
 }
 
 .link-icon {
@@ -24,12 +33,9 @@
 .link a {
   display: inline-flex;
   align-items: center;
+  justify-content: flex-start;
   gap: var(--bm-space-50);
   -webkit-tap-highlight-color: transparent;
-}
-
-.link a .link-icon-left {
-  display: none;
 }
 
 .link a:hover .link-icon-left {

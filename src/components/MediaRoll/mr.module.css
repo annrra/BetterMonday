@@ -150,6 +150,10 @@
 	.loop {
 		min-width: 250px;
 	}
+
+	.rim span {
+		font-size: 0.775rem;
+	}
 }
 
 @media only screen and (max-width: 450px) {

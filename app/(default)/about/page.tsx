@@ -1,12 +1,4 @@
-// This page intentionally returns null.
-// It exists only to register the `/about` route.
-//
-// The actual About overlay is rendered inside the Hero and PrimaryPanel layout
-// and is controlled via `usePathname()`.
-// When the URL is `/about`, the overlay becomes visible.
-//
-// Do not remove this file unless the routing strategy changes.
-
+import { AboutScreen } from '@/src/components/AboutSection';
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -38,5 +30,9 @@ export const metadata: Metadata = {
 };
 
 export default function AboutPage() {
-  return null;
+  return (
+    <div>
+      <AboutScreen />
+    </div>
+  );
 }

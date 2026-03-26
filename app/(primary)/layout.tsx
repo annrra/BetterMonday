@@ -1,6 +1,5 @@
 import styles from './page.module.css';
 import { Hero, PrimaryPanel, SecondaryPanel } from '@/src/components/Hero';
-import { OverView } from '@/src/components/OverView';
 
 export default function PrimaryLayout({
   children,
@@ -12,7 +11,6 @@ export default function PrimaryLayout({
       <Hero
         left={<PrimaryPanel />}
         right={<SecondaryPanel />}
-        overview={<OverView />}
       />
       {children}
     </div>

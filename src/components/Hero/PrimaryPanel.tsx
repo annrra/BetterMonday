@@ -1,13 +1,17 @@
 import styles from './h.module.css';
 import classNames from 'classnames';
-import { Intro } from '../HeroHeaderBar';
+import { HeaderBar } from '@/src/components/HeaderBar';
+import Intro from './Intro';
 import { HeroHook } from '../HeroHook';
 
 const PrimaryPanel = async () => {
 
   return (
     <div className={classNames(styles.plate, styles.pp)}>
-      <Intro />
+      <div className={styles.hdr}>
+        <HeaderBar />
+        <Intro />
+      </div>
       <HeroHook />
     </div>
   );

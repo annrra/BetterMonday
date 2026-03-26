@@ -1,13 +1,19 @@
-import Menu from './Menu';
+import { Menu } from '@/src/components/HeaderBar';
 import Connect from './Connect';
-import styles from './hhb.module.css';
+import styles from './nb.module.css';
+import classNames from 'classnames';
 
-const NavBar = () => {
+type NavBarProps = {
+  showConnectCta?: boolean;
+  mode?: 'default' | 'light';
+};
+
+const NavBar = ({ showConnectCta = false, mode = 'default' }: NavBarProps) => {
 
   return (
-    <div className={styles.topbar}>
+    <div className={classNames(styles.topbar, { [styles.light]: mode === 'light' })}>
       <div className={styles.nh}>
-        <Menu />
+        <Menu mode={mode} />
         <svg
           width={50}
           height={10}
@@ -21,7 +27,7 @@ const NavBar = () => {
         </svg>
       </div>
       <div className={styles['connect-wrapper']}>
-        <Connect />
+        <Connect showConnectCta={showConnectCta} />
       </div>
     </div>
   );

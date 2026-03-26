@@ -7,10 +7,9 @@ import { HeartShapedBox } from '@/src/components/ui/HeartShapedBox';
 type HeroProps = {
   left: React.ReactNode;
   right: React.ReactNode;
-  overview: React.ReactNode;
 }
 
-const Hero = ({ left, right, overview }: HeroProps) => {
+const Hero = ({ left, right }: HeroProps) => {
 
   return (
     <section className={styles.hero}>
@@ -30,7 +29,6 @@ const Hero = ({ left, right, overview }: HeroProps) => {
 
             <HueSlider />
             <HeartShapedBox />
-            {overview}
           </div>
         </div>
       </>

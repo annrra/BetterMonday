@@ -1,0 +1,76 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo-wrapper {
+  display: flex;
+  width: 50%;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.logo-link {
+  display: inline-block;
+  outline: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.logo-link svg {
+  vertical-align: middle;
+}
+
+.header .nav {
+  display: none;
+}
+
+.nav {
+  line-height: var(--bm-space-400);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bm-space-300);
+}
+
+.nav a {
+  color: var(--bm-tint-text-inverted);
+  font-weight: 300;
+  position: relative;
+  display: inline-flex;
+  -webkit-tap-highlight-color: transparent;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+}
+
+.light.nav a {
+  color: var(--bm-tint-silver);
+}
+
+.nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--bm-tint-silver);
+  transition: width 0.3s ease;
+}
+
+.light.nav a::after {
+  background-color: var(--bm-tint-silver);
+}
+
+.nav a:hover::after {
+  width: 100%;
+}
+
+@media only screen and (max-width: 1000px) {
+  .header .nav {
+    display: inline-flex;
+  }
+
+  .nav a {
+    color: var(--bm-tint-silver);
+  }
+}

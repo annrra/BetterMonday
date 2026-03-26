@@ -1,6 +1,7 @@
 .hh {
   width: 100%;
   margin: var(--bm-space-1000) 0 120px;
+  padding: 0 var(--bm-space-400);
 }
 
 .pitch {
@@ -20,6 +21,12 @@
 
 .pad {
   fill: var(--bm-tint-accent);
+}
+
+@media only screen and (max-width: 1200px) {
+  .hh {
+    padding: 0;
+  }
 }
 
 @media only screen and (max-width: 1000px) {

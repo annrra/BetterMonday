@@ -1,12 +1,16 @@
 "use client";
 import { useState, useRef } from 'react';
-import Link from 'next/link';
+import { TransitionLink } from '@/src/components/transitions';
 import { motion, useAnimationControls } from 'framer-motion';
-import styles from './hhb.module.css';
+import styles from './nb.module.css';
 import { scrambleText } from '@/src/components/_utils/Scramble';
 import classNames from 'classnames';
 
-const Connect = () => {
+type ConnectProps = {
+  showConnectCta?: boolean;
+};
+
+const Connect = ({ showConnectCta = false }: ConnectProps) => {
   const [text, setText] = useState("Tell me about your project.\nLet's make it happen.");
   const wordIndex = useRef(0);
   const blobSmControls = useAnimationControls();
@@ -52,7 +56,7 @@ const Connect = () => {
 
   return (
     <div className={styles.connect}>
-      <Link href="/connect">
+      <TransitionLink href="/connect">
         <div className={styles.btn}><span>connect...</span></div>
         <svg
           width={33}
@@ -62,7 +66,7 @@ const Connect = () => {
           xmlns="http://www.w3.org/2000/svg"
         >
           <g id="accept">
-            <rect id="circle" width={33} height={33} rx={16.5} className={styles['accept-btn']} />
+            <rect id="circle" width={33} height={33} rx={3} className={styles['accept-btn']} />
             <g id="arr" clipPath="url(#clip0_336_104)">
               <path
                 id="Vector"
@@ -77,30 +81,32 @@ const Connect = () => {
             </clipPath>
           </defs>
         </svg>
-      </Link>
-      <div className={styles['cta-tooltip']}>
-        <motion.div
-          className={styles.cta}
-          layout
-          transition={{ type: 'spring', stiffness: 400, damping: 30 }}
-          onMouseEnter={() => handleHoverStart()}
-          onMouseLeave={() => handleHoverEnd()}
-        >
-          <span className={styles.flip}>
-            {text}
-          </span>
-        </motion.div>
-        <motion.span
-          className={classNames(styles.blob, styles['blob-sm'])}
-          initial={{ opacity: 1, scale: 1 }}
-          animate={blobSmControls}
-        />
-        <motion.span
-          className={classNames(styles.blob, styles['blob-lg'])}
-          initial={{ opacity: 1, scale: 1 }}
-          animate={blobLgControls}
-        />
-      </div>
+      </TransitionLink>
+      {showConnectCta && (
+        <div className={styles['cta-tooltip']}>
+          <motion.div
+            className={styles.cta}
+            layout
+            transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+            onMouseEnter={() => handleHoverStart()}
+            onMouseLeave={() => handleHoverEnd()}
+          >
+            <span className={styles.flip}>
+              {text}
+            </span>
+          </motion.div>
+          <motion.span
+            className={classNames(styles.blob, styles['blob-sm'])}
+            initial={{ opacity: 1, scale: 1 }}
+            animate={blobSmControls}
+          />
+          <motion.span
+            className={classNames(styles.blob, styles['blob-lg'])}
+            initial={{ opacity: 1, scale: 1 }}
+            animate={blobLgControls}
+          />
+        </div>
+      )}
     </div>
   );
 

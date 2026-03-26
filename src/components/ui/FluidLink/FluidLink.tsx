@@ -8,6 +8,7 @@ type FluidLinkProps = {
   href?: string;
   text?: string;
   customClassName?: string;
+  hasBackground?: boolean;
   onClick?: (event: React.MouseEvent<HTMLAnchorElement>) => void;
 }
 
@@ -15,25 +16,26 @@ const FluidLink = ({
   href = "/",
   text = "view live site",
   customClassName,
+  hasBackground = false,
   onClick,
 }: FluidLinkProps) => {
 
   // Animate the container to shift right on hover
   const containerVariants = {
     rest: { x: 0 },
-    hover: { x: 20, transition: { duration: 0.3, ease: easeInOut } }
+    hover: { x: 0, transition: { duration: 0.3, ease: easeInOut } }
   };
 
   // Shrink on hover
   const rightIconVariants = {
     rest: { scale: 1, opacity: 1, rotate: 0 },
-    hover: { scale: 0, opacity: 0, rotate: 360, transition: { duration: 0.3, ease: easeInOut } }
+    hover: { scale: 0, opacity: 0, width: 0, rotate: 360, transition: { duration: 0.3, ease: easeInOut } }
   };
 
   // Expand on hover
   const leftIconVariants = {
-    rest: { scale: 0, opacity: 0, rotate: -360 },
-    hover: { scale: 1, opacity: 1, rotate: 0, transition: { duration: 0.3, ease: easeInOut } }
+    rest: { scale: 0, opacity: 0, width: 0, rotate: -360 },
+    hover: { scale: 1, opacity: 1, width: 32, rotate: 0, transition: { duration: 0.3, ease: easeInOut } }
   };
 
   const leftSvgVariants = {
@@ -43,7 +45,7 @@ const FluidLink = ({
 
   return (
     <motion.div 
-      className={classNames(styles.link, customClassName)}
+      className={classNames(styles.link, customClassName, { [styles.bg]: hasBackground })}
       initial="rest"
       whileHover="hover"
       animate="rest"
