@@ -21,7 +21,7 @@ const itemVariants = {
     y: 24,
   },
   show: {
-    opacity: 1,
+    opacity: 0.5,
     y: 0,
     transition: {
       duration: 0.5,

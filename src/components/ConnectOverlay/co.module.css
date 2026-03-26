@@ -31,7 +31,8 @@
 .heading {
   text-align: center;
   font-family: var(--font-passion-one);
-  color: var(--tone-primary-700);
+  color: var(--bm-tint-silver);
+  opacity: 0.5;
   margin: 0 0 var(--bm-space-600);
 }
 

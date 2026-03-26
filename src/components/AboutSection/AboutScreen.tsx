@@ -7,6 +7,7 @@ import { NavBar } from '@/src/components/NavBar';
 import ScrambleCreatedText from './ScrambleCreatedText';
 import { FluidLink } from '@/src/components/ui/FluidLink';
 import { HeartShapedBox } from '@/src/components/ui/HeartShapedBox';
+import { EmailLink } from '@/src/components/_utils/EmailLink';
 
 const AboutScreen = () => {
 
@@ -62,7 +63,7 @@ const AboutScreen = () => {
                       <h2>Contact</h2>
                       <div className={styles['contact-info']}>
                         <span>+359 879 901 835</span>
-                        <span>annrra@gmail.com</span>
+                        <span><EmailLink showEmail /></span>
                       </div>
                       <div className={styles['cta']}>
                         <FluidLink href="/connect" text="tell me what you're building" hasBackground />

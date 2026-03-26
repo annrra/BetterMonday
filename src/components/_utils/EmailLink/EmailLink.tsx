@@ -1,25 +1,31 @@
-import React from "react";
+'use client';
+import React, { useMemo } from 'react';
 
 type EmailLinkProps = {
-  className?: string
+  className?: string;
+  showEmail?: boolean;
 }
 
-const EmailLink = ({ className }: EmailLinkProps) => {
+const EmailLink = ({ className, showEmail = false }: EmailLinkProps) => {
+  const a = "ann"
+  const b = "rra"
+  const c = "gma"
+  const d = "il"
+  const e = "co"
+  const f = "m"
+
+  // Construct only in JS runtime
+  const email = useMemo(() => {
+    return `${a + b}@${c + d}.${e + f}`;
+  }, []);
+
   const handleClick = () => {
-    const a = "ann"
-    const b = "rra"
-    const c = "gma"
-    const d = "il"
-    const e = "co"
-    const f = "m"
-    window.location.href = `mailto:${a + b}@${c + d}.${e + f}`
-  }
+    window.location.href = `mailto:${email}`;
+  };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLSpanElement>) => {
-    if (e.key === "Enter") {
-      handleClick()
-    }
-  }
+    if (e.key === "Enter") handleClick();
+  };
 
   return (
     <span
@@ -29,7 +35,7 @@ const EmailLink = ({ className }: EmailLinkProps) => {
       onKeyDown={handleKeyDown}
       className={className}
     >
-      email
+      {showEmail ? email : "email"}
     </span>
   )
 }
