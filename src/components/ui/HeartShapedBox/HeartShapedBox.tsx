@@ -4,7 +4,11 @@ import styles from './hsb.module.css';
 import { motion, AnimatePresence } from 'framer-motion';
 import classNames from 'classnames';
 
-const HeartShapedBox = () => {
+type HeartShapedBoxProps = {
+  inline?: boolean;
+}
+
+const HeartShapedBox = ({ inline }: HeartShapedBoxProps) => {
   const [liked, setLiked] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
   const clipId = useId();
@@ -32,7 +36,7 @@ const HeartShapedBox = () => {
 
   return (
     <div 
-      className={classNames(styles.box, {[styles.liked]: liked})}
+      className={classNames(styles.box, {[styles.liked]: liked}, {[styles.inline]: inline})}
       onClick={handleClick}
     >
       <motion.svg

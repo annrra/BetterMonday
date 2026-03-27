@@ -4,10 +4,10 @@ import styles from './as.module.css';
 import classNames from 'classnames';
 import { HeaderBar } from '@/src/components/HeaderBar'; 
 import { NavBar } from '@/src/components/NavBar';
-import ScrambleCreatedText from './ScrambleCreatedText';
-import { FluidLink } from '@/src/components/ui/FluidLink';
+import { ScrambleCreatedText } from '@/src/components/ui/ScrambleCreatedText';
 import { HeartShapedBox } from '@/src/components/ui/HeartShapedBox';
 import { EmailLink } from '@/src/components/_utils/EmailLink';
+import ManualGraphSvg from './ManualGraphSvg';
 
 const AboutScreen = () => {
 
@@ -20,14 +20,24 @@ const AboutScreen = () => {
               <div className={styles.hdr}>
                 <HeaderBar />
               </div>
-              <div className={styles.media}>
+              <div className={styles.playbook}>
+                <div className={styles.preface}>
+                  A brief manual on how to work with me.<br />
+                  Pretty simple to operate - no assembly required.<br />
+                  Tweak anything or challenge anything - good results will follow.
+                </div>
+                <div className={styles.manualgraph}>
+                  <ManualGraphSvg />
+                </div>
+              </div>
+              {/* <div className={styles.media}>
                 <Image
                   src="https://bettermonday.org/wp-content/uploads/cudillero-mirror.jpg"
                   alt=""
                   fill
                   className={styles.i}
                 />
-                {/* <video
+                <video
                   src="vid-rotate-bw.mp4"
                   autoPlay
                   muted
@@ -35,15 +45,15 @@ const AboutScreen = () => {
                   playsInline
                   preload="metadata"
                   className={styles.video}
-                /> */}
-              </div>
+                />
+              </div> */}
             </div>
           </div>
           <div className={styles['panel-wrapper']}>
             <div className={classNames(styles.panel, styles['panel--right'])}>
               <div className={styles.overview}>
                 <div className={styles.header}>
-                  <NavBar mode='light' />
+                  <NavBar />
                 </div>
                 <div className={styles.body}>
                   <div className={styles.intro}>
@@ -60,13 +70,10 @@ const AboutScreen = () => {
                       </div>
                     </div>
                     <div className={styles.connect}>
-                      <h2>Contact</h2>
-                      <div className={styles['contact-info']}>
+                      <h3>Contact</h3>
+                      <div className={styles['connect-info']}>
                         <span>+359 879 901 835</span>
                         <span><EmailLink showEmail /></span>
-                      </div>
-                      <div className={styles['cta']}>
-                        <FluidLink href="/connect" text="tell me what you're building" hasBackground />
                       </div>
                     </div>
                   </div>
@@ -81,7 +88,7 @@ const AboutScreen = () => {
               </div>
             </div>
           </div>
-          <HeartShapedBox />
+          <HeartShapedBox inline />
         </div>
       </>
     </section>

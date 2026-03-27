@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useRef } from 'react';
 import { scrambleText } from '@/src/components/_utils/Scramble';
-import styles from './as.module.css';
+import styles from './sct.module.css';
 
 const words = [
   `Created ✨`,

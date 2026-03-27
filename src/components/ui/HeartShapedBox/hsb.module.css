@@ -39,6 +39,18 @@
   clip-path: path("M 0 0 L 12 0 Q 0 0 0 12 L 0 0 Z");
 }
 
+.box.inline {
+  border-radius: var(--bm-radius-base);
+  background-color: var(--bm-tint-dim);
+  bottom: 1px;
+  left: 1px;
+}
+
+.box.inline::before,
+.box.inline::after {
+  display: none;
+}
+
 .heart {
   width: 20px;
   cursor: pointer;
