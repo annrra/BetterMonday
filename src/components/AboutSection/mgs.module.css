@@ -15,6 +15,10 @@
   fill: var(--bm-tint-grey);
 }
 
+.stoke-contour {
+  stroke: var(--bm-tint-grey);
+}
+
 .bowler {
   cursor: crosshair;
   pointer-events: bounding-box;
