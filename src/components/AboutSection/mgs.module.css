@@ -15,6 +15,10 @@
   fill: var(--bm-tint-grey);
 }
 
+.fill-contour-accent {
+  fill: var(--bm-tint-silver)
+}
+
 .stoke-contour {
   stroke: var(--bm-tint-grey);
 }
@@ -26,8 +30,6 @@
 
 .preview {
   position: absolute;
-  /* top: 160px;
-  right: -230px; */
   z-index: 15;
 }
 

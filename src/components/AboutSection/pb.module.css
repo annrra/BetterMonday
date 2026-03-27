@@ -1,0 +1,101 @@
+.tab {
+  color: var(--bm-tint-accent);
+  cursor: pointer;
+}
+
+.media-view {
+  width: 80%;
+  margin: 150px auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--bm-space-100);
+}
+
+.media {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 310px;
+  overflow: hidden;
+  border-radius: var(--bm-radius-lg);
+}
+
+.caption {
+  text-align: right;
+  font-size: 0.75rem;
+  line-height: 1.5;
+}
+
+.i {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.playbook {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding: 100px var(--bm-space-1000) var(--bm-space-1000);
+  color: var(--bm-tint-silver);
+  font-weight: 300;
+}
+
+.preface {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  margin-top: var(--bm-space-100);
+}
+
+.manualgraph {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 80px;
+  width: 100%;
+  height: auto;
+  flex: 1;
+}
+
+.heart-pointer {
+  position: absolute;
+  bottom: 20px;
+  left: 90px;
+  display: flex;
+  width: 25%;
+}
+
+.heart-arrow {
+  transform: rotate(10deg);
+}
+
+.ismedia .heart-arrow {
+  transform: rotate(190deg);
+}
+
+@media only screen and (max-width: 1000px) {
+  .heart-pointer {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .playbook {
+    padding: 100px var(--bm-space-500) var(--bm-space-1000);
+  }
+
+  .manualgraph {
+    margin-top: 50px;
+  }
+
+  .media-view {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .playbook {
+    padding: 100px var(--bm-space-300) var(--bm-space-600);
+  }
+}

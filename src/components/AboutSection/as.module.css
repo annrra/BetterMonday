@@ -63,27 +63,6 @@
   font-size: 0;
 }
 
-.media {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  border-radius: var(--bm-radius-xl);
-}
-
-.i {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
 .overview {
   display: flex;
   width: 100%;
@@ -224,44 +203,6 @@
   flex-direction: column;
 }
 
-.playbook {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-  padding: 100px var(--bm-space-1000) var(--bm-space-1000);
-  color: var(--bm-tint-silver);
-  font-weight: 300;
-}
-
-.preface {
-  font-size: 0.875rem;
-  line-height: 1.6;
-  margin-top: var(--bm-space-100);
-}
-
-.manualgraph {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 80px;
-  width: 100%;
-  height: auto;
-  flex: 1;
-}
-
-.heart-pointer {
-  position: absolute;
-  bottom: 20px;
-  left: 90px;
-  display: flex;
-  width: 25%;
-}
-
-.heart-arrow {
-  transform: rotate(10deg);
-}
-
 @media only screen and (max-width: 1000px) {
   .pane {
     height: auto;
@@ -281,34 +222,18 @@
   .footer {
     padding-bottom: var(--bm-space-800);
   }
-
-  .heart-pointer {
-    display: none;
-  }
 }
 
 @media only screen and (max-width: 768px) {
-  .playbook {
-    padding: 100px var(--bm-space-500) var(--bm-space-1000);
-  }
-
   .hdr {
     top: var(--bm-space-500);
     left: var(--bm-space-500);
-  }
-
-  .manualgraph {
-    margin-top: 50px;
   }
 }
 
 @media only screen and (max-width: 480px) {
   .twin {
     gap: var(--bm-space-50);
-  }
-
-  .playbook {
-    padding: 100px var(--bm-space-300) var(--bm-space-600);
   }
 
   .hdr {

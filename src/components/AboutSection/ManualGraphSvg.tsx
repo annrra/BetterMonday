@@ -153,7 +153,7 @@ const ManualGraphSvg = () => {
                   key={star.id}
                   id={star.id}
                   d={star.d}
-                  className={styles['fill-contour']}
+                  className={styles['fill-contour-accent']}
                   animate={{ 
                     y: [0, -3, 0], 
                     opacity: [1, 0, 1], 
