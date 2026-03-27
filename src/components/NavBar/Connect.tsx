@@ -54,33 +54,56 @@ const Connect = ({ showConnectCta = false }: ConnectProps) => {
     blobLgControls.start({ opacity: 1, scale: 1, transition: { duration: 0.15 } });
   };
 
+  const iconControls = useAnimationControls();
+
   return (
     <div className={styles.connect}>
       <TransitionLink href="/connect">
-        <div className={styles.btn}><span>connect...</span></div>
-        <svg
-          width={33}
-          height={33}
-          viewBox="0 0 33 33"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
+        <div 
+          className={styles.btn}
+          onMouseEnter={() => {
+            iconControls.start({
+              rotate: [0, 360],
+              scale: [1, 0.65, 1.05, 1],
+              transition: {
+                duration: 0.5,
+                ease: [0.65, 0, 0.35, 1],
+                times: [0, 0.4, 0.8, 1],
+              },
+            });
+          }}
+          onMouseLeave={() => {
+            iconControls.start({
+              rotate: [360, 0],
+              scale: [1, 0.65, 1.05, 1],
+              transition: {
+                duration: 0.5,
+                ease: [0.65, 0, 0.35, 1],
+                times: [0, 0.4, 0.8, 1],
+              },
+            });
+          }}
         >
-          <g id="accept">
-            <rect id="circle" width={33} height={33} rx={3} className={styles['accept-btn']} />
-            <g id="arr" clipPath="url(#clip0_336_104)">
+          <div className={styles.txt}><span>connect</span></div>
+          <motion.svg
+            width={33}
+            height={33}
+            viewBox="0 0 33 33"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            animate={iconControls}
+            style={{ originX: 0.5, originY: 0.5 }}
+          >
+            <g id="accept">
+              <rect id="rect" width={33} height={33} rx={3} className={styles['accept-btn']} />
               <path
-                id="Vector"
+                id="arrow"
                 d="M17.3572 20.5499C17.2384 20.5499 17.1195 20.5058 17.029 20.4181C16.8474 20.2421 16.8474 19.9577 17.029 19.7818L19.9507 16.9499H9.92864C9.67236 16.9499 9.46436 16.7483 9.46436 16.4999C9.46436 16.2515 9.67236 16.0499 9.92864 16.0499H19.9507L17.029 13.2181C16.8474 13.0421 16.8474 12.7577 17.029 12.5818C17.2105 12.4058 17.5039 12.4058 17.6855 12.5818L21.3997 16.1818C21.4448 16.225 21.4782 16.2754 21.501 16.3285C21.5232 16.3807 21.5358 16.4383 21.5358 16.4986V16.5013C21.5358 16.5616 21.5232 16.6192 21.501 16.6714C21.4782 16.7249 21.4448 16.7749 21.3997 16.8181L17.6855 20.4181C17.5949 20.5058 17.4761 20.5499 17.3572 20.5499Z"
                 className={styles.btnarrow}
               />
             </g>
-          </g>
-          <defs>
-            <clipPath id="clip0_336_104">
-              <rect width={13} height={9} fill="white" transform="translate(10 12)" />
-            </clipPath>
-          </defs>
-        </svg>
+          </motion.svg>
+        </div>
       </TransitionLink>
       {showConnectCta && (
         <div className={styles['cta-tooltip']}>

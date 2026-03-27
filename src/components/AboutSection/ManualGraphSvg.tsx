@@ -137,7 +137,7 @@ const ManualGraphSvg = () => {
             variants={characterVariants}
             initial="on"
             animate={characterState ? 'off' : 'on'}
-            transition={{ duration: 0.8, ease: 'easeInOut' }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
             className={styles['fill-contour']}
           />
           <g 

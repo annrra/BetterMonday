@@ -43,26 +43,11 @@
 
 .connect a svg {
   margin-left: var(--bm-space-100);
-  border-radius: 50%;
 }
 
-.connect .btn {
-  position: relative;
-}
-
-.connect a .btn::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 0;
-  height: 1px;
-  background-color: var(--bm-tint-silver);
-  transition: width 0.3s ease;
-}
-
-.connect a:hover .btn::before {
-  width: 100%;
+.btn {
+  display: inline-flex;
+  align-items: center;
 }
 
 .cta-tooltip {
@@ -112,6 +97,10 @@
 
 .accept-btn {
   fill: var(--bm-tint-accent);
+}
+
+.overlay-btn {
+  fill: var(--bm-tint-silver);
 }
 
 .btnarrow {

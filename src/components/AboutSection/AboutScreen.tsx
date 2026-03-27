@@ -73,12 +73,12 @@ const AboutScreen = () => {
                   <div className={styles.intro}>
                     <div className={styles.slide}>
                       <div className={styles.data}>
-                        <p>It is all about the joy of creating something that did not exist before. Behind BetterMonday is Andrey Raychev a UX designer / developer and occasional photographer.</p>
+                        <p>It is all about the joy of creating something that did not exist before. Behind BetterMonday is Andrey Raychev a UX designer / developer and occasional <Link href="https://photocomma.com" target='_blank' rel="noopener noreferrer">photographer</Link>.</p>
                         <p>I build creative front-end and full-scope sites, lead launches, and collaborate with designers to preserve design fidelity.</p>
                       </div>
                       <div className={styles.paginate}>
-                        <span></span>
                         <span className={styles.current}></span>
+                        <span></span>
                         <span></span>
                         <span></span>
                       </div>
