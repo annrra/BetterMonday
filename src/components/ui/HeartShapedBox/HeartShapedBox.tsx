@@ -27,6 +27,9 @@ const HeartShapedBox = ({ inline }: HeartShapedBoxProps) => {
     setLiked(newLiked);
     localStorage.setItem("heart-liked", newLiked.toString());
 
+    // Notify other components in same window (ManualGraphSvg) to sync state
+    window.dispatchEvent(new CustomEvent("heart-liked-changed", { detail: { liked: newLiked } }));
+
     // Set toast message depending on like/unlike
     setToast(newLiked ? "Love it..." : "...or leave it");
 
