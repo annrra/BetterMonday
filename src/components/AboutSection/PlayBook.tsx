@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import styles from './pb.module.css';
 import classNames from 'classnames';
@@ -8,6 +8,24 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const PlayBook = () => {
   const [activePanel, setActivePanel] = useState('manual');
+  const imageRef = useRef<HTMLDivElement | null>(null);
+  const mediaRef = useRef<HTMLDivElement | null>(null);
+  const [offsetY, setOffsetY] = useState(0);
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!mediaRef.current || !imageRef.current) return;
+
+      const mediaRect = mediaRef.current.getBoundingClientRect();
+      const relativeY = Math.min(Math.max((e.clientY - mediaRect.top) / mediaRect.height, 0), 1);
+      const maxShift = imageRef.current.offsetHeight - mediaRect.height;
+      const newY = -relativeY * maxShift;
+      setOffsetY(Math.min(0, Math.max(-maxShift, newY)));
+    };
+
+    document.addEventListener('mousemove', handleMouseMove);
+    return () => document.removeEventListener('mousemove', handleMouseMove);
+  }, []);
 
   return (
     <>
@@ -84,14 +102,25 @@ const PlayBook = () => {
               exit={{ opacity: 0, x: -10 }}
               transition={{ duration: 0.3 }}
             >
-              <div className={styles.media}>
-                <Image
-                  src="https://bettermonday.org/wp-content/uploads/cudillero-mirror.jpg"
-                  alt=""
-                  fill
-                  className={styles.i}
-                />
-              </div>
+              <motion.div 
+                className={styles.media}
+                ref={mediaRef}
+              >
+                <motion.div
+                  ref={imageRef}
+                  style={{ position: 'absolute', width: '100%', top: 0 }}
+                  animate={{ y: offsetY }}
+                  transition={{ type: 'spring', stiffness: 50, damping: 20 }}
+                >
+                  <Image
+                    src="https://bettermonday.org/wp-content/uploads/cudillero-mirror.jpg"
+                    alt=""
+                    width={1400} // use actual image width
+                    height={933} // use actual image height
+                    style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
+                  />
+                </motion.div>
+              </motion.div>
               <div className={styles.caption}>
                 Any resemblance to actual persons is not coincidental.<br />
                 Inspired by true events.

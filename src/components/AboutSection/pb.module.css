@@ -6,10 +6,10 @@
 
 .tab-pointer {
   position: absolute;
-  top: var(--bm-space-400);
+  top: var(--bm-space-500);
   left: 50%;
   opacity: 0;
-  transition: opacity 0.8s ease;
+  transition: opacity 0.8s ease-in-out;
 }
 
 .manual .tab-manual .tab-pointer {
@@ -41,16 +41,19 @@
   border-radius: var(--bm-radius-lg);
 }
 
+.i {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
 .caption {
   text-align: right;
   font-size: 0.75rem;
   line-height: 1.5;
-}
-
-.i {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
 }
 
 .playbook {
