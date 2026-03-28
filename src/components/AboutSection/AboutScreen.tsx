@@ -7,6 +7,7 @@ import { ScrambleCreatedText } from '@/src/components/ui/ScrambleCreatedText';
 import { HeartShapedBox } from '@/src/components/ui/HeartShapedBox';
 import { EmailLink } from '@/src/components/_utils/EmailLink';
 import PlayBook from './PlayBook';
+import AboutCarouselServer from './AboutCarouselServer';
 
 const AboutScreen = () => {
 
@@ -30,18 +31,7 @@ const AboutScreen = () => {
                 </div>
                 <div className={styles.body}>
                   <div className={styles.intro}>
-                    <div className={styles.slide}>
-                      <div className={styles.data}>
-                        <p>It is all about the joy of creating something that did not exist before. Behind BetterMonday is Andrey Raychev a UX designer / developer and occasional <Link href="https://photocomma.com" target='_blank' rel="noopener noreferrer">photographer</Link>.</p>
-                        <p>I build creative front-end and full-scope sites, lead launches, and collaborate with designers to preserve design fidelity.</p>
-                      </div>
-                      <div className={styles.paginate}>
-                        <span className={styles.current}></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                      </div>
-                    </div>
+                    <AboutCarouselServer />
                     <div className={styles.connect}>
                       <h3>Contact</h3>
                       <div className={styles['connect-info']}>
