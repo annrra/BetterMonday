@@ -79,7 +79,7 @@
   font-family: var(--font-passion-one);
   font-size: 3.7rem;
   line-height: 70%;
-  font-weight: 900;
+  font-weight: 700;
 }
 
 .subheading h2 {
@@ -271,10 +271,10 @@
     bottom: unset;
     left: unset;
     top: 0;
-    right: 5%;
+    right: 8%;
     transform: translate(0, calc(-50% - var(--bm-space-400)));
-    width: 120px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
   }
 
   .figure img {

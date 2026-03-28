@@ -73,6 +73,20 @@
   white-space: pre-line;
 }
 
+.pointer {
+  position: absolute;
+  top: -72px;
+  right: -65px;
+}
+
+.fill-contour {
+  fill: var(--bm-tint-grey);
+}
+
+.stroke-contour {
+  stroke: var(--bm-tint-grey);
+}
+
 .blob {
   position: absolute;
   border-radius: 50%;

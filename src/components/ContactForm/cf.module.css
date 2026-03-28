@@ -94,11 +94,11 @@
 
 .contact-form button:hover .ico {
   transform: scale(1.1);
-  background-color: var(--tone-primary-700);
+  background-color: var(--bm-tint-silver);
 }
 
 .contact-form button:hover .btnarrow {
-  fill: var(--bm-tint-silver);
+  fill: var(--bm-tint-init);
 }
 
 .contact-form button:hover svg {

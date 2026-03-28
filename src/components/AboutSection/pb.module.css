@@ -155,7 +155,7 @@
 
 @media only screen and (max-width: 480px) {
   .playbook {
-    padding: 100px var(--bm-space-300) var(--bm-space-600);
+    padding: 100px var(--bm-space-300) var(--bm-space-800);
   }
 
   .media-view {
