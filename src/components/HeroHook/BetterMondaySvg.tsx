@@ -37,10 +37,10 @@ const lettersMonday = [
   { id: "my", d: "M797.51 158.852L763.88 266C762.8 269 762.3 271 762.487 274V309.493H703.348V274C703.3 271 702.8 268.5 702.067 266L669.374 158.852H720.8C725.3 158.852 727.8 162 728.432 166L732.617 205.5C732.617 205.5 733.052 208.176 734.176 208.338C735.3 208.5 735.735 205.5 735.735 205.5L739.92 166C740.3 161.5 743.8 159 747.8 158.852H797.51Z" },
 ];
 
-const words = ["quiet", "rainy", "calm dawn", "messy", "coffee", "call", "next", "skip", "honest", "damn", "flip", "scramble", "than"];
+const words = ["quiet", "rainy", "calm down", "messy", "coffee", "call", "next", "skip", "honest", "damn", "flip", "scramble", "than"];
 
 const BetterMondaySvg = () => {
-  const [text, setText] = useState("calm dawn");
+  const [text, setText] = useState("calm down");
   const wordIndex = useRef(0);
   const { scrollY } = useScroll();
 
@@ -66,7 +66,7 @@ const BetterMondaySvg = () => {
   };
 
   const handleHoverEnd = () => {
-    scrambleText(text, "calm dawn", setText, 600, 0.4);
+    scrambleText(text, "calm down", setText, 600, 0.4);
   };
 
   return (

@@ -8,7 +8,7 @@ const SecondaryPanel = () => {
 
   return (
     <div className={classNames(styles.plate, styles.sp)}>
-      <NavBar showConnectCta />
+      <NavBar showConnectCta mode='light' />
       <MediaRoll />
       <ConnectPanel />
     </div>

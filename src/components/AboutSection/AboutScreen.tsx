@@ -18,7 +18,7 @@ const AboutScreen = () => {
           <div className={styles['panel-wrapper']}>
             <div className={classNames(styles.panel, styles['panel--left'])}>
               <div className={styles.hdr}>
-                <HeaderBar />
+                <HeaderBar mode='light' />
               </div>
               <PlayBook />
             </div>

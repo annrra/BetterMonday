@@ -137,12 +137,3 @@ a {
 #logo #circle g path {
   transition: fill 0.2s ease;
 }
-
-#logo:hover #ellipse {
-  fill: var(--bm-tint-secondary);
-}
-
-#logo:hover #circle g path {
-  fill: var(--bm-tint-silver);
-  stroke: var(--bm-tint-silver);
-}

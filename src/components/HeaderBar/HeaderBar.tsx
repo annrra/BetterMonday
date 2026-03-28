@@ -1,18 +1,23 @@
 import { TransitionLink } from '@/src/components/transitions';
 import styles from './hb.module.css';
+import classNames from 'classnames';
 import { MondayLogoSvg } from '@/src/components/ui/MondayLogoSvg';
 import Menu from './Menu';
 
-const HeaderBar = async () => {
+type HeaderBarProps = {
+  mode?: 'default' | 'light';
+};
+
+const HeaderBar = async ({ mode = 'default' }: HeaderBarProps) => {
 
   return (
-    <div className={styles.header}>
+    <div className={classNames(styles.header, { [styles.light]: mode === 'light' })}>
       <div className={styles['logo-wrapper']}>
         <TransitionLink href="/" id="logo" className={styles['logo-link']}>
           <MondayLogoSvg />
         </TransitionLink>
       </div>
-      <Menu />
+      <Menu mode={mode} />
     </div>
   );
 

@@ -70,8 +70,10 @@
   .header .nav {
     display: inline-flex;
   }
+}
 
-  .nav a {
-    color: var(--bm-tint-silver);
+@media only screen and (max-width: 768px) {
+  .nav {
+    line-height: var(--bm-space-300);
   }
 }

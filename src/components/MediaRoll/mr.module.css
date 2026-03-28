@@ -30,7 +30,7 @@
 	height: 100%;
 	min-width: 350px;
 	border-radius: var(--bm-radius-base);
-	background-color: var(--bm-tint-primary);
+	background-color: var(--bm-tint-dim);
 	overflow: hidden;
 }
 
@@ -101,7 +101,7 @@
 	position: absolute;
 	font-size: 0.875rem;
 	color: var(--bm-tint-text-inverted);
-	color: var(--tone-secondary-600);
+	color: var(--bm-tint-grey);
 	cursor: pointer;
 }
 

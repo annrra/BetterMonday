@@ -46,11 +46,11 @@
 }
 
 .panel--primary {
-  background-color: var(--tone-primary);
+  background-color: var(--tone-secondary);
 }
 
 .panel--secondary {
-  background-color: var(--tone-secondary);
+  background-color: var(--bm-tint-init);
 }
 
 .plate {
@@ -88,10 +88,10 @@
 }
 
 .context h1 {
-  font-size: 1.0rem;
-  font-weight: 200;
-  color: var(--bm-tint-silver);
-  line-height: 165%;
+  font-size: 0.935rem;
+  font-weight: 300;
+  color: var(--bm-tint-init);
+  line-height: 150%;
 }
 
 @media only screen and (max-width: 1200px) {

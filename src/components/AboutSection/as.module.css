@@ -113,7 +113,7 @@
 }
 
 .link:hover {
-  color: var(--bm-tint-primary);
+  color: var(--bm-tint-accent);
 }
 
 .intro {
@@ -170,6 +170,10 @@
     top: var(--bm-space-500);
     left: var(--bm-space-500);
     width: calc(100% - (2 * var(--bm-space-500)));
+  }
+
+  .header {
+    padding: var(--bm-space-200) var(--bm-space-300);
   }
 
   .intro {
