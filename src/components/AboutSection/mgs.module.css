@@ -19,6 +19,10 @@
   fill: var(--bm-tint-silver)
 }
 
+.fill-bgr {
+  fill: var(--bm-tint-init)
+}
+
 .stoke-contour {
   stroke: var(--bm-tint-grey);
 }

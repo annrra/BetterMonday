@@ -1,6 +1,27 @@
 .tab {
   color: var(--bm-tint-accent);
   cursor: pointer;
+  position: relative;
+}
+
+.tab-pointer {
+  position: absolute;
+  top: var(--bm-space-400);
+  left: 50%;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.manual .tab-manual .tab-pointer {
+  opacity: 1;
+}
+
+.media .tab-media .tab-pointer {
+  opacity: 1;
+}
+
+.media .tab-media .tab-pointer {
+  opacity: 1;
 }
 
 .media-view {
@@ -72,6 +93,10 @@
 
 .ismedia .heart-arrow {
   transform: rotate(190deg);
+}
+
+.fill-contour {
+  fill: var(--bm-tint-grey);
 }
 
 @media only screen and (max-width: 1000px) {
