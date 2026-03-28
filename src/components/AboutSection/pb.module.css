@@ -9,7 +9,7 @@
   top: var(--bm-space-500);
   left: 50%;
   opacity: 0;
-  transition: opacity 0.8s ease-in-out;
+  transition: opacity 0.6s ease-in-out;
 }
 
 .manual .tab-manual .tab-pointer {

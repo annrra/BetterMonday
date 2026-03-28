@@ -23,7 +23,7 @@ const AboutCarouselServer = async () => {
       heading,
       meta,
     };
-  });
+  }).filter(section => section.heading || section.meta);
 
   return <AboutCarouselClient sections={sections} />;
 };

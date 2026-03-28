@@ -171,6 +171,10 @@
     left: var(--bm-space-500);
     width: calc(100% - (2 * var(--bm-space-500)));
   }
+
+  .intro {
+    width: 70%;
+  }
 }
 
 @media only screen and (max-width: 480px) {
@@ -182,5 +186,10 @@
     top: var(--bm-space-300);
     left: var(--bm-space-300);
     width: calc(100% - (2 * var(--bm-space-300)));
+  }
+
+  .footer {
+    flex-direction: column;
+    gap: var(--bm-space-200);
   }
 }

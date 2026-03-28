@@ -1,12 +1,15 @@
+.data {
+  display: flex;
+  align-items: stretch;
+  position: relative;
+}
+
 .feed {
   font-weight: 200;
   line-height: 1.7;
   font-size: 0.875rem;
-  display: none;
-}
-
-.feed.active {
-  display: block;
+  flex: 1;
+  min-height: 170px;
 }
 
 .feed a {
