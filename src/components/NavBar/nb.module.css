@@ -36,7 +36,7 @@
 
 .connect a span {
   display: inline-flex;
-  padding: 0 var(--bm-space-300) 0 var(--bm-space-50);
+  padding: 0 var(--bm-space-200) 0 var(--bm-space-50);
   line-height: 32px;
   font-weight: 300;
 }

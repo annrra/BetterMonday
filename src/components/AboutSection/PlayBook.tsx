@@ -13,7 +13,10 @@ const PlayBook = () => {
   const [offsetY, setOffsetY] = useState(0);
 
   useEffect(() => {
+    const mediaQuery = window.matchMedia('(min-width: 768px)');
+
     const handleMouseMove = (e: MouseEvent) => {
+      if (!mediaQuery.matches) return;
       if (!mediaRef.current || !imageRef.current) return;
 
       const mediaRect = mediaRef.current.getBoundingClientRect();
@@ -25,6 +28,19 @@ const PlayBook = () => {
 
     document.addEventListener('mousemove', handleMouseMove);
     return () => document.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+  
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(min-width: 768px)');
+
+    const handleResize = () => {
+      if (!mediaQuery.matches) {
+        setOffsetY(0);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   return (
@@ -103,21 +119,21 @@ const PlayBook = () => {
               transition={{ duration: 0.3 }}
             >
               <motion.div 
-                className={styles.media}
+                className={styles['media-frame']}
                 ref={mediaRef}
               >
                 <motion.div
                   ref={imageRef}
-                  style={{ position: 'absolute', width: '100%', top: 0 }}
                   animate={{ y: offsetY }}
                   transition={{ type: 'spring', stiffness: 50, damping: 20 }}
+                  className={styles['media-motion']}
                 >
                   <Image
                     src="https://bettermonday.org/wp-content/uploads/cudillero-mirror.jpg"
                     alt=""
                     width={1400} // use actual image width
                     height={933} // use actual image height
-                    style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
+                    className={styles.i}
                   />
                 </motion.div>
               </motion.div>

@@ -228,6 +228,7 @@
   .hdr {
     top: var(--bm-space-500);
     left: var(--bm-space-500);
+    width: calc(100% - (2 * var(--bm-space-500)));
   }
 }
 
@@ -239,5 +240,6 @@
   .hdr {
     top: var(--bm-space-300);
     left: var(--bm-space-300);
+    width: calc(100% - (2 * var(--bm-space-300)));
   }
 }
