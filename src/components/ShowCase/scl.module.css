@@ -81,6 +81,19 @@
   align-items: center;
   gap: var(--bm-space-300);
   font-size: 0.875rem;
+  width: 170px;
+  cursor: pointer;
+}
+
+.paginate-name {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.snapframe {
+  width: 750px;
 }
 
 .snapshot {
@@ -114,7 +127,7 @@
 
 .footer h2 {
   font-size: 1.625rem;
-  line-height: 1.2;
+  line-height: 1.4;
   font-weight: 300;
 }
 

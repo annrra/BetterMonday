@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useLayoutEffect, useRef, useEffect } from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import styles from './scl.module.css';
 import classNames from 'classnames';
@@ -10,7 +10,7 @@ import ShowCasePreview from './ShowCasePreview';
 import { ShowCaseEntry } from './ShowCaseServer';
 import { scrambleText } from '@/src/components/_utils/Scramble';
 import { motion, AnimatePresence } from 'framer-motion';
-import { TransitionLink } from '@/src/components/transitions';
+import { style } from 'framer-motion/client';
 
 export type ShowCaseListProps = {
   items: ShowCaseEntry[];
@@ -19,128 +19,64 @@ export type ShowCaseListProps = {
 const ShowCaseLayout = ({items}: ShowCaseListProps) => {
   const hasItems = Array.isArray(items) && items.length > 0;
 
-  const [selectedIndex, setSelectedIndex] = useState(0);
-  const [cursor, setCursor] = useState({ x: 20, y: 20 }); // small offset to prevent flash at (0,0)
-  const [hovering, setHovering] = useState(false);
-  const [isCursorMoving, setIsCursorMoving] = useState(false);
-  const [previewReady, setPreviewReady] = useState(false);
+  const [[index, direction], setIndex] = useState([0, 0]);
 
-  const selected = items[selectedIndex];
+  const paginate = (dir: number) => {
+    setIndex(([prev]) => [
+      (prev + dir + items.length) % items.length,
+      dir,
+    ]);
+  };
+
+  const selected = items[index];
+  
+  const prevIndex = (index - 1 + items.length) % items.length;
+  const nextIndex = (index + 1) % items.length;
+  const prevItem = items[prevIndex];
+  const nextItem = items[nextIndex];
 
   const [scrambledTags, setScrambledTags] = useState(selected.tags);
 
-  const cursorSetOnce = useRef(false);
-  const cursorMoveTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  const MOVEMENT_THRESHOLD_PX = 8; // minimum movement to consider as "moving"
-
-  // Track mouse movement inside cards
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (hovering) {
-      const next = { x: e.clientX, y: e.clientY };
-      const dx = next.x - cursor.x;
-      const dy = next.y - cursor.y;
-      const distanceSq = dx * dx + dy * dy;
-
-      // Always update the cursor for smooth preview movement
-      setCursor(next);
-
-      // Only treat as "moving" if movement exceeds threshold
-      if (distanceSq < MOVEMENT_THRESHOLD_PX * MOVEMENT_THRESHOLD_PX) {
-        return;
-      }
-
-      setIsCursorMoving(true);
-
-      if (cursorMoveTimeoutRef.current) {
-        clearTimeout(cursorMoveTimeoutRef.current);
-      }
-
-      cursorMoveTimeoutRef.current = setTimeout(() => {
-        setIsCursorMoving(false);
-      }, 260);
-    }
+  const variants = {
+    enter: (direction: number) => ({
+      x: direction > 0 ? 100 : -100,
+      opacity: 0,
+    }),
+    center: {
+      x: 0,
+      opacity: 1,
+    },
+    exit: (direction: number) => ({
+      x: direction > 0 ? -100 : 100,
+      opacity: 0,
+    }),
   };
-
-  // When entering a card, select it and start hover tracking
-  const handleMouseEnterCard = (index: number, e: React.MouseEvent) => {
-    const item = items[index];
-  
-    setSelectedIndex(index);
-    setHovering(true);
-
-    // scramble tags
-    const maxLength = Math.max(scrambledTags.length, item.tags.length);
-    const newTags: string[] = [];
-
-    for (let i = 0; i < maxLength; i++) {
-      const from = scrambledTags[i] || "";
-      const to = item.tags[i] || "";
-
-      // For each tag, scramble individually
-      scrambleText(from, to, (value) => {
-        newTags[i] = value;
-        setScrambledTags([...newTags]);
-      }, 500, 0.25);
-    }
-
-    // Only set cursor once on first hover to position preview at top-left of first card
-    if (!cursorSetOnce.current) {
-      const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
-      setCursor({ x: rect.left, y: rect.top });
-      cursorSetOnce.current = true;
-      setPreviewReady(true);
-    }
-  };
-
-  const handleMouseLeaveCards = () => {
-    setHovering(false);
-    setIsCursorMoving(false);
-
-    if (cursorMoveTimeoutRef.current) {
-      clearTimeout(cursorMoveTimeoutRef.current);
-      cursorMoveTimeoutRef.current = null;
-    }
-  };
-
-  useEffect(() => {
-    return () => {
-      if (cursorMoveTimeoutRef.current) {
-        clearTimeout(cursorMoveTimeoutRef.current);
-      }
-    };
-  }, []);
-
-  // Initial preview positioning at top-left of first card
-  useLayoutEffect(() => {
-    const firstCard = document.querySelector(`.${styles.card}`);
-    if (firstCard) {
-      const rect = firstCard.getBoundingClientRect();
-      requestAnimationFrame(() => {
-        setCursor({ x: rect.left, y: rect.top });
-        cursorSetOnce.current = true;
-        setPreviewReady(true);
-      });
-    } else {
-      setPreviewReady(true);
-    }
-  }, []);
 
   return (
     <div className={classNames(styles.board, {[styles.dark]: selected.colorMode === "dark"})}>
-      {selected.backdropUrl && (
-        <div className={styles.frame}>
-          <Image 
-            src={selected.backdropUrl}
-            alt={selected.backdropAltText}
-            className={styles.backdrop}
-            priority
-            width={0}
-            height={0}
-            sizes="100vw"
-          />
-        </div>
-      )}
+      <AnimatePresence mode="wait">
+        {selected.backdropUrl && (
+          <motion.div
+            key={selected.backdropUrl}
+            className={styles.frame}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <Image 
+              src={selected.backdropUrl}
+              alt={selected.backdropAltText}
+              className={styles.backdrop}
+              priority
+              width={0}
+              height={0}
+              sizes="100vw"
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <ShowCaseHeader />
       <ShowCaseNav mode={selected.colorMode} />
       <HeartShapedBox />
@@ -151,8 +87,9 @@ const ShowCaseLayout = ({items}: ShowCaseListProps) => {
         <div className={styles.pane}>
           <div className={classNames(styles.panel, styles.data)}>
             <div className={styles.body}>
+
               <div className={styles.slide}>
-                <div className={classNames(styles.paginate, styles.prev)}>
+                <div className={classNames(styles.paginate, styles.prev)} onClick={() => paginate(-1)}>
                   <svg
                     width={45}
                     height={8}
@@ -166,21 +103,48 @@ const ShowCaseLayout = ({items}: ShowCaseListProps) => {
                       className={styles['fill-paginate']}
                     />
                   </svg>
-                  <span className={styles['paginate-name']}>prev item</span>
+                  <motion.span 
+                    className={styles['paginate-name']}
+                    key={prevItem.title}
+                    initial={{ opacity: 0, y: 5 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -5 }}
+                  >
+                    {prevItem.title}
+                  </motion.span>
                 </div>
-                <div>
-                  <Image
-                    src={selected.snapshotUrl}
-                    alt={selected.snapshotAltText}
-                    className={styles.snapshot}
-                    priority
-                    width={0}
-                    height={0}
-                    sizes="100vw"
-                  />
-                </div>
-                <div className={classNames(styles.paginate, styles.next)}>
-                  <span className={styles['paginate-name']}>next item</span>
+                <AnimatePresence initial={false} custom={direction}>
+                  <motion.div 
+                    className={styles.snapframe}
+                    key={selected.id}
+                    custom={direction}
+                    variants={variants}
+                    initial="enter"
+                    animate="center"
+                    exit="exit"
+                    transition={{ duration: 0.4 }}
+                  >
+                    <Image
+                      src={selected.snapshotUrl}
+                      alt={selected.snapshotAltText}
+                      className={styles.snapshot}
+                      priority
+                      width={0}
+                      height={0}
+                      sizes="100vw"
+                    />
+                  </motion.div>
+                </AnimatePresence>
+                <div className={classNames(styles.paginate, styles.next)} onClick={() => paginate(1)}>
+                  <motion.span 
+                    className={styles['paginate-name']}
+                    key={nextItem.title}
+                    initial={{ opacity: 0, y: 5 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -5 }}
+                  >
+                    {nextItem.title}
+                  </motion.span>
                   <svg
                     width={45}
                     height={8}
@@ -196,6 +160,7 @@ const ShowCaseLayout = ({items}: ShowCaseListProps) => {
                   </svg>
                 </div>
               </div>
+
             </div>
           </div>
           <div className={styles.footer}>
