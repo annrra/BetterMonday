@@ -11,11 +11,19 @@ export type ShowCaseEntry = {
   description: string;
   tags: string[];
   mediaUrl: string;
+  mediaAlt: string;
+  mediaTitle: string;
   link: string;
   slug: string;
   mimeType?: string;
   backdropUrl: string;
   backdropMimeType?: string;
+  backdropAltText: string;
+  backdropTitle: string;
+  snapshotUrl: string;
+  snapshotMimeType?: string;
+  snapshotAltText: string;
+  snapshotTitle: string;
 };
 
 export type ShowCaseItem = {
@@ -32,6 +40,8 @@ export type ShowCaseItem = {
     nextshowcasetag05: string;
     nextshowcasepreview?: {
       node: {
+        altText: string;
+        title: string;
         mediaItemUrl: string;
         mediaType: string;
         mimeType: string;
@@ -39,6 +49,17 @@ export type ShowCaseItem = {
     };
     nextshowcasebackdrop?: {
       node: {
+        altText: string;
+        title: string;
+        mediaItemUrl: string;
+        mediaType: string;
+        mimeType: string;
+      };
+    };
+    nextshowcasesnapshot?: {
+      node: {
+        altText: string;
+        title: string;
         mediaItemUrl: string;
         mediaType: string;
         mimeType: string;
@@ -60,7 +81,7 @@ const ShowCaseServer = async () => {
 
     return {
       id: item.postId,
-      nextshowcasecolormode: sc.nextshowcasecolormode,
+      colorMode: sc.nextshowcasecolormode,
       title: sc.nextshowcasetitle,
       heading: sc.nextshowcaseheading,
       meta: sc.nextshowcasemeta,
@@ -73,11 +94,19 @@ const ShowCaseServer = async () => {
         sc.nextshowcasetag05,
       ].filter(Boolean), // removes empty tags
       mediaUrl: sc.nextshowcasepreview?.node?.mediaItemUrl ?? "",
+      mediaAltText: sc.nextshowcasepreview?.node?.altText ?? "",
+      mediaTitle: sc.nextshowcasepreview?.node?.title ?? "",
       link: item.link,
       slug: item.uri,
       mimeType: sc.nextshowcasepreview?.node?.mimeType ?? "",
       backdropUrl: sc.nextshowcasebackdrop?.node?.mediaItemUrl ?? "",
       backdropUrlMimeType: sc.nextshowcasebackdrop?.node?.mimeType ?? "",
+      backdropAltText: sc.nextshowcasebackdrop?.node?.altText ?? "",
+      backdropTitle: sc.nextshowcasebackdrop?.node?.title ?? "",
+      snapshotUrl: sc.nextshowcasesnapshot?.node?.mediaItemUrl ?? "",
+      snapshotUrlMimeType: sc.nextshowcasesnapshot?.node?.mimeType ?? "",
+      snapshotAltText: sc.nextshowcasesnapshot?.node?.altText ?? "",
+      snapshotTitle: sc.nextshowcasesnapshot?.node?.title ?? "",
     };
   });
 

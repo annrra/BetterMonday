@@ -6,12 +6,12 @@ import classNames from 'classnames';
 import { usePathname } from 'next/navigation';
 
 type MenuProps = {
-  mode?: 'default' | 'light';
+  mode?: 'dark' | 'light';
   layout?: 'default' | 'alt';
 };
 
 const Menu = ({ 
-  mode = 'default',
+  mode = 'dark',
   layout = 'default'
 }: MenuProps ) => {
   const pathname = usePathname(); // current route

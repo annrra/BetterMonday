@@ -289,6 +289,22 @@ export async function getShowCaseList() {
               nextshowcasetag05
               nextshowcasepreview {
                 node {
+                  altText
+                  title
+                  file
+                  filePath
+                  fileSize
+                  guid
+                  mediaItemUrl
+                  mediaItemId
+                  mediaType
+                  mimeType
+                }
+              }
+              nextshowcasesnapshot {
+                node {
+                  altText
+                  title
                   file
                   filePath
                   fileSize
@@ -301,6 +317,8 @@ export async function getShowCaseList() {
               }
               nextshowcasebackdrop {
                 node {
+                  altText
+                  title
                   file
                   filePath
                   fileSize

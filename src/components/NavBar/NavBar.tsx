@@ -5,13 +5,13 @@ import classNames from 'classnames';
 
 type NavBarProps = {
   showConnectCta?: boolean;
-  mode?: 'default' | 'light';
+  mode?: 'dark' | 'light';
   customClassName?: string;
 };
 
 const NavBar = ({ 
   showConnectCta = false,
-  mode = 'default',
+  mode = 'dark',
   customClassName 
 }: NavBarProps) => {
 

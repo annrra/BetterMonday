@@ -5,10 +5,10 @@ import { MondayLogoSvg } from '@/src/components/ui/MondayLogoSvg';
 import Menu from './Menu';
 
 type HeaderBarProps = {
-  mode?: 'default' | 'light';
+  mode?: 'dark' | 'light';
 };
 
-const HeaderBar = async ({ mode = 'default' }: HeaderBarProps) => {
+const HeaderBar = async ({ mode = 'dark' }: HeaderBarProps) => {
 
   return (
     <div className={classNames(styles.header, { [styles.light]: mode === 'light' })}>

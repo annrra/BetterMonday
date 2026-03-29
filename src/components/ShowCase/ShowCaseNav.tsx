@@ -2,11 +2,15 @@ import { Menu } from '@/src/components/HeaderBar';
 import { TransitionLink } from '@/src/components/transitions';
 import styles from './sc.module.css';
 
-const ShowCaseNav = () => {
+type ShowCaseNavProps = {
+  mode?: 'dark' | 'light';
+};
+
+const ShowCaseNav = ({mode = "light"}: ShowCaseNavProps) => {
   return (
     <div className={styles.angle}>
       <div className={styles.nav}>
-        <Menu mode="light" layout="alt" />
+        <Menu mode={mode} layout="alt" />
         <svg
           width={50}
           height={10}
