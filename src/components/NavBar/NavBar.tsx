@@ -6,12 +6,17 @@ import classNames from 'classnames';
 type NavBarProps = {
   showConnectCta?: boolean;
   mode?: 'default' | 'light';
+  customClassName?: string;
 };
 
-const NavBar = ({ showConnectCta = false, mode = 'default' }: NavBarProps) => {
+const NavBar = ({ 
+  showConnectCta = false,
+  mode = 'default',
+  customClassName 
+}: NavBarProps) => {
 
   return (
-    <div className={classNames(styles.topbar, { [styles.light]: mode === 'light' })}>
+    <div className={classNames(styles.topbar, {[styles.light]: mode === 'light'}, customClassName)}>
       <div className={styles.nh}>
         <Menu mode={mode} />
         <svg

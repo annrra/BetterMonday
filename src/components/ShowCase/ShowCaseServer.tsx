@@ -4,6 +4,7 @@ import ShowCaseClient from './ShowCaseClient';
 
 export type ShowCaseEntry = {
   id: number;
+  colorMode: "light" | "dark";
   title: string;
   heading: string;
   meta: string;
@@ -13,10 +14,13 @@ export type ShowCaseEntry = {
   link: string;
   slug: string;
   mimeType?: string;
+  backdropUrl: string;
+  backdropMimeType?: string;
 };
 
 export type ShowCaseItem = {
   nextshowcaselist: {
+    nextshowcasecolormode: "light" | "dark";
     nextshowcasetitle: string;
     nextshowcaseheading: string;
     nextshowcasemeta: string;
@@ -27,6 +31,13 @@ export type ShowCaseItem = {
     nextshowcasetag04: string;
     nextshowcasetag05: string;
     nextshowcasepreview?: {
+      node: {
+        mediaItemUrl: string;
+        mediaType: string;
+        mimeType: string;
+      };
+    };
+    nextshowcasebackdrop?: {
       node: {
         mediaItemUrl: string;
         mediaType: string;
@@ -49,6 +60,7 @@ const ShowCaseServer = async () => {
 
     return {
       id: item.postId,
+      nextshowcasecolormode: sc.nextshowcasecolormode,
       title: sc.nextshowcasetitle,
       heading: sc.nextshowcaseheading,
       meta: sc.nextshowcasemeta,
@@ -64,6 +76,8 @@ const ShowCaseServer = async () => {
       link: item.link,
       slug: item.uri,
       mimeType: sc.nextshowcasepreview?.node?.mimeType ?? "",
+      backdropUrl: sc.nextshowcasebackdrop?.node?.mediaItemUrl ?? "",
+      backdropUrlMimeType: sc.nextshowcasebackdrop?.node?.mimeType ?? "",
     };
   });
 

@@ -3,7 +3,7 @@ import React, { useState, useLayoutEffect, useRef, useEffect } from 'react';
 import styles from './sc.module.css';
 import classNames from 'classnames';
 import ShowCaseHeader from './ShowCaseHeader';
-import LayoutSwitcher from './LayoutSwitcher';
+import ShowCaseNav from './ShowCaseNav';
 import { HeartShapedBox } from '@/src/components/ui/HeartShapedBox';
 import ShowCasePreview from './ShowCasePreview';
 import { ShowCaseEntry } from './ShowCaseServer';
@@ -128,7 +128,7 @@ const ShowCaseClient = ({items}: ShowCaseListProps) => {
   return (
     <div className={styles.board}>
       <ShowCaseHeader />
-      <LayoutSwitcher />
+      <ShowCaseNav />
       <HeartShapedBox />
 
       {!hasItems ? (

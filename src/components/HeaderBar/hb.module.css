@@ -42,6 +42,14 @@
   font-size: 0.875rem;
 }
 
+.nav.alt {
+  line-height: var(--bm-space-300);
+}
+
+.nav.alt a {
+  font-size: 0.825rem;
+}
+
 .light.nav a {
   color: var(--bm-tint-silver);
 }

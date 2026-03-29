@@ -60,7 +60,7 @@
 .cta {
   position: relative;
   background-color: var(--bm-tint-accent);
-  border-radius: var(--bm-radius-base);
+  border-radius: var(--bm-radius-md);
   font-size: 0.875rem;
   line-height: 130%;
   font-weight: 300;

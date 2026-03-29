@@ -7,13 +7,17 @@ import { usePathname } from 'next/navigation';
 
 type MenuProps = {
   mode?: 'default' | 'light';
+  layout?: 'default' | 'alt';
 };
 
-const Menu = ( { mode = 'default' }: MenuProps ) => {
+const Menu = ({ 
+  mode = 'default',
+  layout = 'default'
+}: MenuProps ) => {
   const pathname = usePathname(); // current route
 
   return (
-    <nav className={classNames(styles.nav, { [styles.light]: mode === 'light' })}>
+    <nav className={classNames(styles.nav, { [styles.light]: mode === 'light' }, { [styles.alt]: layout === 'alt' })}>
       <TransitionLink 
         href="/about"
         className={classNames({ [styles.active]: pathname === '/about' })}
