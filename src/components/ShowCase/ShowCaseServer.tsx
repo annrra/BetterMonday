@@ -80,40 +80,42 @@ const ShowCaseServer = async () => {
   console.log(JSON.stringify(rawItems, null, 2));
   
 
-  const items: ShowCaseEntry[] = rawItems.map((item: ShowCaseItem) => {
-    const sc = item.nextshowcaselist;
+  const items: ShowCaseEntry[] = rawItems
+    .map((item: ShowCaseItem) => {
+      const sc = item.nextshowcaselist;
 
-    return {
-      id: item.postId,
-      colorMode: sc.nextshowcasecolormode,
-      title: sc.nextshowcasetitle,
-      heading: sc.nextshowcaseheading,
-      meta: sc.nextshowcasemeta,
-      description: sc.nextshowcasedescription,
-      tags: [
-        sc.nextshowcasetag01,
-        sc.nextshowcasetag02,
-        sc.nextshowcasetag03,
-        sc.nextshowcasetag04,
-        sc.nextshowcasetag05,
-      ].filter(Boolean), // removes empty tags
-      mediaUrl: sc.nextshowcasepreview?.node?.mediaItemUrl ?? "",
-      mediaAltText: sc.nextshowcasepreview?.node?.altText ?? "",
-      mediaTitle: sc.nextshowcasepreview?.node?.title ?? "",
-      link: item.link,
-      uri: item.uri,
-      slug: item.slug,
-      mimeType: sc.nextshowcasepreview?.node?.mimeType ?? "",
-      backdropUrl: sc.nextshowcasebackdrop?.node?.mediaItemUrl ?? "",
-      backdropUrlMimeType: sc.nextshowcasebackdrop?.node?.mimeType ?? "",
-      backdropAltText: sc.nextshowcasebackdrop?.node?.altText ?? "",
-      backdropTitle: sc.nextshowcasebackdrop?.node?.title ?? "",
-      snapshotUrl: sc.nextshowcasesnapshot?.node?.mediaItemUrl ?? "",
-      snapshotMimeType: sc.nextshowcasesnapshot?.node?.mimeType ?? "",
-      snapshotAltText: sc.nextshowcasesnapshot?.node?.altText ?? "",
-      snapshotTitle: sc.nextshowcasesnapshot?.node?.title ?? "",
-    };
-  });
+      return {
+        id: item.postId,
+        colorMode: sc.nextshowcasecolormode,
+        title: sc.nextshowcasetitle,
+        heading: sc.nextshowcaseheading,
+        meta: sc.nextshowcasemeta,
+        description: sc.nextshowcasedescription,
+        tags: [
+          sc.nextshowcasetag01,
+          sc.nextshowcasetag02,
+          sc.nextshowcasetag03,
+          sc.nextshowcasetag04,
+          sc.nextshowcasetag05,
+        ].filter(Boolean), // removes empty tags
+        mediaUrl: sc.nextshowcasepreview?.node?.mediaItemUrl ?? "",
+        mediaAltText: sc.nextshowcasepreview?.node?.altText ?? "",
+        mediaTitle: sc.nextshowcasepreview?.node?.title ?? "",
+        link: item.link,
+        uri: item.uri,
+        slug: item.slug,
+        mimeType: sc.nextshowcasepreview?.node?.mimeType ?? "",
+        backdropUrl: sc.nextshowcasebackdrop?.node?.mediaItemUrl ?? "",
+        backdropUrlMimeType: sc.nextshowcasebackdrop?.node?.mimeType ?? "",
+        backdropAltText: sc.nextshowcasebackdrop?.node?.altText ?? "",
+        backdropTitle: sc.nextshowcasebackdrop?.node?.title ?? "",
+        snapshotUrl: sc.nextshowcasesnapshot?.node?.mediaItemUrl ?? "",
+        snapshotMimeType: sc.nextshowcasesnapshot?.node?.mimeType ?? "",
+        snapshotAltText: sc.nextshowcasesnapshot?.node?.altText ?? "",
+        snapshotTitle: sc.nextshowcasesnapshot?.node?.title ?? "",
+      };
+    })
+    .filter((item: ShowCaseEntry) => Boolean(item.title?.trim()));
 
   if (items.length === 0) {
     return null;

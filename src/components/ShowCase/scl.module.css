@@ -2,7 +2,9 @@
   margin: var(--bm-space-200);
   padding: var(--bm-space-600) var(--bm-space-800) var(--bm-space-700);
   background-color: var(--bm-tint-secondary);
-  border-radius: var(--bm-radius-lg);
+  border-radius: var(--bm-radius-xl);
+  border-top-right-radius: var(--bm-radius-lg);
+  border-bottom-left-radius: var(--bm-radius-lg);
   position: relative;
   display: flex;
   flex: 1;
@@ -111,6 +113,10 @@
   border-radius: var(--bm-radius-md);
 }
 
+.sharenoto-party .snapshot {
+  max-width: 700px;
+}
+
 .photocomma.board,
 .sharenoto-party.board {
   background-color: var(--bm-tint-dim);
@@ -140,7 +146,7 @@
 
 .footer h2 {
   font-size: 1.625rem;
-  line-height: 1.4;
+  line-height: 1.2;
   font-weight: 300;
 }
 

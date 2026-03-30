@@ -6,38 +6,39 @@ import classNames from 'classnames';
 import ShowCaseHeader from './ShowCaseHeader';
 import ShowCaseNav from './ShowCaseNav';
 import { HeartShapedBox } from '@/src/components/ui/HeartShapedBox';
-import ShowCasePreview from './ShowCasePreview';
 import { ShowCaseEntry } from './ShowCaseServer';
-import { scrambleText } from '@/src/components/_utils/Scramble';
 import { motion, AnimatePresence } from 'framer-motion';
-import { style } from 'framer-motion/client';
 
 export type ShowCaseListProps = {
   items: ShowCaseEntry[];
 }
 
 const ShowCaseLayout = ({items}: ShowCaseListProps) => {
-  const hasItems = Array.isArray(items) && items.length > 0;
+  const validItems = Array.isArray(items)
+    ? items.filter(item => Boolean(item && item.title?.trim().length))
+    : [];
+
+  const hasItems = validItems.length > 0;
+  const itemCount = validItems.length;
 
   const [[index, direction], setIndex] = useState([0, 0]);
 
   const paginate = (dir: number) => {
-    setIndex(([prev]) => [
-      (prev + dir + items.length) % items.length,
-      dir,
-    ]);
+    if (itemCount === 0) return;
+    setIndex(([prev]) => {
+      const next = (prev + dir + itemCount) % itemCount;
+      return [next, dir];
+    });
   };
 
-  const selected = items[index];
-  //console.log(JSON.stringify(selected, null, 2));
-  
-  
-  const prevIndex = (index - 1 + items.length) % items.length;
-  const nextIndex = (index + 1) % items.length;
-  const prevItem = items[prevIndex];
-  const nextItem = items[nextIndex];
+  const selected = validItems[index] ?? validItems[0];
 
-  const isVideo = selected.snapshotMimeType?.startsWith('video/');
+  const prevIndex = itemCount > 0 ? (index - 1 + itemCount) % itemCount : 0;
+  const nextIndex = itemCount > 0 ? (index + 1) % itemCount : 0;
+  const prevItem = validItems[prevIndex];
+  const nextItem = validItems[nextIndex];
+
+  const isVideo = selected?.snapshotMimeType?.startsWith('video/') ?? false;
 
   const [scrambledTags, setScrambledTags] = useState(selected.tags);
   
@@ -46,23 +47,17 @@ const ShowCaseLayout = ({items}: ShowCaseListProps) => {
   }, [selected]);
 
   const variants = {
-    enter: (direction: number) => ({
-      x: direction > 0 ? 10 : -10,
+    enter: () => ({
       opacity: 0,
       scale: 0.98,
-      filter: "blur(3px)",
     }),
     center: {
-      x: 0,
       opacity: 1,
       scale: 1,
-      filter: "blur(0px)",
     },
-    exit: (direction: number) => ({
-      x: direction > 0 ? -10 : 10,
+    exit: () => ({
       opacity: 0,
       scale: 0.98,
-      filter: "blur(3px)",
     }),
   };
 
@@ -127,12 +122,12 @@ const ShowCaseLayout = ({items}: ShowCaseListProps) => {
                   </svg>
                   <motion.span 
                     className={styles['paginate-name']}
-                    key={prevItem.title}
+                    key={prevItem?.title ?? 'prev'}
                     initial={{ opacity: 0, y: 5 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -5 }}
                   >
-                    {prevItem.title}
+                    {prevItem?.title || 'Previous'}
                   </motion.span>
                 </div>
                 <AnimatePresence mode='wait'>
@@ -144,7 +139,20 @@ const ShowCaseLayout = ({items}: ShowCaseListProps) => {
                     initial="enter"
                     animate="center"
                     exit="exit"
-                    transition={{ duration: 0.3 }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                    drag="x" // allow horizontal drag
+                    dragConstraints={{ left: 0, right: 0 }}
+                    dragElastic={0.2}
+                    onDragEnd={(event, info) => {
+                      const offset = info.offset.x;
+                      const velocity = info.velocity.x;
+                      // simple threshold for swipe
+                      if (offset < -50 || velocity < -500) {
+                        paginate(1); // next
+                      } else if (offset > 50 || velocity > 500) {
+                        paginate(-1); // previous
+                      }
+                    }}
                   >
                     {isVideo ? (
                       <video
@@ -172,12 +180,12 @@ const ShowCaseLayout = ({items}: ShowCaseListProps) => {
                 <div className={classNames(styles.paginate, styles.next)} onClick={() => paginate(1)}>
                   <motion.span 
                     className={styles['paginate-name']}
-                    key={nextItem.title}
+                    key={nextItem?.title ?? 'next'}
                     initial={{ opacity: 0, y: 5 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -5 }}
                   >
-                    {nextItem.title}
+                    {nextItem?.title || 'Next'}
                   </motion.span>
                   <svg
                     width={45}
