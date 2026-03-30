@@ -87,6 +87,7 @@
   font-size: 0.875rem;
   width: 170px;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .paginate-name {
@@ -116,6 +117,7 @@
 
 .photocomma .snapshot {
   max-height: 825px;
+  width: auto;
   border-radius: var(--bm-radius-md);
 }
 
