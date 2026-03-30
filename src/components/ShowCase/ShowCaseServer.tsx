@@ -1,6 +1,6 @@
 import { getShowCaseList } from '@/lib/api';
 import styles from './sc.module.css';
-import ShowCaseClient from './ShowCaseClient';
+import ShowCaseLayout from './ShowCaseLayout';
 
 export type ShowCaseEntry = {
   id: number;
@@ -124,7 +124,7 @@ const ShowCaseServer = async () => {
   return (
     <div className={styles.showroom}>
         <h1 className={styles.sronly}>Selected projects by BetterMonday</h1>
-        <ShowCaseClient items={items} />
+        <ShowCaseLayout items={items} />
     </div>
   );
 

@@ -8,14 +8,24 @@ import ShowCaseNav from './ShowCaseNav';
 import { HeartShapedBox } from '@/src/components/ui/HeartShapedBox';
 import { ShowCaseEntry } from './ShowCaseServer';
 import { motion, AnimatePresence } from 'framer-motion';
+import { TransitionLink } from '@/src/components/transitions';
 
 export type ShowCaseListProps = {
   items: ShowCaseEntry[];
 }
 
+const MotionTransitionLink = motion(TransitionLink);
+
 const ShowCaseLayout = ({items}: ShowCaseListProps) => {
-  const validItems = Array.isArray(items)
+  /* const validItems = Array.isArray(items)
     ? items.filter(item => Boolean(item && item.title?.trim().length))
+    : []; */
+
+  // Temporarily filter out items without snapshotUrl
+  const validItems = Array.isArray(items)
+    ? items.filter(item => 
+        Boolean(item && item.title?.trim().length && item.snapshotUrl) 
+      )
     : [];
 
   const hasItems = validItems.length > 0;
@@ -207,6 +217,47 @@ const ShowCaseLayout = ({items}: ShowCaseListProps) => {
           </div>
           <div className={styles.footer}>
             <div className={styles.summary}>
+              <div className={styles.details}>
+                <MotionTransitionLink 
+                  href={selected.uri} 
+                  className={styles.link}
+                  whileHover="hovered"
+                >
+                  View Details
+                  <motion.span 
+                    className={classNames(styles['link-frame-corner'], styles['link-frame-tl'])}
+                    variants={{
+                      hovered: { top: '1px', left: '2px' },
+                      initial: { top: '-1px', left: '-1px' }
+                    }}
+                    transition={{ duration: 0.3 }}
+                  />
+                  <motion.span 
+                    className={classNames(styles['link-frame-corner'], styles['link-frame-tr'])} 
+                    variants={{
+                      hovered: { top: '1px', right: '2px' },
+                      initial: { top: '-1px', right: '-1px' }
+                    }}
+                    transition={{ duration: 0.3 }}
+                  />
+                  <motion.span 
+                    className={classNames(styles['link-frame-corner'], styles['link-frame-bl'])} 
+                    variants={{
+                      hovered: { bottom: '1px', left: '2px' },
+                      initial: { bottom: '-1px', left: '-1px' }
+                    }}
+                    transition={{ duration: 0.3 }}
+                  />
+                  <motion.span 
+                    className={classNames(styles['link-frame-corner'], styles['link-frame-br'])} 
+                    variants={{
+                      hovered: { bottom: '1px', right: '2px' },
+                      initial: { bottom: '-1px', right: '-1px' }
+                    }}
+                    transition={{ duration: 0.3 }}
+                  />
+                </MotionTransitionLink>
+              </div>
               <AnimatePresence mode="wait">
                 <motion.h2
                   key={selected.heading} // important: change triggers re-render
