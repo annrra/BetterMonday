@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import styles from './scl.module.css';
 import classNames from 'classnames';
@@ -9,6 +9,7 @@ import { HeartShapedBox } from '@/src/components/ui/HeartShapedBox';
 import { ShowCaseEntry } from './ShowCaseServer';
 import { motion, AnimatePresence } from 'framer-motion';
 import { TransitionLink } from '@/src/components/transitions';
+import { scrambleText } from '@/src/components/_utils/Scramble';
 
 export type ShowCaseListProps = {
   items: ShowCaseEntry[];
@@ -51,9 +52,36 @@ const ShowCaseLayout = ({items}: ShowCaseListProps) => {
   const isVideo = selected?.snapshotMimeType?.startsWith('video/') ?? false;
 
   const [scrambledTags, setScrambledTags] = useState(selected.tags);
+
+  const prevTagsRef = useRef<string[]>([]);
+
+  const handleChange = (direction: 'next' | 'prev') => {
+    if (direction === 'next') {
+      paginate(1);
+    } else {
+      paginate(-1);
+    }
+  };
   
   useEffect(() => {
-    setScrambledTags(selected.tags);
+    if (!selected?.tags) return;
+
+    const fromTags = prevTagsRef.current;
+    const toTags = selected.tags;
+
+    const newTags: string[] = Array(toTags.length).fill("");
+
+    for (let i = 0; i < toTags.length; i++) {
+      const from = fromTags[i] || "";
+      const to = toTags[i];
+
+      scrambleText(from, to, (value) => {
+        newTags[i] = value;
+        setScrambledTags([...newTags]);
+      });
+    }
+
+    prevTagsRef.current = toTags;
   }, [selected]);
 
   const variants = {
@@ -116,7 +144,7 @@ const ShowCaseLayout = ({items}: ShowCaseListProps) => {
             <div className={styles.body}>
 
               <div className={styles.slide}>
-                <div className={classNames(styles.paginate, styles.prev)} onClick={() => paginate(-1)}>
+                <div className={classNames(styles.paginate, styles.prev)} onClick={() => handleChange('prev')}>
                   <svg
                     width={45}
                     height={8}
@@ -187,7 +215,7 @@ const ShowCaseLayout = ({items}: ShowCaseListProps) => {
                     )}
                   </motion.div>
                 </AnimatePresence>
-                <div className={classNames(styles.paginate, styles.next)} onClick={() => paginate(1)}>
+                <div className={classNames(styles.paginate, styles.next)} onClick={() => handleChange('next')}>
                   <motion.span 
                     className={styles['paginate-name']}
                     key={nextItem?.title ?? 'next'}

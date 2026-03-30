@@ -173,7 +173,8 @@
 
 .tags {
   display: flex;
-  flex-flow: wrap;
+  flex-flow: nowrap;
+  overflow: hidden;
   align-items: center;
   gap: var(--bm-space-400);
   font-size: 0.8125rem;
@@ -183,6 +184,11 @@
 
 .tags span {
   white-space: nowrap;
+}
+
+.tags span:last-child {
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .cards {

@@ -1,5 +1,6 @@
 import { getOverviewContent } from '@/lib/api';
 import AboutCarouselClient from './AboutCarouselClient';
+import styles from './ac.module.css';
 
 type OverviewItem = {
   [key: string]: string | null;
@@ -25,7 +26,12 @@ const AboutCarouselServer = async () => {
     };
   }).filter(section => section.heading || section.meta);
 
-  return <AboutCarouselClient sections={sections} />;
+  return (
+    <>
+      <h1 className={styles.sronly}>Front-End developer creating user-focused web experiences</h1>
+      <AboutCarouselClient sections={sections} />
+    </>
+  );
 };
 
 

@@ -77,8 +77,6 @@ export type ShowCaseItem = {
 const ShowCaseServer = async () => {
   const showCaseList = await getShowCaseList();
   const rawItems = showCaseList?.posts?.nodes ?? [];
-  console.log(JSON.stringify(rawItems, null, 2));
-  
 
   const items: ShowCaseEntry[] = rawItems
     .map((item: ShowCaseItem) => {

@@ -40,7 +40,7 @@
   position: absolute;
   top: var(--bm-space-600);
   left: var(--bm-space-800);
-  z-index: 5;
+  z-index: 10;
 }
 
 .logo a {
