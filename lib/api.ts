@@ -331,6 +331,7 @@ export async function getShowCaseList() {
               }
             }
             uri
+            slug
             postId
             link
             guid

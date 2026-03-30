@@ -14,6 +14,7 @@ export type ShowCaseEntry = {
   mediaAlt: string;
   mediaTitle: string;
   link: string;
+  uri: string;
   slug: string;
   mimeType?: string;
   backdropUrl: string;
@@ -70,11 +71,14 @@ export type ShowCaseItem = {
   link: string;
   postId: number;
   uri: string;
+  slug: string;
 };
 
 const ShowCaseServer = async () => {
   const showCaseList = await getShowCaseList();
   const rawItems = showCaseList?.posts?.nodes ?? [];
+  console.log(JSON.stringify(rawItems, null, 2));
+  
 
   const items: ShowCaseEntry[] = rawItems.map((item: ShowCaseItem) => {
     const sc = item.nextshowcaselist;
@@ -97,14 +101,15 @@ const ShowCaseServer = async () => {
       mediaAltText: sc.nextshowcasepreview?.node?.altText ?? "",
       mediaTitle: sc.nextshowcasepreview?.node?.title ?? "",
       link: item.link,
-      slug: item.uri,
+      uri: item.uri,
+      slug: item.slug,
       mimeType: sc.nextshowcasepreview?.node?.mimeType ?? "",
       backdropUrl: sc.nextshowcasebackdrop?.node?.mediaItemUrl ?? "",
       backdropUrlMimeType: sc.nextshowcasebackdrop?.node?.mimeType ?? "",
       backdropAltText: sc.nextshowcasebackdrop?.node?.altText ?? "",
       backdropTitle: sc.nextshowcasebackdrop?.node?.title ?? "",
       snapshotUrl: sc.nextshowcasesnapshot?.node?.mediaItemUrl ?? "",
-      snapshotUrlMimeType: sc.nextshowcasesnapshot?.node?.mimeType ?? "",
+      snapshotMimeType: sc.nextshowcasesnapshot?.node?.mimeType ?? "",
       snapshotAltText: sc.nextshowcasesnapshot?.node?.altText ?? "",
       snapshotTitle: sc.nextshowcasesnapshot?.node?.title ?? "",
     };

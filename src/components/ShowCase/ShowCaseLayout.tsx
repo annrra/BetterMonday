@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import styles from './scl.module.css';
 import classNames from 'classnames';
@@ -29,61 +29,83 @@ const ShowCaseLayout = ({items}: ShowCaseListProps) => {
   };
 
   const selected = items[index];
+  //console.log(JSON.stringify(selected, null, 2));
+  
   
   const prevIndex = (index - 1 + items.length) % items.length;
   const nextIndex = (index + 1) % items.length;
   const prevItem = items[prevIndex];
   const nextItem = items[nextIndex];
 
+  const isVideo = selected.snapshotMimeType?.startsWith('video/');
+
   const [scrambledTags, setScrambledTags] = useState(selected.tags);
+  
+  useEffect(() => {
+    setScrambledTags(selected.tags);
+  }, [selected]);
 
   const variants = {
     enter: (direction: number) => ({
-      x: direction > 0 ? 100 : -100,
+      x: direction > 0 ? 10 : -10,
       opacity: 0,
+      scale: 0.98,
+      filter: "blur(3px)",
     }),
     center: {
       x: 0,
       opacity: 1,
+      scale: 1,
+      filter: "blur(0px)",
     },
     exit: (direction: number) => ({
-      x: direction > 0 ? -100 : 100,
+      x: direction > 0 ? -10 : 10,
       opacity: 0,
+      scale: 0.98,
+      filter: "blur(3px)",
     }),
   };
 
-  return (
-    <div className={classNames(styles.board, {[styles.dark]: selected.colorMode === "dark"})}>
-      <AnimatePresence mode="wait">
-        {selected.backdropUrl && (
-          <motion.div
-            key={selected.backdropUrl}
-            className={styles.frame}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <Image 
-              src={selected.backdropUrl}
-              alt={selected.backdropAltText}
-              className={styles.backdrop}
-              priority
-              width={0}
-              height={0}
-              sizes="100vw"
-            />
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      <ShowCaseHeader />
-      <ShowCaseNav mode={selected.colorMode} />
-      <HeartShapedBox />
-
-      {!hasItems ? (
+  if (!hasItems) {
+    return (
+      <div className={styles.board}>
         <div className={styles.empty}>No projects available yet.</div>
-      ) : (
+      </div>
+    );
+  }
+
+  return (
+    <div className={classNames(styles.board, styles[selected.slug], {[styles.dark]: selected.colorMode === "dark"})}>
+
+      <>
+        <AnimatePresence mode="wait">
+          {selected.backdropUrl && (
+            <motion.div
+              key={selected.backdropUrl}
+              className={styles.frame}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <Image 
+                src={selected.backdropUrl}
+                alt={selected.backdropAltText}
+                className={styles.backdrop}
+                priority
+                width={0}
+                height={0}
+                sizes="100vw"
+              />
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        <ShowCaseHeader />
+        <ShowCaseNav mode={selected.colorMode} />
+        <HeartShapedBox />
+
+      
         <div className={styles.pane}>
           <div className={classNames(styles.panel, styles.data)}>
             <div className={styles.body}>
@@ -113,7 +135,7 @@ const ShowCaseLayout = ({items}: ShowCaseListProps) => {
                     {prevItem.title}
                   </motion.span>
                 </div>
-                <AnimatePresence initial={false} custom={direction}>
+                <AnimatePresence mode='wait'>
                   <motion.div 
                     className={styles.snapframe}
                     key={selected.id}
@@ -122,17 +144,29 @@ const ShowCaseLayout = ({items}: ShowCaseListProps) => {
                     initial="enter"
                     animate="center"
                     exit="exit"
-                    transition={{ duration: 0.4 }}
+                    transition={{ duration: 0.3 }}
                   >
-                    <Image
-                      src={selected.snapshotUrl}
-                      alt={selected.snapshotAltText}
-                      className={styles.snapshot}
-                      priority
-                      width={0}
-                      height={0}
-                      sizes="100vw"
-                    />
+                    {isVideo ? (
+                      <video
+                        src={selected.snapshotUrl}
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        preload="metadata"
+                        className={styles.video}
+                      />
+                    ) : (
+                      <Image
+                        src={selected.snapshotUrl ? selected.snapshotUrl : "https://bettermonday.org/wp-content/uploads/cudillero-mirror.jpg"}
+                        alt={selected.snapshotAltText}
+                        className={styles.snapshot}
+                        priority
+                        width={0}
+                        height={0}
+                        sizes="100vw"
+                      />
+                    )}
                   </motion.div>
                 </AnimatePresence>
                 <div className={classNames(styles.paginate, styles.next)} onClick={() => paginate(1)}>
@@ -224,7 +258,7 @@ const ShowCaseLayout = ({items}: ShowCaseListProps) => {
           </div> */}
 
         </div>
-      )}
+      </>
 
       {/* {previewReady && (
         <ShowCasePreview

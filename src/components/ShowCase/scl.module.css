@@ -1,7 +1,7 @@
 .board {
   margin: var(--bm-space-200);
   padding: var(--bm-space-600) var(--bm-space-800) var(--bm-space-700);
-  background-color: var(--bm-tint-dim);
+  background-color: var(--bm-tint-secondary);
   border-radius: var(--bm-radius-lg);
   position: relative;
   display: flex;
@@ -93,6 +93,9 @@
 }
 
 .snapframe {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 750px;
 }
 
@@ -101,6 +104,16 @@
   height: auto;
   max-width: 750px;
   max-height: 700px;
+}
+
+.photocomma .snapshot {
+  max-height: 825px;
+  border-radius: var(--bm-radius-md);
+}
+
+.photocomma.board,
+.sharenoto-party.board {
+  background-color: var(--bm-tint-dim);
 }
 
 .fill-paginate {
