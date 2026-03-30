@@ -327,6 +327,7 @@ export async function getShowCaseList() {
                   mediaItemId
                   mediaType
                   mimeType
+                  srcSet
                 }
               }
             }

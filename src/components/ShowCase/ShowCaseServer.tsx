@@ -21,6 +21,7 @@ export type ShowCaseEntry = {
   backdropMimeType?: string;
   backdropAltText: string;
   backdropTitle: string;
+  backdropsrcSet: string;
   snapshotUrl: string;
   snapshotMimeType?: string;
   snapshotAltText: string;
@@ -55,6 +56,7 @@ export type ShowCaseItem = {
         mediaItemUrl: string;
         mediaType: string;
         mimeType: string;
+        srcSet: string;
       };
     };
     nextshowcasesnapshot?: {
@@ -107,6 +109,7 @@ const ShowCaseServer = async () => {
         backdropUrlMimeType: sc.nextshowcasebackdrop?.node?.mimeType ?? "",
         backdropAltText: sc.nextshowcasebackdrop?.node?.altText ?? "",
         backdropTitle: sc.nextshowcasebackdrop?.node?.title ?? "",
+        backdropsrcSet: sc.nextshowcasebackdrop?.node?.srcSet ?? "",
         snapshotUrl: sc.nextshowcasesnapshot?.node?.mediaItemUrl ?? "",
         snapshotMimeType: sc.nextshowcasesnapshot?.node?.mimeType ?? "",
         snapshotAltText: sc.nextshowcasesnapshot?.node?.altText ?? "",
