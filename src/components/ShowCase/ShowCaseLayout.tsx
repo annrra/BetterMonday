@@ -121,12 +121,15 @@ const ShowCaseLayout = ({items}: ShowCaseListProps) => {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <img 
+              <Image 
                 src={selected.backdropUrl}
                 alt={selected.backdropAltText}
                 className={styles.backdrop}
-                srcSet={selected.backdropsrcSet}
-                sizes="(max-width: 768px) 100vw, 50vw"
+                priority
+                width={0}
+                height={0}
+                sizes="100vw"
+                unoptimized
               />
             </motion.div>
           )}
