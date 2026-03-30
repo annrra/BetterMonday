@@ -70,12 +70,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
 }
 
 .slide {
   display: inline-flex;
   align-items: center;
   gap: 120px;
+  min-width: 70%;
 }
 
 .paginate {
@@ -98,11 +100,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 750px;
+  max-width: 750px;
+  flex: 1;
+  position: relative;
+  z-index: 10;
 }
 
 .snapshot {
   width: auto;
+  width: 100%;
   height: auto;
   max-width: 750px;
   max-height: 700px;
@@ -169,6 +175,7 @@
   font-size: 0.875rem;
   display: flex;
   justify-content: flex-end;
+  align-items: flex-end;
 }
 
 .tags {
@@ -189,14 +196,6 @@
 .tags span:last-child {
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-.cards {
-  display: flex;
-  flex-direction: column;
-  gap: var(--bm-space-100);
-  width: 100%;
-  align-items: flex-end;
 }
 
 .angle {
@@ -324,52 +323,6 @@
   right: -1px;
 }
 
-.card {
-  width: 100%;
-  max-width: 95%;
-  height: var(--bm-space-900);
-  border-radius: var(--bm-radius-md);
-  display: flex;
-  align-items: center;
-  gap: var(--bm-space-200);
-  padding: var(--bm-space-200) var(--bm-space-500);
-  position: relative;
-  z-index: 5;
-  transition: all 0.3s ease-in-out;
-}
-
-.card.current {
-	background-color: var(--bm-tint-init);
-}
-
-.card .title,
-.card .meta {
-  transition: transform 0.3s ease;
-}
-
-/* when hovered/current */
-@media only screen and (min-width: 768px) {
-  .card.current .title {
-    transform: translateX(-5px);
-  }
-
-  .card.current .meta {
-    transform: translateX(5px);
-  }
-}
-
-.title {
-  width: 40%;
-  line-height: 1;
-}
-
-.meta {
-  flex: 1;
-  font-size: 0.8125rem;
-  text-align: right;
-  opacity: 0.5;
-}
-
 .preview {
   position: fixed;
   top: 0;
@@ -418,12 +371,6 @@
   opacity: 1;
 }
 
-.case {
-  height: 100%;
-  width: 460px;
-  height: 250px;
-}
-
 .figure {
   display: block;
   border-radius: var(--bm-radius-base);
@@ -440,25 +387,44 @@
   border-radius: var(--bm-radius-base);
 }
 
-.placeholder {
-  border-radius: var(--bm-radius-base);
-	background-color: var(--bm-tint-init);
-	width: 100%;
-	height: 100%;
-}
-
 .fill-contour {
   fill: var(--bm-tint-silver);
 }
 
+@media only screen and (max-width: 1600px) {
+  .slide {
+    gap: var(--bm-space-800);
+    min-width: 70%;
+  }
+}
+
 @media only screen and (max-width: 1300px) {
+  .slide {
+    gap: var(--bm-space-500);
+    min-width: 90%;
+  }
+
 	.panel {
 		padding: var(--bm-space-300) var(--bm-space-600);
 	}
+}
 
-	.cards {
-		gap: var(--bm-space-300);
-	}
+@media only screen and (max-width: 1200px) {
+  .footer .summary,
+  .footer .context {
+    width: 45%;
+    flex: 0 0 45%;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1200px) {
+  .paginate {
+    width: 45px;
+  }
+
+  .paginate .paginate-name {
+    display: none;
+  }
 }
 
 @media only screen and (max-width: 1000px) {
@@ -468,41 +434,78 @@
     min-height: 95%;
   }
 
+  .panel {
+		padding: var(--bm-space-300) 0;
+	}
+
   .footer {
     width: 100%;
-  }
-
-  .card {
-    max-width: 100%;
   }
 }
 
 @media only screen and (max-width: 768px) {
+  .pane {
+    padding: 0 var(--bm-space-300);
+    gap: var(--bm-space-500);
+  }
+
 	.panel {
-		padding: var(--bm-space-300);
+		padding: var(--bm-space-300) 0;
 	}
 
   .board {
     padding: 120px var(--bm-space-200) var(--bm-space-500);
   }
 
-  .cards {
+  .slide {
+    flex-flow: wrap;
+    gap: var(--bm-space-400);
+  }
+
+  .snapframe {
+    order: 1;
+    flex: 0 0 100%;
+  }
+
+  .snapshot {
+    max-width: 80%;
+  }
+
+  .paginate {
+    width: auto;
     gap: var(--bm-space-100);
   }
 
-  .card {
+  .prev {
+    flex: 1;
+    order: 2;
+  }
+
+  .next {
+    flex: 1;
+    order: 3;
+    justify-content: flex-end;
+  }
+
+  .footer {
+    position: static;
     flex-direction: column;
-    align-items: flex-start;
-    gap: var(--bm-space-100);
-    height: auto;
-    padding: var(--bm-space-300) var(--bm-space-300);
   }
 
-  .title {
+  .footer .summary,
+  .footer .context {
     width: 100%;
+    flex: 0 0 100%;
   }
 
-  .meta {
-    text-align: left;
+  .tags {
+    flex-flow: wrap;
+    gap: var(--bm-space-200);
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .paginate-name {
+    max-width: 70px;
   }
 }

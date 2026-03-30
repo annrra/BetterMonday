@@ -17,6 +17,7 @@ const ShowCaseNav = ({mode = "light"}: ShowCaseNavProps) => {
           viewBox="0 0 50 10"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
+          className={styles.navsep}
         >
           <circle cx={5} cy={5} r={5} />
           <circle cx={25} cy={5} r={5} />
