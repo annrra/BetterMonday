@@ -1,11 +1,12 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import styles from './scl.module.css';
 import classNames from 'classnames';
 import ShowCaseHeader from './ShowCaseHeader';
 import ShowCaseNav from './ShowCaseNav';
 import ShowCaseLayoutFooter from './ShowCaseLayoutFooter';
+import ShowCasePreview from './ShowCasePreview';
 import { HeartShapedBox } from '@/src/components/ui/HeartShapedBox';
 import { ShowCaseEntry } from './ShowCaseServer';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -30,6 +31,7 @@ const ShowCaseLayout = ({items}: ShowCaseListProps) => {
   const itemCount = validItems.length;
 
   const [[index, direction], setIndex] = useState([0, 0]);
+  const [isLargeScreen, setIsLargeScreen] = useState(false);
 
   const paginate = (dir: number) => {
     if (itemCount === 0) return;
@@ -55,6 +57,13 @@ const ShowCaseLayout = ({items}: ShowCaseListProps) => {
       paginate(-1);
     }
   };
+
+  useEffect(() => {
+    const checkScreen = () => setIsLargeScreen(window.innerWidth >= 1200);
+    checkScreen();
+    window.addEventListener('resize', checkScreen);
+    return () => window.removeEventListener('resize', checkScreen);
+  }, []);
 
   const variants = {
     enter: () => ({
@@ -120,8 +129,22 @@ const ShowCaseLayout = ({items}: ShowCaseListProps) => {
                 <motion.div 
                   className={classNames(styles.paginate, styles.prev)} 
                   onClick={() => handleChange('prev')}
-                  whileHover="hover"
+                  whileHover={isLargeScreen ? "hover" : undefined}
+                  initial="initial"
+                  animate="initial"
+                  variants={{
+                    initial: {},
+                    hover: {},
+                  }}
                 >
+                  {isLargeScreen && (
+                    <ShowCasePreview
+                      media={prevItem.mediaUrl}
+                      mimeType={prevItem.mimeType}
+                      altText={prevItem.mediaAlt}
+                      customClass="preview-prev"
+                    />
+                  )}
                   <motion.svg
                     width={45}
                     height={8}
@@ -203,8 +226,21 @@ const ShowCaseLayout = ({items}: ShowCaseListProps) => {
                 <motion.div 
                   className={classNames(styles.paginate, styles.next)} 
                   onClick={() => handleChange('next')}
-                  whileHover="hover"
+                  whileHover={isLargeScreen ? "hover" : undefined}
+                  initial="initial"
+                  animate="initial"
+                  variants={{
+                    initial: {},
+                    hover: {},
+                  }}
                 >
+                  {isLargeScreen && (
+                    <ShowCasePreview
+                      media={nextItem.mediaUrl}
+                      mimeType={nextItem.mimeType}
+                      altText={nextItem.mediaAlt}
+                    />
+                  )}
                   <motion.span 
                     className={styles['paginate-name']}
                     key={nextItem?.title ?? 'next'}
@@ -247,46 +283,9 @@ const ShowCaseLayout = ({items}: ShowCaseListProps) => {
             tags={selected.tags}
             colorMode={selected.colorMode}
           />
-
-          {/* <div
-            className={classNames(styles.panel, styles.deck)}
-            onMouseLeave={handleMouseLeaveCards}
-          >
-            <div className={styles.cards}>
-              {items.map((item, index) =>
-                item.title ? (
-                  <TransitionLink href={item.slug} key={item.id} className={styles.link}>
-                    <div
-                      key={item.id}
-                      className={classNames(
-                        styles.card,
-                        index === selectedIndex ? styles.current : ""
-                      )}
-                      onClick={() => setSelectedIndex(index)}
-                      onMouseMove={handleMouseMove}
-                      onMouseEnter={(e) => handleMouseEnterCard(index, e)}
-                    >
-                      <div className={styles.title}>{item.title}</div>
-                      <div className={styles.meta}>{item.meta}</div>
-                    </div>
-                  </TransitionLink>
-                ) : null
-              )}
-            </div>
-          </div> */}
-
         </div>
       </>
 
-      {/* {previewReady && (
-        <ShowCasePreview
-          media={selected.mediaUrl}
-          mimeType={selected.mimeType}
-          cursor={cursor}
-          visible={true}
-          hideBlobs={isCursorMoving}
-        />
-      )} */}
     </div>
   );
 

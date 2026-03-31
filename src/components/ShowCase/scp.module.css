@@ -1,0 +1,46 @@
+.preview {
+  position: absolute;
+  bottom: var(--bm-space-500);
+  left: var(--bm-space-300);
+  z-index: 99;
+  background-color: transparent;
+  border-radius: var(--bm-radius-md);
+  pointer-events: none;
+  width: 260px;
+  height: 145px;
+  overflow: hidden;
+  opacity: 0;
+}
+
+.case {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.preview-prev {
+  left: unset;
+  right: var(--bm-space-400);
+}
+
+.current .preview {
+  display: block;
+}
+
+.figure {
+  display: block;
+  border-radius: var(--bm-radius-md);
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
+  height: auto;
+}
+
+.video {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: var(--bm-radius-md);
+}

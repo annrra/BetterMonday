@@ -88,6 +88,7 @@
   width: 170px;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
+  position: relative;
 }
 
 .paginate-name {
@@ -105,6 +106,12 @@
   flex: 1;
   position: relative;
   z-index: 10;
+}
+
+@media only screen and (min-width: 1550px) {
+  .snapframe {
+    min-width: 750px;
+  }
 }
 
 .snapshot {
@@ -199,70 +206,6 @@
 
 .angle .nav svg circle {
   fill: var(--tone-secondary-400);
-}
-
-.preview {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 99;
-  background-color: transparent;
-  border-radius: var(--bm-radius-base);
-  pointer-events: none;
-  transition: opacity 0.2s ease;
-  opacity: 0;
-}
-
-.current .preview {
-  display: block;
-}
-
-.preview .blob {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-}
-
-.preview .blob span {
-  display: inline-block;
-  background-color: var(--bm-tint-primary);
-  border-radius: 50%;
-  width: 100%;
-  height: 100%;
-  opacity: 0.5;
-  box-shadow:
-    0 0 2px rgba(0, 0, 0, 0.06),
-    0 0 8px rgba(0, 0, 0, 0.04);
-}
-
-.preview .blob.lg {
-  width: 24px;
-  height: 24px;
-  transform: translate(150%, 80%);
-  opacity: 1;
-}
-
-.preview .blob.sm {
-  width: 16px;
-  height: 16px;
-  transform: translate(370%, 195%);
-  opacity: 1;
-}
-
-.figure {
-  display: block;
-  border-radius: var(--bm-radius-base);
-  object-fit: cover;
-  object-position: top left;
-  width: 100%;
-  height: 100%;
-}
-
-.video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: var(--bm-radius-base);
 }
 
 .fill-contour {

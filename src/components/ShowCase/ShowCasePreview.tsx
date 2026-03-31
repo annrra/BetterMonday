@@ -1,76 +1,32 @@
 'use client';
 import Image from 'next/image';
-import styles from './sc.module.css';
-import classNames from 'classnames';
+import styles from './scp.module.css';
 import { motion } from 'framer-motion';
+import classNames from 'classnames';
 
 type ShowCasePreviewProps = {
   media?: string;
+  altText?: string;
   mimeType?: string;
-  cursor: { x: number; y: number };
-  visible: boolean;
-  hideBlobs: boolean;
+  customClass?: string;
 };
-
-const PREVIEW_WIDTH = 460;
-const PREVIEW_HEIGHT = 250;
 
 const ShowCasePreview = ({
   media,
+  altText,
   mimeType,
-  cursor,
-  visible,
-  hideBlobs,
+  customClass,
 }: ShowCasePreviewProps) => {
   const isVideo = mimeType?.startsWith('video/');
 
   return (
     <motion.div
-      className={styles.preview}
-      animate={{
-        x: cursor.x - PREVIEW_WIDTH - 70,
-        y: cursor.y - PREVIEW_HEIGHT - 30,
-        opacity: visible ? 1 : 0,
-      }}
-      transition={{
-        type: "spring",
-        stiffness: 300,
-        damping: 30,
-        mass: 0.2,
+      className={classNames(styles.preview, customClass && styles[customClass])}
+      variants={{
+        initial: { scale: 0.96, opacity: 0, pointerEvents: 'none' },
+        hover: { scale: 1, opacity: 1, pointerEvents: 'auto' },
       }}
     >
-      <div className={classNames(styles.blob, styles.sm)}>
-        <motion.span
-          key={`sm-${media}`}
-          initial={{ opacity: 1, scale: 1 }}
-          animate={
-            hideBlobs
-              ? { opacity: 0, scale: 0.8 }
-              : { opacity: 1, scale: 1.06 }
-          }
-          transition={{
-            duration: 0.32,
-            ease: "easeOut",
-            delay: hideBlobs ? 0 : 0.02,
-          }}
-        ></motion.span>
-      </div>
-      <div className={classNames(styles.blob, styles.lg)}>
-        <motion.span
-          key={`lg-${media}`}
-          initial={{ opacity: 1, scale: 1 }}
-          animate={
-            hideBlobs
-              ? { opacity: 0, scale: 0.8 }
-              : { opacity: 1, scale: 1.08 }
-          }
-          transition={{
-            duration: 0.44,
-            ease: "easeOut",
-            delay: hideBlobs ? 0 : 0.07,
-          }}
-        ></motion.span>
-      </div>
       <motion.div
         key={`case-${media}`}
         className={styles.case}
@@ -88,15 +44,16 @@ const ShowCasePreview = ({
               playsInline
               preload="metadata"
               className={styles.video}
+              aria-label={altText ?? 'Preview video'}
             />
           ) : (
             <Image
               src={media}
               className={styles.figure}
-              alt=""
+              alt={altText ?? ''}
               width={300}
               height={200}
-            />  
+            />
           )
         ) : (
           <div className={styles.placeholder}></div>
@@ -104,7 +61,6 @@ const ShowCasePreview = ({
       </motion.div>
     </motion.div>
   );
-
 };
 
 export default ShowCasePreview;
