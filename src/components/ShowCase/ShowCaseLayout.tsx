@@ -1,21 +1,18 @@
 'use client';
-import React, { useState, useEffect, useRef } from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
 import styles from './scl.module.css';
 import classNames from 'classnames';
 import ShowCaseHeader from './ShowCaseHeader';
 import ShowCaseNav from './ShowCaseNav';
+import ShowCaseLayoutFooter from './ShowCaseLayoutFooter';
 import { HeartShapedBox } from '@/src/components/ui/HeartShapedBox';
 import { ShowCaseEntry } from './ShowCaseServer';
 import { motion, AnimatePresence } from 'framer-motion';
-import { TransitionLink } from '@/src/components/transitions';
-import { scrambleText } from '@/src/components/_utils/Scramble';
 
 export type ShowCaseListProps = {
   items: ShowCaseEntry[];
 }
-
-const MotionTransitionLink = motion(TransitionLink);
 
 const ShowCaseLayout = ({items}: ShowCaseListProps) => {
   /* const validItems = Array.isArray(items)
@@ -51,10 +48,6 @@ const ShowCaseLayout = ({items}: ShowCaseListProps) => {
 
   const isVideo = selected?.snapshotMimeType?.startsWith('video/') ?? false;
 
-  const [scrambledTags, setScrambledTags] = useState(selected.tags);
-
-  const prevTagsRef = useRef<string[]>([]);
-
   const handleChange = (direction: 'next' | 'prev') => {
     if (direction === 'next') {
       paginate(1);
@@ -62,27 +55,6 @@ const ShowCaseLayout = ({items}: ShowCaseListProps) => {
       paginate(-1);
     }
   };
-  
-  useEffect(() => {
-    if (!selected?.tags) return;
-
-    const fromTags = prevTagsRef.current;
-    const toTags = selected.tags;
-
-    const newTags: string[] = Array(toTags.length).fill("");
-
-    for (let i = 0; i < toTags.length; i++) {
-      const from = fromTags[i] || "";
-      const to = toTags[i];
-
-      scrambleText(from, to, (value) => {
-        newTags[i] = value;
-        setScrambledTags([...newTags]);
-      });
-    }
-
-    prevTagsRef.current = toTags;
-  }, [selected]);
 
   const variants = {
     enter: () => ({
@@ -268,79 +240,13 @@ const ShowCaseLayout = ({items}: ShowCaseListProps) => {
 
             </div>
           </div>
-          <div className={styles.footer}>
-            <div className={styles.summary}>
-              <div className={styles.details}>
-                <MotionTransitionLink 
-                  href={selected.uri} 
-                  className={styles.link}
-                  whileHover="hovered"
-                >
-                  View Details
-                  <motion.span 
-                    className={classNames(styles['link-frame-corner'], styles['link-frame-tl'])}
-                    variants={{
-                      hovered: { top: '1px', left: '2px' },
-                      initial: { top: '-1px', left: '-1px' }
-                    }}
-                    transition={{ duration: 0.3 }}
-                  />
-                  <motion.span 
-                    className={classNames(styles['link-frame-corner'], styles['link-frame-tr'])} 
-                    variants={{
-                      hovered: { top: '1px', right: '2px' },
-                      initial: { top: '-1px', right: '-1px' }
-                    }}
-                    transition={{ duration: 0.3 }}
-                  />
-                  <motion.span 
-                    className={classNames(styles['link-frame-corner'], styles['link-frame-bl'])} 
-                    variants={{
-                      hovered: { bottom: '1px', left: '2px' },
-                      initial: { bottom: '-1px', left: '-1px' }
-                    }}
-                    transition={{ duration: 0.3 }}
-                  />
-                  <motion.span 
-                    className={classNames(styles['link-frame-corner'], styles['link-frame-br'])} 
-                    variants={{
-                      hovered: { bottom: '1px', right: '2px' },
-                      initial: { bottom: '-1px', right: '-1px' }
-                    }}
-                    transition={{ duration: 0.3 }}
-                  />
-                </MotionTransitionLink>
-              </div>
-              <AnimatePresence mode="wait">
-                <motion.h2
-                  key={selected.heading} // important: change triggers re-render
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  {selected.heading}
-                </motion.h2>
-              </AnimatePresence>
-              <div className={styles.tags}>
-                {scrambledTags.map((tag, i) => (
-                  <span key={i}>{tag}</span>
-                ))}
-              </div>
-            </div>
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={selected.description}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.2 }}
-                className={styles.context}
-              >
-                {selected.description}
-              </motion.div>
-            </AnimatePresence>
-          </div>
+          <ShowCaseLayoutFooter 
+            uri={selected.uri}
+            heading={selected.heading}
+            description={selected.description}
+            tags={selected.tags}
+            colorMode={selected.colorMode}
+          />
 
           {/* <div
             className={classNames(styles.panel, styles.deck)}
