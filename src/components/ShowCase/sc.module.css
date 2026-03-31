@@ -72,10 +72,6 @@
   gap: var(--bm-space-500);
 }
 
-.panel.deck {
-  position: relative;
-}
-
 .body {
   width: 70%;
   display: flex;
@@ -108,14 +104,6 @@
 
 .tags span {
   white-space: nowrap;
-}
-
-.cards {
-  display: flex;
-  flex-direction: column;
-  gap: var(--bm-space-100);
-  width: 100%;
-  align-items: flex-end;
 }
 
 .angle {
@@ -192,52 +180,6 @@
   align-items: flex-end;
   justify-content: flex-end;
   width: 100%;
-}
-
-.card {
-  width: 100%;
-  max-width: 95%;
-  height: var(--bm-space-900);
-  border-radius: var(--bm-radius-md);
-  display: flex;
-  align-items: center;
-  gap: var(--bm-space-200);
-  padding: var(--bm-space-200) var(--bm-space-500);
-  position: relative;
-  z-index: 5;
-  transition: all 0.3s ease-in-out;
-}
-
-.card.current {
-	background-color: var(--bm-tint-init);
-}
-
-.card .title,
-.card .meta {
-  transition: transform 0.3s ease;
-}
-
-/* when hovered/current */
-@media only screen and (min-width: 768px) {
-  .card.current .title {
-    transform: translateX(-5px);
-  }
-
-  .card.current .meta {
-    transform: translateX(5px);
-  }
-}
-
-.title {
-  width: 40%;
-  line-height: 1;
-}
-
-.meta {
-  flex: 1;
-  font-size: 0.8125rem;
-  text-align: right;
-  opacity: 0.5;
 }
 
 .preview {
@@ -364,26 +306,6 @@
 
   .board {
     padding: 120px var(--bm-space-200) var(--bm-space-500);
-  }
-
-  .cards {
-    gap: var(--bm-space-100);
-  }
-
-  .card {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--bm-space-100);
-    height: auto;
-    padding: var(--bm-space-300) var(--bm-space-300);
-  }
-
-  .title {
-    width: 100%;
-  }
-
-  .meta {
-    text-align: left;
   }
 }
 
