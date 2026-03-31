@@ -62,10 +62,6 @@
   gap: var(--bm-space-500);
 }
 
-.panel.deck {
-  position: relative;
-}
-
 .body {
   display: flex;
   align-items: center;

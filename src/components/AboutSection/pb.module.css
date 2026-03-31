@@ -4,6 +4,21 @@
   position: relative;
 }
 
+.tab::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--bm-tint-accent);
+  transition: width 0.3s ease;
+}
+
+.tab:hover::after {
+  width: 100%;
+}
+
 .tab-pointer {
   position: absolute;
   top: var(--bm-space-500);
