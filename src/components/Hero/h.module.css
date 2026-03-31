@@ -149,6 +149,11 @@
     padding: var(--bm-space-500) var(--bm-space-300);
   }
 
+  .hdr {
+    padding-left: var(--bm-space-100);
+    padding-right: var(--bm-space-100);
+  }
+
   .sp {
     padding: var(--bm-space-500) var(--bm-space-300);
     gap: var(--bm-space-800);

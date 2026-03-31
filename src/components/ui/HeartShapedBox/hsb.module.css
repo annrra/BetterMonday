@@ -79,8 +79,8 @@
   top: 50%;
   left: 70px;
   transform: translateY(-50%);
-  font-size: 0.8125rem;
-  color: var(--bm-tint-silver);
+  font-size: 0.875rem;
+  color: var(--bm-tint-grey);
   white-space: nowrap;
-  font-weight: 200;
+  font-weight: 300;
 }

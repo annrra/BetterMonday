@@ -16,11 +16,15 @@
 }
 
 .fill-contour-accent {
-  fill: var(--bm-tint-silver)
+  fill: var(--bm-tint-silver);
 }
 
 .fill-bgr {
-  fill: var(--bm-tint-init)
+  fill: var(--bm-tint-init);
+}
+
+.fill-txt {
+  fill: var(--bm-tint-silver);
 }
 
 .stoke-contour {

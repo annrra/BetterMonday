@@ -137,6 +137,7 @@ const ManualGraphSvg = () => {
             variants={characterVariants}
             initial="on"
             animate={characterState ? 'off' : 'on'}
+            d={characterRange[0] || ""} // fallback to empty string to prevent console errors when path is undefined
             transition={{ duration: 0.3, ease: 'easeInOut' }}
             className={styles['fill-contour']}
           />
@@ -207,7 +208,7 @@ const ManualGraphSvg = () => {
             />
             <text
               id="2x"
-              fill="#E9E9E9"
+              className={styles['fill-txt']}
               style={{
                 whiteSpace: "pre",
               }}
@@ -250,7 +251,7 @@ const ManualGraphSvg = () => {
             </g>
             <text
               id="The more, the better. \xE2\x80\xA8Think of it as fuel."
-              fill="#E9E9E9"
+              className={styles['fill-txt']}
               style={{
                 whiteSpace: "pre",
               }}
@@ -271,7 +272,7 @@ const ManualGraphSvg = () => {
           <g id="goofy">
             <text
               id="Or, just let\xE2\x80\x99s make it more goofy and chat about movies and bicycles."
-              fill="#E9E9E9"
+              className={styles['fill-txt']}
               style={{
                 whiteSpace: "pre",
               }}
