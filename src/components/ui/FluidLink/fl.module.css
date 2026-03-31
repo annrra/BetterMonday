@@ -46,3 +46,30 @@
   width: var(--bm-space-400);
   height: var(--bm-space-400);
 }
+
+.link-alt {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--bm-space-200);
+}
+
+.btn span {
+  display: inline-flex;
+  padding: 0 var(--bm-space-100) 0 var(--bm-space-50);
+  line-height: 32px;
+  font-weight: 300;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+}
+
+.accept-btn {
+  fill: var(--bm-tint-accent);
+}
+
+.btnarrow {
+  fill: var(--bm-tint-silver);
+}

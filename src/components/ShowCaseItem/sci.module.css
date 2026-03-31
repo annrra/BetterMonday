@@ -208,6 +208,11 @@
   height: auto;
 }
 
+.skandan-music .frame {
+  width: 400px;
+  height: 400px;
+}
+
 .photocomma .frame02 .scene {
   bottom: 95px;
 }

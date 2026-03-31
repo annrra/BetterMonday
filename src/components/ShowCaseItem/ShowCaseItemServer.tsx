@@ -92,7 +92,7 @@ const ShowCaseItemServer = async ({ post, item }: ShowCaseItemServerProps) => {
                 ))}
               </div>
               {item?.link.url && (
-                <FluidLink href={item.link.url} text={item.link.text} />
+                <FluidLink href={item.link.url} text={item.link.text} mode="alt" />
               )}
             </div>
           </div>

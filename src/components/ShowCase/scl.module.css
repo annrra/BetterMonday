@@ -270,7 +270,7 @@
 }
 
 .details .link {
-  padding: 6px var(--bm-space-200);
+  padding: var(--bm-space-50) 12px;
   text-transform: uppercase;
   font-size: 0.825rem;
   font-weight: 300;
