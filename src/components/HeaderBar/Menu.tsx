@@ -24,14 +24,12 @@ const Menu = ({
       >
         <span>about</span>
       </TransitionLink>
-      <ComingSoonTooltip message='Under development..'>
-        <TransitionLink 
-          href="/work"
-          className={classNames({ [styles.active]: pathname === '/work' })}
-        >
-          <span>work</span>
-        </TransitionLink>
-      </ComingSoonTooltip>
+      <TransitionLink 
+        href="/work"
+        className={classNames({ [styles.active]: pathname === '/work' })}
+      >
+        <span>work</span>
+      </TransitionLink>
     </nav>
   );
 

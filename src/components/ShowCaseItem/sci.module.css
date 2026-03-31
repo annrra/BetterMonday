@@ -258,7 +258,39 @@
   }
 
   .close {
-    top: var(--bm-space-800)
+    top: var(--bm-space-200);
+    right: var(--bm-space-200);
+    display: inline-flex;
+    align-items: center;
+    border-top-right-radius: var(--bm-radius-lg);
+    border-bottom-left-radius: var(--bm-radius-lg);
+    background-color: var(--bm-tint-init);
+    color: var(--bm-tint-silver);
+    padding: var(--bm-space-200);
+  }
+
+  .close::before,
+  .close::after {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background-color: var(--bm-tint-init);
+  }
+
+  .close::before {
+    top: 0;
+    left: 0;
+    background-color: var(--bm-tint-init);
+    transform: rotate(90deg) translateY(100%);
+    clip-path: path("M 0 0 L 12 0 Q 0 0 0 12 L 0 0 Z");
+  }
+
+  .close::after {
+    bottom: 0;
+    right: 0;
+    transform: rotate(90deg) translateX(100%);
+    clip-path: path("M 0 0 L 12 0 Q 0 0 0 12 L 0 0 Z");
   }
 
   .hero,
