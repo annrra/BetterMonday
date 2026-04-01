@@ -7,53 +7,12 @@ interface HueSliderKnobProps extends SVGMotionProps<SVGSVGElement> {
   hovered?: boolean;
 }
 
-const lPathInitial = "M36 35C36 35 50.8522 39.4609 64 35C58.5218 46.8565 64 62 64 62";
-const lPathHover   = "M38 33C38 33 52.8522 37.4609 66 33C60.5218 44.8565 66 60 66 60";
+const curveRange = [
+  `M46.0855 54.1724C57.8957 67.0639 45.7289 77.3464 38.5 76.5005C33.647 75.9327 30.468 71.7701 29.6145 68.2172C28.7609 64.6643 32.95 55.4473 38.99 60.6727C45.0299 65.8982 46.4802 58.2501 37.0086 51.7291C27.537 45.2081 27.7457 36.6606 30.7542 33.9044C33.7627 31.1483 41.2003 30.2362 47.5122 43.9345C55.7533 61.8193 60.0644 51.7668 53.7938 43.6114C49.9769 38.6473 48.5561 29.3469 54.6936 26.0744C68.1085 19.6342 75.6421 41.8753 75.6987 44.9571C75.7745 49.0855 71.5613 53.0823 67.1324 47.6866C59.9385 38.9223 61.0306 47.636 63.5892 52.0815C66.1479 56.5269 65.8146 62.4666 61.4954 65.1241C57.1762 67.7815 51.6406 63.9679 49.432 53.6657C47.2235 43.3634 40.7744 41.5941 39.0265 43.561C35.9677 47.003 42.6824 50.9705 46.0855 54.1724Z`,
+  `M46.0855 54.1724C57.8957 67.0639 48.0856 72.9819 56.0002 78.5004C51.1472 77.9325 39.8801 90.0534 39.0266 86.5005C38.1731 82.9476 29.9602 66.775 36.0002 72.0004C42.0402 77.2259 46.4803 58.2501 37.0087 51.7291C27.5371 45.2081 27.7458 36.6606 30.7543 33.9044C33.7628 31.1483 41.2004 30.2362 47.5123 43.9345C55.7533 61.8193 56.0002 29.5005 44.5 29.5005C40.6831 24.5364 47.5855 20.5005 54 12.0005C65.0893 18.0005 71.9434 27.4187 72 30.5005C72.0758 34.629 69.9289 39.3001 65.5 33.9044C58.3061 25.1401 61.0306 47.636 63.5893 52.0815C66.148 56.527 65.8146 62.4666 61.4954 65.1241C57.1763 67.7815 51.6407 63.9679 49.4321 53.6657C47.2235 43.3634 40.7744 41.5941 39.0266 43.561C35.9677 47.003 42.6824 50.9705 46.0855 54.1724Z`
+];
 
-const rPathInitial = "M62 64C62 64 47.1478 59.5391 34 64C39.4782 52.1435 34 37 34 37";
-const rPathHover   = "M60 66C60 66 45.1478 61.5391 32 66C37.4782 54.1435 32 39 32 39";
-
-const HueSliderKnob = ({ hovered = false, ...props }: HueSliderKnobProps) => {
-  const controlsL = useAnimation();
-  const controlsR = useAnimation();
-
-  useEffect(() => {
-    if (!hovered) {
-      controlsL.set({ d: lPathInitial });
-      controlsR.set({ d: rPathInitial });
-      return;
-    }
-
-    const animate = async () => {
-      for (let i = 0; i < 2; i++) {
-        // expand
-        await Promise.all([
-          controlsL.start({
-            d: lPathHover,
-            transition: { duration: 0.12, ease: [0.34, 1.56, 0.64, 1] }
-          }),
-          controlsR.start({
-            d: rPathHover,
-            transition: { duration: 0.12, ease: [0.34, 1.56, 0.64, 1] }
-          })
-        ]);
-
-        // collapse
-        await Promise.all([
-          controlsL.start({
-            d: lPathInitial,
-            transition: { duration: 0.10, ease: "easeInOut" }
-          }),
-          controlsR.start({
-            d: rPathInitial,
-            transition: { duration: 0.10, ease: "easeInOut" }
-          })
-        ]);
-      }
-    };
-
-    animate();
-  }, [hovered, controlsL, controlsR]);
+const HueSliderKnob = ({ hovered = false }: HueSliderKnobProps) => {
 
   return (
     <div className={styles.thumb}>
@@ -62,42 +21,41 @@ const HueSliderKnob = ({ hovered = false, ...props }: HueSliderKnobProps) => {
         width={100}
         height={100}
         viewBox="0 0 100 100"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
         className={styles.expand}
-        {...props} // allow Framer Motion props
-        animate={{
-          scale: hovered ? 1.1 : 1,
-          rotate: hovered ? 315 : 0,
-        }}
-        transition={{ type: "spring", stiffness: 300, damping: 20 }}
+        initial="initial"
+        whileHover="hover"
       >
-        <g id="expand">
+        <motion.g 
+          id="expand"
+        >
           <motion.path
             id="ellipse"
             d="M100 50C100 77.6142 77.6142 100 50 100C22.3858 100 0 77.6142 0 50C0 22.3858 22.3858 0 50 0C77.6142 0 100 22.3858 100 50Z"
             className={styles['tone-neutral']}
           />
           <motion.g 
-            id="arrows"
+            id="curves"
             animate={{
-              scale: hovered ? 0.9 : 1,
+              scale: hovered ? 0.85 : 1
             }}
+            transition={{
+              type: "spring",
+              stiffness: 200,
+              damping: 20
+            }}
+            style={{ originX: 0.3, originY: 0.5 }}
           >
             <motion.path
-              id="l"
-              className={styles['tone-primary']}
-              d={lPathInitial}
-              animate={controlsL}
-            />
-            <motion.path
-              id="r"
+              initial={{ d: curveRange[0] }}
+              animate={{
+                d: hovered ? curveRange[1] : curveRange[0],
+                scale: hovered ? 0.95 : 1
+              }}
+              transition={{ duration: 0.3 }}
               className={styles['tone-secondary']}
-              d={rPathInitial}
-              animate={controlsR}
             />
           </motion.g>
-        </g>
+        </motion.g>
       </motion.svg>
     </div>
   );

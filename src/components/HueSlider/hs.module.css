@@ -64,12 +64,12 @@
 	top: -40%;
 	left: 85%;
 	z-index: 5;
-	background-color: var(--tone-secondary-700);
+	background-color: var(--tone-secondary-500);
 	color: var(--bm-tint-silver);
 	border-radius: var(--bm-radius-md);
 	padding: var(--bm-space-100) var(--bm-space-200);
 	white-space: nowrap;
-	font-size: 90%;
+	font-size: 0.875rem;
 	transition: all 0.5s ease;
 	transition-delay: 10ms;
 }
@@ -79,7 +79,7 @@
 	opacity: 0;
 	visibility: hidden;
 	content: '';
-	background-color: var(--tone-secondary-700);
+	background-color: var(--tone-secondary-500);
 	width: 14px;
 	height: 14px;
 	border-radius: 50%;
@@ -133,15 +133,15 @@
 
   .tooltip {
     top: -75%;
-    left: 80%;
-    background-color: var(--bm-tint-secondary);
+    left: 85%;
+    background-color: var(--tone-secondary-600);
     white-space: normal;
     width: 130px;
   }
 
   .tooltip::before,
   .tooltip::after {
-    background-color: var(--bm-tint-secondary);
+    background-color: var(--tone-secondary-600);
   }
 }
 
@@ -152,8 +152,13 @@
 
   .tooltip {
     top: -95%;
-    left: 80%;
+    left: 95%;
     width: 100px;
+    font-size: 0.825rem;
+  }
+
+  .tooltip::after {
+    display: none;
   }
 }
 
@@ -169,5 +174,10 @@
   .knob svg {
     width: 50px;
     height: 50px;
+  }
+
+  .tooltip {
+    top: -120%;
+    left: 95%;
   }
 }

@@ -23,8 +23,16 @@ const ShowCasePreview = ({
     <motion.div
       className={classNames(styles.preview, customClass && styles[customClass])}
       variants={{
-        initial: { scale: 0.96, opacity: 0, pointerEvents: 'none' },
-        hover: { scale: 1, opacity: 1, pointerEvents: 'auto' },
+        initial: { scale: 0.94, opacity: 0, pointerEvents: 'none' },
+        hover: {
+          scale: [0.94, 1.04, 1],
+          opacity: 1,
+          pointerEvents: 'auto',
+          transition: {
+            duration: 0.3,
+            ease: "easeInOut",
+          },
+        },
       }}
     >
       <motion.div

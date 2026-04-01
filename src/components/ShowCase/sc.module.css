@@ -104,7 +104,7 @@
 
 .corner svg {
   position: relative;
-  top: var(--bm-space-50);
+  top: var(--bm-space-25);
 }
 
 .angle .nav {
@@ -112,7 +112,7 @@
   align-items: center;
   gap: 29px;
   position: relative;
-  top: var(--bm-space-50);
+  top: var(--bm-space-25);
 }
 
 .angle .nav svg circle {
