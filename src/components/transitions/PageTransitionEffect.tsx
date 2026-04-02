@@ -182,7 +182,7 @@ const PageTransitionEffect = ({ children }: { children: React.ReactNode }) => {
               }}
               className={styles.logoWrapper}
             >
-              <MondayLogoSvg autoScramble />
+              <MondayLogoSvg autoScramble mode="light" />
             </motion.div>
           </div>
         )}

@@ -14,7 +14,7 @@ const HeaderBar = async ({ mode = 'dark' }: HeaderBarProps) => {
     <div className={classNames(styles.header, { [styles.light]: mode === 'light' })}>
       <div className={styles['logo-wrapper']}>
         <TransitionLink href="/" id="logo" className={styles['logo-link']}>
-          <MondayLogoSvg />
+          <MondayLogoSvg mode={mode} />
         </TransitionLink>
       </div>
       <Menu mode={mode} />

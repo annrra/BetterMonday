@@ -79,7 +79,7 @@
 	opacity: 0;
 	visibility: hidden;
 	content: '';
-	background-color: var(--tone-secondary-500);
+	background-color: var(--tone-secondary-400);
 	width: 14px;
 	height: 14px;
 	border-radius: 50%;

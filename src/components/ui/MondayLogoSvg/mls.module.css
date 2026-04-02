@@ -1,4 +1,8 @@
 .fpath {
+  fill: var(--bm-tint-init);
+}
+
+.light .fpath {
   fill: var(--bm-tint-silver);
 }
 

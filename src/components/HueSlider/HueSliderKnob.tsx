@@ -15,7 +15,7 @@ const HueSliderKnob = ({ hovered = false }: HueSliderKnobProps) => {
 
   return (
     <div className={styles.thumb}>
-      <div className={styles.tooltip}>Slide up or down to adjust color</div>
+      <div className={styles.tooltip}>Slide up or down to adjust colors</div>
       <motion.svg
         width={100}
         height={100}
