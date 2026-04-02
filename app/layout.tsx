@@ -3,6 +3,7 @@ import { Geist, Passion_One } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./Providers";
 import { PageTransitionEffect } from '@/src/components/transitions';
+import { Analytics } from "@vercel/analytics/next"
 
 export const metadata: Metadata = {
   title: {
@@ -63,6 +64,7 @@ export default function RootLayout({
         <Providers>
           <PageTransitionEffect>
             {children}
+            <Analytics />
           </PageTransitionEffect>
         </Providers>
       </body>
