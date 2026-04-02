@@ -89,18 +89,24 @@ const MondayLogoSvg = ({ autoScramble = false, mode = 'dark', ...props }: Monday
     setIndex(0);
   };
 
-  const startScramble = () => runScramble(false);
-
   // Auto mode
   useEffect(() => {
     if (autoScramble) {
       runScramble(true);
+    } else {
+      stopScramble();
     }
 
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
     };
   }, [autoScramble]);
+
+  const circleVariants = {
+    initial: { scale: 1 },
+    hover: { scale: 1.18 },
+    tap: { scale: 0.95 }
+  };
 
   return (
     <motion.svg
@@ -110,15 +116,18 @@ const MondayLogoSvg = ({ autoScramble = false, mode = 'dark', ...props }: Monday
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       {...props}
-      onHoverStart={!autoScramble ? startScramble : undefined}
-      onHoverEnd={!autoScramble ? stopScramble : undefined}
-      onTapStart={!autoScramble ? startScramble : undefined}
-      onTapCancel={!autoScramble ? stopScramble : undefined}
-      style={{ cursor: "pointer", touchAction: "manipulation" }}
+      style={{ touchAction: "manipulation" }}
       className={classNames(styles.logofigure, { [styles.light]: mode === 'light' })}
+      initial="initial"
+      whileHover={!autoScramble ? "hover" : undefined}
+      whileTap={!autoScramble ? "tap" : undefined}
     >
       <g id="logofigure">
-        <g id="ico">
+        <motion.g 
+          id="circle"
+          variants={circleVariants}
+          transition={{ type: "spring", stiffness: 300, damping: 20 }}
+        >
           <circle
             id="ellipse"
             cx={22}
@@ -126,28 +135,29 @@ const MondayLogoSvg = ({ autoScramble = false, mode = 'dark', ...props }: Monday
             r={22}
             className={styles.fpath}
           />
-          <motion.g id="circle" style={{ position: "relative" }}>
-            <AnimatePresence mode="sync">
-              <motion.g
-                key={index}
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 1.05 }}
-                transition={{
-                  duration: 0.18,
-                  ease: "easeInOut"
-                }}
-                style={{
-                  position: "absolute"
-                }}
-              >
-                {SYMBOLS[index]}
-              </motion.g>
-            </AnimatePresence>
-          </motion.g>
-        </g>
+        </motion.g>
+        <motion.g id="ico" style={{ position: "relative" }}>
+          <AnimatePresence mode="sync">
+            <motion.g
+              key={index}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 1.05 }}
+              transition={{
+                duration: 0.18,
+                ease: "easeInOut"
+              }}
+              style={{
+                position: "absolute"
+              }}
+            >
+              {SYMBOLS[index]}
+            </motion.g>
+          </AnimatePresence>
+        </motion.g>
       </g>
     </motion.svg>
   );
 };
+
 export default MondayLogoSvg;

@@ -1,3 +1,7 @@
+.logofigure {
+  overflow: visible;
+}
+
 .fpath {
   fill: var(--bm-tint-init);
 }
@@ -8,4 +12,8 @@
 
 .fdark {
   fill: var(--tone-secondary);
+}
+
+.light .fdark {
+  fill: var(--tone-secondary-700);
 }
