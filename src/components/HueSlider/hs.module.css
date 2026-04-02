@@ -61,7 +61,7 @@
 	opacity: 0;
 	visibility: hidden;
 	position: absolute;
-	top: -40%;
+	top: -45%;
 	left: 85%;
 	z-index: 5;
 	background-color: var(--tone-secondary-500);
@@ -107,7 +107,7 @@
 }
 
 .tone-secondary {
-  fill: var(--tone-secondary-400);
+  fill: var(--tone-secondary-200);
 }
 
 @media only screen and (max-width: 1000px) {

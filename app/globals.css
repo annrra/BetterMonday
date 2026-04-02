@@ -21,7 +21,7 @@
 
   /* Secondary shades */
   --tone-secondary-100: hsl(var(--tone-secondary-h), var(--tone-secondary-s), 95%);
-  --tone-secondary-200: hsl(var(--tone-secondary-h), var(--tone-secondary-s), 85%);
+  --tone-secondary-200: hsl(var(--tone-secondary-h), var(--tone-secondary-s), 80%);
   --tone-secondary-300: hsl(var(--tone-secondary-h), var(--tone-secondary-s), 75%);
   --tone-secondary-400: hsl(var(--tone-secondary-h), var(--tone-secondary-s), 65%);
   --tone-secondary-500: hsl(var(--tone-secondary-h), var(--tone-secondary-s), 60%);
