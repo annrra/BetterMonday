@@ -318,7 +318,7 @@ const ManualGraphSvg = () => {
               transition={{ duration: 0.25 }}
             >
               <video
-                src="https://bettermonday.org/wp-content/uploads/video-rotate-avatar.mp4" // to be replaced
+                src="https://api.bettermonday.org/wp-content/uploads/video-rotate-avatar.mp4" // to be replaced
                 autoPlay
                 muted
                 loop

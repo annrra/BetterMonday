@@ -212,7 +212,7 @@ const ShowCaseLayout = ({items}: ShowCaseListProps) => {
                       />
                     ) : (
                       <Image
-                        src={selected.snapshotUrl ? selected.snapshotUrl : "https://bettermonday.org/wp-content/uploads/cudillero-mirror.jpg"}
+                        src={selected.snapshotUrl ? selected.snapshotUrl : "https://api.bettermonday.org/wp-content/uploads/cudillero-mirror.jpg"}
                         alt={selected.snapshotAltText}
                         className={styles.snapshot}
                         priority

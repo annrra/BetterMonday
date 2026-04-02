@@ -129,7 +129,7 @@ const PlayBook = () => {
                   className={styles['media-motion']}
                 >
                   <Image
-                    src="https://bettermonday.org/wp-content/uploads/cudillero-mirror.jpg"
+                    src="https://api.bettermonday.org/wp-content/uploads/cudillero-mirror.jpg"
                     alt=""
                     width={1400} // use actual image width
                     height={933} // use actual image height
