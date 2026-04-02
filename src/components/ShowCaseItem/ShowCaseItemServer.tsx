@@ -53,7 +53,6 @@ const ShowCaseItemServer = async ({ post, item }: ShowCaseItemServerProps) => {
               alt={item.featuredImage.altText ?? ''}
               fill
               className={styles['hero-image']}
-              unoptimized
             />
           )}
         </div>
@@ -111,7 +110,6 @@ const ShowCaseItemServer = async ({ post, item }: ShowCaseItemServerProps) => {
               height={0}
               sizes="100vw"
               className={styles['screen-image']}
-              unoptimized
             />
           </div>
         )}
@@ -125,7 +123,6 @@ const ShowCaseItemServer = async ({ post, item }: ShowCaseItemServerProps) => {
               height={0}
               sizes="100vw"
               className={styles['screen-image']}
-              unoptimized
             />
           </div>
         )}
@@ -139,7 +136,6 @@ const ShowCaseItemServer = async ({ post, item }: ShowCaseItemServerProps) => {
               height={0}
               sizes="100vw"
               className={styles['screen-image']}
-              unoptimized
             />
           </div>
         )}
@@ -158,7 +154,6 @@ const ShowCaseItemServer = async ({ post, item }: ShowCaseItemServerProps) => {
                 height={0}
                 sizes="100vw"
                 className={styles.scene}
-                unoptimized
               />
             )}
           </div>
@@ -171,7 +166,6 @@ const ShowCaseItemServer = async ({ post, item }: ShowCaseItemServerProps) => {
                 height={0}
                 sizes="100vw"
                 className={styles.scene}
-                unoptimized
               />
             )}
           </div>
@@ -184,7 +178,6 @@ const ShowCaseItemServer = async ({ post, item }: ShowCaseItemServerProps) => {
                 height={0}
                 sizes="100vw"
                 className={styles.scene}
-                unoptimized
               />
             )}
           </div>
