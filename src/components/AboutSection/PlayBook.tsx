@@ -94,7 +94,7 @@ const PlayBook = () => {
               </svg>
             </span>
           </span>{" "}
-          it differently — good results will follow.
+          it differently.
         </div>
         <AnimatePresence mode="wait">
           {activePanel === "manual" && (

@@ -23,6 +23,36 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+
+  async redirects() {
+    return [
+      {
+        source: '/page/:num(\\d+)',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/small-stations-press/:path*',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/christmas/:path*',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/blog/:path*',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/slideposts-ajax-pagination-plugin/:path*',
+        destination: '/',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
