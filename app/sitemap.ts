@@ -65,7 +65,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...staticPages.map(page => ({
       url: `${SITE_URL}/${page.slug}`,
       lastModified: new Date(),
-      changeFrequency: page.changefreq, // ✅ TypeScript is happy
+      changeFrequency: page.changefreq,
       priority: page.priority,
     })),
     ...posts.map(post => ({
