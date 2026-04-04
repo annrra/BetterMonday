@@ -37,6 +37,16 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: '/portico/:path*',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/libertarianstvo/:path*',
+        destination: '/',
+        permanent: true,
+      },
+      {
         source: '/christmas/:path*',
         destination: '/',
         permanent: true,
