@@ -127,7 +127,7 @@ export async function getMediaRollContent() {
         }
       }`
     }),
-    next: { revalidate: 60 },
+    next: { revalidate: 86400 },
   });
    
   if (!res || !res.ok) {
@@ -170,7 +170,7 @@ export async function getOverviewContent() {
         }
       }`
     }),
-    next: { revalidate: 60 },
+    next: { revalidate: 86400 },
   });
    
   if (!res || !res.ok) {
@@ -249,7 +249,7 @@ export async function getPhotocommaPreview() {
         }
       }`
     }),
-    next: { revalidate: 60 },
+    next: { revalidate: 86400 },
   });
    
   if (!res || !res.ok) {
@@ -340,7 +340,7 @@ export async function getShowCaseList() {
         }
       }`
     }),
-    next: { revalidate: 60 },
+    next: { revalidate: 86400 },
   });
    
   if (!res || !res.ok) {
@@ -517,7 +517,7 @@ export async function getShowCaseItem(slug: string) {
         }
       }`
     }),
-    next: { revalidate: 60 },
+    next: { revalidate: 86400 },
   });
    
   if (!res || !res.ok) {
@@ -565,7 +565,7 @@ export async function getMetaBySlug(slug: string) {
         }
       }`
     }),
-    next: { revalidate: 60 },
+    next: { revalidate: 86400 },
   });
    
   if (!res || !res.ok) {
