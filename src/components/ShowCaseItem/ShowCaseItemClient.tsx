@@ -38,6 +38,60 @@ const ShowCaseItemClient = ({ children }: { children: React.ReactNode }) => {
     return () => lenis.off('scroll', handleScroll);
   }, [lenis, orientation]);
 
+  useEffect(() => {
+    if (!lenis || orientation === 'vertical') return;
+
+    const track = document.querySelector<HTMLElement>('[data-showcase-track]');
+    if (!track) {
+      lenis.resize();
+      return;
+    }
+
+    let resizeTimer: ReturnType<typeof setTimeout> | null = null;
+
+    const scheduleResize = () => {
+      if (resizeTimer) {
+        clearTimeout(resizeTimer);
+      }
+      resizeTimer = setTimeout(() => {
+        lenis.resize();
+      }, 100);
+    };
+
+    const resizeObserver = new ResizeObserver(() => {
+      scheduleResize();
+    });
+
+    resizeObserver.observe(track);
+
+    const images = Array.from(track.querySelectorAll('img'));
+    const pendingImages = images.filter((img) => !img.complete);
+
+    pendingImages.forEach((img) => {
+      img.addEventListener('load', scheduleResize);
+      img.addEventListener('error', scheduleResize);
+    });
+
+    if ('fonts' in document) {
+      document.fonts.ready.then(() => {
+        scheduleResize();
+      });
+    }
+
+    scheduleResize();
+
+    return () => {
+      resizeObserver.disconnect();
+      pendingImages.forEach((img) => {
+        img.removeEventListener('load', scheduleResize);
+        img.removeEventListener('error', scheduleResize);
+      });
+      if (resizeTimer) {
+        clearTimeout(resizeTimer);
+      }
+    };
+  }, [lenis, orientation]);
+
   return (
     <ReactLenis 
       root 

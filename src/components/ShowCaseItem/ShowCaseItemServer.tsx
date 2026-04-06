@@ -36,7 +36,7 @@ type ShowCaseItemServerProps = {
 const ShowCaseItemServer = async ({ post, item }: ShowCaseItemServerProps) => {
 
   return (
-    <div className={classNames(styles.showslide, styles[post.slug])}>
+    <div className={classNames(styles.showslide, styles[post.slug])} data-showcase-track>
       <div className={classNames(styles.section, styles['hero-section'])}>
         <div className={styles.logo}>
           <TransitionLink href="/">
