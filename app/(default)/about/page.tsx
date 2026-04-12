@@ -5,6 +5,10 @@ export const metadata: Metadata = {
   title: 'About BetterMonday',
   description: 'Learn more about BetterMonday, an independent web designer and developer creating custom websites, UI/UX design, and digital solutions that help brands stand out.',
 
+  alternates: {
+    canonical: '/about',
+  },
+
   openGraph: {
     title: 'About BetterMonday',
     description: 'Learn more about BetterMonday, an independent web designer and developer creating custom websites, UI/UX design, and digital solutions that help brands stand out.',

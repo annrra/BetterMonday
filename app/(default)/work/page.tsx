@@ -5,6 +5,11 @@ export const metadata: Metadata = {
   title: "Selected Work",
   description:
     "A selection of digital projects crafted by BetterMonday - combining strategy, design, and development to create impactful online experiences.",
+
+  alternates: {
+    canonical: '/work',
+  },
+
   openGraph: {
     title: "Selected Work - BetterMonday",
     description:

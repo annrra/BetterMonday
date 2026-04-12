@@ -32,9 +32,20 @@ export async function generatePageMetadata(slug: string): Promise<PageMetadata> 
   const metaPost = meta.post;
   const metaData = metaPost.meta;
 
+  const openGraphImage = metaData.metaOpengraphimage?.node?.sourceUrl;
+  const siteBase = 'https://bettermonday.org';
+  const ogImageUrl = openGraphImage
+    ? openGraphImage.startsWith('http')
+      ? openGraphImage
+      : `${siteBase}${openGraphImage}`
+    : '/og-default.jpg';
+
   const metadata: PageMetadata = {
     title: metaData.metaTitle,
     description: metaData.metaDescription,
+    alternates: {
+      canonical: `${siteBase}/${slug}`,
+    },
     openGraph: {
       title: metaData.metaTitle,
       description: metaData.metaDescription,
@@ -46,14 +57,6 @@ export async function generatePageMetadata(slug: string): Promise<PageMetadata> 
       images: [],
     },
   };
-
-  const openGraphImage = metaData.metaOpengraphimage?.node?.sourceUrl;
-  const siteBase = 'https://bettermonday.org';
-  const ogImageUrl = openGraphImage
-    ? openGraphImage.startsWith('http')
-      ? openGraphImage
-      : `${siteBase}${openGraphImage}`
-    : '/og-default.jpg';
 
   metadata.openGraph.images = [
     {

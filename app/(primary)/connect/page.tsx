@@ -13,6 +13,10 @@ export const metadata: Metadata = {
   title: 'Connect with BetterMonday',
   description: 'Get in touch with BetterMonday, an independent web designer and developer, to discuss custom websites, UI/UX design, and digital solutions tailored to help your brand stand out.',
 
+  alternates: {
+    canonical: '/connect',
+  },
+
   openGraph: {
     title: 'Connect with BetterMonday',
     description: 'Get in touch with BetterMonday, an independent web designer and developer, to discuss custom websites, UI/UX design, and digital solutions tailored to help your brand stand out.',

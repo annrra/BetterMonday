@@ -44,6 +44,9 @@ type TwitterMetadata = {
 export type PageMetadata = {
   title: string;
   description: string;
+  alternates?: {
+    canonical: string;
+  };
   openGraph: OpenGraphMetadata;
   twitter: TwitterMetadata;
 }
