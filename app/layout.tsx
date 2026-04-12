@@ -1,9 +1,10 @@
-import type { Metadata } from "next";
-import { Geist, Passion_One } from "next/font/google";
-import "./globals.css";
-import { Providers } from "./Providers";
+import type { Metadata } from 'next';
+import { Geist, Passion_One } from 'next/font/google';
+import './globals.css';
+import { Providers } from './Providers';
 import { PageTransitionEffect } from '@/src/components/transitions';
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from '@vercel/analytics/next';
+import { SchemaOrg } from '@/src/components/seo/SchemaOrg';
 
 export const metadata: Metadata = {
   title: {
@@ -61,6 +62,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${passionOne.variable}`}>
+        <SchemaOrg />
+
         <Providers>
           <PageTransitionEffect>
             {children}
