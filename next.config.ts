@@ -5,11 +5,11 @@ const securityHeaders = [
     key: "Content-Security-Policy",
     value: `
       default-src 'self';
-      script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com;
+      script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cloud.umami.is;
       style-src 'self' 'unsafe-inline';
       img-src 'self' data: blob: https:;
       font-src 'self' data: https:;
-      connect-src 'self' https://api.bettermonday.org https://va.vercel-scripts.com https://vitals.vercel-insights.com;
+      connect-src 'self' https://api.bettermonday.org https://cloud.umami.is https://api-gateway.umami.dev;
       media-src 'self' https://api.bettermonday.org;
       frame-ancestors 'none';
     `.replace(/\n/g, ""),

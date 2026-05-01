@@ -2,7 +2,7 @@ import { ShowCaseServer } from '@/src/components/ShowCase';
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Selected Work",
+  title: "Work | Web Design & Development Portfolio",
   description:
     "A selection of digital projects crafted by BetterMonday - combining strategy, design, and development to create impactful online experiences.",
 

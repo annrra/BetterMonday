@@ -39,7 +39,7 @@ export default function NotFound() {
 			</Link>
 			<div className={styles.notice}>
 				<h1>Page not found</h1>
-				<div>Try again later, or go to <Link href="/">homepage</Link>.</div>
+				<div>Sorry, this page doesn't exist. Go back to the <Link href="/">homepage</Link>.</div>
 			</div>
 		</div>
 	)

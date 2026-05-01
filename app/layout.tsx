@@ -3,8 +3,8 @@ import { Geist, Passion_One } from 'next/font/google';
 import './globals.css';
 import { Providers } from './Providers';
 import { PageTransitionEffect } from '@/src/components/transitions';
-import { Analytics } from '@vercel/analytics/next';
 import { SchemaOrg } from '@/src/components/seo/SchemaOrg';
+import Script from 'next/script';
 
 export const metadata: Metadata = {
   title: {
@@ -67,9 +67,9 @@ export default function RootLayout({
         <Providers>
           <PageTransitionEffect>
             {children}
-            <Analytics />
           </PageTransitionEffect>
         </Providers>
+        <Script src="https://cloud.umami.is/script.js" data-website-id="664b305c-aa76-4865-8829-861e87fa1655" strategy="afterInteractive"></Script>
       </body>
     </html>
   );
