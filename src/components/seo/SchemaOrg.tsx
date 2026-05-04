@@ -53,7 +53,10 @@ export function SchemaOrg() {
           "https://github.com/annrra"
         ],
         makesOffer: {
-          "@id": "https://bettermonday.org/#service"
+          "@type": "Offer",
+          itemOffered: {
+            "@id": "https://bettermonday.org/#service"
+          }
         }
       },
       {
@@ -63,9 +66,6 @@ export function SchemaOrg() {
         url: "https://bettermonday.org",
         description:
           "Independent web designer and developer creating strategic UI/UX and websites for brands that want to grow.",
-        provider: {
-          "@id": "https://bettermonday.org/#organization"
-        },
         areaServed: {
           "@type": "Place",
           name: "Worldwide"
