@@ -3,7 +3,6 @@ import { Geist, Passion_One } from 'next/font/google';
 import './globals.css';
 import { Providers } from './Providers';
 import { PageTransitionEffect } from '@/src/components/transitions';
-import { SchemaOrg } from '@/src/components/seo/SchemaOrg';
 import Script from 'next/script';
 
 export const metadata: Metadata = {
@@ -62,8 +61,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${passionOne.variable}`}>
-        <SchemaOrg />
-
         <Providers>
           <PageTransitionEffect>
             {children}

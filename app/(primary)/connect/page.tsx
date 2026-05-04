@@ -7,7 +7,8 @@
 //
 // Do not remove this file unless the routing strategy changes.
 
-import type { Metadata } from "next";
+import type { Metadata } from 'next';
+import { SchemaOrgConnect } from '@/src/components/seo/SchemaOrgConnect';
 
 export const metadata: Metadata = {
   title: 'Connect with BetterMonday',
@@ -42,5 +43,9 @@ export const metadata: Metadata = {
 };
 
 export default function ConnectPage() {
-  return null;
+  // Page intentionally renders no UI.
+  // It only injects structured data for SEO.
+  return (
+    <SchemaOrgConnect />
+  );
 }

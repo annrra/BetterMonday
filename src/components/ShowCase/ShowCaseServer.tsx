@@ -1,6 +1,7 @@
 import { getShowCaseList } from '@/lib/api';
 import styles from './sc.module.css';
 import ShowCaseLayout from './ShowCaseLayout';
+import { SchemaOrgWork } from '@/src/components/seo/SchemaOrgWork';
 
 export type ShowCaseEntry = {
   id: number;
@@ -123,10 +124,13 @@ const ShowCaseServer = async () => {
   }
 
   return (
-    <div className={styles.showroom}>
-        <h1 className={styles.sronly}>Selected projects by BetterMonday</h1>
-        <ShowCaseLayout items={items} />
-    </div>
+    <>
+      <SchemaOrgWork items={items} />
+      <div className={styles.showroom}>
+          <h1 className={styles.sronly}>Selected projects by BetterMonday</h1>
+          <ShowCaseLayout items={items} />
+      </div>
+    </>
   );
 
 };

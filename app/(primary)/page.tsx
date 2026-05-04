@@ -1,4 +1,5 @@
-import type { Metadata } from "next";
+import type { Metadata } from 'next';
+import { SchemaOrg } from '@/src/components/seo/SchemaOrg';
 
 export const metadata: Metadata = {
   title: 'Independent Web Designer & Developer',
@@ -12,5 +13,9 @@ export const metadata: Metadata = {
 export default function Home() {
   // Page exists only to create the route.
   // Visible content is rendered in the group layout.
-  return null;
+  // Page intentionally renders no UI.
+  // It only injects structured data for SEO.
+  return (
+    <SchemaOrg />
+  );
 }

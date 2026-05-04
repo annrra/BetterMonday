@@ -1,5 +1,6 @@
 import { AboutScreen } from '@/src/components/AboutSection';
 import type { Metadata } from "next";
+import { SchemaOrgAbout } from '@/src/components/seo/SchemaOrgAbout';
 
 export const metadata: Metadata = {
   title: 'About BetterMonday',
@@ -36,6 +37,7 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <div>
+      <SchemaOrgAbout />
       <AboutScreen />
     </div>
   );

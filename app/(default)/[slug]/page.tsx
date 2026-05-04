@@ -5,6 +5,7 @@ import { ShowCaseItemClient, ShowCaseItemServer } from '@/src/components/ShowCas
 import { notFound } from 'next/navigation';
 import type { PostProps } from './types';
 import type { Category, ShowCaseItemResponse, ShowCasePost } from '@/src/components/ShowCaseItem/types';
+import { SchemaOrgProject } from '@/src/components/seo/SchemaOrgProject';
 
 export async function generateMetadata({ params }: PostProps) {
   const { slug } = await params;
@@ -75,10 +76,13 @@ export default async function Post({ params }: PostProps) {
     : null;
 
   return (
-    <div className={styles.container}>
-      <ShowCaseItemClient>
-        <ShowCaseItemServer post={post} item={normalizedNextItem} />
-      </ShowCaseItemClient>
-    </div>
+    <>
+      <SchemaOrgProject post={post} />
+      <div className={styles.container}>
+        <ShowCaseItemClient>
+          <ShowCaseItemServer post={post} item={normalizedNextItem} />
+        </ShowCaseItemClient>
+      </div>
+    </>
   );
 }
