@@ -277,7 +277,7 @@ const ShowCaseLayout = ({items}: ShowCaseListProps) => {
             </div>
           </div>
           <ShowCaseLayoutFooter 
-            uri={selected.uri}
+            slug={selected.slug}
             heading={selected.heading}
             description={selected.description}
             tags={selected.tags}

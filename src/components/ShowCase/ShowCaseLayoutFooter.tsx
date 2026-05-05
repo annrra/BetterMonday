@@ -12,7 +12,7 @@ export type ShowCaseListProps = {
 }
 
 export type ShowCaseLayoutFooterProps = {
-  uri?: string;
+  slug?: string;
   heading?: string;
   description?: string;
   tags: string[];
@@ -22,7 +22,7 @@ export type ShowCaseLayoutFooterProps = {
 const MotionTransitionLink = motion(TransitionLink);
 
 const ShowCaseLayoutFooter = ({
-  uri,
+  slug,
   heading,
   description,
   tags,
@@ -57,7 +57,7 @@ const ShowCaseLayoutFooter = ({
       <div className={styles.summary}>
         <div className={styles.details}>
           <MotionTransitionLink 
-            href={uri} 
+            href={slug ? `/${slug}` : '/'} 
             className={styles.link}
             whileHover="hovered"
           >
